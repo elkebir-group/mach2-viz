@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+html {
+  background-color: #E7F3F3;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,15 +18,28 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #B3B3B3;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /*align-items: center;*/
+  /*justify-content:center;*/
   font-size: calc(10px + 2vmin);
   color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
+
+.float-container {
+  padding: 0px;
+}
+
+.float-child {
+  width: 15%;
+  float: left;
+  padding: 20px;
+}  
+
 
 .App-link {
   color: #61dafb;
@@ -35,4 +52,74 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h1, h2, h3, h4, h5, h6, p, header, span {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.aboutdir {
+  font-size: calc(5px + 2vmin);
+  margin-left: -90px;
+  margin-top: 5px;
+}
+
+.aboutdir:hover, .homedir:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#addnew {
+  position: absolute;
+  top: calc(100% - 120px);
+  left: calc(100% - 120px);
+}
+
+.dot {
+  display: table;
+  height: 100px;
+  width: 100px;
+  background-color: #B3B3B3;
+  border-radius: 50%;
+  box-shadow: 10px 10px #D7E3E3;
+}
+
+.dot:hover {
+  background-color: #A3A3A3;
+  cursor: pointer;
+}
+
+h1 {
+  color: white;
+}
+
+.plus {
+  font-size: 60px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.panel {
+  background-color: white;
+  border-color: #B9B9B9;
+  border-radius: 10px;
+  border-style: solid;
+}
+
+.abouttitle {
+  color: black;
+}
+
+.about {
+  padding: 20px;
+}
+
+p, li {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.backarrow:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
