@@ -30,6 +30,10 @@ html {
   border-bottom-right-radius: 10px;
 }
 
+Link {
+  text-decoration: none;
+}
+
 .float-container {
   padding: 0px;
 }
@@ -122,4 +126,10 @@ p, li {
 .backarrow:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.backarrow {
+  font-size: 20px;
+  padding: 30px;
+  padding-bottom: 0px;
 }

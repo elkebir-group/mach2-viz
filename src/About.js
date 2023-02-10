@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+
 function About() {
     return (
         <div className='about'>
-            <p className='backarrow'><b>&#8592; back</b></p>
             <div className='panel'>
                 <h1 className='abouttitle'>Enter MACHINA-Viz</h1>
                 <p>MACHINA-Viz is a personalized medical tool to visualize cancer metastasis. Log in or create
