@@ -28,6 +28,11 @@ function App() {
             <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; back</Link></b></p>
             <About/>
           </Route>
+          <Route path="/viz">
+            (
+              const queryParams = 
+            )
+          </Route>
           <Route exact path="/">
             <input 
               type="file"
