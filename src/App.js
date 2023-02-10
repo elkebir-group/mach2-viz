@@ -29,11 +29,15 @@ function App() {
             <About/>
           </Route>
           <Route exact path="/">
-            <div id="addnew" className="dot"><h1 className="plus">+</h1></div>
+            <input 
+              type="file"
+              id="json_upload" 
+              name="json_upload"
+              accept="image/*"/>
+            <label for="json_upload"><div id="addnew" className="dot"><h1 className="plus">+</h1></div></label>
           </Route>
         </Switch>
       </Router>
-      {/*<div id="addnew" className="dot"><h1 className="plus">+</h1></div>*/}
     </div>
   );
 }

@@ -133,3 +133,9 @@ p, li {
   padding: 30px;
   padding-bottom: 0px;
 }
+
+input {
+  top:-100%;
+  opacity: 0;
+  z-index: -1;
+}
