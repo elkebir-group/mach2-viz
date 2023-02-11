@@ -116,6 +116,7 @@ h1 {
 
 .about {
   padding: 20px;
+  padding-top: 0px;
 }
 
 p, li {
@@ -132,6 +133,7 @@ p, li {
   font-size: 20px;
   padding: 30px;
   padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 input {
@@ -156,4 +158,34 @@ input {
 
 .dot:hover .tooltiptext {
   visibility: visible;
+}
+
+.viz {
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.panel.instr {
+  width: 33%;
+  font-size: 14px;
+}
+
+.panel.inputs {
+  overflow: auto;
+  height: 420px;
+  margin-top: 10px;
+  width: 33%;
+  font-size: 14px;
+}
+
+.panel.jsonview {
+  background-color: #eeeeee;
+  margin: 20px;
+  height: 300px;
+  overflow: auto;
+  padding-left: 0px;
+}
+
+.jsonheader {
+  cursor: pointer;
 }
