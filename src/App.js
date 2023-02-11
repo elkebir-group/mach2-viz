@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
-import About from './About.js'
-import Viz from './Viz.js'
-import { compressUrlSafe } from './lzma-url.js'
+import About from './components/About.js'
+import Viz from './components/Viz.js'
+import { compressUrlSafe } from './url_compression/lzma-url.js'
 
 import {
   BrowserRouter as Router,
