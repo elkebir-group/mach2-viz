@@ -4,6 +4,7 @@
 
 html {
   background-color: #E7F3F3;
+  overflow-x: hidden;
 }
 
 .App-logo {
@@ -163,10 +164,17 @@ input {
 .viz {
   padding: 20px;
   padding-top: 0px;
+  display: flex;
+  width: 100%;
+}
+
+.leftpanel {
+  float: left;
+  width: 33%;
 }
 
 .panel.instr {
-  width: 33%;
+  width: 100%;
   font-size: 14px;
 }
 
@@ -174,7 +182,7 @@ input {
   overflow: auto;
   height: 420px;
   margin-top: 10px;
-  width: 33%;
+  width: 100%;
   font-size: 14px;
 }
 
@@ -188,4 +196,11 @@ input {
 
 .jsonheader {
   cursor: pointer;
+}
+
+.panel.info {
+  float: left;
+  margin-left: 20px;
+  margin-top: -40px;
+  width: 62%;
 }
