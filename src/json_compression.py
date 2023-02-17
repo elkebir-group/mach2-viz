@@ -7,15 +7,17 @@ if len(sys.argv) != 2:
     print("format: python json_compression.py [directory_path]")
     exit()
 
-patient_name = sys.argv[1]
+dir_name = sys.argv[1]
 
 # retrieve directory contents
 dir_contents = None
 try:
-    dir_contents = os.listdir(patient_name)
+    dir_contents = os.listdir(sys.argv[1])
 except:
     print("error: directory not found!")
     exit()
+
+patient_name = dir_name.split("/")[-1]
 
 # error-checking dir_contents
 if patient_name + ".tree" not in dir_contents:
@@ -48,7 +50,7 @@ patient_data["name"] = sys.argv[1]
 # extract migration graph data
 migration_graphs = []
 potential_graphs = {}
-filenames = os.listdir(patient_name + "/pmh")
+filenames = os.listdir(dir_name + "/pmh")
 for filename in filenames:
     file_breakdown = filename.split(".")
     try:
@@ -61,7 +63,7 @@ for graph_name in potential_graphs:
         graph_item = {}
         graph_item["name"] = graph_name
 
-        with open(patient_name + "/pmh/" + graph_name + ".tree") as f:
+        with open(dir_name + "/pmh/" + graph_name + ".tree") as f:
             node_pairings = f.readlines()
             graph = []
 
@@ -71,7 +73,7 @@ for graph_name in potential_graphs:
 
             graph_item["graph"] = graph
         
-        with open(patient_name + "/pmh/" + graph_name + ".labeling") as f:
+        with open(dir_name + "/pmh/" + graph_name + ".labeling") as f:
             labelings = f.readlines()
             labeling = []
 
@@ -88,7 +90,7 @@ patient_data["migration_graph"] = migration_graphs
 
 # extract clone tree data
 clone_tree = {}
-with open(patient_name + "/" + patient_name + ".tree") as f:
+with open(dir_name + "/" + patient_name + ".tree") as f:
     node_pairings = f.readlines()
     tree = []
 
@@ -98,7 +100,7 @@ with open(patient_name + "/" + patient_name + ".tree") as f:
     
     clone_tree["tree"] = tree
 
-with open(patient_name + "/" + patient_name + ".labeling") as f:
+with open(dir_name + "/" + patient_name + ".labeling") as f:
     labelings = f.readlines()
     labeling = []
 
@@ -109,12 +111,12 @@ with open(patient_name + "/" + patient_name + ".labeling") as f:
     clone_tree["labeling"] = labeling
 
 full_labelings = []
-potential_labelings = os.listdir(patient_name + "/potential_labelings")
+potential_labelings = os.listdir(dir_name + "/potential_labelings")
 for filename in potential_labelings:
     labeling_item = {}
     labeling_item["name"] = filename.split(".")[0]
 
-    with open(patient_name + "/potential_labelings/" + filename) as f:
+    with open(dir_name + "/potential_labelings/" + filename) as f:
         labelings = f.readlines()
         labeling = []
 
@@ -132,7 +134,7 @@ patient_data["clone_tree"] = clone_tree
 
 # extract coloring data
 colorings = []
-with open(patient_name + "/coloring.txt") as f:
+with open(dir_name + "/coloring.txt") as f:
     coloring_pairings = f.readlines()
 
     for pairing in coloring_pairings:
