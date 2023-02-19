@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   Routes,
   Route,
@@ -9,6 +9,26 @@ import ReactDOM from "react-dom";
 import { decompressUrlSafe } from '../url_compression/lzma-url.js'
 
 function Viz() {
+    let posX;
+    useEffect(() => {
+      const handleResize = () => {
+        document.documentElement.style.setProperty('--vbar', "0px");
+        posX = document.getElementsByClassName("panel divider")[0].offsetLeft;
+      }
+
+      posX = document.getElementsByClassName("panel divider")[0].offsetLeft;
+
+      window.addEventListener('resize', handleResize);
+    }, []);
+
+    const dragFn = (e) => {
+      let diff = e.clientX - posX;
+      console.log(e.clientX, diff);
+      if (e.clientX !== 0) {
+        document.documentElement.style.setProperty('--vbar', diff + "px");
+      }
+    }
+
     const queryParameters = new URLSearchParams(window.location.search);
     const fileContents = decompressUrlSafe(queryParameters.get("data"));
     const data = JSON.parse(fileContents);
@@ -64,6 +84,7 @@ function Viz() {
             </ul>
           </div>
         </div>
+        <div className="panel divider" draggable onDrag={dragFn}></div>
         <div className="panel info">
           <h3><b>{data["name"]}</b></h3>
           <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>

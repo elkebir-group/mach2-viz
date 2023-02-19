@@ -1,3 +1,7 @@
+:root {
+  --vbar: 0px;
+}
+
 .App {
   text-align: center;
 }
@@ -109,6 +113,7 @@ h1 {
   border-color: #B9B9B9;
   border-radius: 10px;
   border-style: solid;
+  overflow: auto;
 }
 
 .abouttitle {
@@ -170,16 +175,16 @@ input {
 
 .leftpanel {
   float: left;
-  width: 33%;
+  width: calc(33% + var(--vbar));
 }
 
 .panel.instr {
   width: 100%;
   font-size: 14px;
+  height: 200px;
 }
 
 .panel.inputs {
-  overflow: auto;
   height: 420px;
   margin-top: 10px;
   width: 100%;
@@ -200,16 +205,16 @@ input {
 
 .panel.info {
   float: left;
-  margin-left: 20px;
+  margin-left: 15px;
   margin-top: -40px;
-  width: 62%;
+  width: calc(62% - var(--vbar));
 }
 
 .panel.tab {
   margin-left: 40px;
   padding-right: 10px;
   width: fit-content;
-  height: 20%;
+  height: 10%;
   margin-top: -30px;
 }
 
@@ -217,7 +222,7 @@ input {
   margin-left: 20px;
   width: calc(50% - 30px);
   height: 40%;
-  margin-top: calc(-20px - 10%);
+  margin-top: -30px;
 }
 
 .paneltitle {
@@ -229,3 +234,12 @@ input {
 }
 
 .block label { display: flex; }
+
+.panel.divider {
+  margin-left: 15px;
+  margin-top: -40px;
+}
+
+.panel.divider:hover {
+  cursor: col-resize;
+}
