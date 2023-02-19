@@ -9,8 +9,8 @@ import ReactDOM from "react-dom";
 import { decompressUrlSafe } from '../url_compression/lzma-url.js'
 
 function Viz() {
-    const queryParameters = new URLSearchParams(window.location.search)
-    const fileContents = decompressUrlSafe(queryParameters.get("data"))
+    const queryParameters = new URLSearchParams(window.location.search);
+    const fileContents = decompressUrlSafe(queryParameters.get("data"));
     const data = JSON.parse(fileContents);
     const locations = data["coloring"].map((value, index) => {return value[0]});
 
@@ -20,6 +20,9 @@ function Viz() {
       setToggle((toggle === "▶ JSON View") ? "▾ JSON View" : "▶ JSON View");
       setJsonPanel((jsonPanel.visibility === "hidden") ? {visibility: "visible", height: "300px"} : {visibility: "hidden", height: 0});
     }
+
+    let graphnames = data["migration_graph"].map((value, index) => {return value["name"]});
+    let labelnames = data["clone_tree"]["full_labeling"].map((value, index) => {return value["name"]});
 
     return (
       <div className="viz">
@@ -45,6 +48,16 @@ function Viz() {
               </ul>
             </nav>
             <p><b>Patient:</b> {data["name"]}</p>
+            <label><p><b>Migration Graph:
+              <select name="graphs" id="graphs">
+                {graphnames.map(l => <option value={l}>{l}</option>)}
+              </select>
+            </b></p></label>
+            <label for="labelings"><p><b>Full Labeling:
+              <select name="labelings" id="labelings">
+                {labelnames.map(l => <option value={l}>{l}</option>)}
+              </select>
+            </b></p></label>
             <p><b>Metastasis Locations:</b></p>
             <ul>
               {locations.map(l => <li><p>{l}</p></li>)}
@@ -53,6 +66,10 @@ function Viz() {
         </div>
         <div className="panel info">
           <h3><b>{data["name"]}</b></h3>
+          <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
+          <div className="panel migration"></div>
+          <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
+          <div className="panel migration"></div>
         </div>
       </div>
     )

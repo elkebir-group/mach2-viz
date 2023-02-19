@@ -204,3 +204,28 @@ input {
   margin-top: -40px;
   width: 62%;
 }
+
+.panel.tab {
+  margin-left: 40px;
+  padding-right: 10px;
+  width: fit-content;
+  height: 20%;
+  margin-top: -30px;
+}
+
+.panel.migration {
+  margin-left: 20px;
+  width: calc(50% - 30px);
+  height: 40%;
+  margin-top: calc(-20px - 10%);
+}
+
+.paneltitle {
+  margin-top: 5px;
+}
+
+.panel.tab.clonal {
+  margin-top: 5px;
+}
+
+.block label { display: flex; }
