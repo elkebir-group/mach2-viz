@@ -87,10 +87,20 @@ function Viz() {
         <div className="panel divider" draggable onDrag={dragFn}></div>
         <div className="panel info">
           <h3><b>{data["name"]}</b></h3>
-          <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
-          <div className="panel migration"></div>
-          <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
-          <div className="panel migration"></div>
+          <div className="columnwrapper">
+            <div className="leftcolumn">
+              <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
+              <div className="panel migration"></div>
+              <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
+              <div className="panel migration"></div>
+            </div>
+            <div className="rightcolumn">
+              <div className="panel tab legend"><p className="paneltitle"><b>Legend</b></p></div>
+              <div className="panel migration legend"></div>
+              <div className="panel tab legend map"><p className="paneltitle"><b>Map</b></p></div>
+              <div className="panel migration legend map"></div>
+            </div>
+          </div>
         </div>
       </div>
     )
