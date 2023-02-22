@@ -20,7 +20,12 @@ function App() {
       let jsonString = readerEvt.target.result;
       json_contents = jsonString;
       console.log(json_contents);
-      window.location = window.location + `viz?data=${compressUrlSafe(json_contents)}`
+
+      const data = JSON.parse(json_contents);
+      let graphnames = data["migration_graph"].map((value, index) => {return value["name"]});
+      let labelnames = data["clone_tree"]["full_labeling"].map((value, index) => {return value["name"]});
+
+      window.location = window.location + `viz?data=${compressUrlSafe(json_contents)}&graph=${graphnames[0]}&labeling=${labelnames[0]}`;
     }
     // Read the file as a text
     reader.readAsText(file);
