@@ -280,3 +280,13 @@ input {
 .panel.migration.legend.map {
   height: 60%;
 }
+
+#cy {
+  position: relative;
+  height: 100%;
+}
+
+canvas {
+  margin-left: -50%;
+  padding-left: 0;
+}

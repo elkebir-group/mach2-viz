@@ -6,34 +6,23 @@ import {
   BrowserRouter
 } from "react-router-dom"
 import ReactDOM from "react-dom";
-import { decompressUrlSafe } from '../url_compression/lzma-url.js'
+import { decompressUrlSafe } from '../utils/lzma-url.js'
+import ClonalTree from "./ClonalTree.js";
 
 function insertParam(key, value) {
-  key = encodeURIComponent(key);
-  value = encodeURIComponent(value);
+  // Get the current url
+  let currentUrl = new URL(window.location.href);
 
-  // kvp looks like ['key1=value1', 'key2=value2', ...]
-  var kvp = document.location.search.substr(1).split('&');
-  let i=0;
+  // Change a url parameter using URLSearchParams
+  let urlParams = new URLSearchParams(currentUrl.search);
+  urlParams.set(key, value);
 
-  for(; i<kvp.length; i++){
-      if (kvp[i].startsWith(key + '=')) {
-          let pair = kvp[i].split('=');
-          pair[1] = value;
-          kvp[i] = pair.join('=');
-          break;
-      }
-  }
+  // Replace the URL
+  currentUrl.search = urlParams.toString();
+  window.location.href = urlParams.toString();
 
-  if(i >= kvp.length){
-      kvp[kvp.length] = [key,value].join('=');
-  }
-
-  // can return this or...
-  let params = kvp.join('&');
-
-  // reload page with new params
-  document.location.search = params;
+  // Reload the page
+  window.location.reload();
 }
 
 function Viz() {
@@ -89,6 +78,10 @@ function Viz() {
       insertParam("labeling", event.target.value);
     }
 
+    let handleGraphChange = (event) => {
+      insertParam("graph", event.target.value);
+    }
+
     return (
       <div className="viz">
         <div className="leftpanel">
@@ -114,7 +107,7 @@ function Viz() {
             </nav>
             <p><b>Patient:</b> {data["name"]}</p>
             <label><p><b>Migration Graph:
-              <select name="graphs" id="graphs">
+              <select name="graphs" id="graphs" onChange={handleGraphChange}>
                 {graphnames.map(l => <option value={l}>{l}</option>)}
               </select>
             </b></p></label>
@@ -137,7 +130,9 @@ function Viz() {
               <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
               <div className="panel migration"></div>
               <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
-              <div className="panel migration"></div>
+              <div className="panel migration">
+                <ClonalTree data={data}/>
+              </div>
             </div>
             <div className="rightcolumn">
               <div className="panel tab legend"><p className="paneltitle"><b>Legend</b></p></div>

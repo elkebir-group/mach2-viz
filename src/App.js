@@ -1,7 +1,7 @@
 import './App.css';
 import About from './components/About.js'
 import Viz from './components/Viz.js'
-import { compressUrlSafe } from './url_compression/lzma-url.js'
+import { compressUrlSafe } from './utils/lzma-url.js'
 
 import {
   BrowserRouter as Router,
