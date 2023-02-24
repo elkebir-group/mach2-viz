@@ -27,8 +27,13 @@ function ClonalTree(props) {
     return array.indexOf(value) === index;
   }
 
+  function findLabel(node) {
+    return props.labeling.map((value, index) => {
+      if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
+  }
+
   let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
-    return { data: { id: value, label: value, type: "ip"} };
+    return { data: { id: value, label: findLabel(value), type: "ip"} };
   });
   let edges = props.tree.map((value, index) => {
     return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`} }
@@ -52,7 +57,7 @@ function ClonalTree(props) {
     nodeDimensionsIncludeLabels: false
   };
 
-  const styleSheet = [
+  let styleSheet = [
     {
       selector: "node",
       style: {
@@ -68,10 +73,10 @@ function ClonalTree(props) {
         "overlay-padding": "6px",
         "z-index": "10",
         //text props
-        "text-outline-color": "#4a56a6",
+        //"text-outline-color": "#4a56a6",
         "text-outline-width": "2px",
         color: "white",
-        fontSize: 20
+        fontSize: 15
       }
     },
     {
@@ -106,6 +111,15 @@ function ClonalTree(props) {
       }
     }
   ];
+
+  props.coloring.map((value, index) => {
+    styleSheet.push({
+      selector: `node[label='${value[0]}']`,
+      style: {
+        backgroundColor: colorPalette[parseInt(value[1])]
+      }
+    })
+  })
 
   let myCyRef;
 

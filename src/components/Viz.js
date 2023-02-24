@@ -51,6 +51,7 @@ function Viz() {
     const data = JSON.parse(fileContents);
     const locations = data["coloring"].map((value, index) => {return value[0]});
     
+    const coloring = data["coloring"]
     const tree = data["clone_tree"]["tree"]
     const tree_labeling = data["clone_tree"]["full_labeling"].map((value, index) => {
       if (value["name"] === queryParameters.get("labeling")) {
@@ -125,7 +126,7 @@ function Viz() {
               <div className="panel migration"></div>
               <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
               <div className="panel migration">
-                <ClonalTree tree={tree} labeling={tree_labeling}/>
+                <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring}/>
               </div>
             </div>
             <div className="rightcolumn">
