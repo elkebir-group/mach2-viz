@@ -6,51 +6,37 @@ import COSEBilkent from 'cytoscape-cose-bilkent';
 
 Cytoscape.use(COSEBilkent);
 
-function ClonalTree() {
-    const [width, setWith] = useState("100%");
+function ClonalTree(props) {
+  const colorPalette = [
+    "#fff5ba",
+    "#ffcbc1",
+    "#e7ffac",
+    "#85e3ff",
+    "#a79aff",
+    "#d5aaff",
+    "#f6a6ff",
+    "#aff8d8",
+    "#ffc9de",
+    "#ffabab"
+  ]
+
+  const [width, setWith] = useState("100%");
   const [height, setHeight] = useState("400px");
+
+  function onlyUnique(value, index, array) {
+    return array.indexOf(value) === index;
+  }
+
+  let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
+    return { data: { id: value, label: value, type: "ip"} };
+  });
+  let edges = props.tree.map((value, index) => {
+    return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`} }
+  })
+
   const [graphData, setGraphData] = useState({
-    nodes: [
-      { data: { id: "1", label: "IP 1", type: "ip" } },
-      { data: { id: "2", label: "Device 1", type: "device" } },
-      { data: { id: "3", label: "IP 2", type: "ip" } },
-      { data: { id: "4", label: "Device 2", type: "device" } },
-      { data: { id: "5", label: "Device 3", type: "device" } },
-      { data: { id: "6", label: "IP 3", type: "ip" } },
-      { data: { id: "7", label: "Device 5", type: "device" } },
-      { data: { id: "8", label: "Device 6", type: "device" } },
-      { data: { id: "9", label: "Device 7", type: "device" } },
-      { data: { id: "10", label: "Device 8", type: "device" } },
-      { data: { id: "11", label: "Device 9", type: "device" } },
-      { data: { id: "12", label: "IP 3", type: "ip" } },
-      { data: { id: "13", label: "Device 10", type: "device" } }
-    ],
-    edges: [
-      {
-        data: { source: "1", target: "2", label: "Node2" }
-      },
-      {
-        data: { source: "3", target: "4", label: "Node4" }
-      },
-      {
-        data: { source: "3", target: "5", label: "Node5" }
-      },
-      {
-        data: { source: "6", target: "5", label: " 6 -> 5" }
-      },
-      {
-        data: { source: "6", target: "7", label: " 6 -> 7" }
-      },
-      {
-        data: { source: "6", target: "8", label: " 6 -> 8" }
-      },
-      {
-        data: { source: "6", target: "9", label: " 6 -> 9" }
-      },
-      {
-        data: { source: "3", target: "13", label: " 3 -> 13" }
-      }
-    ]
+    nodes: nodes,
+    edges: edges
   });
 
   const layout = {
@@ -71,8 +57,8 @@ function ClonalTree() {
       selector: "node",
       style: {
         backgroundColor: "#4a56a6",
-        width: 30,
-        height: 30,
+        width: 15,
+        height: 15,
         label: "data(label)",
 
         // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
@@ -122,7 +108,8 @@ function ClonalTree() {
   ];
 
   let myCyRef;
-    return <CytoscapeComponent
+
+  return <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
     // pan={{ x: 200, y: 200 }}
     style={{ width: width, height: height }}

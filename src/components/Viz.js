@@ -46,23 +46,17 @@ function Viz() {
       }
     }
 
-    const colorPalette = [
-      "#fff5ba",
-      "#ffcbc1",
-      "#e7ffac",
-      "#85e3ff",
-      "#a79aff",
-      "#d5aaff",
-      "#f6a6ff",
-      "#aff8d8",
-      "#ffc9de",
-      "#ffabab"
-    ]
-
     const queryParameters = new URLSearchParams(window.location.search);
     const fileContents = decompressUrlSafe(queryParameters.get("data"));
     const data = JSON.parse(fileContents);
     const locations = data["coloring"].map((value, index) => {return value[0]});
+    
+    const tree = data["clone_tree"]["tree"]
+    const tree_labeling = data["clone_tree"]["full_labeling"].map((value, index) => {
+      if (value["name"] === queryParameters.get("labeling")) {
+        return value["data"];
+      }
+    })[0];
 
     const [toggle, setToggle] = useState("▶ JSON View");
     const [jsonPanel, setJsonPanel] = useState({visibility: "hidden", height: 0});
@@ -131,7 +125,7 @@ function Viz() {
               <div className="panel migration"></div>
               <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
               <div className="panel migration">
-                <ClonalTree data={data}/>
+                <ClonalTree tree={tree} labeling={tree_labeling}/>
               </div>
             </div>
             <div className="rightcolumn">
