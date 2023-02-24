@@ -290,3 +290,11 @@ canvas {
   margin-left: -50%;
   padding-left: 0;
 }
+
+.legendtext {
+  font-size: 14px;
+}
+
+ul {
+  columns: 2;
+}

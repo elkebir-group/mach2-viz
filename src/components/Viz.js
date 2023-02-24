@@ -8,6 +8,8 @@ import {
 import ReactDOM from "react-dom";
 import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
+import Migration from "./Migration.js";
+import Legend from "./Legend.js";
 
 function insertParam(key, value) {
   // Get the current url
@@ -53,11 +55,21 @@ function Viz() {
     
     const coloring = data["coloring"]
     const tree = data["clone_tree"]["tree"]
+    const migration_data = data["migration_graph"].map((value, index) => {
+      if (value["name"] === queryParameters.get("graph")) {
+        return value;
+      }
+    }).filter((item) => {return item != undefined})[0];
     const tree_labeling = data["clone_tree"]["full_labeling"].map((value, index) => {
       if (value["name"] === queryParameters.get("labeling")) {
         return value["data"];
       }
-    })[0];
+    }).filter((item) => {return item != undefined})[0];
+
+    const migration_graph = migration_data["graph"]
+    const migration_labeling = migration_data["labeling"]
+
+    console.log(migration_graph);
 
     const [toggle, setToggle] = useState("▶ JSON View");
     const [jsonPanel, setJsonPanel] = useState({visibility: "hidden", height: 0});
@@ -123,7 +135,9 @@ function Viz() {
           <div className="columnwrapper">
             <div className="leftcolumn">
               <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
-              <div className="panel migration"></div>
+              <div className="panel migration">
+                <Migration tree={migration_graph} labeling={migration_labeling} coloring={coloring}/>
+              </div>
               <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
               <div className="panel migration">
                 <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring}/>
@@ -131,7 +145,9 @@ function Viz() {
             </div>
             <div className="rightcolumn">
               <div className="panel tab legend"><p className="paneltitle"><b>Legend</b></p></div>
-              <div className="panel migration legend"></div>
+              <div className="panel migration legend">
+                <Legend coloring={coloring}/>
+              </div>
               <div className="panel tab legend map"><p className="paneltitle"><b>Map</b></p></div>
               <div className="panel migration legend map"></div>
             </div>

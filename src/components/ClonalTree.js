@@ -21,7 +21,7 @@ function ClonalTree(props) {
   ]
 
   const [width, setWith] = useState("100%");
-  const [height, setHeight] = useState("400px");
+  const [height, setHeight] = useState("100%");
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index;
