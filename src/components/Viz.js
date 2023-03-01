@@ -42,7 +42,15 @@ function Viz() {
     return (
       <div className="viz">
         <div className="panel info">
-          <h3><b>{data["name"]}</b></h3>
+          <div className="titlewrapper">
+            <label className="titleelem left" for="labelings"><p><b>Full Labeling:
+              <select name="labelings" id="labelings" onChange={handleLabelChange}>
+                {labelnames.map(l => <option value={l}>{l}</option>)}
+              </select>
+            </b></p></label>
+            <p className="titleelem"><b>{data["name"]}</b></p>
+            <p className="titleelem"><b>Press [/] for help &nbsp;&nbsp;</b></p>
+          </div>
           <div className="columnwrapper">
             <div className="leftcolumn">
               <div className="panel migration">
