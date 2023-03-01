@@ -55,21 +55,11 @@ function Viz() {
     
     const coloring = data["coloring"]
     const tree = data["clone_tree"]["tree"]
-    const migration_data = data["migration_graph"].map((value, index) => {
-      if (value["name"] === queryParameters.get("graph")) {
-        return value;
-      }
-    }).filter((item) => {return item != undefined})[0];
-    const tree_labeling = data["clone_tree"]["full_labeling"].map((value, index) => {
+    const tree_labeling = data["clone_tree"]["labeling"].map((value, index) => {
       if (value["name"] === queryParameters.get("labeling")) {
         return value["data"];
       }
     }).filter((item) => {return item != undefined})[0];
-
-    const migration_graph = migration_data["graph"]
-    const migration_labeling = migration_data["labeling"]
-
-    console.log(migration_graph);
 
     const [toggle, setToggle] = useState("▶ JSON View");
     const [jsonPanel, setJsonPanel] = useState({visibility: "hidden", height: 0});
@@ -78,8 +68,7 @@ function Viz() {
       setJsonPanel((jsonPanel.visibility === "hidden") ? {visibility: "visible", height: "300px"} : {visibility: "hidden", height: 0});
     }
 
-    let graphnames = data["migration_graph"].map((value, index) => {return value["name"]});
-    let labelnames = data["clone_tree"]["full_labeling"].map((value, index) => {return value["name"]});
+    let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
@@ -113,11 +102,6 @@ function Viz() {
               </ul>
             </nav>
             <p><b>Patient:</b> {data["name"]}</p>
-            <label><p><b>Migration Graph:
-              <select name="graphs" id="graphs" onChange={handleGraphChange}>
-                {graphnames.map(l => <option value={l}>{l}</option>)}
-              </select>
-            </b></p></label>
             <label for="labelings"><p><b>Full Labeling:
               <select name="labelings" id="labelings" onChange={handleLabelChange}>
                 {labelnames.map(l => <option value={l}>{l}</option>)}
@@ -136,7 +120,7 @@ function Viz() {
             <div className="leftcolumn">
               <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
               <div className="panel migration">
-                <Migration tree={migration_graph} labeling={migration_labeling} coloring={coloring}/>
+                <Migration tree={tree} labeling={tree_labeling} coloring={coloring}/>
               </div>
               <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
               <div className="panel migration">
