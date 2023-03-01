@@ -20,6 +20,12 @@ function insertParam(key, value) {
   window.location.reload();
 }
 
+function handleKeyPress(event) {
+  if (event.key === '/') {
+    alert('Instructions:\n\nDrag over the model in the right to rotate the figure around. Anatomic sites will be highlighted according to the color scheme in the legend to the right. To view anatomic sites in different systems, click the tabs in the right.\n\nClick the tabs below to switch between viewing the clonal tree and migration graph. Multiple labelings and trees may be inferred if a reported labeling is not given. In which case there will be a drop-down to select a potential solution.');
+  }
+}
+
 function Viz() {
     const queryParameters = new URLSearchParams(window.location.search);
     const fileContents = decompressUrlSafe(queryParameters.get("data"));
@@ -39,6 +45,10 @@ function Viz() {
       insertParam("labeling", event.target.value);
     }
 
+    useEffect(() => {
+      document.addEventListener("keydown", handleKeyPress);
+    });
+
     return (
       <div className="viz">
         <div className="panel info">
@@ -48,7 +58,7 @@ function Viz() {
                 {labelnames.map(l => <option value={l}>{l}</option>)}
               </select>
             </b></p></label>
-            <p className="titleelem"><b>{data["name"]}</b></p>
+            <h3 className="titleelem mid"><b>{data["name"]}</b></h3>
             <p className="titleelem"><b>Press [/] for help &nbsp;&nbsp;</b></p>
           </div>
           <div className="columnwrapper">
