@@ -191,18 +191,6 @@ input {
   font-size: 14px;
 }
 
-.panel.jsonview {
-  background-color: #eeeeee;
-  margin: 20px;
-  height: 300px;
-  overflow: auto;
-  padding-left: 0px;
-}
-
-.jsonheader {
-  cursor: pointer;
-}
-
 .panel.info {
   float: left;
   margin-left: 15px;

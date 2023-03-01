@@ -95,22 +95,6 @@ function Viz() {
             select a potential solution.</p>
           </div>
           <div className="panel inputs">
-            <nav className="togglemenu">
-              <p className="jsonheader" onClick={toggleClick}><b>{toggle}</b></p>
-              <ul className="panel jsonview" style={jsonPanel}>
-                <p>{fileContents}</p>
-              </ul>
-            </nav>
-            <p><b>Patient:</b> {data["name"]}</p>
-            <label for="labelings"><p><b>Full Labeling:
-              <select name="labelings" id="labelings" onChange={handleLabelChange}>
-                {labelnames.map(l => <option value={l}>{l}</option>)}
-              </select>
-            </b></p></label>
-            <p><b>Metastasis Locations:</b></p>
-            <ul>
-              {locations.map(l => <li><p>{l}</p></li>)}
-            </ul>
           </div>
         </div>
         <div className="panel divider" draggable onDrag={dragFn}></div>
