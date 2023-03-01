@@ -179,16 +179,8 @@ input {
 }
 
 .panel.instr {
-  width: 100%;
   font-size: 14px;
-  height: 200px;
-}
-
-.panel.inputs {
-  height: 420px;
-  margin-top: 10px;
-  width: 100%;
-  font-size: 14px;
+  height: 620px;
 }
 
 .panel.info {
@@ -213,15 +205,6 @@ input {
 }
 
 .block label { display: flex; }
-
-.panel.divider {
-  margin-left: 15px;
-  margin-top: -40px;
-}
-
-.panel.divider:hover {
-  cursor: col-resize;
-}
 
 .columnwrapper {
   display: flex;

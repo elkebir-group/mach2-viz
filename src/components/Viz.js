@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from "react"
-import {
-  Routes,
-  Route,
-  useParams,
-  BrowserRouter
-} from "react-router-dom"
-import ReactDOM from "react-dom";
 import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
@@ -28,30 +21,9 @@ function insertParam(key, value) {
 }
 
 function Viz() {
-    let posX;
-    useEffect(() => {
-      const handleResize = () => {
-        document.documentElement.style.setProperty('--vbar', "0px");
-        posX = document.getElementsByClassName("panel divider")[0].offsetLeft;
-      }
-
-      posX = document.getElementsByClassName("panel divider")[0].offsetLeft;
-
-      window.addEventListener('resize', handleResize);
-    }, []);
-
-    const dragFn = (e) => {
-      let diff = e.clientX - posX;
-      console.log(e.clientX, diff);
-      if (e.clientX !== 0) {
-        document.documentElement.style.setProperty('--vbar', diff + "px");
-      }
-    }
-
     const queryParameters = new URLSearchParams(window.location.search);
     const fileContents = decompressUrlSafe(queryParameters.get("data"));
     const data = JSON.parse(fileContents);
-    const locations = data["coloring"].map((value, index) => {return value[0]});
     
     const coloring = data["coloring"]
     const tree = data["clone_tree"]["tree"]
@@ -61,21 +33,10 @@ function Viz() {
       }
     }).filter((item) => {return item != undefined})[0];
 
-    const [toggle, setToggle] = useState("▶ JSON View");
-    const [jsonPanel, setJsonPanel] = useState({visibility: "hidden", height: 0});
-    let toggleClick = () => {
-      setToggle((toggle === "▶ JSON View") ? "▾ JSON View" : "▶ JSON View");
-      setJsonPanel((jsonPanel.visibility === "hidden") ? {visibility: "visible", height: "300px"} : {visibility: "hidden", height: 0});
-    }
-
     let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
-    }
-
-    let handleGraphChange = (event) => {
-      insertParam("graph", event.target.value);
     }
 
     return (
@@ -94,10 +55,7 @@ function Viz() {
             not given. In which case there will be a drop-down to
             select a potential solution.</p>
           </div>
-          <div className="panel inputs">
-          </div>
         </div>
-        <div className="panel divider" draggable onDrag={dragFn}></div>
         <div className="panel info">
           <h3><b>{data["name"]}</b></h3>
           <div className="columnwrapper">
