@@ -41,21 +41,6 @@ function Viz() {
 
     return (
       <div className="viz">
-        <div className="leftpanel">
-          <div className="panel instr">
-            <p><b>Instructions:</b> Drag over the model in the right to 
-            rotate the figure around. Anatomic sites will be 
-            highlighted according to the color scheme in the 
-            legend to the right. To view anatomic sites in 
-            different systems, click the tabs in the right.</p>
-
-            <p>Click the tabs below to switch between viewing the 
-            clonal tree and migration graph. Multiple labelings
-            and trees may be inferred if a reported labeling is
-            not given. In which case there will be a drop-down to
-            select a potential solution.</p>
-          </div>
-        </div>
         <div className="panel info">
           <h3><b>{data["name"]}</b></h3>
           <div className="columnwrapper">

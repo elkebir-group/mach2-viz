@@ -173,29 +173,19 @@ input {
   width: 100%;
 }
 
-.leftpanel {
-  float: left;
-  width: calc(33% + var(--vbar));
-}
-
-.panel.instr {
-  font-size: 14px;
-  height: 620px;
-}
-
 .panel.info {
+  position: absolute;
   float: left;
+  height: calc(100% - 175px);
   margin-left: 15px;
-  margin-top: -40px;
-  margin-right: 25px;
-  width: calc(62% - var(--vbar));
+  width: calc(100% - 75px);
   overflow: hidden;
 }
 
 .panel.migration {
   margin-left: 20px;
   width: 100%;
-  height: calc(40% + 25px);
+  height: calc(50% - 50px);
   margin-top: 5px;
 }
 
@@ -212,25 +202,26 @@ input {
 }
 
 .leftcolumn {
+  position: a;
   float: left;
   height: 100%;
-  width: calc(50% - 30px);
+  width: 70%;
 }
 
 .rightcolumn {
   float: left;
   padding-left: 30px;
-  margin-right: 40px;
-  width: 45%;
+  padding-right: 25px;
+  width: calc(30% - 75px);
+  height: 100%;
 }
 
 .panel.migration.legend {
-  height: calc(20% + 25px);
-  width: 100%;
+  height: 20%;
 }
 
 .panel.migration.legend.map {
-  height: calc(60% + 25px);
+  height: calc(80% - 95px);
 }
 
 #cy {
