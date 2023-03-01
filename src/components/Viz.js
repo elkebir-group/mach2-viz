@@ -102,21 +102,19 @@ function Viz() {
           <h3><b>{data["name"]}</b></h3>
           <div className="columnwrapper">
             <div className="leftcolumn">
-              <div className="panel tab"><p className="paneltitle"><b>Migration Graph</b></p></div>
               <div className="panel migration">
+                <p className="paneltitle"><b>Migration Graph</b></p>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring}/>
               </div>
-              <div className="panel tab clonal"><p className="paneltitle"><b>Clonal Tree</b></p></div>
               <div className="panel migration">
+              <p className="paneltitle"><b>Clonal Tree</b></p>
                 <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring}/>
               </div>
             </div>
             <div className="rightcolumn">
-              <div className="panel tab legend"><p className="paneltitle"><b>Legend</b></p></div>
               <div className="panel migration legend">
                 <Legend coloring={coloring}/>
               </div>
-              <div className="panel tab legend map"><p className="paneltitle"><b>Map</b></p></div>
               <div className="panel migration legend map"></div>
             </div>
           </div>

@@ -195,30 +195,20 @@ input {
   float: left;
   margin-left: 15px;
   margin-top: -40px;
+  margin-right: 25px;
   width: calc(62% - var(--vbar));
   overflow: hidden;
-}
-
-.panel.tab {
-  margin-left: 40px;
-  padding-right: 10px;
-  width: fit-content;
-  height: 10%;
-  margin-top: -30px;
 }
 
 .panel.migration {
   margin-left: 20px;
   width: 100%;
-  height: 40%;
-  margin-top: -30px;
-}
-
-.paneltitle {
+  height: calc(40% + 25px);
   margin-top: 5px;
 }
 
-.panel.tab.clonal {
+.paneltitle {
+  position: absolute;
   margin-top: 5px;
 }
 
@@ -251,22 +241,13 @@ input {
   width: 45%;
 }
 
-.panel.tab.legend {
-  margin-left: calc(100% - 110px);
-  padding-right: 40px;
-}
-
 .panel.migration.legend {
-  height: 20%;
+  height: calc(20% + 25px);
   width: 100%;
 }
 
-.panel.tab.legend.map {
-  margin-top: 5px;
-}
-
 .panel.migration.legend.map {
-  height: 60%;
+  height: calc(60% + 25px);
 }
 
 #cy {
