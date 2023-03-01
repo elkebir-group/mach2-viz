@@ -22,7 +22,7 @@ function insertParam(key, value) {
 
 function handleKeyPress(event) {
   if (event.key === '/') {
-    alert('Instructions:\n\nDrag over the model in the right to rotate the figure around. Anatomic sites will be highlighted according to the color scheme in the legend to the right. To view anatomic sites in different systems, click the tabs in the right.\n\nClick the tabs below to switch between viewing the clonal tree and migration graph. Multiple labelings and trees may be inferred if a reported labeling is not given. In which case there will be a drop-down to select a potential solution.');
+    alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponsing anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panel.\n\nOn the right, rotate around an anatomical model to visualize the corresponding metastatic locations.');
   }
 }
 
@@ -51,6 +51,7 @@ function Viz() {
 
     return (
       <div className="viz">
+        <h3 className="viztitle"><b>{data["name"]}</b></h3>
         <div className="panel info">
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
@@ -58,8 +59,7 @@ function Viz() {
                 {labelnames.map(l => <option value={l}>{l}</option>)}
               </select>
             </b></p></label>
-            <h3 className="titleelem mid"><b>{data["name"]}</b></h3>
-            <p className="titleelem"><b>Press [/] for help &nbsp;&nbsp;</b></p>
+            <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
           </div>
           <div className="columnwrapper">
             <div className="leftcolumn">

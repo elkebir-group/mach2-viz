@@ -24,7 +24,7 @@ html {
 
 .App-header {
   background-color: #B3B3B3;
-  min-height: 10vh;
+  min-height: 2vh;
   display: flex;
   flex-direction: column;
   /*align-items: center;*/
@@ -176,7 +176,7 @@ input {
 .panel.info {
   position: absolute;
   float: left;
-  height: calc(100% - 175px);
+  height: calc(100% - 150px);
   margin-left: 15px;
   width: calc(100% - 75px);
   overflow: hidden;
@@ -185,7 +185,7 @@ input {
 .panel.migration {
   margin-left: 20px;
   width: 100%;
-  height: calc(50% - 50px);
+  height: calc(50% - 40px);
   margin-top: 5px;
 }
 
@@ -221,7 +221,7 @@ input {
 }
 
 .panel.migration.legend.map {
-  height: calc(80% - 95px);
+  height: calc(80% - 85px);
 }
 
 #cy {
@@ -253,4 +253,15 @@ ul {
 
 .titleelem.left {
   margin-left: 20px;
+}
+
+.titleelem.end {
+  text-align: end;
+}
+
+.viztitle {
+  position: absolute;
+  margin-top: -40px;
+  margin-left: 40%;
+  text-align: center;
 }
