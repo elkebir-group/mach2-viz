@@ -23,6 +23,7 @@ function Migration(props) {
         "#ffff99",
         "#b15928"
       ]
+      const ncolors = colorPalette.length;
     
       const [width, setWith] = useState("100%");
       const [height, setHeight] = useState("100%");
@@ -39,7 +40,7 @@ function Migration(props) {
       function getColor(label) {
         let color = props.coloring.map((value, index) => {
           if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
-        return hexColorRegex.test(color) ? color : colorPalette[parseInt(color)]
+        return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
       }
     
       let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
@@ -151,7 +152,7 @@ function Migration(props) {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
           style: {
-            backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1])]
+            backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
           }
         })
       })

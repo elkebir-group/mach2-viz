@@ -18,10 +18,11 @@ function Legend(props) {
         "#ffff99",
         "#b15928"
     ]
+    const ncolors = colorPalette.length;
 
     return <ul>
         {props.coloring.map((l) => 
-            <li className="legendtext" style={{color: hexColorRegex.test(l[1]) ? l[1] : colorPalette[parseInt(l[1])], liststyle: "circle"}}>
+            <li className="legendtext" style={{color: hexColorRegex.test(l[1]) ? l[1] : colorPalette[parseInt(l[1]) % ncolors], liststyle: "circle"}}>
                 <p style={{color: "black"}}>{l[0]}</p>
             </li>)}
     </ul>
