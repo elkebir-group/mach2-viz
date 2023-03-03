@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from "react";
 
 function Legend(props) {
+    var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
     const colorPalette = [
         "#a6cee3",
         "#1f78b4",
@@ -18,7 +20,10 @@ function Legend(props) {
     ]
 
     return <ul>
-        {props.coloring.map((l) => <li className="legendtext" style={{color: colorPalette[parseInt(l[1])], liststyle: "circle"}}><p style={{color: "black"}}>{l[0]}</p></li>)}
+        {props.coloring.map((l) => 
+            <li className="legendtext" style={{color: hexColorRegex.test(l[1]) ? l[1] : colorPalette[parseInt(l[1])], liststyle: "circle"}}>
+                <p style={{color: "black"}}>{l[0]}</p>
+            </li>)}
     </ul>
 }
 

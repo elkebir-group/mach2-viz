@@ -7,6 +7,8 @@ import COSEBilkent from 'cytoscape-cose-bilkent';
 Cytoscape.use(COSEBilkent);
 
 function ClonalTree(props) {
+  var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
   const colorPalette = [
     "#a6cee3",
     "#1f78b4",
@@ -118,7 +120,7 @@ function ClonalTree(props) {
     styleSheet.push({
       selector: `node[label='${value[0]}']`,
       style: {
-        backgroundColor: colorPalette[parseInt(value[1])]
+        backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1])]
       }
     })
   })

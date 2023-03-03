@@ -7,6 +7,8 @@ import COSEBilkent from 'cytoscape-cose-bilkent';
 Cytoscape.use(COSEBilkent);
 
 function Migration(props) {
+      var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
       const colorPalette = [
         "#a6cee3",
         "#1f78b4",
@@ -33,12 +35,18 @@ function Migration(props) {
         return props.labeling.map((value, index) => {
           if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
       }
+
+      function getColor(label) {
+        let color = props.coloring.map((value, index) => {
+          if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
+        return hexColorRegex.test(color) ? color : colorPalette[parseInt(color)]
+      }
     
       let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
       let edges_t = props.tree.map((value, index) => {
-        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1} }
+        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1, id: `${findLabel(value[0])}->${findLabel(value[1])}`} }
       })
 
       let edges = [];
@@ -129,7 +137,6 @@ function Migration(props) {
             width: 3,
             // "line-color": "#6774cb",
             label: "data(label)",
-            "line-color": "#AAD8FF",
             "target-arrow-color": "#6774cb",
             "target-arrow-shape": "triangle",
             "curve-style": "bezier",
@@ -144,7 +151,22 @@ function Migration(props) {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
           style: {
-            backgroundColor: colorPalette[parseInt(value[1])]
+            backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1])]
+          }
+        })
+      })
+
+      edges.map((value, index) => {
+        let source = value.data.source;
+        let target = value.data.target;
+        console.log(value.data.id);
+        console.log(source);
+        styleSheet.push({
+          selector: `edge[id='${source}->${target}']`,
+          style: {
+            'line-fill': 'linear-gradient',
+            'line-gradient-stop-colors': `${getColor(source)} ${getColor(target)}`,
+            'line-gradient-stop-positions': '33% 66%'
           }
         })
       })
