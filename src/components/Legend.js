@@ -3,16 +3,18 @@ import { useState } from "react";
 
 function Legend(props) {
     const colorPalette = [
-        "#fff5ba",
-        "#ffcbc1",
-        "#e7ffac",
-        "#85e3ff",
-        "#a79aff",
-        "#d5aaff",
-        "#f6a6ff",
-        "#aff8d8",
-        "#ffc9de",
-        "#ffabab"
+        "#a6cee3",
+        "#1f78b4",
+        "#b2df8a",
+        "#33a02c",
+        "#fb9a99",
+        "#e31a1c",
+        "#fdbf6f",
+        "#ff7f00",
+        "#cab2d6",
+        "#6a3d9a",
+        "#ffff99",
+        "#b15928"
     ]
 
     return <ul>

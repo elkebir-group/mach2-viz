@@ -8,16 +8,18 @@ Cytoscape.use(COSEBilkent);
 
 function ClonalTree(props) {
   const colorPalette = [
-    "#fff5ba",
-    "#ffcbc1",
-    "#e7ffac",
-    "#85e3ff",
-    "#a79aff",
-    "#d5aaff",
-    "#f6a6ff",
-    "#aff8d8",
-    "#ffc9de",
-    "#ffabab"
+    "#a6cee3",
+    "#1f78b4",
+    "#b2df8a",
+    "#33a02c",
+    "#fb9a99",
+    "#e31a1c",
+    "#fdbf6f",
+    "#ff7f00",
+    "#cab2d6",
+    "#6a3d9a",
+    "#ffff99",
+    "#b15928"
   ]
 
   const [width, setWith] = useState("100%");
@@ -64,7 +66,7 @@ function ClonalTree(props) {
         backgroundColor: "#4a56a6",
         width: 15,
         height: 15,
-        label: "data(label)",
+        label: "data(id)",
 
         // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
         // "height": "mapData(score, 0, 0.006769776522008331, 20, 60)",
@@ -144,6 +146,33 @@ function ClonalTree(props) {
         console.log("EVT", evt);
         console.log("TARGET", node.data());
         console.log("TARGET TYPE", typeof node[0]);
+      });
+
+      cy.on('mouseover', 'node', function(event) {
+        // Get the node information
+        var node = event.target;
+        var label = node.data('label');
+        
+        // Create the div element
+        var div = document.createElement("div");
+        div.setAttribute("class", "panel popup");
+
+        div.innerHTML = `<p>${label}&nbsp;</p>`;
+      
+        // Position the div element near the node
+        const canvas = document.getElementsByTagName('canvas')[0];
+        div.style.position = "absolute";
+        div.style.top = (node.renderedPosition('y') + canvas.height*0.75) + 'px';
+        div.style.left = node.renderedPosition('x') + 'px';
+      
+        // Add the div element to the page
+        document.body.appendChild(div);
+      });
+
+      cy.on('mouseout', 'node', function(event){
+        // Remove the div element on mouseout
+        var div = document.querySelector('.panel.popup');
+        document.body.removeChild(div);
       });
     }}
     abc={console.log("myCyRef", myCyRef)}
