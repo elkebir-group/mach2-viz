@@ -38,7 +38,6 @@ function App() {
             <About/>
           </Route>
           <Route path="/viz">
-            <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; back</Link></b></p>
             <Viz/>
           </Route>
           <Route exact path="/">

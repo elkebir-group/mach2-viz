@@ -188,7 +188,7 @@ function ClonalTree(props) {
         // Position the div element near the node
         const canvas = document.getElementsByTagName('canvas')[0];
         div.style.position = "absolute";
-        div.style.top = (node.renderedPosition('y') + canvas.height*0.75) + 'px';
+        div.style.top = (node.renderedPosition('y') + canvas.height*0.5 + 30) + 'px';
         div.style.left = node.renderedPosition('x') + 'px';
       
         // Add the div element to the page

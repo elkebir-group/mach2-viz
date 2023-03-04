@@ -193,7 +193,8 @@ input {
 .panel.info {
   position: absolute;
   float: left;
-  height: calc(100% - 150px);
+  margin-top: 20px;
+  height: calc(100% - 40px);
   margin-left: 15px;
   width: calc(100% - 75px);
   overflow: hidden;
@@ -276,12 +277,11 @@ ul {
 }
 
 .titleelem.end {
+  margin-right: 20px;
   text-align: end;
 }
 
 .viztitle {
-  position: absolute;
-  margin-left: 40%;
   z-index: 999;
   text-align: center;
 }
@@ -306,4 +306,8 @@ ul {
   margin-top: 20px;
   padding-left: 20px;
   width: calc(100% - 40px);
+}
+
+.panel.migration.top {
+  margin-top: -10px;
 }

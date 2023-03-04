@@ -3,6 +3,12 @@ import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
 import Legend from "./Legend.js";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function insertParam(key, value) {
   // Get the current url
@@ -53,7 +59,6 @@ function Viz() {
 
     return (
       <div className="viz">
-        <h3 className="viztitle"><b>{data["name"]}</b></h3>
         <div className="panel info">
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
@@ -63,11 +68,13 @@ function Viz() {
                 )}
               </select>
             </b></p></label>
+            <h3 className="viztitle"><b>{data["name"]}</b></h3>
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
+            <Link to="" style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
           </div>
           <div className="columnwrapper">
             <div className="leftcolumn">
-              <div className="panel migration">
+              <div className="panel migration top">
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring}/>
               </div>
@@ -77,7 +84,7 @@ function Viz() {
               </div>
             </div>
             <div className="rightcolumn">
-              <div className="panel migration legend">
+              <div className="panel migration legend top">
                 <Legend coloring={coloring}/>
               </div>
               <div className="panel migration legend map"></div>
