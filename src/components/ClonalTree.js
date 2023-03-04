@@ -25,6 +25,12 @@ function ClonalTree(props) {
   ]
   const ncolors = colorPalette.length;
 
+  function getColor(label) {
+    let color = props.coloring.map((value, index) => {
+      if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
+    return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
+  }
+
   const [width, setWith] = useState("100%");
   const [height, setHeight] = useState("100%");
 
@@ -122,6 +128,21 @@ function ClonalTree(props) {
       selector: `node[label='${value[0]}']`,
       style: {
         backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
+      }
+    })
+  })
+
+  edges.map((value, index) => {
+    let source = value.data.source;
+    let target = value.data.target;
+    console.log(source);
+    styleSheet.push({
+      selector: `edge[label='${source}->${target}']`,
+      style: {
+        'line-fill': 'linear-gradient',
+        'line-gradient-stop-colors': `${getColor(findLabel(source))} ${getColor(findLabel(target))}`,
+        'line-gradient-stop-positions': '33% 66%',
+        "target-arrow-color": `${getColor(findLabel(target))}`
       }
     })
   })

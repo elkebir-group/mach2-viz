@@ -167,7 +167,8 @@ function Migration(props) {
           style: {
             'line-fill': 'linear-gradient',
             'line-gradient-stop-colors': `${getColor(source)} ${getColor(target)}`,
-            'line-gradient-stop-positions': '33% 66%'
+            'line-gradient-stop-positions': '33% 66%',
+            "target-arrow-color": `${getColor(target)}`
           }
         })
       })
