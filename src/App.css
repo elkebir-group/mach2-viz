@@ -258,6 +258,10 @@ ul {
   columns: 2;
 }
 
+.singlecol {
+  columns: 1;
+}
+
 .titlewrapper {
   display: flex;
 }

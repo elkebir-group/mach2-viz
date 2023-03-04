@@ -47,6 +47,7 @@ function App() {
                 <h1><b>Welcome to MACHINA-Viz!</b></h1>
                 <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
                 <h3>Examples</h3>
+                <p><b>TODO: Insert examples table here</b></p>
               </div>
             </div>
             <input 
