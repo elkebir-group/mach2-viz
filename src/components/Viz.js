@@ -11,13 +11,15 @@ function insertParam(key, value) {
   // Change a url parameter using URLSearchParams
   let urlParams = new URLSearchParams(currentUrl.search);
   urlParams.set(key, value);
+  console.log(urlParams.toString());
 
   // Replace the URL
-  currentUrl.search = urlParams.toString();
-  window.location.href = urlParams.toString();
+  //currentUrl.search = urlParams.toString();
+  window.location.href = 'viz?' + urlParams.toString();
 
   // Reload the page
-  window.location.reload();
+  console.log(window.location);
+  //window.location.reload();
 }
 
 function handleKeyPress(event) {
@@ -56,7 +58,9 @@ function Viz() {
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
               <select name="labelings" id="labelings" onChange={handleLabelChange}>
-                {labelnames.map(l => <option value={l}>{l}</option>)}
+                {labelnames.map(l => 
+                  {return (l === queryParameters.get("labeling")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
+                )}
               </select>
             </b></p></label>
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
