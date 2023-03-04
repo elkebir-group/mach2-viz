@@ -14,6 +14,7 @@
     "cytoscape-fcose": "^2.2.0",
     "cytoscape-klay": "^3.1.4",
     "d3": "^7.8.2",
+    "dagre": "^0.8.5",
     "klay": "^2.4.0",
     "lz-string": "^1.4.4",
     "lzma-js": "^1.0.1",

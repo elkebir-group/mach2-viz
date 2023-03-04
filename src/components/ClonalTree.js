@@ -3,8 +3,10 @@ import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
+import dagre from 'cytoscape-dagre';
 
 Cytoscape.use(COSEBilkent);
+Cytoscape.use(dagre);
 
 function ClonalTree(props) {
   var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
@@ -56,7 +58,7 @@ function ClonalTree(props) {
   });
 
   const layout = {
-    name: "breadthfirst",
+    name: "dagre",
     fit: true,
     // circle: true,
     directed: true,
