@@ -285,3 +285,21 @@ ul {
 .panel.popup {
   animation: pulse 0.1s;
 }
+
+.aboutcontainer {
+  text-align: center;
+  position: relative;
+}
+
+.aboutcontainer .backarrow {
+  position: absolute;
+  left:0;
+  /* vertically center the icon */
+  transform: translateY(-50%);
+}
+
+.panel.about {
+  margin-top: 20px;
+  padding-left: 20px;
+  width: calc(100% - 40px);
+}

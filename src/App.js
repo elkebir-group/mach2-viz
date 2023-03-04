@@ -35,7 +35,6 @@ function App() {
       <Router>
         <Switch>
           <Route path="/about">
-            <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; back</Link></b></p>
             <About/>
           </Route>
           <Route path="/viz">
