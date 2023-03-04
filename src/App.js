@@ -33,16 +33,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <header className="App-header">
-      <div className="float-container">
-        <div className="float-child">
-          <div className="homedir"><b><Link to="" style={{ textDecoration: 'none', color: 'white'}}>MACHINA-Viz</Link></b></div>
-        </div>
-        <div class="float-child">
-          <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'white'}}>About</Link></div>
-        </div>
-      </div>
-      </header>
         <Switch>
           <Route path="/about">
             <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; back</Link></b></p>
@@ -53,6 +43,13 @@ function App() {
             <Viz/>
           </Route>
           <Route exact path="/">
+            <div className='homecontain'>
+              <div className='panel home'>
+                <h1><b>Welcome to MACHINA-Viz!</b></h1>
+                <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
+                <h3>Examples</h3>
+              </div>
+            </div>
             <input 
               type="file"
               id="json_upload" 
