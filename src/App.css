@@ -281,3 +281,7 @@ ul {
   z-index: 999;
   text-align: center;
 }
+
+.panel.popup {
+  animation: pulse 0.1s;
+}
