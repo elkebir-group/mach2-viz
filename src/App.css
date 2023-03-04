@@ -114,6 +114,18 @@ h1 {
   border-radius: 10px;
   border-style: solid;
   overflow: auto;
+  animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+  from {
+      transform : scale(0.75);
+      opacity   : 0.5;
+  }
+  to {
+      transform : scale(1);
+      opacity   : 1;
+  }
 }
 
 .abouttitle {
@@ -261,7 +273,7 @@ ul {
 
 .viztitle {
   position: absolute;
-  margin-top: -40px;
   margin-left: 40%;
+  z-index: 999;
   text-align: center;
 }
