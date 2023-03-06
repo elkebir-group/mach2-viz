@@ -47,7 +47,7 @@ function Migration(props) {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
       let edges_t = props.tree.map((value, index) => {
-        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1, id: `${findLabel(value[0])}->${findLabel(value[1])}`} }
+        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1, id: `${findLabel(value[0])}->${findLabel(value[1])}`, clsource: value[0], cltarget: value[1] } }
       })
 
       let edges = [];
@@ -181,7 +181,7 @@ function Migration(props) {
               let source = eventData.source;
               let target = eventData.sink;
               myCyRef.$(`edge[id='${source}->${target}']`).css({
-                width: 7
+                width: 10
               })
               node.trigger('select');
             }
@@ -220,6 +220,24 @@ function Migration(props) {
             console.log("EVT", evt);
             console.log("TARGET", node.data());
             console.log("TARGET TYPE", typeof node[0]);
+          });
+
+          cy.on('mouseover', 'edge', function(event) {
+            const { target } = event;
+            target.css({
+              width: 10
+            })
+            const nodeId = event.target.id();
+            props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
+          });
+    
+          cy.on('mouseout', 'edge', function(event) {
+            const { target } = event;
+            target.css({
+              width: 3
+            })
+            const nodeId = event.target.id();
+            props.evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
         abc={console.log("myCyRef", myCyRef)}

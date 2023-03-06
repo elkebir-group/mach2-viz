@@ -49,38 +49,13 @@ function ClonalTree(props) {
     return { data: { id: value, label: findLabel(value), type: "ip"} };
   });
   let edges = props.tree.map((value, index) => {
-    return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`} }
+    return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
   })
 
   const [graphData, setGraphData] = useState({
     nodes: nodes,
     edges: edges
   });
-
-  let myCyRef;
-  const layout = {
-    name: "dagre",
-    fit: true,
-    // circle: true,
-    directed: true,
-    padding: 50,
-    // spacingFactor: 1.5,
-    animate: true,
-    animationDuration: 1000,
-    avoidOverlap: true,
-    nodeDimensionsIncludeLabels: false,
-    ready: function() {
-      const listener = (eventName, eventData) => {
-        // Respond to event from other graph here
-        // For example:
-        if (eventName === 'selectNode') {
-          const node = myCyRef.getElementById(eventData.nodeId);
-          node.trigger('select');
-        }
-      };
-      props.evtbus.addListener(listener);
-    }
-  };
 
   let styleSheet = [
     {
@@ -155,6 +130,41 @@ function ClonalTree(props) {
     })
   })
 
+  let myCyRef;
+  const layout = {
+    name: "dagre",
+    fit: true,
+    // circle: true,
+    directed: true,
+    padding: 50,
+    // spacingFactor: 1.5,
+    animate: true,
+    animationDuration: 1000,
+    avoidOverlap: true,
+    nodeDimensionsIncludeLabels: false,
+    ready: function() {
+      const listener = (eventName, eventData) => {
+        // Respond to event from other graph here
+        // For example:
+        if (eventName === 'selectNodeCl') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          myCyRef.$(`edge[migration='${eventData.nodeId}']`).css({
+            width: 10
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'deselectNodeCl') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          myCyRef.$(`edge[migration='${eventData.nodeId}']`).css({
+            width: 3
+          })
+          node.trigger('select');
+        }
+      };
+      props.evtbus.addListener(listener);
+    }
+  };
+
   return <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
     // pan={{ x: 200, y: 200 }}
@@ -208,7 +218,7 @@ function ClonalTree(props) {
       cy.on('mouseover', 'edge', function(event) {
         const { target } = event;
         target.css({
-          width: 7
+          width: 10
         })
         const nodeId = event.target.id();
         let source = findLabel(target.data().source);
