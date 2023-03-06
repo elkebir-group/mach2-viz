@@ -57,6 +57,21 @@ function Viz() {
       document.addEventListener("keydown", handleKeyPress);
     });
 
+    const eventBus = {
+      listeners: [],
+      addListener(callback) {
+        this.listeners.push(callback);
+      },
+      removeListener(callback) {
+        this.listeners = this.listeners.filter(listener => listener !== callback);
+      },
+      fireEvent(eventName, eventData) {
+        this.listeners.forEach((listener) => {
+          listener(eventName, eventData);
+        });
+      },
+    };
+
     return (
       <div className="viz">
         <div className="panel info">
@@ -76,11 +91,11 @@ function Viz() {
             <div className="leftcolumn">
               <div className="panel migration top">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <Migration tree={tree} labeling={tree_labeling} coloring={coloring}/>
+                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration">
               <p className="paneltitle"><b>Clonal Tree</b></p>
-                <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring}/>
+                <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
             </div>
             <div className="rightcolumn">

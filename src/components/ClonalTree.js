@@ -57,6 +57,7 @@ function ClonalTree(props) {
     edges: edges
   });
 
+  let myCyRef;
   const layout = {
     name: "dagre",
     fit: true,
@@ -67,7 +68,18 @@ function ClonalTree(props) {
     animate: true,
     animationDuration: 1000,
     avoidOverlap: true,
-    nodeDimensionsIncludeLabels: false
+    nodeDimensionsIncludeLabels: false,
+    ready: function() {
+      const listener = (eventName, eventData) => {
+        // Respond to event from other graph here
+        // For example:
+        if (eventName === 'selectNode') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          node.trigger('select');
+        }
+      };
+      props.evtbus.addListener(listener);
+    }
   };
 
   let styleSheet = [
@@ -107,12 +119,6 @@ function ClonalTree(props) {
       }
     },
     {
-      selector: "node[type='device']",
-      style: {
-        shape: "rectangle"
-      }
-    },
-    {
       selector: "edge",
       style: {
         width: 3,
@@ -148,8 +154,6 @@ function ClonalTree(props) {
       }
     })
   })
-
-  let myCyRef;
 
   return <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
@@ -199,6 +203,24 @@ function ClonalTree(props) {
         // Remove the div element on mouseout
         var div = document.querySelector('.panel.popup');
         document.body.removeChild(div);
+      });
+
+      cy.on('mouseover', 'edge', function(event) {
+        const { target } = event;
+        target.css({
+          width: 7
+        })
+        const nodeId = event.target.id();
+        let source = findLabel(target.data().source);
+        let sink = findLabel(target.data().target);
+        props.evtbus.fireEvent('selectNode', { nodeId, source, sink, target});
+      });
+
+      cy.on('mouseout', 'edge', function(event) {
+        const { target } = event;
+        target.css({
+          width: 3
+        })
       });
     }}
     abc={console.log("myCyRef", myCyRef)}

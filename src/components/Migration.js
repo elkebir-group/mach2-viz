@@ -76,20 +76,7 @@ function Migration(props) {
         nodes: nodes,
         edges: edges
       });
-    
-      const layout = {
-        name: "breadthfirst",
-        fit: true,
-        circle: true,
-        directed: true,
-        padding: 50,
-        // spacingFactor: 1.5,
-        animate: true,
-        animationDuration: 1000,
-        avoidOverlap: true,
-        nodeDimensionsIncludeLabels: false
-      };
-    
+
       let styleSheet = [
         {
           selector: "node",
@@ -147,7 +134,7 @@ function Migration(props) {
           }
         }
       ];
-    
+
       props.coloring.map((value, index) => {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
@@ -174,6 +161,34 @@ function Migration(props) {
       })
     
       let myCyRef;
+      const layout = {
+        name: "breadthfirst",
+        fit: true,
+        circle: true,
+        directed: true,
+        padding: 50,
+        // spacingFactor: 1.5,
+        animate: true,
+        animationDuration: 1000,
+        avoidOverlap: true,
+        nodeDimensionsIncludeLabels: false,
+        ready: function() {
+          const listener = (eventName, eventData) => {
+            // Respond to event from other graph here
+            // For example:
+            if (eventName === 'selectNode') {
+              const node = myCyRef.getElementById(eventData.nodeId);
+              let source = eventData.source;
+              let target = eventData.sink;
+              myCyRef.$(`edge[id='${source}->${target}']`).css({
+                width: 7
+              })
+              node.trigger('select');
+            }
+          };
+          props.evtbus.addListener(listener);
+        }
+      };
     
       return <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
