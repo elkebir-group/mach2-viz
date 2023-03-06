@@ -185,6 +185,15 @@ function Migration(props) {
               })
               node.trigger('select');
             }
+            if (eventName === 'deselectNode') {
+              const node = myCyRef.getElementById(eventData.nodeId);
+              let source = eventData.source;
+              let target = eventData.sink;
+              myCyRef.$(`edge[id='${source}->${target}']`).css({
+                width: 3
+              })
+              node.trigger('select');
+            }
           };
           props.evtbus.addListener(listener);
         }

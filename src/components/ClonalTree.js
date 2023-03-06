@@ -221,6 +221,10 @@ function ClonalTree(props) {
         target.css({
           width: 3
         })
+        const nodeId = event.target.id();
+        let source = findLabel(target.data().source);
+        let sink = findLabel(target.data().target);
+        props.evtbus.fireEvent('deselectNode', { nodeId, source, sink, target});
       });
     }}
     abc={console.log("myCyRef", myCyRef)}
