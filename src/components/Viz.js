@@ -102,7 +102,14 @@ function Viz() {
               <div className="panel migration legend top">
                 <Legend coloring={coloring}/>
               </div>
-              <div className="panel migration legend map"></div>
+              <div className="panel migration legend map">
+                <iframe id="myWidget"
+                  src="https://human.biodigital.com/viewer/?id=production/maleAdult/male_system_anatomy_skeletal_09&ui-info=false&ui-menu=false"
+                  width="100%"
+                  height="100%">
+                </iframe>
+                <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+              </div>
             </div>
           </div>
         </div>
