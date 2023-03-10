@@ -3,6 +3,8 @@ import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
 import Legend from "./Legend.js";
+import ModelViewer from "./3d_components/modelviewer.js";
+import skeletal from "../assets/skeletal_unlabeled.glb";
 import {
   BrowserRouter as Router,
   Switch,
@@ -103,12 +105,7 @@ function Viz() {
                 <Legend coloring={coloring}/>
               </div>
               <div className="panel migration legend map">
-                <iframe id="myWidget"
-                  src="https://human.biodigital.com/viewer/?id=production/maleAdult/male_system_anatomy_skeletal_09&ui-info=false&ui-menu=false"
-                  width="100%"
-                  height="100%">
-                </iframe>
-                <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
+                <ModelViewer scale="2" modelPath={skeletal} />
               </div>
             </div>
           </div>

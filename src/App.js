@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react"
 import './App.css';
 import About from './components/About.js'
 import Viz from './components/Viz.js'
