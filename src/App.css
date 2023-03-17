@@ -1,4 +1,9 @@
-.App {
+:root {
+  --vbar: 0px;
+}
+
+
+h1 {
   text-align: center;
 }
 
@@ -20,7 +25,7 @@ html {
 
 .App-header {
   background-color: #B3B3B3;
-  min-height: 10vh;
+  min-height: 2vh;
   display: flex;
   flex-direction: column;
   /*align-items: center;*/
@@ -40,7 +45,6 @@ Link {
 }
 
 .float-child {
-  width: 15%;
   float: left;
   padding: 20px;
 }  
@@ -64,12 +68,15 @@ h1, h2, h3, h4, h5, h6, p, header, span {
 }
 
 .aboutdir {
-  font-size: calc(5px + 2vmin);
-  margin-left: -90px;
   margin-top: 5px;
+  width: 100%;
 }
 
-.aboutdir:hover, .homedir:hover {
+.abouttext {
+  text-align: center;
+}
+
+.abouttext:hover, .homedir:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -94,10 +101,6 @@ h1, h2, h3, h4, h5, h6, p, header, span {
   cursor: pointer;
 }
 
-h1 {
-  color: white;
-}
-
 .plus {
   font-size: 60px;
   display: table-cell;
@@ -109,6 +112,19 @@ h1 {
   border-color: #B9B9B9;
   border-radius: 10px;
   border-style: solid;
+  overflow: auto;
+  animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+  from {
+      transform : scale(0.75);
+      opacity   : 0.5;
+  }
+  to {
+      transform : scale(1);
+      opacity   : 1;
+  }
 }
 
 .abouttitle {
@@ -131,14 +147,14 @@ p, li {
 }
 
 .backarrow {
-  font-size: 20px;
+  font-size: 18px;
   padding: 30px;
   padding-bottom: 0px;
   padding-top: 0px;
 }
 
 input {
-  top:-100%;
+  top:-200%;
   opacity: 0;
   z-index: -1;
 }
@@ -168,39 +184,130 @@ input {
   width: 100%;
 }
 
-.leftpanel {
-  float: left;
-  width: 33%;
-}
-
-.panel.instr {
-  width: 100%;
-  font-size: 14px;
-}
-
-.panel.inputs {
-  overflow: auto;
-  height: 420px;
-  margin-top: 10px;
-  width: 100%;
-  font-size: 14px;
-}
-
-.panel.jsonview {
-  background-color: #eeeeee;
+.panel.home {
   margin: 20px;
-  height: 300px;
-  overflow: auto;
-  padding-left: 0px;
-}
-
-.jsonheader {
-  cursor: pointer;
+  padding-left: 20px;
+  width: calc(100% - 60px);
 }
 
 .panel.info {
+  position: absolute;
   float: left;
+  margin-top: 20px;
+  height: calc(100% - 40px);
+  margin-left: 15px;
+  width: calc(100% - 75px);
+  overflow: hidden;
+}
+
+.panel.migration {
   margin-left: 20px;
-  margin-top: -40px;
-  width: 62%;
+  width: 100%;
+  height: calc(50% - 40px);
+  margin-top: 5px;
+}
+
+.paneltitle {
+  position: absolute;
+  margin-top: 5px;
+}
+
+.block label { display: flex; }
+
+.columnwrapper {
+  display: flex;
+  height: 100%;
+}
+
+.leftcolumn {
+  position: a;
+  float: left;
+  height: 100%;
+  width: 70%;
+}
+
+.rightcolumn {
+  float: left;
+  padding-left: 30px;
+  padding-right: 25px;
+  width: calc(30% - 75px);
+  height: 100%;
+}
+
+.panel.migration.legend {
+  height: 20%;
+}
+
+.panel.migration.legend.map {
+  height: calc(80% - 85px);
+}
+
+#cy {
+  position: relative;
+  height: 100%;
+}
+
+canvas {
+  padding-left: 0;
+}
+
+.legendtext {
+  font-size: 14px;
+}
+
+ul {
+  columns: 2;
+}
+
+.singlecol {
+  columns: 1;
+}
+
+.titlewrapper {
+  display: flex;
+}
+
+.titleelem {
+  flex: 1 1 50%;
+  text-align: center;
+}
+
+.titleelem.left {
+  margin-left: 20px;
+}
+
+.titleelem.end {
+  margin-right: 20px;
+  text-align: end;
+}
+
+.viztitle {
+  z-index: 999;
+  text-align: center;
+}
+
+.panel.popup {
+  animation: pulse 0.1s;
+}
+
+.aboutcontainer {
+  text-align: center;
+  position: relative;
+}
+
+.aboutcontainer .backarrow {
+  position: absolute;
+  left:0;
+  /* vertically center the icon */
+  transform: translateY(-50%);
+}
+
+.panel.about {
+  margin-top: 20px;
+  padding-left: 20px;
+  width: calc(100% - 40px);
+}
+
+.panel.migration.top {
+  margin-top: -10px;
 }

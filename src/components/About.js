@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 function About() {
     return (
         <div className='about'>
-            <div className='panel'>
-                <h1 className='abouttitle'>Enter MACHINA-Viz</h1>
-                <p>MACHINA-Viz is a personalized medical tool to visualize cancer metastasis. Log in or create
-    an account to upload patient metadata. Data is formatted as a folder containing:</p>
-                <ul>
-                    <li><p>A JSON file designating the role of each file</p></li>
-                    <li><p>Clonal tree output(s)</p></li>
-                    <li><p>(Optional) .tsv showing variant allele frequencies</p></li>
-                </ul>
-                <p>Click on the processed input entry to view the corresponding visualization. Follow the
-    directions noted in the visualization window.</p>
+            <div className='panel about'>
+                <div className='aboutcontainer'>
+                    <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; home</Link></b></p>
+                    <h1 className='abouttitle'>Enter MACHINA-Viz</h1>
+                </div>
+                <p>MACHINA-Viz is a personalized medical tool to visualize cancer metastasis.</p>
+                <p><b>TODO: Insert description here</b></p>
                 <p><b>Questions? Contact</b></p>
-                <ul>
+                <ul className="singlecol">
                     <li><p>Akul Joshi (<a href="mailto:akulj2@illinois.edu">akulj2@illinois.edu</a>)</p></li>
                     <li><p>Vikram Ramavarapu (<a href="mailto:vikramr2@illinois.edu">vikramr2@illinois.edu</a>)</p></li>
                     <li><p>Mohammed El-Kebir (<a href="mailto:melkebir@illinois.edu">melkebir@illinois.edu</a>)</p></li>

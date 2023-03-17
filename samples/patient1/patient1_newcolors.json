@@ -202,75 +202,75 @@
     "coloring": [
         [
             "LOv",
-            "1"
+            "#fff5ba"
         ],
         [
             "Adnx",
-            "2"
+            "#ffcbc1"
         ],
         [
             "ROv",
-            "3"
+            "#e7ffac"
         ],
         [
             "ApC",
-            "7"
+            "#f6a6ff"
         ],
         [
             "Bm",
-            "8"
+            "#aff8d8"
         ],
         [
             "Brn",
-            "2"
+            "#ffcbc1"
         ],
         [
             "Bwl",
-            "7"
+            "#f6a6ff"
         ],
         [
             "CDSB",
-            "5"
+            "#a79aff"
         ],
         [
             "ClnE",
-            "9"
+            "#ffc9de"
         ],
         [
             "LFT",
-            "7"
+            "#f6a6ff"
         ],
         [
             "LFTC",
-            "7"
+            "#f6a6ff"
         ],
         [
             "LFTB",
-            "9"
+            "#ffc9de"
         ],
         [
             "LPv",
-            "7"
+            "#f6a6ff"
         ],
         [
             "Om",
-            "8"
+            "#aff8d8"
         ],
         [
             "RFTA",
-            "4"
+            "#85e3ff"
         ],
         [
             "RPv",
-            "4"
+            "#85e3ff"
         ],
         [
             "RUt",
-            "5"
+            "#a79aff"
         ],
         [
             "SBwl",
-            "5"
+            "#a79aff"
         ]
     ]
 }
