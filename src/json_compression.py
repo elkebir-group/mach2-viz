@@ -48,44 +48,44 @@ patient_data = {}
 patient_data["name"] = sys.argv[1]
 
 # extract migration graph data
-migration_graphs = []
-potential_graphs = {}
-filenames = os.listdir(dir_name + "/pmh")
-for filename in filenames:
-    file_breakdown = filename.split(".")
-    try:
-        potential_graphs[file_breakdown[0]].append(file_breakdown[1])
-    except:
-        potential_graphs[file_breakdown[0]] = [file_breakdown[1]]
+# migration_graphs = []
+# potential_graphs = {}
+# filenames = os.listdir(dir_name + "/pmh")
+# for filename in filenames:
+#     file_breakdown = filename.split(".")
+#     try:
+#         potential_graphs[file_breakdown[0]].append(file_breakdown[1])
+#     except:
+#         potential_graphs[file_breakdown[0]] = [file_breakdown[1]]
 
-for graph_name in potential_graphs:
-    if "tree" in potential_graphs[graph_name] and "labeling" in potential_graphs[graph_name]:
-        graph_item = {}
-        graph_item["name"] = graph_name
+# for graph_name in potential_graphs:
+#     if "tree" in potential_graphs[graph_name] and "labeling" in potential_graphs[graph_name]:
+#         graph_item = {}
+#         graph_item["name"] = graph_name
 
-        with open(dir_name + "/pmh/" + graph_name + ".tree") as f:
-            node_pairings = f.readlines()
-            graph = []
+#         with open(dir_name + "/pmh/" + graph_name + ".tree") as f:
+#             node_pairings = f.readlines()
+#             graph = []
 
-            for pairing in node_pairings:
-                pairing = pairing[:-1] if pairing[-1] == "\n" else pairing
-                graph.append(pairing.split(" "))
+#             for pairing in node_pairings:
+#                 pairing = pairing[:-1] if pairing[-1] == "\n" else pairing
+#                 graph.append(pairing.split(" "))
 
-            graph_item["graph"] = graph
+#             graph_item["graph"] = graph
         
-        with open(dir_name + "/pmh/" + graph_name + ".labeling") as f:
-            labelings = f.readlines()
-            labeling = []
+#         with open(dir_name + "/pmh/" + graph_name + ".labeling") as f:
+#             labelings = f.readlines()
+#             labeling = []
 
-            for label in labelings:
-                label = label[:-1] if label[-1] == "\n" else label
-                labeling.append(label.split(" "))
+#             for label in labelings:
+#                 label = label[:-1] if label[-1] == "\n" else label
+#                 labeling.append(label.split(" "))
 
-            graph_item["labeling"] = labeling
+#             graph_item["labeling"] = labeling
         
-        migration_graphs.append(graph_item)
+#         migration_graphs.append(graph_item)
 
-patient_data["migration_graph"] = migration_graphs
+# patient_data["migration_graph"] = migration_graphs
 
 
 # extract clone tree data
@@ -100,15 +100,15 @@ with open(dir_name + "/" + patient_name + ".tree") as f:
     
     clone_tree["tree"] = tree
 
-with open(dir_name + "/" + patient_name + ".labeling") as f:
-    labelings = f.readlines()
-    labeling = []
+# with open(dir_name + "/" + patient_name + ".labeling") as f:
+#     labelings = f.readlines()
+#     labeling = []
 
-    for label in labelings:
-        label = label[:-1] if label[-1] == "\n" else label
-        labeling.append(label.split(" "))
+#     for label in labelings:
+#         label = label[:-1] if label[-1] == "\n" else label
+#         labeling.append(label.split(" "))
     
-    clone_tree["labeling"] = labeling
+#     clone_tree["labeling"] = labeling
 
 full_labelings = []
 potential_labelings = os.listdir(dir_name + "/potential_labelings")
@@ -127,7 +127,7 @@ for filename in potential_labelings:
         labeling_item["data"] = labeling
         full_labelings.append(labeling_item)
 
-clone_tree["full_labeling"] = full_labelings
+clone_tree["labeling"] = full_labelings
 
 patient_data["clone_tree"] = clone_tree
 
@@ -144,5 +144,5 @@ with open(dir_name + "/coloring.txt") as f:
 patient_data["coloring"] = colorings
 
 # write json object to a json file
-with open(patient_name + ".json", "w") as f:
+with open(dir_name + "/" + patient_name + ".json", "w") as f:
     f.write(json.dumps(patient_data, indent=4))

@@ -2,7 +2,6 @@
   --vbar: 0px;
 }
 
-
 h1 {
   text-align: center;
 }
@@ -185,9 +184,23 @@ input {
 }
 
 .panel.home {
-  margin: 20px;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 15px;
   padding-left: 20px;
-  width: calc(100% - 60px);
+  height: calc(80% - 40px);
+  width: calc(100% - 75px);
+  overflow: hidden;
+  
+}
+
+.panel.example {
+  margin: 20px;
+  width: calc(80%-60px);
+  padding-left: 20px;
+  height: calc(65%);
+  overflow-y: scroll;
+  
 }
 
 .panel.info {
@@ -213,6 +226,16 @@ input {
 }
 
 .block label { display: flex; }
+
+.patientlist {
+  list-style: none;
+}
+
+.patientitem {
+  /* background-color: #A3A3A3; */
+  width: calc(95%);
+  height: 50px;
+}
 
 .columnwrapper {
   display: flex;
