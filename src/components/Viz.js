@@ -3,8 +3,6 @@ import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
 import Legend from "./Legend.js";
-import ModelViewer from "./3d_components/modelviewer.js";
-import skeletal from "../assets/skeletal_unlabeled.glb";
 import {
   BrowserRouter as Router,
   Switch,
@@ -105,7 +103,6 @@ function Viz() {
                 <Legend coloring={coloring}/>
               </div>
               <div className="panel migration legend map">
-                <ModelViewer scale="2" modelPath={skeletal} />
               </div>
             </div>
           </div>

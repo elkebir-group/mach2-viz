@@ -61,7 +61,7 @@ function Migration(props) {
             break;
           }
         }
-        if (!flag) edges.push(edges_t[i]);
+        if (!flag && edge.data.source !== edge.data.target) edges.push(edges_t[i]);
       }
 
       for (const [i, edge] of edges.entries()) {
@@ -230,6 +230,26 @@ function Migration(props) {
             const nodeId = event.target.id();
             props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
+
+          cy.on('mouseover', 'node', function(event) {
+            const { target } = event;
+            target.css({
+              width: 30,
+              height: 30
+            })
+            const nodeId = event.target.id();
+            props.evtbus.fireEvent('hoverNodeCl', { nodeId });
+          })
+
+          cy.on('mouseout', 'node', function(event) {
+            const { target } = event;
+            target.css({
+              width: 15,
+              height: 15
+            })
+            const nodeId = event.target.id();
+            props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
+          })
     
           cy.on('mouseout', 'edge', function(event) {
             const { target } = event;

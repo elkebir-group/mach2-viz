@@ -160,6 +160,16 @@ function ClonalTree(props) {
           })
           node.trigger('select');
         }
+        if (eventName === 'hoverNodeCl') {
+          myCyRef.$(`edge[migration='${eventData.nodeId}->${eventData.nodeId}']`).css({
+            width: 10
+          })
+        }
+        if (eventName === 'dehoverNodeCl') {
+          myCyRef.$(`edge[migration='${eventData.nodeId}->${eventData.nodeId}']`).css({
+            width: 3
+          })
+        }
       };
       props.evtbus.addListener(listener);
     }
