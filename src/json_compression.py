@@ -112,6 +112,7 @@ with open(dir_name + "/" + patient_name + ".tree") as f:
 
 full_labelings = []
 potential_labelings = os.listdir(dir_name + "/potential_labelings")
+potential_labelings = sorted(potential_labelings)
 for filename in potential_labelings:
     labeling_item = {}
     labeling_item["name"] = filename.split(".")[0]

@@ -71,8 +71,22 @@ h1, h2, h3, h4, h5, h6, p, header, span {
   width: 100%;
 }
 
+.dirtext {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dirtext.title {
+  font-weight: bolder;
+}
+
 .abouttext {
   text-align: center;
+  margin-top: 15px;
+}
+
+.abouttext.title {
+  font-weight: bolder;
 }
 
 .abouttext:hover, .homedir:hover {
@@ -191,16 +205,38 @@ input {
   height: calc(80% - 40px);
   width: calc(100% - 75px);
   overflow: hidden;
-  
+}
+
+.panel.title {
+  margin: 20px;
+  margin-bottom: -20px;
+  width: calc(80%-60px);
+  padding-left: 20px;
+  height: calc(15%);
+  overflow-y: scroll; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-width: 0px;
+}
+
+.panel.title::-webkit-scrollbar {
+  display: none;
 }
 
 .panel.example {
   margin: 20px;
+  margin-top: -20px;
   width: calc(80%-60px);
   padding-left: 20px;
   height: calc(65%);
-  overflow-y: scroll;
-  
+  overflow-y: scroll; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border-width: 0px;
+}
+
+.panel.example::-webkit-scrollbar {
+  display: none;
 }
 
 .panel.info {
@@ -231,10 +267,15 @@ input {
   list-style: none;
 }
 
+.patient-container {
+  display: flex;
+}
+
 .patientitem {
-  /* background-color: #A3A3A3; */
-  width: calc(95%);
+  width: calc(47.5%);
+  margin: 1px;
   height: 50px;
+  /* flex: 0.5; */
 }
 
 .columnwrapper {
