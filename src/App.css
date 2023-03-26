@@ -235,11 +235,11 @@ input {
 }
 
 .panel.migration.legend {
-  height: 20%;
+  height: calc(100% - 75px);
 }
 
 .panel.migration.legend.map {
-  height: calc(80% - 85px);
+  overflow: hidden;
 }
 
 #cy {
@@ -252,6 +252,10 @@ canvas {
 }
 
 .legendtext {
+  font-size: 34px;
+}
+
+li span {
   font-size: 14px;
 }
 
@@ -310,4 +314,28 @@ ul {
 
 .panel.migration.top {
   margin-top: -10px;
+}
+
+.legendlist {
+  margin-top: -15px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0.7;
+}
+
+.panel.label {
+  opacity: 0.7;
+  width: 120px;
+}
+
+.panel.label:hover {
+  opacity: 1;
+  z-index: 100;
+}
+
+.labelentry {
+  margin-left: -15px;
 }

@@ -1,8 +1,19 @@
 import React from 'react';
 import { useState } from "react";
+import map from '../assets/map.jpeg';
 
 function Legend(props) {
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
+    let fetchColor = (label) => {
+        let ret = 0;
+        props.coloring.forEach(l => {
+            if (l[0] === label) {
+                ret = l[1];
+            }
+        })
+        return ret;
+    }
 
     const colorPalette = [
         "#a6cee3",
@@ -20,12 +31,39 @@ function Legend(props) {
     ]
     const ncolors = colorPalette.length;
 
-    return <ul>
-        {props.coloring.map((l) => 
-            <li className="legendtext" style={{color: hexColorRegex.test(l[1]) ? l[1] : colorPalette[parseInt(l[1]) % ncolors], liststyle: "circle"}}>
-                <p style={{color: "black"}}>{l[0]}</p>
-            </li>)}
-    </ul>
+    console.log(colorPalette[parseInt(fetchColor('breast')) % ncolors]);
+
+
+    if (props.coord_map === undefined) {
+        return <ul className="legendlist">
+            {props.coloring.map((l) => 
+                <li className="legendtext" style={{color: hexColorRegex.test(l[1]) ? l[1] : colorPalette[parseInt(l[1]) % ncolors], liststyle: "circle"}}>
+                    <span><p style={{color: "black"}}>{l[0]}</p></span>
+                </li>)}
+        </ul>
+    } else {
+        return <div style={{ position: 'relative' }}>
+            <img 
+            src={map}
+            className='bodymap'
+            />
+            {console.log(props.coord_map)}
+            {props.coord_map.map((l) =>
+              <div 
+                className='panel label'
+                style={{
+                    position: 'absolute',
+                    top: (l[1][0]),
+                    left: (l[1][1])
+                }}>
+                <ul className="legendlist">
+                    <li className="labelentry" style={{color: hexColorRegex.test(fetchColor(l[0])) ? fetchColor(l[0]) : colorPalette[parseInt(fetchColor(l[0])) % ncolors], liststyle: "circle"}}>
+                        <span><p style={{color: "black"}}>{l[0]}</p></span>
+                    </li>
+                </ul>
+              </div>)}
+        </div>
+    }
 }
 
 export default Legend;

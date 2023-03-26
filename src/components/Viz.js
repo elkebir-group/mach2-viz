@@ -49,6 +49,8 @@ function Viz() {
 
     let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
 
+    let coord_map = data["map"]; 
+
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
     }
@@ -99,10 +101,8 @@ function Viz() {
               </div>
             </div>
             <div className="rightcolumn">
-              <div className="panel migration legend top">
-                <Legend coloring={coloring}/>
-              </div>
-              <div className="panel migration legend map">
+              <div className={coord_map === undefined ? "panel migration legend top" : "panel migration legend top map"}>
+                <Legend coloring={coloring} coord_map={coord_map}/>
               </div>
             </div>
           </div>
