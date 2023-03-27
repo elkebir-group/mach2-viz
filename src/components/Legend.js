@@ -51,6 +51,7 @@ function Legend(props) {
             {props.coord_map.map((l) =>
               <div 
                 className='panel label'
+                id={l[0]}
                 style={{
                     position: 'absolute',
                     top: (l[1][0]),

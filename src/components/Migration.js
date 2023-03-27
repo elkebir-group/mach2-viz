@@ -239,6 +239,14 @@ function Migration(props) {
             })
             const nodeId = event.target.id();
             props.evtbus.fireEvent('hoverNodeCl', { nodeId });
+
+            var node = event.target;
+            var label = node.data('label');
+
+            var labeltag = document.querySelector(`#${label}`);
+            labeltag.style.opacity = 1;
+            labeltag.style.zIndex = 100;
+            labeltag.style.fontWeight = 'bold';
           })
 
           cy.on('mouseout', 'node', function(event) {
@@ -249,6 +257,14 @@ function Migration(props) {
             })
             const nodeId = event.target.id();
             props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
+
+            var node = event.target;
+            var label = node.data('label');
+
+            var labeltag = document.querySelector(`#${label}`);
+            labeltag.style.opacity = 0.7;
+            labeltag.style.zIndex = 1;
+            labeltag.style.fontWeight = 'normal';
           })
     
           cy.on('mouseout', 'edge', function(event) {

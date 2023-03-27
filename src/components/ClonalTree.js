@@ -217,12 +217,25 @@ function ClonalTree(props) {
       
         // Add the div element to the page
         document.body.appendChild(div);
+
+        var labeltag = document.querySelector(`#${label}`);
+        labeltag.style.opacity = 1;
+        labeltag.style.zIndex = 100;
+        labeltag.style.fontWeight = 'bold';
       });
 
       cy.on('mouseout', 'node', function(event){
         // Remove the div element on mouseout
         var div = document.querySelector('.panel.popup');
         document.body.removeChild(div);
+
+        var node = event.target;
+        var label = node.data('label');
+
+        var labeltag = document.querySelector(`#${label}`);
+        labeltag.style.opacity = 0.7;
+        labeltag.style.zIndex = 1;
+        labeltag.style.fontWeight = 'normal';
       });
 
       cy.on('mouseover', 'edge', function(event) {

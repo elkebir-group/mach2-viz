@@ -252,7 +252,7 @@ canvas {
 }
 
 .legendtext {
-  font-size: 34px;
+  font-size: 24px;
 }
 
 li span {
@@ -334,8 +334,10 @@ img {
 .panel.label:hover {
   opacity: 1;
   z-index: 100;
+  font-weight: bold;
 }
 
 .labelentry {
+  font-size: 24px;
   margin-left: -15px;
 }
