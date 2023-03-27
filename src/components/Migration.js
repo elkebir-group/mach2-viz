@@ -244,9 +244,11 @@ function Migration(props) {
             var label = node.data('label');
 
             var labeltag = document.querySelector(`#${label}`);
-            labeltag.style.opacity = 1;
-            labeltag.style.zIndex = 100;
-            labeltag.style.fontWeight = 'bold';
+            if (labeltag !== null) {
+              labeltag.style.opacity = 1;
+              labeltag.style.zIndex = 100;
+              labeltag.style.fontWeight = 'bold';
+            }
           })
 
           cy.on('mouseout', 'node', function(event) {
@@ -262,9 +264,11 @@ function Migration(props) {
             var label = node.data('label');
 
             var labeltag = document.querySelector(`#${label}`);
-            labeltag.style.opacity = 0.7;
-            labeltag.style.zIndex = 1;
-            labeltag.style.fontWeight = 'normal';
+            if (labeltag !== null) {
+              labeltag.style.opacity = 0.7;
+              labeltag.style.zIndex = 1;
+              labeltag.style.fontWeight = 'normal';
+            }
           })
     
           cy.on('mouseout', 'edge', function(event) {
