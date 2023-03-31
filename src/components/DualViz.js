@@ -28,6 +28,12 @@ function insertParam(key, value) {
     //window.location.reload();
 }
 
+function handleKeyPress(event) {
+    if (event.key === '/') {
+      alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponsing anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panel.\n\nThe dual visualization window allows you to compare different solutions side by side!');
+    }
+  }
+
 function DualViz() {
     const queryParameters = new URLSearchParams(window.location.search);
     const fileContents = decompressUrlSafe(queryParameters.get("data"));
@@ -85,6 +91,10 @@ function DualViz() {
           });
         },
     };
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyPress);
+    });
 
     return <div className="viz">
         <div className="panel info one">
