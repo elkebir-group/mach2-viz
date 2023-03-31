@@ -3,8 +3,6 @@ import { useState } from "react";
 import map from '../assets/map.jpeg';
 
 function Legend(props) {
-    let [hover, setHover] = useState(false);
-
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
     let fetchColor = (label) => {
@@ -16,14 +14,6 @@ function Legend(props) {
         })
         return ret;
     }
-
-    const handleMouseEnter = () => {
-        setHover(true);
-    };
-
-    const handleMouseLeave = () => {
-        setHover(false);
-    };
 
     const colorPalette = [
         "#a6cee3",
@@ -65,12 +55,21 @@ function Legend(props) {
                     position: 'absolute',
                     top: (l[1][0]),
                     left: (l[1][1]),
-                    opacity: hover ? 1 : 0.7,
-                    zIndex: hover ? 100 : 1,
-                    fontWeight : hover ? 'bold' : 'normal'
+                    opacity: 0.7,
+                    zIndex: 1
                 }}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={(e) => {
+                    let target = document.querySelector(`#${l[0]}`);
+                    target.style.opacity = 1;
+                    target.style.zIndex = 1000;
+                    target.style.fontWeight = 'bold';
+                }}
+                onMouseLeave={(e) => {
+                    let target = document.querySelector(`#${l[0]}`);
+                    target.style.opacity = 0.7;
+                    target.style.zIndex = 1;
+                    target.style.fontWeight = 'normal';
+                }}
                 >
                 <ul className="legendlist">
                     <li className="labelentry" style={{color: hexColorRegex.test(fetchColor(l[0])) ? fetchColor(l[0]) : colorPalette[parseInt(fetchColor(l[0])) % ncolors], liststyle: "circle"}}>
