@@ -56,7 +56,6 @@ function Viz() {
     }
 
     let addTab = (event) => {
-      console.log(window.location.protocol + '//' + window.location.host + window.location.pathname);
       window.location = `${window.location.protocol}//${window.location.host}/dualviz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
@@ -101,7 +100,7 @@ function Viz() {
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration">
-              <p className="paneltitle"><b>Clonal Tree</b></p>
+                <p className="paneltitle"><b>Clonal Tree</b></p>
                 <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
             </div>

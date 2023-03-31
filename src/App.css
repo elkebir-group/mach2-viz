@@ -364,3 +364,19 @@ img {
   background-color: #A3A3A3;
   cursor: pointer;
 }
+
+.panel.info.one {
+  width: calc(50% - 50px);
+}
+
+.panel.info.one.two {
+  margin-left: calc(50%);
+}
+
+.panel.migration.top.left {
+  width: calc(100% - 50px);
+}
+
+.panel.migration.left {
+  width: calc(100% - 50px);
+}
