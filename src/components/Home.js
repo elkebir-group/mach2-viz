@@ -76,7 +76,7 @@ function Home() {
                           Dataset
                         </li>
                       </div>
-                      <div className="patientitem" style={{ backgroundColor: current_color }}>
+                      <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
                         <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
                           <li className="abouttext title">
                             Patient
