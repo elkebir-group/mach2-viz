@@ -56,7 +56,8 @@ function Viz() {
     }
 
     let addTab = (event) => {
-      
+      console.log(window.location.protocol + '//' + window.location.host + window.location.pathname);
+      window.location = `${window.location.protocol}//${window.location.host}/dualviz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     useEffect(() => {
