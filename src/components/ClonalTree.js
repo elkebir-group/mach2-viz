@@ -214,6 +214,9 @@ function ClonalTree(props) {
         div.style.position = "absolute";
         div.style.top = (node.renderedPosition('y') + canvas.height*0.5 + 30) + 'px';
         div.style.left = node.renderedPosition('x') + 'px';
+        if (props.rightcol) {
+          div.style.left = 'calc(50% + ' + node.renderedPosition('x') + 'px)';
+        }
       
         // Add the div element to the page
         document.body.appendChild(div);

@@ -138,7 +138,7 @@ function DualViz() {
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>
-                <ClonalTree tree={tree} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2}/>
+                <ClonalTree tree={tree} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
             </div>
         </div>
     </div>
