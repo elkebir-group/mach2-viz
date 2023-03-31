@@ -17,6 +17,7 @@
     "cytoscape-klay": "^3.1.4",
     "d3": "^7.8.2",
     "dagre": "^0.8.5",
+    "json-loader": "^0.5.7",
     "file-exists": "^5.0.1",
     "fs": "^0.0.1-security",
     "gltfjsx": "^6.1.4",

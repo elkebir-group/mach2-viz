@@ -16,7 +16,19 @@ function About() {
                     <h1 className='abouttitle'>Enter MACHINA-Viz</h1>
                 </div>
                 <p>MACHINA-Viz is a personalized medical tool to visualize cancer metastasis.</p>
-                <p><b>TODO: Insert description here</b></p>
+                <p>We have provided a <b>json_compression.py</b> (Python) file with which you can take
+                   your data directory and build a JSON file to plug into our visualizer. The format for
+                   this directory is as follows:
+                   <ul>
+                       <li>[dir name].labeling</li>
+                       <li>[dir name].tree</li>
+                       <li>coloring.txt</li>
+                       <li>potential_labelings (containing additional tree labelings)</li>
+                   </ul>
+                   
+                   Running our Python file will generate <b>[dir name].json</b>, which can be plugged into
+                   our visualizer to view the clone trees and resultant migration graph. 
+                   </p>
                 <p><b>Questions? Contact</b></p>
                 <ul className="singlecol">
                     <li><p>Akul Joshi (<a href="mailto:akulj2@illinois.edu">akulj2@illinois.edu</a>)</p></li>
