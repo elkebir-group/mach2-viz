@@ -55,6 +55,10 @@ function Viz() {
       insertParam("labeling", event.target.value);
     }
 
+    let addTab = (event) => {
+      
+    }
+
     useEffect(() => {
       document.addEventListener("keydown", handleKeyPress);
     });
@@ -107,6 +111,7 @@ function Viz() {
             </div>
           </div>
         </div>
+        <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
       </div>
     )
 }
