@@ -202,7 +202,7 @@ input {
   margin-top: 20px;
   margin-left: 15px;
   padding-left: 20px;
-  height: calc(80% - 40px);
+  height: calc(90% - 40px);
   width: calc(100% - 75px);
   overflow: hidden;
 }
@@ -225,7 +225,7 @@ input {
 
 .panel.example {
   margin: 20px;
-  margin-top: -20px;
+  margin-top: -50px;
   width: calc(80%-60px);
   padding-left: 20px;
   height: calc(65%);
@@ -275,6 +275,7 @@ input {
   width: calc(47.5%);
   margin: 1px;
   height: 50px;
+  margin-top: -5px;
   /* flex: 0.5; */
 }
 
@@ -383,7 +384,7 @@ ul {
 }
 
 .legendlist {
-  margin-top: -15px;
+  margin-top: 0px;
 }
 
 img {
@@ -437,4 +438,13 @@ img {
 
 .panel.migration.left {
   width: calc(100% - 50px);
+}
+
+.datasettitle {
+  text-align: center;
+  font-size: 18px;
+}
+
+a:hover {
+  cursor: pointer;
 }

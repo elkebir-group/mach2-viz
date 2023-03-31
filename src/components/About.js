@@ -16,7 +16,7 @@ function About() {
                     <h1 className='abouttitle'>Enter MACHINA-Viz</h1>
                 </div>
                 <p>MACHINA-Viz is a personalized medical tool to visualize cancer metastasis.</p>
-                <p>We have provided a <b>json_compression.py</b> (Python) file with which you can take
+                <p>We have provided a <a href="https://github.com/vikramr2/machina-viz/blob/main/src/json_compression.py"><b>json_compression.py</b></a> (Python) file with which you can take
                    your data directory and build a JSON file to plug into our visualizer. The format for
                    this directory is as follows:
                    <ul>

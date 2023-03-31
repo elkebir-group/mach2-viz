@@ -28,13 +28,13 @@ function Home() {
         div_elements.push(<div className="patient-container">
           <div className="patientitem" style={{ backgroundColor: current_color }}>
             <li className="dirtext">
-              {current_directory}
+              <p><b>{current_directory}</b></p>
             </li>
           </div>
           <div className="patientitem" style={{ backgroundColor: current_color }}>
             <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
               <li className="abouttext">
-                {current_patient}
+                <p><b>{current_patient}</b></p>
               </li>
             </Link>
           </div>
@@ -73,13 +73,13 @@ function Home() {
                     <div className="patient-container">
                       <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
                         <li className="dirtext title">
-                          Dataset
+                          <p className='datasettitle'><b>Dataset</b></p>
                         </li>
                       </div>
                       <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
                         <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
                           <li className="abouttext title">
-                            Patient
+                          <p className='datasettitle'><b>Patient</b></p>
                           </li>
                         </Link>
                       </div>
