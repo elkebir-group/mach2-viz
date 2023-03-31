@@ -20,6 +20,7 @@
     "file-exists": "^5.0.1",
     "fs": "^0.0.1-security",
     "gltfjsx": "^6.1.4",
+    "jquery": "^3.6.4",
     "klay": "^2.4.0",
     "lz-string": "^1.4.4",
     "lzma-js": "^1.0.1",

@@ -3,6 +3,8 @@ import { useState } from "react";
 import map from '../assets/map.jpeg';
 
 function Legend(props) {
+    let [hover, setHover] = useState(false);
+
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
     let fetchColor = (label) => {
@@ -14,6 +16,14 @@ function Legend(props) {
         })
         return ret;
     }
+
+    const handleMouseEnter = () => {
+        setHover(true);
+    };
+
+    const handleMouseLeave = () => {
+        setHover(false);
+    };
 
     const colorPalette = [
         "#a6cee3",
@@ -32,7 +42,6 @@ function Legend(props) {
     const ncolors = colorPalette.length;
 
     console.log(colorPalette[parseInt(fetchColor('breast')) % ncolors]);
-
 
     if (props.coord_map === undefined) {
         return <ul className="legendlist">
@@ -55,8 +64,14 @@ function Legend(props) {
                 style={{
                     position: 'absolute',
                     top: (l[1][0]),
-                    left: (l[1][1])
-                }}>
+                    left: (l[1][1]),
+                    opacity: hover ? 1 : 0.7,
+                    zIndex: hover ? 100 : 1,
+                    fontWeight : hover ? 'bold' : 'normal'
+                }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                >
                 <ul className="legendlist">
                     <li className="labelentry" style={{color: hexColorRegex.test(fetchColor(l[0])) ? fetchColor(l[0]) : colorPalette[parseInt(fetchColor(l[0])) % ncolors], liststyle: "circle"}}>
                         <span><p style={{color: "black"}}>{l[0]}</p></span>
