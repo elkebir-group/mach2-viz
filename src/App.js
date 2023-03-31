@@ -1,7 +1,10 @@
+import React, { useState, useEffect } from "react"
 import './App.css';
+
 import About from './components/About.js'
 import Viz from './components/Viz.js'
 import Home from './components/Home.js'
+import DualViz from "./components/DualViz";
 
 import {
   BrowserRouter as Router,
@@ -20,6 +23,9 @@ function App() {
           </Route>
           <Route path="/viz">
             <Viz/>
+          </Route>
+          <Route path="/dualviz">
+            <DualViz/>
           </Route>
           <Route exact path="/">
             <Home/>

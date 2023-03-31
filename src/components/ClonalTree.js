@@ -160,6 +160,16 @@ function ClonalTree(props) {
           })
           node.trigger('select');
         }
+        if (eventName === 'hoverNodeCl') {
+          myCyRef.$(`edge[migration='${eventData.nodeId}->${eventData.nodeId}']`).css({
+            width: 10
+          })
+        }
+        if (eventName === 'dehoverNodeCl') {
+          myCyRef.$(`edge[migration='${eventData.nodeId}->${eventData.nodeId}']`).css({
+            width: 3
+          })
+        }
       };
       props.evtbus.addListener(listener);
     }
@@ -204,15 +214,35 @@ function ClonalTree(props) {
         div.style.position = "absolute";
         div.style.top = (node.renderedPosition('y') + canvas.height*0.5 + 30) + 'px';
         div.style.left = node.renderedPosition('x') + 'px';
+        if (props.rightcol) {
+          div.style.left = 'calc(50% + ' + node.renderedPosition('x') + 'px)';
+        }
       
         // Add the div element to the page
         document.body.appendChild(div);
+
+        var labeltag = document.querySelector(`#${label}`);
+        if (labeltag !== null) {
+          labeltag.style.opacity = 1;
+          labeltag.style.zIndex = 100;
+          labeltag.style.fontWeight = 'bold';
+        }
       });
 
       cy.on('mouseout', 'node', function(event){
         // Remove the div element on mouseout
         var div = document.querySelector('.panel.popup');
         document.body.removeChild(div);
+
+        var node = event.target;
+        var label = node.data('label');
+
+        var labeltag = document.querySelector(`#${label}`);
+        if (labeltag !== null) {
+          labeltag.style.opacity = 0.7;
+          labeltag.style.zIndex = 1;
+          labeltag.style.fontWeight = 'normal';
+        }
       });
 
       cy.on('mouseover', 'edge', function(event) {

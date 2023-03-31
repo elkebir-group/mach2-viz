@@ -61,7 +61,7 @@ function Migration(props) {
             break;
           }
         }
-        if (!flag) edges.push(edges_t[i]);
+        if (!flag && edge.data.source !== edge.data.target) edges.push(edges_t[i]);
       }
 
       for (const [i, edge] of edges.entries()) {
@@ -230,6 +230,46 @@ function Migration(props) {
             const nodeId = event.target.id();
             props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
+
+          cy.on('mouseover', 'node', function(event) {
+            const { target } = event;
+            target.css({
+              width: 30,
+              height: 30
+            })
+            const nodeId = event.target.id();
+            props.evtbus.fireEvent('hoverNodeCl', { nodeId });
+
+            var node = event.target;
+            var label = node.data('label');
+
+            var labeltag = document.querySelector(`#${label}`);
+            if (labeltag !== null) {
+              labeltag.style.opacity = 1;
+              labeltag.style.zIndex = 100;
+              labeltag.style.fontWeight = 'bold';
+            }
+          })
+
+          cy.on('mouseout', 'node', function(event) {
+            const { target } = event;
+            target.css({
+              width: 15,
+              height: 15
+            })
+            const nodeId = event.target.id();
+            props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
+
+            var node = event.target;
+            var label = node.data('label');
+
+            var labeltag = document.querySelector(`#${label}`);
+            if (labeltag !== null) {
+              labeltag.style.opacity = 0.7;
+              labeltag.style.zIndex = 1;
+              labeltag.style.fontWeight = 'normal';
+            }
+          })
     
           cy.on('mouseout', 'edge', function(event) {
             const { target } = event;

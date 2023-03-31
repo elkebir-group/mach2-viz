@@ -49,8 +49,14 @@ function Viz() {
 
     let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
 
+    let coord_map = data["map"]; 
+
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
+    }
+
+    let addTab = (event) => {
+      window.location = `${window.location.protocol}//${window.location.host}/dualviz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     useEffect(() => {
@@ -94,18 +100,18 @@ function Viz() {
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration">
-              <p className="paneltitle"><b>Clonal Tree</b></p>
+                <p className="paneltitle"><b>Clonal Tree</b></p>
                 <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
             </div>
             <div className="rightcolumn">
-              <div className="panel migration legend top">
-                <Legend coloring={coloring}/>
+              <div className={coord_map === undefined ? "panel migration legend top" : "panel migration legend top map"}>
+                <Legend coloring={coloring} coord_map={coord_map}/>
               </div>
-              <div className="panel migration legend map"></div>
             </div>
           </div>
         </div>
+        <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
       </div>
     )
 }
