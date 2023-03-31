@@ -98,7 +98,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <Link to="" style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
+                <Link to={`viz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling2")}`} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
@@ -120,7 +120,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <Link to="" style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
+                <Link to={`viz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}`} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
