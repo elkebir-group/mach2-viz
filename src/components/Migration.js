@@ -3,7 +3,9 @@ import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
+import dagre from 'cytoscape-dagre';
 
+Cytoscape.use(dagre);
 Cytoscape.use(COSEBilkent);
 
 function Migration(props) {
@@ -162,7 +164,7 @@ function Migration(props) {
     
       let myCyRef;
       const layout = {
-        name: "breadthfirst",
+        name: "dagre",
         fit: true,
         circle: true,
         directed: true,
