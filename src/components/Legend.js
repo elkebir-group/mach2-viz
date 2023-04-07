@@ -34,12 +34,12 @@ function Legend(props) {
     console.log(colorPalette[parseInt(fetchColor('breast')) % ncolors]);
 
     if (props.coord_map === undefined) {
-        return <ul className="legendlist">
+        return <></>/*ul className="legendlist">
             {props.coloring.map((l) => 
                 <li className="legendtext" style={{color: hexColorRegex.test(l[1]) ? l[1] : colorPalette[parseInt(l[1]) % ncolors], liststyle: "circle"}}>
                     <span><p style={{color: "black"}}>{l[0]}</p></span>
                 </li>)}
-        </ul>
+        </ul>*/
     } else {
         return <div style={{ position: 'relative' }}>
             <img 

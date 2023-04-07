@@ -448,3 +448,7 @@ img {
 a:hover {
   cursor: pointer;
 }
+
+.leftcolumn.nolegend {
+  width: calc(100% - 50px);
+}

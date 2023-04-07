@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import RightColumn from "./RightColumn.js";
 
 function insertParam(key, value) {
   // Get the current url
@@ -94,7 +95,7 @@ function Viz() {
             <Link to="" style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
           </div>
           <div className="columnwrapper">
-            <div className="leftcolumn">
+            <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
               <div className="panel migration top">
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
@@ -104,11 +105,7 @@ function Viz() {
                 <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
             </div>
-            <div className="rightcolumn">
-              <div className={coord_map === undefined ? "panel migration legend top" : "panel migration legend top map"}>
-                <Legend coloring={coloring} coord_map={coord_map}/>
-              </div>
-            </div>
+            <RightColumn coord_map={coord_map} coloring={coloring}/>
           </div>
         </div>
         <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
