@@ -466,3 +466,7 @@ a:hover {
   float: right;
   margin-right: 15px;
 }
+
+.rightli:hover {
+  cursor: pointer;
+}

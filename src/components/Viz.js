@@ -105,7 +105,7 @@ function Viz() {
                 <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
             </div>
-            <RightColumn coord_map={coord_map} coloring={coloring}/>
+            <RightColumn coord_map={coord_map} coloring={coloring} tree={tree} labeling={tree_labeling} evtbus={eventBus}/>
           </div>
         </div>
         <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
