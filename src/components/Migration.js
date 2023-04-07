@@ -83,9 +83,11 @@ function Migration(props) {
         {
           selector: "node",
           style: {
-            backgroundColor: "#4a56a6",
-            width: 15,
-            height: 15,
+            backgroundColor: "#fff",
+            'border-width': 10,
+            shape: "rectangle",
+            width: 100,
+            height: 50,
             label: "data(label)",
     
             // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
@@ -98,7 +100,9 @@ function Migration(props) {
             //"text-outline-color": "#4a56a6",
             "text-outline-width": "2px",
             color: "white",
-            fontSize: 15
+            fontSize: 15,
+            'text-valign': 'center',
+            'text-halign': 'center'
           }
         },
         {
@@ -141,7 +145,7 @@ function Migration(props) {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
           style: {
-            backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
+            'border-color': hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
           }
         })
       })
@@ -236,8 +240,7 @@ function Migration(props) {
           cy.on('mouseover', 'node', function(event) {
             const { target } = event;
             target.css({
-              width: 30,
-              height: 30
+              'border-width': 20,
             })
             const nodeId = event.target.id();
             props.evtbus.fireEvent('hoverNodeCl', { nodeId });
@@ -256,8 +259,7 @@ function Migration(props) {
           cy.on('mouseout', 'node', function(event) {
             const { target } = event;
             target.css({
-              width: 15,
-              height: 15
+              'border-width': 10,
             })
             const nodeId = event.target.id();
             props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
