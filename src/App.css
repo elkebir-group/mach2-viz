@@ -452,3 +452,17 @@ a:hover {
 .leftcolumn.nolegend {
   width: calc(100% - 50px);
 }
+
+.leftli {
+  float: left;
+  margin-top: -2px;
+}
+
+.leftli:hover {
+  text-decoration: underline;
+}
+
+.rightli {
+  float: right;
+  margin-right: 15px;
+}
