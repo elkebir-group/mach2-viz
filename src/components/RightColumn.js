@@ -15,7 +15,7 @@ function RightColumn(props) {
         return <div className="rightcolumn">
             <div className={props.coord_map === undefined ? "panel migration legend top" : "panel migration legend top map"}>
                 <Legend coloring={props.coloring} coord_map={props.coord_map}/>
-                <MigrationMap tree={props.tree} labeling={props.labeling} coloring={props.coloring}/>
+                <MigrationMap tree={props.tree} labeling={props.labeling} coloring={props.coloring} coord_map={props.coord_map}/>
             </div>
         </div>
     }

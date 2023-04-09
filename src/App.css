@@ -470,3 +470,7 @@ a:hover {
 .rightli:hover {
   cursor: pointer;
 }
+
+.bodymap {
+  opacity: 0.6;
+}

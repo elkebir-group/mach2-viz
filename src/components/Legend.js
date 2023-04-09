@@ -3,13 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import map from '../assets/map.jpeg';
 
 function Legend(props) {
-    const [height, setHeight] = useState(0)
-    const ref = useRef(null)
-
-    useEffect(() => {
-        setHeight(ref.current.clientHeight)
-    })
-
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
     let fetchColor = (label) => {
@@ -48,10 +41,10 @@ function Legend(props) {
                 </li>)}
         </ul>*/
     } else {
-        return <div style={{ position: 'relative', height: 0 }} ref={ref}>
+        return <div style={{ position: 'relative', height: 0 }}>
             <img 
                 src={map}
-                className='paneltitle'
+                className='paneltitle bodymap'
             />
             {console.log(props.coord_map)}
             {props.coord_map.map((l, index) =>
@@ -60,7 +53,7 @@ function Legend(props) {
                 id={l[0]}
                 style={{
                     position: 'relative',
-                    top: ~~(index / 2)*(height/(props.coord_map.length/2))+50*(index+1),
+                    top: /*height/(2*props.coord_map.length)**/(index+1)*12+(50/3),
                     left: index % 2 == 0 ? 5 : 190,
                     opacity: 0.7,
                     zIndex: 1
