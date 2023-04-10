@@ -329,10 +329,6 @@ ul {
   columns: 2;
 }
 
-.singlecol {
-  columns: 1;
-}
-
 .titlewrapper {
   display: flex;
 }
@@ -383,10 +379,6 @@ ul {
   margin-top: -10px;
 }
 
-.legendlist {
-  margin-top: 0px;
-}
-
 img {
   max-width: 100%;
   /*max-height: 100%;*/
@@ -395,6 +387,7 @@ img {
 
 .panel.label {
   width: 120px;
+  height: 30px
 }
 
 .labelentry {
@@ -473,4 +466,16 @@ a:hover {
 
 .bodymap {
   opacity: 0.6;
+}
+
+ul {
+  margin-top: -10px;
+}
+
+#singlecol {
+  columns: 1;
+}
+
+.lowerlist {
+  margin-top: 0px;
 }

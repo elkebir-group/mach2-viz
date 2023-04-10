@@ -375,12 +375,12 @@ function MigrationMap(props) {
                     var div = document.createElement("div");
                     div.setAttribute("class", "panel label");
 
-                    div.innerHTML = `<p>${label}&nbsp;</p>`;
+                    div.innerHTML = `<ul className="legendlist"><li><span><p>${label}</p></span></li></ul>`;
                 
                     // Position the div element near the node
                     const canvas = document.querySelector('.rightcolumn');
                     console.log(canvas.getBoundingClientRect());
-                    div.style.position = "relative";
+                    div.style.position = "absolute";
                     
                     let leftPos = `calc(${node.renderedPosition('x') + 'px'} + 70% + 20px `
                     if (index % 2 == 1) {
@@ -388,9 +388,11 @@ function MigrationMap(props) {
                     }
                     leftPos += ")";
 
-                    div.style.top = ((node.renderedPosition('y') + canvas.getBoundingClientRect().y)/2) + 'px';
+                    div.id = label;
 
-                    div.style.left = leftPos;
+                    div.style.top = (node.renderedPosition('y') + canvas.getBoundingClientRect().top/2 - 15) + 'px';
+                    div.style.left = leftPos; 
+                    div.style.opacity = 0.7;
 
                     document.body.appendChild(div);
                 }
