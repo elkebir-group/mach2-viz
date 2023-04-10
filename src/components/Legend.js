@@ -47,36 +47,6 @@ function Legend(props) {
                 className='paneltitle bodymap'
             />
             {console.log(props.coord_map)}
-            {props.coord_map.map((l, index) =>
-              <div 
-                className='panel label'
-                id={l[0]}
-                style={{
-                    position: 'relative',
-                    top: /*height/(2*props.coord_map.length)**/(index+1)*12+(50/3),
-                    left: index % 2 == 0 ? 5 : 190,
-                    opacity: 0.7,
-                    zIndex: 1
-                }}
-                onMouseEnter={(e) => {
-                    let target = document.querySelector(`#${l[0]}`);
-                    target.style.opacity = 1;
-                    target.style.zIndex = 1000;
-                    target.style.fontWeight = 'bold';
-                }}
-                onMouseLeave={(e) => {
-                    let target = document.querySelector(`#${l[0]}`);
-                    target.style.opacity = 0.7;
-                    target.style.zIndex = 1;
-                    target.style.fontWeight = 'normal';
-                }}
-                >
-                <ul className="legendlist">
-                    <li className="labelentry" style={{color: hexColorRegex.test(fetchColor(l[0])) ? fetchColor(l[0]) : colorPalette[parseInt(fetchColor(l[0])) % ncolors], liststyle: "circle"}}>
-                        <span><p style={{color: "black"}}>{l[0]}</p></span>
-                    </li>
-                </ul>
-              </div>)}
         </div>
     }
 }

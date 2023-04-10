@@ -13,6 +13,8 @@ Cytoscape.use(COSEBilkent);
 
 function MigrationMap(props) {
     const [canvheight, setCanvHeight] = useState(0)
+    const [disp, setDisp] = useState(false);
+    let count = 0;
 
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
@@ -222,10 +224,9 @@ function MigrationMap(props) {
                 },
                 position: {
                     x: index % 2 == 0 ? 5 : 310,
-                    y: (index + 1)*Math.floor(canvheight/(props.coord_map.length)/2)
+                    y: (index + 1)*Math.floor(canvheight/(props.coord_map.length)/1.75)
                 }
             })
-            console.log((index + 1)*Math.floor(canvheight/(props.coord_map.length))/2)
             edges.push({
                 data: {
                     source: `labelnode${index}`,
@@ -236,16 +237,19 @@ function MigrationMap(props) {
                 }
             })
         })
+
         for (const [i, edge] of edges.entries()) {
             if (edge.data.label == 1) {
                 edges[i].data.label = "";
             }
         }
+
         setGraphData({
             nodes: nodes,
             edges: edges
         })
-        console.log(nodes);
+
+        setDisp(true);
     }, [canvheight])
 
     document.addEventListener("DOMContentLoaded", function(event) { 
@@ -360,6 +364,38 @@ function MigrationMap(props) {
           });
           console.log(positions);
 
+          if (disp) {
+            cy.nodes().forEach((node) => {
+                count++;
+                console.log(count);
+                if (node.data().type === 'label' && node.renderedPosition('y') > 0) {
+                    let index = parseInt(node.data().id.slice(-1));
+                    let label = props.coord_map[index][0]
+
+                    var div = document.createElement("div");
+                    div.setAttribute("class", "panel label");
+
+                    div.innerHTML = `<p>${label}&nbsp;</p>`;
+                
+                    // Position the div element near the node
+                    const canvas = document.querySelector('.rightcolumn');
+                    console.log(canvas.getBoundingClientRect());
+                    div.style.position = "relative";
+                    
+                    let leftPos = `calc(${node.renderedPosition('x') + 'px'} + 70% + 20px `
+                    if (index % 2 == 1) {
+                        leftPos += "- 100px";
+                    }
+                    leftPos += ")";
+
+                    div.style.top = ((node.renderedPosition('y') + canvas.getBoundingClientRect().y)/2) + 'px';
+
+                    div.style.left = leftPos;
+
+                    document.body.appendChild(div);
+                }
+            })
+          }
         }}
         abc={console.log("myCyRef", myCyRef)}
     />
