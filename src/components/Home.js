@@ -63,23 +63,30 @@ function Home() {
         which_color = !which_color;
     }
 
-    let handleChange = (e) => {
-        const reader = new FileReader();
-        const file = e.target.files[0];
-        let json_contents;
-    
-        reader.onload = function(readerEvt) {
-          let jsonString = readerEvt.target.result;
-          json_contents = jsonString;
-          console.log(json_contents);
+    if (document.getElementsByClassName('label').length > 1) {
+      const elements = document.getElementsByClassName('label');
+      while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+      }
+    }
 
-          const data = JSON.parse(json_contents);
-          let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
-    
-          window.location = window.location + `viz?data=${compressUrlSafe(json_contents)}&labeling=${labelnames[0]}`;
-        }
-        // Read the file as a text
-        reader.readAsText(file);
+    let handleChange = (e) => {
+      const reader = new FileReader();
+      const file = e.target.files[0];
+      let json_contents;
+  
+      reader.onload = function(readerEvt) {
+        let jsonString = readerEvt.target.result;
+        json_contents = jsonString;
+        console.log(json_contents);
+
+        const data = JSON.parse(json_contents);
+        let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
+  
+        window.location = window.location + `viz?data=${compressUrlSafe(json_contents)}&labeling=${labelnames[0]}`;
+      }
+      // Read the file as a text
+      reader.readAsText(file);
     }
 
     return (
