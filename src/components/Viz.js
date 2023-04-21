@@ -61,7 +61,7 @@ function Viz(props) {
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
-    let coord_map = data["map"]; 
+    let coord_map = wholeData["map"]; 
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
