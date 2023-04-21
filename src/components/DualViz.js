@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { decompressUrlSafe } from '../utils/lzma-url.js'
 import {
     BrowserRouter as Router,
     Switch,
@@ -36,23 +35,28 @@ function handleKeyPress(event) {
 
 function DualViz() {
     const queryParameters = new URLSearchParams(window.location.search);
-    const fileContents = decompressUrlSafe(queryParameters.get("data"));
-    const data = JSON.parse(fileContents);
-    
-    const coloring = data["coloring"]
-    const tree = data["clone_tree"]["tree"]
-    const tree_labeling = data["clone_tree"]["labeling"].map((value, index) => {
-        if (value["name"] === queryParameters.get("labeling")) {
-            return value["data"];
-        }
-    }).filter((item) => {return item != undefined})[0];
-    const tree_labeling2 = data["clone_tree"]["labeling"].map((value, index) => {
-        if (value["name"] === queryParameters.get("labeling2")) {
-            return value["data"];
-        }
-    }).filter((item) => {return item != undefined})[0];
+    const jsonContents=localStorage.getItem("json_data");
+    const wholeData = JSON.parse(jsonContents);
 
-    let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
+    const labelName = queryParameters.get("labeling");
+    const labelName2 = queryParameters.get("labeling2");
+
+    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+    const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
+
+    let coloring = data["labeling"]
+      .map((item) => item[1])
+      .filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      })
+      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+
+    const tree = data["tree"]
+    const tree2 = data2["tree"]
+    const tree_labeling = data["labeling"];
+    const tree_labeling2 = data2["labeling"];
+
+    let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
     let handleLabelChange = (event) => {
         insertParam("labeling", event.target.value);
@@ -108,7 +112,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/viz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
@@ -130,15 +134,15 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/viz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <Migration tree={tree} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2}/>
+                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>
-                <ClonalTree tree={tree} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
+                <ClonalTree tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
             </div>
         </div>
     </div>

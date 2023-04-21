@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from "react-dom";
 import { compressUrlSafe } from '../utils/lzma-url.js'
 import {
@@ -14,7 +14,22 @@ import download from "../assets/download.png";
 import axios from 'axios'
 import fileDownload from 'js-file-download'
 
-function Home() {
+import A7 from "../samples/A7/A7.json";
+import A10 from "../samples/A10/A10.json";
+import A22 from "../samples/A22/A22.json";
+import A29 from "../samples/A29/A29.json";
+import A31 from "../samples/A31/A31.json";
+import A32 from "../samples/A32/A32.json";
+import patient1 from "../samples/patient1/patient1.json";
+import patient2 from "../samples/patient2/patient2.json";
+import patient3 from "../samples/patient3/patient3.json";
+import patient4 from "../samples/patient4/patient4.json";
+import patient7 from "../samples/patient7/patient7.json";
+import patient9 from "../samples/patient9/patient9.json";
+import patient10 from "../samples/patient10/patient10.json";
+import tracerx_res from "../samples/tracerx_res/tracerx_res.json";
+
+function Home(props) {
     let handleDownload = (url, filename) => {
       axios.get(url, {
         responseType: 'blob',
@@ -24,8 +39,25 @@ function Home() {
       })
     }
 
-    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1", "patient2", "patient3", "patient4", "patient7", "patient9", "patient10"]
-    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016"]
+    var json_dict = {
+      "A7": A7,
+      "A10": A10,
+      "A22": A22,
+      "A29": A29,
+      "A31": A31,
+      "A32": A32,
+      "patient1": patient1,
+      "patient2": patient2,
+      "patient3": patient3,
+      "patient4": patient4,
+      "patient7": patient7,
+      "patient9": patient9,
+      "patient10": patient10,
+      "tracerx_res": tracerx_res
+    }
+
+    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1", "patient2", "patient3", "patient4", "patient7", "patient9", "patient10", "tracerx_res"]
+    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx"]
     var div_elements = []
     var which_color = true;
     const color1 = "#EBEBEB";
@@ -45,7 +77,7 @@ function Home() {
             </li>
           </div>
           <div className="patientitem" style={{ backgroundColor: current_color }}>
-            <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
+            <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {localStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
               <li className="abouttext">
                 <div className='liwrapper'>
                   <p className='leftli'><b>{current_patient}</b></p>
@@ -78,12 +110,16 @@ function Home() {
       reader.onload = function(readerEvt) {
         let jsonString = readerEvt.target.result;
         json_contents = jsonString;
-        console.log(json_contents);
 
         const data = JSON.parse(json_contents);
-        let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
+        let labelnames = data["solutions"].map((value, index) => {return value["name"]});
+
+        // let stateObj = {json_contents: json_contents};
+        // history.pushState(stateObj, window.location.href);
+        localStorage.setItem("json_data", json_contents);
   
-        window.location = window.location + `viz?data=${compressUrlSafe(json_contents)}&labeling=${labelnames[0]}`;
+        window.location = window.location + `viz?labeling=${labelnames[0]}`;
+        // history.push(`viz?labeling=${labelnames[0]}`);
       }
       // Read the file as a text
       reader.readAsText(file);

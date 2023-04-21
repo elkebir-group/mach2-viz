@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
@@ -23,9 +23,10 @@ function insertParam(key, value) {
   // Replace the URL
   //currentUrl.search = urlParams.toString();
   window.location.href = 'viz?' + urlParams.toString();
+  //history.go('viz?' + urlParams.toString());
 
   // Reload the page
-  console.log(window.location);
+  //console.log(window.location);
   //window.location.reload();
 }
 
@@ -35,20 +36,30 @@ function handleKeyPress(event) {
   }
 }
 
-function Viz() {
+function Viz(props) {
+    const jsonContents=localStorage.getItem("json_data");
     const queryParameters = new URLSearchParams(window.location.search);
-    const fileContents = decompressUrlSafe(queryParameters.get("data"));
-    const data = JSON.parse(fileContents);
-    
-    const coloring = data["coloring"]
-    const tree = data["clone_tree"]["tree"]
-    const tree_labeling = data["clone_tree"]["labeling"].map((value, index) => {
-      if (value["name"] === queryParameters.get("labeling")) {
-        return value["data"];
-      }
-    }).filter((item) => {return item != undefined})[0];
+    const wholeData = JSON.parse(jsonContents);
 
-    let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
+    const labelName = queryParameters.get("labeling");
+    
+    // const coloring = data["coloring"]
+
+    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+    console.log(wholeData);
+    // console.log(data["labeling"])
+    let coloring = data["labeling"]
+      .map((item) => item[1])
+      .filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      })
+      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    console.log(coloring)
+
+    const tree = data["tree"]
+    const tree_labeling = data["labeling"]
+
+    let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
     let coord_map = data["map"]; 
 
@@ -57,7 +68,7 @@ function Viz() {
     }
 
     let addTab = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/dualviz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     useEffect(() => {
