@@ -259,6 +259,7 @@ input {
 .paneltitle {
   position: absolute;
   margin-top: 5px;
+  z-index: 999;
 }
 
 .paneltitle.mu {
@@ -267,6 +268,11 @@ input {
 
 .paneltitle.gamma {
   margin-top: 45px;
+}
+
+.paneltitle.button {
+  margin-top: 75px;
+  margin-left: 5px;
 }
 
 .block label { display: flex; }

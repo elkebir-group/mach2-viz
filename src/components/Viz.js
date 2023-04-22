@@ -72,6 +72,11 @@ function Viz(props) {
       window.location = `${window.location.protocol}//${window.location.host}/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
+    let rotateFn = (event) => {
+      let rotated = queryParameters.get("rotated") === "true";
+      insertParam("rotated", !rotated);
+    }
+
     useEffect(() => {
       document.addEventListener("keydown", handleKeyPress);
       setMu(localStorage.getItem("mu"));
@@ -115,6 +120,7 @@ function Viz(props) {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration">

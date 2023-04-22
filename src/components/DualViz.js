@@ -70,6 +70,16 @@ function DualViz() {
         insertParam("labeling2", event.target.value);
     }
 
+    let rotateFn = (event) => {
+        let rotated = queryParameters.get("rotated") === "true";
+        insertParam("rotated", !rotated);
+    }
+
+    let rotateFn2 = (event) => {
+        let rotated = queryParameters.get("rotated2") === "true";
+        insertParam("rotated2", !rotated);
+    }
+
     const eventBus = {
         listeners: [],
         addListener(callback) {
@@ -126,6 +136,7 @@ function DualViz() {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
             </div>
             <div className="panel migration left">
@@ -150,6 +161,7 @@ function DualViz() {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
                 <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
             </div>
             <div className="panel migration left">

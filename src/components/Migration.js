@@ -167,6 +167,13 @@ function Migration(props) {
       })
     
       let myCyRef;
+
+      const queryParameters = new URLSearchParams(window.location.search);
+      let rotated = props.rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
+      if (rotated === null) {
+        rotated = false;
+      }
+
       const layout = {
         name: "dagre",
         fit: true,
@@ -180,8 +187,8 @@ function Migration(props) {
         nodeDimensionsIncludeLabels: false,
         transform: (node, position) => {
           return {
-            x: -2*position.y,
-            y: position.x
+            x: rotated ? -2*position.y : position.x,
+            y: rotated ? position.x : position.y
           }
         },
         ready: function() {
