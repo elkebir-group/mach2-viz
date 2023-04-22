@@ -136,7 +136,7 @@ function ClonalTree(props) {
     fit: true,
     // circle: true,
     directed: true,
-    padding: 50,
+    padding: 10,
     // spacingFactor: 1.5,
     animate: true,
     animationDuration: 1000,

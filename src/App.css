@@ -261,6 +261,14 @@ input {
   margin-top: 5px;
 }
 
+.paneltitle.mu {
+  margin-top: 25px;
+}
+
+.paneltitle.gamma {
+  margin-top: 45px;
+}
+
 .block label { display: flex; }
 
 .patientlist {

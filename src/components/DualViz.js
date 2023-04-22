@@ -34,6 +34,10 @@ function handleKeyPress(event) {
   }
 
 function DualViz() {
+    const [mu, setMu] = useState(0);
+    const [gamma, setGamma] = useState(0);
+    const [mu2, setMu2] = useState(0);
+    const [gamma2, setGamma2] = useState(0);
     const queryParameters = new URLSearchParams(window.location.search);
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
@@ -98,6 +102,10 @@ function DualViz() {
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyPress);
+        setMu(localStorage.getItem("mu"));
+        setGamma(localStorage.getItem("gamma"));
+        setMu2(localStorage.getItem("mu2"));
+        setGamma2(localStorage.getItem("gamma2"));
     });
 
     return <div className="viz">
@@ -116,6 +124,8 @@ function DualViz() {
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
+                <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
             </div>
             <div className="panel migration left">
@@ -138,7 +148,9 @@ function DualViz() {
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2}/>
+                <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
+                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>

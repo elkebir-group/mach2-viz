@@ -172,12 +172,18 @@ function Migration(props) {
         fit: true,
         circle: true,
         directed: true,
-        padding: 50,
+        padding: 10,
         // spacingFactor: 1.5,
         animate: true,
         animationDuration: 1000,
         avoidOverlap: true,
         nodeDimensionsIncludeLabels: false,
+        transform: (node, position) => {
+          return {
+            x: -2*position.y,
+            y: position.x
+          }
+        },
         ready: function() {
           const listener = (eventName, eventData) => {
             // Respond to event from other graph here
@@ -204,6 +210,17 @@ function Migration(props) {
           props.evtbus.addListener(listener);
         }
       };
+
+      let mu = edges.length;
+      let gamma = edges.filter((item) => { return item.data.label !== '' }).length
+
+      if (!props.rightcol) {
+        localStorage.setItem("mu", mu);
+        localStorage.setItem("gamma", gamma);
+      } else {
+        localStorage.setItem("mu2", mu);
+        localStorage.setItem("gamma2", gamma);
+      }
     
       return <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}

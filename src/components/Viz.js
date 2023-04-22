@@ -37,6 +37,8 @@ function handleKeyPress(event) {
 }
 
 function Viz(props) {
+    const [mu, setMu] = useState(0);
+    const [gamma, setGamma] = useState(0);
     const jsonContents=localStorage.getItem("json_data");
     const queryParameters = new URLSearchParams(window.location.search);
     const wholeData = JSON.parse(jsonContents);
@@ -46,7 +48,7 @@ function Viz(props) {
     // const coloring = data["coloring"]
 
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
-    console.log(wholeData);
+
     // console.log(data["labeling"])
     let coloring = data["labeling"]
       .map((item) => item[1])
@@ -54,7 +56,6 @@ function Viz(props) {
         return self.indexOf(value) === index;
       })
       .map((item, index, self) => [item, `${self.indexOf(item)}`]);
-    console.log(coloring)
 
     const tree = data["tree"]
     const tree_labeling = data["labeling"]
@@ -73,6 +74,8 @@ function Viz(props) {
 
     useEffect(() => {
       document.addEventListener("keydown", handleKeyPress);
+      setMu(localStorage.getItem("mu"));
+      setGamma(localStorage.getItem("gamma"));
     });
 
     const eventBus = {
@@ -110,6 +113,8 @@ function Viz(props) {
             <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
               <div className="panel migration top">
                 <p className="paneltitle"><b>Migration Graph</b></p>
+                <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration">
