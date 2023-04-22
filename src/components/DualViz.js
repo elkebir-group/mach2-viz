@@ -132,7 +132,7 @@ function DualViz() {
                     )}
                 </select>
                 </b></p></label>
-                <h3 className="viztitle"><b>{data["name"]}</b></h3>
+                <h3 className="viztitle"><b>{data2["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                 <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>

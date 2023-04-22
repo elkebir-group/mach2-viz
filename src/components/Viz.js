@@ -92,6 +92,7 @@ function Viz(props) {
 
     return (
       <div className="viz">
+        <div className="panel tab_add2" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
         <div className="panel info">
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
