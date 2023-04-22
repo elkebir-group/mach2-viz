@@ -5,6 +5,7 @@ import About from './components/About.js'
 import Viz from './components/Viz.js'
 import Home from './components/Home.js'
 import DualViz from "./components/DualViz";
+import SumViz from "./components/SumViz";
 
 import {
   BrowserRouter as Router,
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/dualviz">
             <DualViz/>
+          </Route>
+          <Route path="/sumviz">
+            <SumViz/>
           </Route>
           <Route exact path="/">
             <Home/>

@@ -72,6 +72,10 @@ function Viz(props) {
       window.location = `${window.location.protocol}//${window.location.host}/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
+    let gotoSummary = (event) => {
+      window.location = `${window.location.protocol}//${window.location.host}/sumviz?labeling=${queryParameters.get("labeling")}`;
+    }
+
     let rotateFn = (event) => {
       let rotated = queryParameters.get("rotated") === "true";
       insertParam("rotated", !rotated);
@@ -100,7 +104,7 @@ function Viz(props) {
 
     return (
       <div className="viz">
-        <div className="panel tab_add2" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
+        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         <div className="panel info">
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
