@@ -10,6 +10,7 @@ import Migration from "./Migration.js";
 import ClonalTree from "./ClonalTree.js";
 import MigrationSummary from "./MigrationSummary.js";
 import Loading from "./Loading.js";
+import ClonalSummary from "./ClonalSummary.js";
 
 function insertParam(key, value) {
     // Get the current url
@@ -87,6 +88,21 @@ function SumViz() {
         },
     };
 
+    const eventBus2 = {
+        listeners: [],
+        addListener(callback) {
+          this.listeners.push(callback);
+        },
+        removeListener(callback) {
+          this.listeners = this.listeners.filter(listener => listener !== callback);
+        },
+        fireEvent(eventName, eventData) {
+          this.listeners.forEach((listener) => {
+            listener(eventName, eventData);
+          });
+        },
+    };
+
     useEffect(() => {
         let intervalId = setInterval(() => {
             setProgress(prevProgress => prevProgress + 10);
@@ -105,6 +121,11 @@ function SumViz() {
         return () => clearInterval(intervalId);
     }, []);
 
+    useEffect(() => {
+        setMuSum(localStorage.getItem("musum"));
+        setGammaSum(localStorage.getItem("gammasum"));
+    }, [isLoading])
+
     return (
         <div className="viz">
             {!isLoading ? (
@@ -122,8 +143,8 @@ function SumViz() {
                             <MigrationSummary data={wholeData} coloring={coloring} evtbus={eventBus}/>
                         </div>
                         <div className="panel migration left">
-                            <p className="paneltitle"><b>Clonal Tree</b></p>
-                            <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                            <p className="paneltitle"><b>Strict Consensus</b></p>
+                            <ClonalSummary data={wholeData} coloring={coloring} evtbus={eventBus}/>
                         </div>
                     </div>
                     <div className="panel info one two">
@@ -148,7 +169,7 @@ function SumViz() {
                         </div>
                         <div className="panel migration left">
                             <p className="paneltitle"><b>Clonal Tree</b></p>
-                            <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                            <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus} rightcol={true}/>
                         </div>
                     </div>
                 </>

@@ -45,10 +45,10 @@ function ClonalTree(props) {
       if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
   }
 
-  let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
+  const nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
     return { data: { id: value, label: findLabel(value), type: "ip"} };
   });
-  let edges = props.tree.map((value, index) => {
+  const edges = props.tree.map((value, index) => {
     return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
   })
 
