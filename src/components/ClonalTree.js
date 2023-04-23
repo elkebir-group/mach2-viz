@@ -45,10 +45,10 @@ function ClonalTree(props) {
       if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
   }
 
-  let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
+  const nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
     return { data: { id: value, label: findLabel(value), type: "ip"} };
   });
-  let edges = props.tree.map((value, index) => {
+  const edges = props.tree.map((value, index) => {
     return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
   })
 
@@ -136,7 +136,7 @@ function ClonalTree(props) {
     fit: true,
     // circle: true,
     directed: true,
-    padding: 50,
+    padding: 10,
     // spacingFactor: 1.5,
     animate: true,
     animationDuration: 1000,
@@ -169,6 +169,46 @@ function ClonalTree(props) {
           myCyRef.$(`edge[migration='${eventData.nodeId}->${eventData.nodeId}']`).css({
             width: 3
           })
+        }
+        if (eventName === 'selectNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.source;
+          let target = eventData.sink;
+
+          myCyRef.$(`edge[label='${source}->${target}']`).css({
+            width: 10
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'deselectNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.source;
+          let target = eventData.sink;
+
+          myCyRef.$(`edge[label='${source}->${target}']`).css({
+            width: 3
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'hoverNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.nodeId;
+
+          myCyRef.$(`node[id='${source}']`).css({
+            width: 25,
+            height: 25
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'dehoverNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.nodeId;
+
+          myCyRef.$(`node[id='${source}']`).css({
+            width: 15,
+            height: 15
+          })
+          node.trigger('select');
         }
       };
       props.evtbus.addListener(listener);

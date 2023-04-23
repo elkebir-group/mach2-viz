@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
@@ -23,9 +23,10 @@ function insertParam(key, value) {
   // Replace the URL
   //currentUrl.search = urlParams.toString();
   window.location.href = 'viz?' + urlParams.toString();
+  //history.go('viz?' + urlParams.toString());
 
   // Reload the page
-  console.log(window.location);
+  //console.log(window.location);
   //window.location.reload();
 }
 
@@ -35,33 +36,55 @@ function handleKeyPress(event) {
   }
 }
 
-function Viz() {
+function Viz(props) {
+    const [mu, setMu] = useState(0);
+    const [gamma, setGamma] = useState(0);
+    const jsonContents=localStorage.getItem("json_data");
     const queryParameters = new URLSearchParams(window.location.search);
-    const fileContents = decompressUrlSafe(queryParameters.get("data"));
-    const data = JSON.parse(fileContents);
+    const wholeData = JSON.parse(jsonContents);
+
+    const labelName = queryParameters.get("labeling");
     
-    const coloring = data["coloring"]
-    const tree = data["clone_tree"]["tree"]
-    const tree_labeling = data["clone_tree"]["labeling"].map((value, index) => {
-      if (value["name"] === queryParameters.get("labeling")) {
-        return value["data"];
-      }
-    }).filter((item) => {return item != undefined})[0];
+    // const coloring = data["coloring"]
 
-    let labelnames = data["clone_tree"]["labeling"].map((value, index) => {return value["name"]});
+    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
 
-    let coord_map = data["map"]; 
+    // console.log(data["labeling"])
+    let coloring = data["labeling"]
+      .map((item) => item[1])
+      .filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      })
+      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+
+    const tree = data["tree"]
+    const tree_labeling = data["labeling"]
+
+    let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
+
+    let coord_map = wholeData["map"]; 
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
     }
 
     let addTab = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/dualviz?data=${queryParameters.get("data")}&labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+    }
+
+    let gotoSummary = (event) => {
+      window.location = `${window.location.protocol}//${window.location.host}/sumviz?labeling=${queryParameters.get("labeling")}`;
+    }
+
+    let rotateFn = (event) => {
+      let rotated = queryParameters.get("rotated") === "true";
+      insertParam("rotated", !rotated);
     }
 
     useEffect(() => {
       document.addEventListener("keydown", handleKeyPress);
+      setMu(localStorage.getItem("mu"));
+      setGamma(localStorage.getItem("gamma"));
     });
 
     const eventBus = {
@@ -81,6 +104,7 @@ function Viz() {
 
     return (
       <div className="viz">
+        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         <div className="panel info">
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
@@ -98,6 +122,9 @@ function Viz() {
             <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
               <div className="panel migration top">
                 <p className="paneltitle"><b>Migration Graph</b></p>
+                <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
                 <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration">

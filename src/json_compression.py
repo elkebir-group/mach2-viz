@@ -1,13 +1,14 @@
+from asyncio import DatagramTransport
 import os
 import sys
 import json
 
 # check for directory name
 if len(sys.argv) != 2:
-    print("format: python json_compression.py [directory_path]")
+    print("format: python json_compression_2.py [directory_path]")
     exit()
 
-dir_name = sys.argv[1]
+loc_arg = sys.argv[1]
 
 # retrieve directory contents
 dir_contents = None
@@ -17,133 +18,63 @@ except:
     print("error: directory not found!")
     exit()
 
-patient_name = dir_name.split("/")[-1]
-
-# error-checking dir_contents
-if patient_name + ".tree" not in dir_contents:
-    print("error: clone tree structure (" + patient_name + ".tree) not found")
-    exit()
-
-if patient_name + ".labeling" not in dir_contents:
-    print("error: main clone tree labeling (" + patient_name + ".labeling) not found")
-    exit()
-
-if "coloring.txt" not in dir_contents:
-    print("error: coloring guide (coloring.txt) not found")
-    exit()
-
-if "pmh" not in dir_contents:
-    print("error: migration graph labelings (pmh) not found")
-    exit()
-
-if "potential_labelings" not in dir_contents:
-    print("error: clone tree labeling options (potential_labelings) not found")
-    exit()
+patient_name = loc_arg.split("/")[-1]
 
 
 # extract patient data from directory
 patient_data = {}
 
+
 # extract patient name
-patient_data["name"] = sys.argv[1]
+patient_data["name"] = patient_name
 
-# extract migration graph data
-# migration_graphs = []
-# potential_graphs = {}
-# filenames = os.listdir(dir_name + "/pmh")
-# for filename in filenames:
-#     file_breakdown = filename.split(".")
-#     try:
-#         potential_graphs[file_breakdown[0]].append(file_breakdown[1])
-#     except:
-#         potential_graphs[file_breakdown[0]] = [file_breakdown[1]]
 
-# for graph_name in potential_graphs:
-#     if "tree" in potential_graphs[graph_name] and "labeling" in potential_graphs[graph_name]:
-#         graph_item = {}
-#         graph_item["name"] = graph_name
+# get existing file types for all sites
+data_tracker = {}
+for filename in os.listdir(loc_arg):
+    site = ".".join(filename.split(".")[:-1])
+    type = filename.split(".")[-1]
 
-#         with open(dir_name + "/pmh/" + graph_name + ".tree") as f:
-#             node_pairings = f.readlines()
-#             graph = []
+    try:
+        data_tracker[site].add(type)
+    except:
+        data_tracker[site] = set()
+        data_tracker[site].add(type)
 
-#             for pairing in node_pairings:
-#                 pairing = pairing[:-1] if pairing[-1] == "\n" else pairing
-#                 graph.append(pairing.split(" "))
 
-#             graph_item["graph"] = graph
+# separating tree/labeling data into patient dictionary
+solution_tracker = []
+
+for data in sorted(data_tracker.keys()):
+    if "tree" in data_tracker[data] and "labeling" in data_tracker[data]:
+        curr_obj = {}
+        curr_obj["name"] = data
+
+        tree = []
+        with open(loc_arg + "/" + data + ".tree") as f:
+            tree_data = f.readlines()
+            
+            for item in tree_data:
+                item_vals = (item[:-1] if item[-1] == '\n' else item).split(" ") 
+                tree.append(item_vals)
         
-#         with open(dir_name + "/pmh/" + graph_name + ".labeling") as f:
-#             labelings = f.readlines()
-#             labeling = []
+        curr_obj["tree"] = tree
 
-#             for label in labelings:
-#                 label = label[:-1] if label[-1] == "\n" else label
-#                 labeling.append(label.split(" "))
-
-#             graph_item["labeling"] = labeling
-        
-#         migration_graphs.append(graph_item)
-
-# patient_data["migration_graph"] = migration_graphs
-
-
-# extract clone tree data
-clone_tree = {}
-with open(dir_name + "/" + patient_name + ".tree") as f:
-    node_pairings = f.readlines()
-    tree = []
-
-    for pairing in node_pairings:
-        pairing = pairing[:-1] if pairing[-1] == "\n" else pairing
-        tree.append(pairing.split(" "))
-    
-    clone_tree["tree"] = tree
-
-# with open(dir_name + "/" + patient_name + ".labeling") as f:
-#     labelings = f.readlines()
-#     labeling = []
-
-#     for label in labelings:
-#         label = label[:-1] if label[-1] == "\n" else label
-#         labeling.append(label.split(" "))
-    
-#     clone_tree["labeling"] = labeling
-
-full_labelings = []
-potential_labelings = os.listdir(dir_name + "/potential_labelings")
-potential_labelings = sorted(potential_labelings)
-for filename in potential_labelings:
-    labeling_item = {}
-    labeling_item["name"] = filename.split(".")[0]
-
-    with open(dir_name + "/potential_labelings/" + filename) as f:
-        labelings = f.readlines()
         labeling = []
+        with open(loc_arg + "/" + data + ".labeling") as f:
+            labeling_data = f.readlines()
 
-        for label in labelings:
-            label = label[:-1] if label[-1] == "\n" else label
-            labeling.append(label.split(" "))
+            for item in labeling_data:
+                item_vals = (item[:-1] if item[-1] == '\n' else item).split(" ")
+                labeling.append(item_vals)
         
-        labeling_item["data"] = labeling
-        full_labelings.append(labeling_item)
+        curr_obj["labeling"] = labeling
 
-clone_tree["labeling"] = full_labelings
-
-patient_data["clone_tree"] = clone_tree
+        solution_tracker.append(curr_obj)
 
 
-# extract coloring data
-colorings = []
-with open(dir_name + "/coloring.txt") as f:
-    coloring_pairings = f.readlines()
-
-    for pairing in coloring_pairings:
-        pairing = pairing[:-1] if pairing[-1] == "\n" else pairing
-        colorings.append(pairing.split(" "))
-    
-patient_data["coloring"] = colorings
+patient_data["solutions"] = solution_tracker
 
 # write json object to a json file
-with open(dir_name + "/" + patient_name + ".json", "w") as f:
+with open(loc_arg + "/" + patient_name + ".json", "w") as f:
     f.write(json.dumps(patient_data, indent=4))

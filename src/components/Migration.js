@@ -167,17 +167,30 @@ function Migration(props) {
       })
     
       let myCyRef;
+
+      const queryParameters = new URLSearchParams(window.location.search);
+      let rotated = props.rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
+      if (rotated === null) {
+        rotated = false;
+      }
+
       const layout = {
         name: "dagre",
         fit: true,
         circle: true,
         directed: true,
-        padding: 50,
+        padding: 10,
         // spacingFactor: 1.5,
         animate: true,
         animationDuration: 1000,
         avoidOverlap: true,
         nodeDimensionsIncludeLabels: false,
+        transform: (node, position) => {
+          return {
+            x: rotated ? -2*position.y : position.x,
+            y: rotated ? position.x : position.y
+          }
+        },
         ready: function() {
           const listener = (eventName, eventData) => {
             // Respond to event from other graph here
@@ -200,10 +213,49 @@ function Migration(props) {
               })
               node.trigger('select');
             }
+            if (eventName === 'selectNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`edge[id='${eventData.nodeId}']`).css({
+                width: 10
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'deselectNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`edge[id='${eventData.nodeId}']`).css({
+                width: 3
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'hoverNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${eventData.nodeId}']`).css({
+                'border-width': 20,
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'dehoverNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${eventData.nodeId}']`).css({
+                'border-width': 10,
+              })
+              edge.trigger('select');
+            }
           };
           props.evtbus.addListener(listener);
         }
       };
+
+      let mu = edges.length;
+      let gamma = edges.filter((item) => { return item.data.label !== '' }).length
+
+      if (!props.rightcol) {
+        localStorage.setItem("mu", mu);
+        localStorage.setItem("gamma", gamma);
+      } else {
+        localStorage.setItem("mu2", mu);
+        localStorage.setItem("gamma2", gamma);
+      }
     
       return <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
