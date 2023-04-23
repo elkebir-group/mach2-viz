@@ -87,11 +87,23 @@ function ClonalSummary(props) {
         return strictConsensus;
     }
 
+    function getSources(edges) {
+        const targets = edges.map((edge) => edge[1]);
+        return edges.filter((edge) => !targets.includes(edge[0])).map((edge) => edge[0]);
+    }
+
     let trees = props.data["solutions"].map(item => item["tree"]);
     console.log(strictConsensus(trees))
     let nodeLists = trees.map(item => removeDuplicates(item.flat()));
     let nodeIds = removeDuplicates(intersectArrays(...nodeLists));
     const tree = strictConsensus(trees);
+    let sources = removeDuplicates(getSources(tree));
+    if (sources.length > 1) {
+        sources.map((item) => {
+            tree.push(['root', item])
+        })
+    }
+    
     //let tree = removeDuplicateArrays(intersectArrays([].concat(...trees)));
     //tree = removeDuplicateArrays(tree.filter(item => (nodeIds.includes(item[0]) && nodeIds.includes(item[1]))));
 
