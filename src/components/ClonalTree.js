@@ -170,6 +170,46 @@ function ClonalTree(props) {
             width: 3
           })
         }
+        if (eventName === 'selectNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.source;
+          let target = eventData.sink;
+
+          myCyRef.$(`edge[label='${source}->${target}']`).css({
+            width: 10
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'deselectNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.source;
+          let target = eventData.sink;
+
+          myCyRef.$(`edge[label='${source}->${target}']`).css({
+            width: 3
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'hoverNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.nodeId;
+
+          myCyRef.$(`node[id='${source}']`).css({
+            width: 25,
+            height: 25
+          })
+          node.trigger('select');
+        }
+        if (eventName === 'dehoverNodeSC') {
+          const node = myCyRef.getElementById(eventData.nodeId);
+          let source = eventData.nodeId;
+
+          myCyRef.$(`node[id='${source}']`).css({
+            width: 15,
+            height: 15
+          })
+          node.trigger('select');
+        }
       };
       props.evtbus.addListener(listener);
     }

@@ -87,22 +87,11 @@ function ClonalSummary(props) {
         return strictConsensus;
     }
 
-    function getSources(edges) {
-        const targets = edges.map((edge) => edge[1]);
-        return edges.filter((edge) => !targets.includes(edge[0])).map((edge) => edge[0]);
-    }
-
     let trees = props.data["solutions"].map(item => item["tree"]);
     console.log(strictConsensus(trees))
     let nodeLists = trees.map(item => removeDuplicates(item.flat()));
     let nodeIds = removeDuplicates(intersectArrays(...nodeLists));
     const tree = strictConsensus(trees);
-    let sources = removeDuplicates(getSources(tree));
-    if (sources.length > 1) {
-        sources.map((item) => {
-            tree.push(['root', item])
-        })
-    }
     
     //let tree = removeDuplicateArrays(intersectArrays([].concat(...trees)));
     //tree = removeDuplicateArrays(tree.filter(item => (nodeIds.includes(item[0]) && nodeIds.includes(item[1]))));
@@ -283,6 +272,7 @@ function ClonalSummary(props) {
           
             // Add the div element to the page
             document.body.appendChild(div);
+            const nodeId = event.target.id();
     
             var labeltag = document.querySelector(`#${label}`);
             if (labeltag !== null) {
@@ -290,6 +280,7 @@ function ClonalSummary(props) {
               labeltag.style.zIndex = 100;
               labeltag.style.fontWeight = 'bold';
             }
+            props.evtbus.fireEvent('hoverNodeSC', { nodeId });
           });
     
           cy.on('mouseout', 'node', function(event){
@@ -299,6 +290,7 @@ function ClonalSummary(props) {
     
             var node = event.target;
             var label = node.data('label');
+            const nodeId = event.target.id();
     
             var labeltag = document.querySelector(`#${label}`);
             if (labeltag !== null) {
@@ -306,6 +298,7 @@ function ClonalSummary(props) {
               labeltag.style.zIndex = 1;
               labeltag.style.fontWeight = 'normal';
             }
+            props.evtbus.fireEvent('dehoverNodeSC', { nodeId });
           });
     
           cy.on('mouseover', 'edge', function(event) {
@@ -314,9 +307,10 @@ function ClonalSummary(props) {
               width: 10
             })
             const nodeId = event.target.id();
-            let source = findLabel(target.data().source);
-            let sink = findLabel(target.data().target);
+            let source = target.data().source;
+            let sink = target.data().target;
             props.evtbus.fireEvent('selectNode', { nodeId, source, sink, target});
+            props.evtbus.fireEvent('selectNodeSC', { nodeId, source, sink, target});
           });
     
           cy.on('mouseout', 'edge', function(event) {
@@ -325,9 +319,10 @@ function ClonalSummary(props) {
               width: 3
             })
             const nodeId = event.target.id();
-            let source = findLabel(target.data().source);
-            let sink = findLabel(target.data().target);
+            let source = target.data().source;
+            let sink = target.data().target;
             props.evtbus.fireEvent('deselectNode', { nodeId, source, sink, target});
+            props.evtbus.fireEvent('deselectNodeSC', { nodeId, source, sink, target});
           });
         }}
         abc={console.log("myCyRef", myCyRef)}
