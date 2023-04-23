@@ -131,7 +131,7 @@ function SumViz() {
                             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                             <select name="labelings" id="labelings" onChange={handleLabelChange}>
                                 {labelnames.map(l => 
-                                {return (l === queryParameters.get("labeling2")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
+                                {return (l === queryParameters.get("labeling")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                                 )}
                             </select>
                             </b></p></label>
@@ -144,11 +144,11 @@ function SumViz() {
                             <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                            <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus} rightcol={true}/>
+                            <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
                         </div>
                         <div className="panel migration left">
                             <p className="paneltitle"><b>Clonal Tree</b></p>
-                            <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus} rightcol={true}/>
+                            <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
                         </div>
                     </div>
                 </>

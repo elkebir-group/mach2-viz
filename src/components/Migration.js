@@ -213,6 +213,34 @@ function Migration(props) {
               })
               node.trigger('select');
             }
+            if (eventName === 'selectNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`edge[id='${eventData.nodeId}']`).css({
+                width: 10
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'deselectNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`edge[id='${eventData.nodeId}']`).css({
+                width: 3
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'hoverNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${eventData.nodeId}']`).css({
+                'border-width': 20,
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'dehoverNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${eventData.nodeId}']`).css({
+                'border-width': 10,
+              })
+              edge.trigger('select');
+            }
           };
           props.evtbus.addListener(listener);
         }

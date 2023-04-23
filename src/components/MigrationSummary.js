@@ -257,6 +257,7 @@ function MigrationSummary(props) {
               width: 10
             })
             const nodeId = event.target.id();
+            props.evtbus.fireEvent('selectNodeSum', { nodeId, target});
             props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
@@ -266,6 +267,7 @@ function MigrationSummary(props) {
               'border-width': 20,
             })
             const nodeId = event.target.id();
+            props.evtbus.fireEvent('hoverNodeSum', { nodeId });
             props.evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
@@ -285,6 +287,7 @@ function MigrationSummary(props) {
               'border-width': 10,
             })
             const nodeId = event.target.id();
+            props.evtbus.fireEvent('dehoverNodeSum', { nodeId });
             props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
@@ -304,6 +307,7 @@ function MigrationSummary(props) {
               width: 3
             })
             const nodeId = event.target.id();
+            props.evtbus.fireEvent('deselectNodeSum', { nodeId, target});
             props.evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
