@@ -511,3 +511,26 @@ ul {
 .lowerlist {
   margin-top: 0px;
 }
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: auto;
+}
+
+.loading img {
+  margin-top: 20%;
+  max-width: 100%;
+}
+
+.loading h1 {
+  margin-top: 16px;
+}
+
+.loading svg {
+  margin-top: 32px;
+  margin-left: 40%;
+}
