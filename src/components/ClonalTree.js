@@ -118,7 +118,6 @@ function ClonalTree(props) {
   edges.map((value, index) => {
     let source = value.data.source;
     let target = value.data.target;
-    console.log(source);
     styleSheet.push({
       selector: `edge[label='${source}->${target}']`,
       style: {
@@ -229,13 +228,9 @@ function ClonalTree(props) {
     cy={cy => {
       myCyRef = cy;
 
-      console.log("EVT", cy);
 
       cy.on("tap", "node", evt => {
         var node = evt.target;
-        console.log("EVT", evt);
-        console.log("TARGET", node.data());
-        console.log("TARGET TYPE", typeof node[0]);
       });
 
       cy.on('mouseover', 'node', function(event) {
@@ -272,7 +267,9 @@ function ClonalTree(props) {
       cy.on('mouseout', 'node', function(event){
         // Remove the div element on mouseout
         var div = document.querySelector('.panel.popup');
-        document.body.removeChild(div);
+        if (document.body.contains(div)) {
+          document.body.removeChild(div);
+        }
 
         var node = event.target;
         var label = node.data('label');

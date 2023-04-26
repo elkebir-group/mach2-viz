@@ -157,8 +157,6 @@ function MigrationSummary(props) {
     edges.map((value, index) => {
         let source = value.data.source;
         let target = value.data.target;
-        console.log(value.data.id);
-        console.log(source);
         styleSheet.push({
           selector: `edge[id='${source}->${target}']`,
           style: {
@@ -242,13 +240,8 @@ function MigrationSummary(props) {
         cy={cy => {
           myCyRef = cy;
     
-          console.log("EVT", cy);
-    
           cy.on("tap", "node", evt => {
             var node = evt.target;
-            console.log("EVT", evt);
-            console.log("TARGET", node.data());
-            console.log("TARGET TYPE", typeof node[0]);
           });
 
           cy.on('mouseover', 'edge', function(event) {

@@ -457,6 +457,19 @@ img {
   margin-left: calc(50%);
 }
 
+.panel.info.tri {
+  margin-left: 0;
+  width: calc(34% - 50px);
+}
+
+.panel.info.tri.two {
+  margin-left: calc(34% - 25px);
+}
+
+.panel.info.tri.three {
+  margin-left: calc(68% - 25px)
+}
+
 .panel.migration.top.left {
   width: calc(100% - 50px);
 }

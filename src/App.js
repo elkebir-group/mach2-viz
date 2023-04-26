@@ -6,6 +6,7 @@ import Viz from './components/Viz.js'
 import Home from './components/Home.js'
 import DualViz from "./components/DualViz";
 import SumViz from "./components/SumViz";
+import TriViz from "./components/TriViz";
 
 import {
   BrowserRouter as Router,
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/sumviz">
             <SumViz/>
+          </Route>
+          <Route path="/triviz">
+            <TriViz/>
           </Route>
           <Route exact path="/">
             <Home/>

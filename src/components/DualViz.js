@@ -16,14 +16,12 @@ function insertParam(key, value) {
     // Change a url parameter using URLSearchParams
     let urlParams = new URLSearchParams(currentUrl.search);
     urlParams.set(key, value);
-    console.log(urlParams.toString());
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
     window.location.href = 'dualviz?' + urlParams.toString();
   
     // Reload the page
-    console.log(window.location);
     //window.location.reload();
 }
 

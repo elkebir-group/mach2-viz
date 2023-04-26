@@ -88,14 +88,10 @@ function ClonalSummary(props) {
     }
 
     let trees = props.data["solutions"].map(item => item["tree"]);
-    console.log(strictConsensus(trees))
     let nodeLists = trees.map(item => removeDuplicates(item.flat()));
     let nodeIds = removeDuplicates(intersectArrays(...nodeLists));
     const tree = strictConsensus(trees);
     
-    //let tree = removeDuplicateArrays(intersectArrays([].concat(...trees)));
-    //tree = removeDuplicateArrays(tree.filter(item => (nodeIds.includes(item[0]) && nodeIds.includes(item[1]))));
-
     const labels = props.data["solutions"].map(item => item["labeling"]);
     let labeling = removeDuplicateArrays([].concat(...labels));
     labeling = labeling.filter(item => getNumberOfLabels(item[0]) === 1 && nodeIds.includes(item[0]))
@@ -121,14 +117,8 @@ function ClonalSummary(props) {
             height: 15,
             label: "data(id)",
     
-            // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-            // "height": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-            // "text-valign": "center",
-            // "text-halign": "center",
             "overlay-padding": "6px",
             "z-index": "10",
-            //text props
-            //"text-outline-color": "#4a56a6",
             "text-outline-width": "2px",
             color: "white",
             fontSize: 15
@@ -244,8 +234,6 @@ function ClonalSummary(props) {
         cy={cy => {
           myCyRef = cy;
     
-          console.log("EVT", cy);
-    
           cy.on("tap", "node", evt => {
             var node = evt.target;
             console.log("EVT", evt);
@@ -286,7 +274,9 @@ function ClonalSummary(props) {
           cy.on('mouseout', 'node', function(event){
             // Remove the div element on mouseout
             var div = document.querySelector('.panel.popup');
-            document.body.removeChild(div);
+            if (document.body.contains(div)) {
+                document.body.removeChild(div);
+            }
     
             var node = event.target;
             var label = node.data('label');

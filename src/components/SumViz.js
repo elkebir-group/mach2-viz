@@ -19,14 +19,12 @@ function insertParam(key, value) {
     // Change a url parameter using URLSearchParams
     let urlParams = new URLSearchParams(currentUrl.search);
     urlParams.set(key, value);
-    console.log(urlParams.toString());
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
     window.location.href = 'sumviz?' + urlParams.toString();
   
     // Reload the page
-    console.log(window.location);
     //window.location.reload();
 }
 
@@ -34,7 +32,7 @@ function handleKeyPress(event) {
     if (event.key === '/') {
       alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponsing anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panel.\n\nThe dual visualization window allows you to compare different solutions side by side!');
     }
-  }
+}
 
 function SumViz() {
     const [isLoading, setIsLoading] = useState(true);
@@ -158,7 +156,6 @@ function SumViz() {
                             </b></p></label>
                             <h3 className="viztitle"><b>{data["name"]}</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                            <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
                         <div className="panel migration top left">
                             <p className="paneltitle"><b>Migration Graph</b></p>
