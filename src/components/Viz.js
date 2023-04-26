@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react"
-import { decompressUrlSafe } from '../utils/lzma-url.js'
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
 import Legend from "./Legend.js";

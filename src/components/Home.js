@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from "react-dom";
-import { compressUrlSafe } from '../utils/lzma-url.js'
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,7 +7,7 @@ import {
     Link
   } from "react-router-dom";
 
-import URLs from "../default_url.json";
+import URLs from "../utils/default_url.json";
 import download from "../assets/download.png";
 
 import axios from 'axios'
