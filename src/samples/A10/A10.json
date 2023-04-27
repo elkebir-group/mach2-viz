@@ -2433,26 +2433,6 @@
     "summary": {
         "migration": [
             [
-                null,
-                "perigastric_lymph_node",
-                1
-            ],
-            [
-                null,
-                "periportal_lymph_node",
-                2
-            ],
-            [
-                null,
-                "prostate",
-                3
-            ],
-            [
-                null,
-                "right_iliac_lymph_node",
-                1
-            ],
-            [
                 "perigastric_lymph_node",
                 "prostate",
                 2
@@ -2543,8 +2523,36 @@
         ],
         "labeling": [
             [
+                "pinkE",
+                "prostate"
+            ],
+            [
                 "orangeD",
                 "periportal_lymph_node"
+            ],
+            [
+                "dark_pinkE",
+                "prostate"
+            ],
+            [
+                "dark_purple",
+                "periportal_lymph_node"
+            ],
+            [
+                "dark_brownA",
+                "right_iliac_lymph_node"
+            ],
+            [
+                "dark_purpleD",
+                "periportal_lymph_node"
+            ],
+            [
+                "blueE",
+                "prostate"
+            ],
+            [
+                "gold",
+                null
             ],
             [
                 "goldC",
@@ -2553,34 +2561,6 @@
             [
                 "grey",
                 null
-            ],
-            [
-                "dark_purple",
-                "periportal_lymph_node"
-            ],
-            [
-                "blueE",
-                "prostate"
-            ],
-            [
-                "dark_pinkE",
-                "prostate"
-            ],
-            [
-                "dark_brownA",
-                "right_iliac_lymph_node"
-            ],
-            [
-                "gold",
-                null
-            ],
-            [
-                "dark_purpleD",
-                "periportal_lymph_node"
-            ],
-            [
-                "pinkE",
-                "prostate"
             ]
         ]
     }

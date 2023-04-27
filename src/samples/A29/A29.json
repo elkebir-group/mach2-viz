@@ -226,5 +226,67 @@
                 ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "prostate",
+                "right_superficial_inguinal_lymph_node",
+                2
+            ],
+            [
+                "right_superficial_inguinal_lymph_node",
+                "prostate",
+                2
+            ]
+        ],
+        "tree": [
+            [
+                "grey",
+                "dark_pinkC"
+            ],
+            [
+                "grey",
+                "light_blue"
+            ],
+            [
+                "grey",
+                "goldA"
+            ],
+            [
+                "light_blue",
+                "light_blueC"
+            ],
+            [
+                "light_blue",
+                "dark_greenC"
+            ]
+        ],
+        "labeling": [
+            [
+                "dark_greenC",
+                "prostate"
+            ],
+            [
+                "grey",
+                null
+            ],
+            [
+                "goldA",
+                "right_superficial_inguinal_lymph_node"
+            ],
+            [
+                "light_blueC",
+                "prostate"
+            ],
+            [
+                "dark_pinkC",
+                "prostate"
+            ],
+            [
+                "light_blue",
+                "prostate"
+            ]
+        ]
+    }
 }
