@@ -459,15 +459,15 @@ img {
 
 .panel.info.tri {
   margin-left: 0;
-  width: calc(34% - 50px);
+  width: calc(34% - 30px);
 }
 
 .panel.info.tri.two {
-  margin-left: calc(34% - 25px);
+  margin-left: calc(34% - 15px);
 }
 
 .panel.info.tri.three {
-  margin-left: calc(68% - 25px)
+  margin-left: calc(68% - 30px)
 }
 
 .panel.migration.top.left {
@@ -546,4 +546,12 @@ ul {
 .loading svg {
   margin-top: 32px;
   margin-left: 40%;
+}
+
+.panel.info.one.sum {
+  margin-left: 0px;
+}
+
+.panel.info.one.two.sum {
+  margin-left: calc(50% - 20px);
 }

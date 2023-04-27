@@ -28,6 +28,7 @@ function ClonalTree(props) {
   const ncolors = colorPalette.length;
 
   function getColor(label) {
+    if (!label) return '#000';
     let color = props.coloring.map((value, index) => {
       if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
     return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]

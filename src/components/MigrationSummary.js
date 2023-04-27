@@ -10,72 +10,49 @@ Cytoscape.use(COSEBilkent);
 
 function MigrationSummary(props) {
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
-
     const colorPalette = [
-    "#a6cee3",
-    "#1f78b4",
-    "#b2df8a",
-    "#33a02c",
-    "#fb9a99",
-    "#e31a1c",
-    "#fdbf6f",
-    "#ff7f00",
-    "#cab2d6",
-    "#6a3d9a",
-    "#ffff99",
-    "#b15928"
+      "#a6cee3",
+      "#1f78b4",
+      "#b2df8a",
+      "#33a02c",
+      "#fb9a99",
+      "#e31a1c",
+      "#fdbf6f",
+      "#ff7f00",
+      "#cab2d6",
+      "#6a3d9a",
+      "#ffff99",
+      "#b15928"
     ]
     const ncolors = colorPalette.length;
+
+    function onlyUnique(array) {
+      return [...new Set(array)];
+    }
+
+    function getColor(label) {
+      let color = props.coloring.map((value, index) => {
+        if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
+      return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
+    }
 
     const [width, setWith] = useState("100%");
     const [height, setHeight] = useState("100%");
 
-    function onlyUnique(value, index, array) {
-        return array.indexOf(value) === index;
-    }
+    let nodeSet = onlyUnique(props.data.map((value, index) => [value[0], value[1]]).flat())
 
-    function findLabel(node) {
-        return labeling.map((value, index) => {
-            if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
-    }
-
-    function getColor(label) {
-        let color = props.coloring.map((value, index) => {
-            if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
-        return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
-    }
-
-    let trees = props.data["solutions"].map(item => item["tree"]);
-    let tree = [].concat(...trees);
-
-    let labels = props.data["solutions"].map(item => item["labeling"]);
-    let labeling = [].concat(...labels);
-
-    let nodes = tree.flat().filter(onlyUnique).map((value, index) => {
-        return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
+    let nodes = nodeSet.map((value, index) => {
+        return { data: { id:  value, label: value, type: "ip"} };
     });
-    let edges_t = tree.map((value, index) => {
-        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1, id: `${findLabel(value[0])}->${findLabel(value[1])}`, clsource: value[0], cltarget: value[1] } }
+
+    let edges = props.data.map((value, index) => {
+      return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
     })
 
-    let edges = [];
-
-    for (const [i, edge] of edges_t.entries()) {
-        let flag = false;
-        for (const [j, edge2] of edges.entries()) {
-            if (edge.data.source == edge2.data.source && edge.data.target == edge2.data.target) {
-                edges[j].data.label++;
-                flag = true;
-                break;
-            }
-        }
-        if (!flag && edge.data.source !== edge.data.target) edges.push(edges_t[i]);
-    }
-
     for (const [i, edge] of edges.entries()) {
-        if (edge.data.label == 1) {
-          edges[i].data.label = "";
-        }
+      if (edge.data.label == 1) {
+        edges[i].data.label = "";
+      }
     }
 
     const [graphData, setGraphData] = useState({

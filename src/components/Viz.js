@@ -101,6 +101,8 @@ function Viz(props) {
       },
     };
 
+
+
     return (
       <div className="viz">
         <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>

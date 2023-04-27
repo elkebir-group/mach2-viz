@@ -56,12 +56,16 @@ function TriViz(props) {
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
     const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
 
+    const migrationSummary = wholeData["summary"]["migration"]
+    const summaryTree = wholeData["summary"]["tree"]
+    const labelingTree = wholeData["summary"]["labeling"]
+
     let coloring = data["labeling"]
       .map((item) => item[1])
       .filter((value, index, self) => {
         return self.indexOf(value) === index;
       })
-      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+      .map((item, index) => [item, `${index}`]);
 
       const tree = data["tree"]
       const tree2 = data2["tree"]
@@ -78,16 +82,6 @@ function TriViz(props) {
           insertParam("labeling2", event.target.value);
       }
   
-      let rotateFn = (event) => {
-          let rotated = queryParameters.get("rotated") === "true";
-          insertParam("rotated", !rotated);
-      }
-  
-      let rotateFn2 = (event) => {
-          let rotated = queryParameters.get("rotated2") === "true";
-          insertParam("rotated2", !rotated);
-      }
-  
       const eventBus = {
           listeners: [],
           addListener(callback) {
@@ -101,21 +95,6 @@ function TriViz(props) {
               listener(eventName, eventData);
             });
           },
-      };
-
-      const eventBus2 = {
-        listeners: [],
-        addListener(callback) {
-          this.listeners.push(callback);
-        },
-        removeListener(callback) {
-          this.listeners = this.listeners.filter(listener => listener !== callback);
-        },
-        fireEvent(eventName, eventData) {
-          this.listeners.forEach((listener) => {
-            listener(eventName, eventData);
-          });
-        },
       };
   
       useEffect(() => {
@@ -145,17 +124,17 @@ function TriViz(props) {
                         <div className="titlewrapper">
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                            <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                            <a onClick={() => {window.location.href=`/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
                         <div className="panel migration top left">
                             <p className="paneltitle"><b>Migration Graph</b></p>
                             <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                            <MigrationSummary data={wholeData} coloring={coloring} evtbus={eventBus}/>
+                            <MigrationSummary data={migrationSummary} coloring={coloring} evtbus={eventBus}/>
                         </div>
                         <div className="panel migration left">
-                            <p className="paneltitle"><b>Strict Consensus</b></p>
-                            <ClonalSummary data={wholeData} coloring={coloring} evtbus={eventBus}/>
+                            <p className="paneltitle"><b>Clonal Tree</b></p>
+                            <ClonalTree tree={summaryTree} labeling={labelingTree} coloring={coloring} evtbus={eventBus}/>
                         </div>
                     </div>
           <div className="panel info tri two">
@@ -168,7 +147,7 @@ function TriViz(props) {
                   </select>
                   </b></p></label>
                   <h3 className="viztitle"><b>{data["name"]}</b></h3>
-                  <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                  <a onClick={() => {window.location.href=`/sumviz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
               </div>
               <div className="panel migration top left">
                   <p className="paneltitle"><b>Migration Graph</b></p>
@@ -191,7 +170,7 @@ function TriViz(props) {
                   </select>
                   </b></p></label>
                   <h3 className="viztitle"><b>{data2["name"]}</b></h3>
-                  <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                  <a onClick={() => {window.location.href=`/sumviz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
               </div>
               <div className="panel migration top left">
                   <p className="paneltitle"><b>Migration Graph</b></p>

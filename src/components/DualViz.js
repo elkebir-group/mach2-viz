@@ -78,6 +78,10 @@ function DualViz() {
         insertParam("rotated2", !rotated);
     }
 
+    let gotoSummary = (event) => {
+      window.location = `${window.location.protocol}//${window.location.host}/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
+    }
+
     const eventBus = {
         listeners: [],
         addListener(callback) {
@@ -117,6 +121,7 @@ function DualViz() {
     });
 
     return <div className="viz">
+        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         <div className="panel info one">
             <div className="titlewrapper">
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
