@@ -1,0 +1,3 @@
+[submodule "src/utils/species-trees"]
+	path = src/utils/species-trees
+	url = https://github.com/vikramr2/species-trees.git
