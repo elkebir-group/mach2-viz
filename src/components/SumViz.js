@@ -141,15 +141,11 @@ function SumViz() {
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                             <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
-                        <div className="panel migration top left">
+                        <div className="panel migration top left sum">
                             <p className="paneltitle"><b>Migration Graph</b></p>
                             <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
                             <MigrationSummary data={migrationSummary} coloring={coloring} evtbus={eventBus}/>
-                        </div>
-                        <div className="panel migration left">
-                            <p className="paneltitle"><b>Clonal Tree</b></p>
-                            <ClonalTree tree={summaryTree} labeling={labelingTree} coloring={coloring} evtbus={eventBus}/>
                         </div>
                     </div>
                     <div className="panel info one two sum">

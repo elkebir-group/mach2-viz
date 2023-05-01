@@ -474,6 +474,10 @@ img {
   width: calc(100% - 50px);
 }
 
+.panel.migration.top.left.sum {
+  height: calc(100% - 75px);
+}
+
 .panel.migration.left {
   width: calc(100% - 50px);
 }
