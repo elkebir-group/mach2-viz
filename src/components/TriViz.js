@@ -98,12 +98,12 @@ function TriViz(props) {
       };
   
       useEffect(() => {
-        let intervalId = setInterval(() => {
-            setProgress(prevProgress => prevProgress + 10);
-        }, 1000);
+        //let intervalId = setInterval(() => {
+        //    setProgress(prevProgress => prevProgress + 10);
+        //}, 1000);
 
-        setTimeout(() => {
-            clearInterval(intervalId);
+        //setTimeout(() => {
+        //    clearInterval(intervalId);
           document.addEventListener("keydown", handleKeyPress);
           setMu(localStorage.getItem("mu"));
           setGamma(localStorage.getItem("gamma"));
@@ -112,10 +112,10 @@ function TriViz(props) {
           setMuSum(localStorage.getItem("musum"));
           setGammaSum(localStorage.getItem("gammasum"));
           setIsLoading(false)
-        }, 10000);
+        //}, 10000);
 
-        return () => clearInterval(intervalId);
-      });
+        //return () => clearInterval(intervalId);
+      }, []);
   
       return <div className="viz">
         {!isLoading ? (

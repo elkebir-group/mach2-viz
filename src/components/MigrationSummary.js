@@ -154,7 +154,7 @@ function MigrationSummary(props) {
     }
 
     const layout = {
-        name: "breadthfirst",
+        name: "dagre",
         fit: true,
         circle: true,
         directed: true,
@@ -164,12 +164,6 @@ function MigrationSummary(props) {
         animationDuration: 1000,
         avoidOverlap: true,
         nodeDimensionsIncludeLabels: false,
-        transform: (node, position) => {
-          return {
-            x: rotated ? -2*position.y : position.x,
-            y: rotated ? position.x : position.y
-          }
-        },
         ready: function() {
           const listener = (eventName, eventData) => {
             // Respond to event from other graph here
