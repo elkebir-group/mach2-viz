@@ -69,6 +69,8 @@ function TriViz(props) {
       const tree2 = data2["tree"]
       const tree_labeling = data["labeling"];
       const tree_labeling2 = data2["labeling"];
+      const migration = data["migration"];
+      const migration2 = data2["migration"];
   
       let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
   
@@ -147,7 +149,7 @@ function TriViz(props) {
                   <p className="paneltitle"><b>Migration Graph</b></p>
                   <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                   <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
-                  <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                  <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>
               </div>
               <div className="panel migration left">
                   <p className="paneltitle"><b>Clonal Tree</b></p>
@@ -170,7 +172,7 @@ function TriViz(props) {
                   <p className="paneltitle"><b>Migration Graph</b></p>
                   <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                   <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
-                  <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus} rightcol={true}/>
+                  <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus} rightcol={true}/>
               </div>
               <div className="panel migration left">
                   <p className="paneltitle"><b>Clonal Tree</b></p>

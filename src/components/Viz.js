@@ -58,6 +58,7 @@ function Viz(props) {
 
     const tree = data["tree"]
     const tree_labeling = data["labeling"]
+    const migration = data["migration"]
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
@@ -126,7 +127,7 @@ function Viz(props) {
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={eventBus}/>
               </div>
               <div className="panel migration">
                 <p className="paneltitle"><b>Clonal Tree</b></p>
