@@ -90,6 +90,28 @@
                     "blueE",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    null,
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    null,
+                    "periportal_lymph_node",
+                    2
+                ],
+                [
+                    null,
+                    "prostate",
+                    3
+                ],
+                [
+                    null,
+                    "right_iliac_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -212,6 +234,23 @@
                 [
                     "grey",
                     "perigastric_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "perigastric_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
                 ]
             ]
         },
@@ -336,6 +375,23 @@
                     "grey",
                     "perigastric_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "perigastric_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -458,6 +514,23 @@
                 [
                     "grey",
                     "periportal_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "periportal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
                 ]
             ]
         },
@@ -582,6 +655,23 @@
                     "grey",
                     "periportal_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "periportal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -704,6 +794,23 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
                 ]
             ]
         },
@@ -828,6 +935,23 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -950,6 +1074,23 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "perigastric_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1074,6 +1215,23 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -1196,6 +1354,23 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1320,6 +1495,23 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -1442,6 +1634,28 @@
                 [
                     "grey",
                     "right_iliac_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1566,6 +1780,28 @@
                     "grey",
                     "right_iliac_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -1688,6 +1924,28 @@
                 [
                     "grey",
                     "right_iliac_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1812,6 +2070,28 @@
                     "grey",
                     "right_iliac_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -1934,6 +2214,28 @@
                 [
                     "grey",
                     "right_iliac_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
                 ]
             ]
         },
@@ -2058,6 +2360,28 @@
                     "grey",
                     "right_iliac_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_iliac_lymph_node",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -2180,6 +2504,23 @@
                 [
                     "grey",
                     "right_iliac_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "periportal_lymph_node",
+                    "perigastric_lymph_node",
+                    1
                 ]
             ]
         },
@@ -2304,6 +2645,23 @@
                     "grey",
                     "right_iliac_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "perigastric_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -2427,6 +2785,23 @@
                     "grey",
                     "right_iliac_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_iliac_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "periportal_lymph_node",
+                    1
+                ],
+                [
+                    "right_iliac_lymph_node",
+                    "perigastric_lymph_node",
+                    1
+                ]
             ]
         }
     ],
@@ -2434,8 +2809,8 @@
         "migration": [
             [
                 "perigastric_lymph_node",
-                "prostate",
-                2
+                "periportal_lymph_node",
+                7
             ],
             [
                 "prostate",
@@ -2444,8 +2819,8 @@
             ],
             [
                 "perigastric_lymph_node",
-                "periportal_lymph_node",
-                7
+                "prostate",
+                2
             ],
             [
                 "periportal_lymph_node",
@@ -2469,98 +2844,18 @@
             ],
             [
                 "right_iliac_lymph_node",
-                "prostate",
-                12
-            ],
-            [
-                "right_iliac_lymph_node",
                 "periportal_lymph_node",
                 6
             ],
             [
                 "right_iliac_lymph_node",
+                "prostate",
+                9
+            ],
+            [
+                "right_iliac_lymph_node",
                 "perigastric_lymph_node",
                 6
-            ]
-        ],
-        "tree": [
-            [
-                "grey",
-                "pinkE"
-            ],
-            [
-                "grey",
-                "blueE"
-            ],
-            [
-                "grey",
-                "dark_pinkE"
-            ],
-            [
-                "grey",
-                "dark_brownA"
-            ],
-            [
-                "grey",
-                "gold"
-            ],
-            [
-                "gold",
-                "goldC"
-            ],
-            [
-                "gold",
-                "dark_purple"
-            ],
-            [
-                "dark_purple",
-                "dark_purpleD"
-            ],
-            [
-                "dark_purple",
-                "orangeD"
-            ]
-        ],
-        "labeling": [
-            [
-                "pinkE",
-                "prostate"
-            ],
-            [
-                "orangeD",
-                "periportal_lymph_node"
-            ],
-            [
-                "dark_pinkE",
-                "prostate"
-            ],
-            [
-                "dark_purple",
-                "periportal_lymph_node"
-            ],
-            [
-                "dark_brownA",
-                "right_iliac_lymph_node"
-            ],
-            [
-                "dark_purpleD",
-                "periportal_lymph_node"
-            ],
-            [
-                "blueE",
-                "prostate"
-            ],
-            [
-                "gold",
-                null
-            ],
-            [
-                "goldC",
-                "perigastric_lymph_node"
-            ],
-            [
-                "grey",
-                null
             ]
         ]
     }

@@ -154,6 +154,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -308,6 +340,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -464,6 +528,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -618,6 +709,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -774,6 +892,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -928,6 +1073,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -1084,6 +1256,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -1238,6 +1437,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -1394,6 +1620,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -1548,6 +1806,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -1704,6 +1994,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -1858,6 +2180,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -2014,6 +2368,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -2168,6 +2554,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -2324,6 +2742,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -2478,6 +2928,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -2634,6 +3116,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -2788,6 +3302,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -2944,6 +3490,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -3098,6 +3676,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -3254,6 +3864,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -3408,6 +4050,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -3564,6 +4238,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -3718,6 +4424,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -3874,6 +4612,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -4028,6 +4793,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -4184,6 +4976,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -4338,6 +5157,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -4494,6 +5340,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -4648,6 +5526,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -4804,6 +5714,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -4958,6 +5895,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -5114,6 +6078,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -5268,6 +6259,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -5424,6 +6442,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -5578,6 +6628,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -5734,6 +6816,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -5888,6 +7002,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -6044,6 +7185,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -6198,6 +7366,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -6354,6 +7549,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -6508,6 +7730,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -6664,6 +7918,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -6818,6 +8104,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -6974,6 +8287,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -7128,6 +8468,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -7284,6 +8656,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -7438,6 +8837,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "brain",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -7594,6 +9020,38 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -7748,6 +9206,38 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "rib",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -7904,6 +9394,33 @@
                     "1",
                     "brain"
                 ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -8058,6 +9575,33 @@
                 [
                     "1",
                     "brain"
+                ]
+            ],
+            "migration": [
+                [
+                    "brain",
+                    "lung",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -8214,6 +9758,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -8368,6 +9944,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -8524,6 +10132,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -8678,6 +10318,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -8834,6 +10506,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -8988,6 +10692,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -9144,6 +10880,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -9298,6 +11066,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -9454,6 +11254,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -9608,6 +11440,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -9764,6 +11628,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -9918,6 +11814,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -10074,6 +12002,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -10228,6 +12188,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -10384,6 +12376,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -10538,6 +12562,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -10694,6 +12750,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -10848,6 +12936,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -11004,6 +13124,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -11158,6 +13310,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -11314,6 +13498,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -11468,6 +13684,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -11624,6 +13872,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -11778,6 +14058,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -11934,6 +14246,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -12088,6 +14432,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -12244,6 +14620,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -12398,6 +14806,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -12554,6 +14994,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -12708,6 +15180,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -12864,6 +15368,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -13018,6 +15554,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -13174,6 +15742,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -13328,6 +15928,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -13484,6 +16116,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -13638,6 +16302,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -13794,6 +16490,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -13948,6 +16676,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -14104,6 +16864,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -14258,6 +17050,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -14414,6 +17238,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -14568,6 +17424,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -14724,6 +17612,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -14878,6 +17798,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -15034,6 +17986,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -15188,6 +18172,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -15344,6 +18360,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -15498,6 +18546,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "breast",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -15654,6 +18734,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -15808,6 +18920,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "rib",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -15964,6 +19108,38 @@
                     "1",
                     "breast"
                 ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -16118,6 +19294,38 @@
                 [
                     "1",
                     "breast"
+                ]
+            ],
+            "migration": [
+                [
+                    "breast",
+                    "lung",
+                    1
+                ],
+                [
+                    "breast",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -16274,6 +19482,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -16428,6 +19673,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -16584,6 +19866,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -16738,6 +20057,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -16894,6 +20250,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -17048,6 +20441,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -17204,6 +20634,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -17358,6 +20825,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -17514,6 +21018,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -17668,6 +21209,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -17824,6 +21402,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -17978,6 +21593,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -18134,6 +21786,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -18288,6 +21977,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -18444,6 +22170,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -18598,6 +22361,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -18754,6 +22554,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -18908,6 +22745,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -19064,6 +22938,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -19218,6 +23129,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -19374,6 +23322,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -19528,6 +23513,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -19684,6 +23706,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -19838,6 +23897,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -19994,6 +24090,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -20148,6 +24281,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -20304,6 +24474,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -20458,6 +24665,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -20614,6 +24858,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -20768,6 +25049,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -20924,6 +25242,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -21078,6 +25433,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -21234,6 +25626,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -21388,6 +25817,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -21544,6 +26010,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -21698,6 +26201,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -21854,6 +26394,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -22008,6 +26585,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -22164,6 +26778,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -22318,6 +26969,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -22474,6 +27162,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -22628,6 +27353,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -22784,6 +27546,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -22938,6 +27737,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -23094,6 +27930,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -23248,6 +28121,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -23404,6 +28314,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -23558,6 +28505,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -23714,6 +28698,38 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -23868,6 +28884,38 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -24024,6 +29072,38 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -24178,6 +29258,38 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -24334,6 +29446,38 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -24488,6 +29632,38 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -24644,6 +29820,38 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ]
             ]
         },
         {
@@ -24798,6 +30006,38 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
                 ]
             ]
         },
@@ -24954,6 +30194,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -25108,6 +30385,38 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
                 ]
             ]
         },
@@ -25264,6 +30573,38 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ]
             ]
         },
         {
@@ -25418,6 +30759,38 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
                 ]
             ]
         },
@@ -25574,6 +30947,38 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "liver",
+                    2
+                ]
             ]
         },
         {
@@ -25728,6 +31133,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "rib",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -25884,6 +31326,43 @@
                     "1",
                     "kidney"
                 ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -26038,6 +31517,43 @@
                 [
                     "1",
                     "kidney"
+                ]
+            ],
+            "migration": [
+                [
+                    "kidney",
+                    "lung",
+                    1
+                ],
+                [
+                    "kidney",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "kidney",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -26194,6 +31710,38 @@
                     "1",
                     "liver"
                 ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -26348,6 +31896,38 @@
                 [
                     "1",
                     "liver"
+                ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -26504,6 +32084,38 @@
                     "1",
                     "liver"
                 ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -26658,6 +32270,38 @@
                 [
                     "1",
                     "liver"
+                ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -26814,6 +32458,38 @@
                     "1",
                     "liver"
                 ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -26968,6 +32644,38 @@
                 [
                     "1",
                     "liver"
+                ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -27124,6 +32832,38 @@
                     "1",
                     "liver"
                 ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -27278,6 +33018,38 @@
                 [
                     "1",
                     "liver"
+                ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -27434,6 +33206,38 @@
                     "1",
                     "liver"
                 ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -27588,6 +33392,38 @@
                 [
                     "1",
                     "liver"
+                ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -27744,6 +33580,38 @@
                     "1",
                     "liver"
                 ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -27898,6 +33766,38 @@
                 [
                     "1",
                     "liver"
+                ]
+            ],
+            "migration": [
+                [
+                    "liver",
+                    "brain",
+                    1
+                ],
+                [
+                    "liver",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -28054,6 +33954,38 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -28208,6 +34140,38 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -28364,6 +34328,33 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -28518,6 +34509,33 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "lung",
+                    "brain",
+                    2
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -28674,6 +34692,38 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -28828,6 +34878,38 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -28984,6 +35066,33 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -29138,6 +35247,33 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "lung",
+                    "brain",
+                    2
                 ]
             ]
         },
@@ -29294,6 +35430,33 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -29448,6 +35611,33 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "lung",
+                    "brain",
+                    2
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -29604,6 +35794,38 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -29758,6 +35980,38 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
                 ]
             ]
         },
@@ -29914,6 +36168,33 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    2
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ]
             ]
         },
         {
@@ -30068,6 +36349,33 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "lung",
+                    "brain",
+                    2
                 ]
             ]
         },
@@ -30224,6 +36532,38 @@
                     "1",
                     "lung"
                 ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -30378,6 +36718,38 @@
                 [
                     "1",
                     "lung"
+                ]
+            ],
+            "migration": [
+                [
+                    "lung",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "lung",
+                    "liver",
+                    1
+                ],
+                [
+                    "lung",
+                    "breast",
+                    1
+                ],
+                [
+                    "lung",
+                    "rib",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -30534,6 +36906,38 @@
                     "1",
                     "rib"
                 ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -30688,6 +37092,38 @@
                 [
                     "1",
                     "rib"
+                ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -30844,6 +37280,38 @@
                     "1",
                     "rib"
                 ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -30998,6 +37466,38 @@
                 [
                     "1",
                     "rib"
+                ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
                 ]
             ]
         },
@@ -31154,6 +37654,38 @@
                     "1",
                     "rib"
                 ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ]
             ]
         },
         {
@@ -31308,6 +37840,38 @@
                 [
                     "1",
                     "rib"
+                ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
                 ]
             ]
         },
@@ -31464,6 +38028,38 @@
                     "1",
                     "rib"
                 ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         },
         {
@@ -31619,30 +38215,47 @@
                     "1",
                     "rib"
                 ]
+            ],
+            "migration": [
+                [
+                    "rib",
+                    "brain",
+                    1
+                ],
+                [
+                    "rib",
+                    "liver",
+                    1
+                ],
+                [
+                    "liver",
+                    "kidney",
+                    1
+                ],
+                [
+                    "rib",
+                    "breast",
+                    1
+                ],
+                [
+                    "brain",
+                    "lung",
+                    1
+                ],
+                [
+                    "rib",
+                    "lung",
+                    1
+                ]
             ]
         }
     ],
     "summary": {
         "migration": [
             [
-                "brain",
-                "rib",
-                24
-            ],
-            [
-                "brain",
-                "lung",
-                220
-            ],
-            [
                 "rib",
                 "liver",
                 32
-            ],
-            [
-                "brain",
-                "breast",
-                52
             ],
             [
                 "rib",
@@ -31650,9 +38263,24 @@
                 76
             ],
             [
+                "brain",
+                "lung",
+                196
+            ],
+            [
+                "brain",
+                "rib",
+                24
+            ],
+            [
                 "liver",
                 "kidney",
                 192
+            ],
+            [
+                "brain",
+                "breast",
+                52
             ],
             [
                 "lung",
@@ -31665,24 +38293,19 @@
                 84
             ],
             [
+                "liver",
+                "rib",
+                32
+            ],
+            [
                 "brain",
                 "liver",
                 36
             ],
             [
                 "liver",
-                "rib",
-                32
-            ],
-            [
-                "liver",
                 "lung",
                 32
-            ],
-            [
-                "breast",
-                "rib",
-                24
             ],
             [
                 "breast",
@@ -31691,6 +38314,11 @@
             ],
             [
                 "breast",
+                "rib",
+                24
+            ],
+            [
+                "breast",
                 "lung",
                 24
             ],
@@ -31706,12 +38334,12 @@
             ],
             [
                 "kidney",
-                "brain",
+                "breast",
                 64
             ],
             [
                 "kidney",
-                "breast",
+                "brain",
                 64
             ],
             [
@@ -31722,12 +38350,7 @@
             [
                 "kidney",
                 "liver",
-                60
-            ],
-            [
-                "liver",
-                "brain",
-                12
+                48
             ],
             [
                 "liver",
@@ -31735,9 +38358,9 @@
                 12
             ],
             [
-                "lung",
+                "liver",
                 "brain",
-                24
+                12
             ],
             [
                 "lung",
@@ -31745,110 +38368,19 @@
                 16
             ],
             [
-                "rib",
+                "lung",
                 "brain",
-                8
+                16
             ],
             [
                 "rib",
                 "breast",
                 8
-            ]
-        ],
-        "tree": [
-            [
-                "1",
-                "6_rib"
             ],
             [
-                "1",
-                "6_lung"
-            ],
-            [
-                "1",
-                "5"
-            ],
-            [
-                "5",
-                "8_kidney"
-            ],
-            [
-                "5",
-                "5_liver"
-            ],
-            [
-                "5",
-                "9_liver"
-            ],
-            [
-                "1",
-                "1_breast"
-            ],
-            [
-                "1",
-                "4"
-            ],
-            [
-                "4",
-                "7_lung"
-            ],
-            [
-                "4",
-                "4_brain"
-            ],
-            [
-                "4",
-                "10_brain"
-            ]
-        ],
-        "labeling": [
-            [
-                "1_breast",
-                "breast"
-            ],
-            [
-                "1",
-                null
-            ],
-            [
-                "5_liver",
-                "liver"
-            ],
-            [
-                "4_brain",
-                "brain"
-            ],
-            [
-                "7_lung",
-                "lung"
-            ],
-            [
-                "4",
-                null
-            ],
-            [
-                "10_brain",
-                "brain"
-            ],
-            [
-                "5",
-                null
-            ],
-            [
-                "8_kidney",
-                "kidney"
-            ],
-            [
-                "9_liver",
-                "liver"
-            ],
-            [
-                "6_rib",
-                "rib"
-            ],
-            [
-                "6_lung",
-                "lung"
+                "rib",
+                "brain",
+                8
             ]
         ]
     }

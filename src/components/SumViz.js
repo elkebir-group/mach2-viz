@@ -51,8 +51,6 @@ function SumViz() {
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
 
     const migrationSummary = wholeData["summary"]["migration"]
-    const summaryTree = wholeData["summary"]["tree"]
-    const labelingTree = wholeData["summary"]["labeling"]
 
     let coloring = data["labeling"]
       .map((item) => item[1])
