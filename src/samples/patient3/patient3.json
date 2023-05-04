@@ -290,7 +290,103 @@
                     "G1",
                     "Adnx"
                 ]
+            ],
+            "migration": [
+                [
+                    "LOv",
+                    "Om",
+                    5
+                ],
+                [
+                    "LOv",
+                    "ROv",
+                    4
+                ],
+                [
+                    "LOv",
+                    "Adnx",
+                    3
+                ],
+                [
+                    "LOv",
+                    "CDSB",
+                    3
+                ],
+                [
+                    "LOv",
+                    "ClnE",
+                    3
+                ],
+                [
+                    "LOv",
+                    "LFTC",
+                    4
+                ],
+                [
+                    "LOv",
+                    "RFTA",
+                    3
+                ],
+                [
+                    "Om",
+                    "CDSB",
+                    1
+                ],
+                [
+                    "Om",
+                    "ClnE",
+                    1
+                ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "LOv",
+                "RFTA",
+                1
+            ],
+            [
+                "LOv",
+                "Adnx",
+                1
+            ],
+            [
+                "LOv",
+                "ROv",
+                1
+            ],
+            [
+                "LOv",
+                "CDSB",
+                1
+            ],
+            [
+                "LOv",
+                "ClnE",
+                1
+            ],
+            [
+                "Om",
+                "CDSB",
+                1
+            ],
+            [
+                "LOv",
+                "LFTC",
+                1
+            ],
+            [
+                "Om",
+                "ClnE",
+                1
+            ],
+            [
+                "LOv",
+                "Om",
+                1
+            ]
+        ]
+    }
 }

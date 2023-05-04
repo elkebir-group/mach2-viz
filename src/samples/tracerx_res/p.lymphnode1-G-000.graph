@@ -1,7 +1,0 @@
-p.lymphnode1 p.lung 2
-p.lymphnode1 lung2 1
-lung2 relapse1 2
-lung2 lung3 1
-lung3 lung1 2
-lung3 bone1 3
-lung3 lung4 1

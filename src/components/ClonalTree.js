@@ -28,6 +28,7 @@ function ClonalTree(props) {
   const ncolors = colorPalette.length;
 
   function getColor(label) {
+    if (!label) return '#000';
     let color = props.coloring.map((value, index) => {
       if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
     return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
@@ -118,7 +119,6 @@ function ClonalTree(props) {
   edges.map((value, index) => {
     let source = value.data.source;
     let target = value.data.target;
-    console.log(source);
     styleSheet.push({
       selector: `edge[label='${source}->${target}']`,
       style: {
@@ -172,20 +172,18 @@ function ClonalTree(props) {
         }
         if (eventName === 'selectNodeSC') {
           const node = myCyRef.getElementById(eventData.nodeId);
-          let source = eventData.source;
-          let target = eventData.sink;
+          let label = eventData.label;
 
-          myCyRef.$(`edge[label='${source}->${target}']`).css({
+          myCyRef.$(`edge[label='${label}']`).css({
             width: 10
           })
           node.trigger('select');
         }
         if (eventName === 'deselectNodeSC') {
           const node = myCyRef.getElementById(eventData.nodeId);
-          let source = eventData.source;
-          let target = eventData.sink;
+          let label = eventData.label;
 
-          myCyRef.$(`edge[label='${source}->${target}']`).css({
+          myCyRef.$(`edge[label='${label}']`).css({
             width: 3
           })
           node.trigger('select');
@@ -229,13 +227,9 @@ function ClonalTree(props) {
     cy={cy => {
       myCyRef = cy;
 
-      console.log("EVT", cy);
 
       cy.on("tap", "node", evt => {
         var node = evt.target;
-        console.log("EVT", evt);
-        console.log("TARGET", node.data());
-        console.log("TARGET TYPE", typeof node[0]);
       });
 
       cy.on('mouseover', 'node', function(event) {
@@ -261,18 +255,26 @@ function ClonalTree(props) {
         // Add the div element to the page
         document.body.appendChild(div);
 
+        const nodeId = event.target.id();
+
         var labeltag = document.querySelector(`#${label}`);
         if (labeltag !== null) {
           labeltag.style.opacity = 1;
           labeltag.style.zIndex = 100;
           labeltag.style.fontWeight = 'bold';
         }
+
+        props.evtbus.fireEvent('hoverNodeSC', { nodeId });
       });
 
       cy.on('mouseout', 'node', function(event){
         // Remove the div element on mouseout
         var div = document.querySelector('.panel.popup');
-        document.body.removeChild(div);
+        if (document.body.contains(div)) {
+          document.body.removeChild(div);
+        }
+
+        const nodeId = event.target.id();
 
         var node = event.target;
         var label = node.data('label');
@@ -283,6 +285,8 @@ function ClonalTree(props) {
           labeltag.style.zIndex = 1;
           labeltag.style.fontWeight = 'normal';
         }
+
+        props.evtbus.fireEvent('dehoverNodeSC', { nodeId });
       });
 
       cy.on('mouseover', 'edge', function(event) {
@@ -293,7 +297,9 @@ function ClonalTree(props) {
         const nodeId = event.target.id();
         let source = findLabel(target.data().source);
         let sink = findLabel(target.data().target);
+        let label = target.data().label;
         props.evtbus.fireEvent('selectNode', { nodeId, source, sink, target});
+        props.evtbus.fireEvent('selectNodeSC', { nodeId, source, sink, target, label});
       });
 
       cy.on('mouseout', 'edge', function(event) {
@@ -304,7 +310,9 @@ function ClonalTree(props) {
         const nodeId = event.target.id();
         let source = findLabel(target.data().source);
         let sink = findLabel(target.data().target);
+        let label = target.data().label;
         props.evtbus.fireEvent('deselectNode', { nodeId, source, sink, target});
+        props.evtbus.fireEvent('deselectNodeSC', { nodeId, source, sink, target, label});
       });
     }}
     abc={console.log("myCyRef", myCyRef)}

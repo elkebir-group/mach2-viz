@@ -48,31 +48,14 @@ function Migration(props) {
       let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
-      let edges_t = props.tree.map((value, index) => {
-        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1, id: `${findLabel(value[0])}->${findLabel(value[1])}`, clsource: value[0], cltarget: value[1] } }
+      let edges = props.migration.map((value, index) => {
+        return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
       })
-
-      let edges = [];
-
-      for (const [i, edge] of edges_t.entries()) {
-        let flag = false;
-        for (const [j, edge2] of edges.entries()) {
-          if (edge.data.source == edge2.data.source && edge.data.target == edge2.data.target) {
-            edges[j].data.label++;
-            flag = true;
-            break;
-          }
-        }
-        if (!flag && edge.data.source !== edge.data.target) edges.push(edges_t[i]);
-      }
-
       for (const [i, edge] of edges.entries()) {
         if (edge.data.label == 1) {
           edges[i].data.label = "";
         }
       }
-
-      console.log(edges);
     
       const [graphData, setGraphData] = useState({
         nodes: nodes,
@@ -153,8 +136,6 @@ function Migration(props) {
       edges.map((value, index) => {
         let source = value.data.source;
         let target = value.data.target;
-        console.log(value.data.id);
-        console.log(source);
         styleSheet.push({
           selector: `edge[id='${source}->${target}']`,
           style: {
@@ -271,13 +252,8 @@ function Migration(props) {
         cy={cy => {
           myCyRef = cy;
     
-          console.log("EVT", cy);
-    
           cy.on("tap", "node", evt => {
             var node = evt.target;
-            console.log("EVT", evt);
-            console.log("TARGET", node.data());
-            console.log("TARGET TYPE", typeof node[0]);
           });
 
           cy.on('mouseover', 'edge', function(event) {

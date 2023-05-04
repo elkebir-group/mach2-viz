@@ -16,14 +16,12 @@ function insertParam(key, value) {
     // Change a url parameter using URLSearchParams
     let urlParams = new URLSearchParams(currentUrl.search);
     urlParams.set(key, value);
-    console.log(urlParams.toString());
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
     window.location.href = 'dualviz?' + urlParams.toString();
   
     // Reload the page
-    console.log(window.location);
     //window.location.reload();
 }
 
@@ -59,6 +57,8 @@ function DualViz() {
     const tree2 = data2["tree"]
     const tree_labeling = data["labeling"];
     const tree_labeling2 = data2["labeling"];
+    const migration = data["migration"];
+    const migration2 = data2["migration"];
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
@@ -78,6 +78,10 @@ function DualViz() {
     let rotateFn2 = (event) => {
         let rotated = queryParameters.get("rotated2") === "true";
         insertParam("rotated2", !rotated);
+    }
+
+    let gotoSummary = (event) => {
+      window.location = `${window.location.protocol}//${window.location.host}/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
     }
 
     const eventBus = {
@@ -119,6 +123,7 @@ function DualViz() {
     });
 
     return <div className="viz">
+        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         <div className="panel info one">
             <div className="titlewrapper">
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
@@ -137,7 +142,7 @@ function DualViz() {
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>
@@ -162,7 +167,7 @@ function DualViz() {
                 <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
-                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
+                <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>

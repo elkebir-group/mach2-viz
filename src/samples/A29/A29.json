@@ -74,6 +74,13 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_superficial_inguinal_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -148,6 +155,13 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_superficial_inguinal_lymph_node",
+                    1
                 ]
             ]
         },
@@ -224,7 +238,28 @@
                     "grey",
                     "right_superficial_inguinal_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_superficial_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "prostate",
+                "right_superficial_inguinal_lymph_node",
+                2
+            ],
+            [
+                "right_superficial_inguinal_lymph_node",
+                "prostate",
+                1
+            ]
+        ]
+    }
 }

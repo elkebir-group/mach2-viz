@@ -19,14 +19,12 @@ function insertParam(key, value) {
     // Change a url parameter using URLSearchParams
     let urlParams = new URLSearchParams(currentUrl.search);
     urlParams.set(key, value);
-    console.log(urlParams.toString());
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
     window.location.href = 'sumviz?' + urlParams.toString();
   
     // Reload the page
-    console.log(window.location);
     //window.location.reload();
 }
 
@@ -34,7 +32,7 @@ function handleKeyPress(event) {
     if (event.key === '/') {
       alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponsing anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panel.\n\nThe dual visualization window allows you to compare different solutions side by side!');
     }
-  }
+}
 
 function SumViz() {
     const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +50,8 @@ function SumViz() {
 
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
 
+    const migrationSummary = wholeData["summary"]["migration"]
+
     let coloring = data["labeling"]
       .map((item) => item[1])
       .filter((value, index, self) => {
@@ -61,6 +61,7 @@ function SumViz() {
 
     const tree = data["tree"]
     const tree_labeling = data["labeling"];
+    const migration = data["migration"];
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
@@ -71,6 +72,10 @@ function SumViz() {
     let rotateFn = (event) => {
         let rotated = queryParameters.get("rotated") === "true";
         insertParam("rotated", !rotated);
+    }
+
+    let addTab = (event) => {
+        window.location = `${window.location.protocol}//${window.location.host}/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     const eventBus = {
@@ -104,21 +109,20 @@ function SumViz() {
     };
 
     useEffect(() => {
-        let intervalId = setInterval(() => {
-            setProgress(prevProgress => prevProgress + 10);
-        }, 1000);
+        //let intervalId = setInterval(() => {
+        //    setProgress(prevProgress => prevProgress + 10);
+        //}, 1000);
 
-        setTimeout(() => {
-            clearInterval(intervalId);
-            document.addEventListener("keydown", handleKeyPress);
-            setMu(localStorage.getItem("mu"));
-            setGamma(localStorage.getItem("gamma"));
-            setMuSum(localStorage.getItem("musum"));
-            setGammaSum(localStorage.getItem("gammasum"));
-            setIsLoading(false)
-        }, 10000)
+        
+        // clearInterval(intervalId);
+        document.addEventListener("keydown", handleKeyPress);
+        setMu(localStorage.getItem("mu"));
+        setGamma(localStorage.getItem("gamma"));
+        setMuSum(localStorage.getItem("musum"));
+        setGammaSum(localStorage.getItem("gammasum"));
+        setIsLoading(false)
 
-        return () => clearInterval(intervalId);
+        //return () => clearInterval(intervalId);
     }, []);
 
     useEffect(() => {
@@ -130,24 +134,20 @@ function SumViz() {
         <div className="viz">
             {!isLoading ? (
                 <>
-                    <div className="panel info one">
+                    <div className="panel info one sum">
                         <div className="titlewrapper">
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                             <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
-                        <div className="panel migration top left">
+                        <div className="panel migration top left sum">
                             <p className="paneltitle"><b>Migration Graph</b></p>
                             <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                            <MigrationSummary data={wholeData} coloring={coloring} evtbus={eventBus}/>
-                        </div>
-                        <div className="panel migration left">
-                            <p className="paneltitle"><b>Strict Consensus</b></p>
-                            <ClonalSummary data={wholeData} coloring={coloring} evtbus={eventBus}/>
+                            <MigrationSummary data={migrationSummary} coloring={coloring} evtbus={eventBus}/>
                         </div>
                     </div>
-                    <div className="panel info one two">
+                    <div className="panel info one two sum">
                         <div className="titlewrapper">
                             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                             <select name="labelings" id="labelings" onChange={handleLabelChange}>
@@ -158,20 +158,20 @@ function SumViz() {
                             </b></p></label>
                             <h3 className="viztitle"><b>{data["name"]}</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                            <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
                         <div className="panel migration top left">
                             <p className="paneltitle"><b>Migration Graph</b></p>
                             <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                            <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                            <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>
                         </div>
                         <div className="panel migration left">
                             <p className="paneltitle"><b>Clonal Tree</b></p>
                             <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus} rightcol={true}/>
                         </div>
                     </div>
+                    <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
                 </>
             ) : (
                 <Loading progress={progress}/>
