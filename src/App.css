@@ -560,3 +560,16 @@ ul {
 .panel.info.one.two.sum {
   margin-left: calc(50% - 20px);
 }
+
+.settingsgear {
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.settingsgear:hover {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}

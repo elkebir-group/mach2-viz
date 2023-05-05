@@ -10,7 +10,9 @@ import Migration from "./Migration.js";
 import ClonalTree from "./ClonalTree.js";
 import MigrationSummary from "./MigrationSummary.js";
 import Loading from "./Loading.js";
-import ClonalSummary from "./ClonalSummary.js";
+import InlineSVG from 'react-inlinesvg';
+
+import gear from '../assets/settings-gear.svg'
 
 function insertParam(key, value) {
     // Get the current url
@@ -136,6 +138,7 @@ function SumViz() {
                 <>
                     <div className="panel info one sum">
                         <div className="titlewrapper">
+                            <InlineSVG src={gear} className="settingsgear"/>
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                             <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
