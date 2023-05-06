@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router basename='/machina-viz'>
         <Switch>
           <Route path="/about">
             <About/>
