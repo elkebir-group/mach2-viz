@@ -35,6 +35,9 @@ function App() {
           <Route path="/triviz">
             <TriViz/>
           </Route>
+          <Route path="/machina-viz">
+            <Home/>
+          </Route>
           <Route exact path="/">
             <Home/>
           </Route>
