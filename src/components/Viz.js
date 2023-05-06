@@ -26,7 +26,7 @@ function insertParam(key, value) {
   var lastSlashIndex = currentURL.lastIndexOf("/");
 
   // Extract the portion of the URL after the last slash
-  var newURL = currentURL.substring(0, lastSlashIndex + 1) + 'viz/' + urlParams.toString();
+  var newURL = currentURL.substring(0, lastSlashIndex + 1) + 'viz?' + urlParams.toString();
 
   // Replace the URL
   //currentUrl.search = urlParams.toString();
