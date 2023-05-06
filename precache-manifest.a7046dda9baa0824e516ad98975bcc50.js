@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "c44bafb2ca7e10272cc3",
-    "url": "/machina-viz/static/css/main.293d9641.chunk.css"
+    "revision": "45f33d8068fb9f062b70",
+    "url": "/machina-viz/static/css/main.4a139607.chunk.css"
   },
   {
-    "revision": "c44bafb2ca7e10272cc3",
-    "url": "/machina-viz/static/js/main.c44bafb2.chunk.js"
+    "revision": "45f33d8068fb9f062b70",
+    "url": "/machina-viz/static/js/main.45f33d80.chunk.js"
   },
   {
     "revision": "b9699fdd249ffdecb04e",
     "url": "/machina-viz/static/js/1.b9699fdd.chunk.js"
   },
   {
-    "revision": "1e0e03cfa301a3f8e641",
-    "url": "/machina-viz/static/js/2.1e0e03cf.chunk.js"
+    "revision": "53e3b637f3f06380c21a",
+    "url": "/machina-viz/static/js/2.53e3b637.chunk.js"
   },
   {
     "revision": "7aee411d69c8698003f1",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/machina-viz/static/media/settings-gear.80b88740.svg"
   },
   {
-    "revision": "0ebb97af92a7b3f3219099459bfd8696",
+    "revision": "843c1391ba55a16e0c7b8849d82aed82",
     "url": "/machina-viz/index.html"
   }
 ];
