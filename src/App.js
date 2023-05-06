@@ -35,6 +35,21 @@ function App() {
           <Route path="/triviz">
             <TriViz/>
           </Route>
+          <Route path="/machina-viz/about">
+            <About/>
+          </Route>
+          <Route path="/machina-viz/viz">
+            <Viz/>
+          </Route>
+          <Route path="/machina-viz/dualviz">
+            <DualViz/>
+          </Route>
+          <Route path="/machina-viz/sumviz">
+            <SumViz/>
+          </Route>
+          <Route path="/machina-viz/triviz">
+            <TriViz/>
+          </Route>
           <Route path="/machina-viz">
             <Home/>
           </Route>
