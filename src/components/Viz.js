@@ -17,11 +17,20 @@ function insertParam(key, value) {
   // Change a url parameter using URLSearchParams
   let urlParams = new URLSearchParams(currentUrl.search);
   urlParams.set(key, value);
-  console.log(urlParams.toString());
+  //console.log(urlParams.toString());
+
+  // Get the current URL
+  var currentURL = window.location.href;
+
+  // Find the last slash position
+  var lastSlashIndex = currentURL.lastIndexOf("/");
+
+  // Extract the portion of the URL after the last slash
+  var newURL = currentURL.substring(0, lastSlashIndex + 1) + urlParams.toString();
 
   // Replace the URL
   //currentUrl.search = urlParams.toString();
-  window.location.href = 'viz?' + urlParams.toString();
+  window.location.href = newURL;
   //history.go('viz?' + urlParams.toString());
 
   // Reload the page
