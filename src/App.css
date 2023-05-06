@@ -244,7 +244,7 @@ input {
   float: left;
   margin-top: 20px;
   height: calc(100% - 40px);
-  margin-left: 15px;
+  margin-left: 20px;
   width: calc(100% - 85px);
   overflow: hidden;
 }
@@ -259,6 +259,20 @@ input {
 .paneltitle {
   position: absolute;
   margin-top: 5px;
+  z-index: 999;
+}
+
+.paneltitle.mu {
+  margin-top: 25px;
+}
+
+.paneltitle.gamma {
+  margin-top: 45px;
+}
+
+.paneltitle.button {
+  margin-top: 75px;
+  margin-left: 5px;
 }
 
 .block label { display: flex; }
@@ -350,6 +364,10 @@ ul {
 .viztitle {
   z-index: 999;
   text-align: center;
+  width:300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .panel.popup {
@@ -404,6 +422,15 @@ img {
   width: 30px;
 }
 
+.panel.tab_add2 {
+  position: absolute;
+  margin-top: 20px;
+  margin-left: -15px;
+  background-color: #B3B3B3;
+  height: calc(100% - 40px);
+  width: 30px;
+}
+
 .addpanelp {
   color: white;
   position: relative;
@@ -417,6 +444,11 @@ img {
   cursor: pointer;
 }
 
+.panel.tab_add2:hover {
+  background-color: #A3A3A3;
+  cursor: pointer;
+}
+
 .panel.info.one {
   width: calc(50% - 50px);
 }
@@ -425,8 +457,25 @@ img {
   margin-left: calc(50%);
 }
 
+.panel.info.tri {
+  margin-left: 0;
+  width: calc(34% - 30px);
+}
+
+.panel.info.tri.two {
+  margin-left: calc(34% - 15px);
+}
+
+.panel.info.tri.three {
+  margin-left: calc(68% - 30px)
+}
+
 .panel.migration.top.left {
   width: calc(100% - 50px);
+}
+
+.panel.migration.top.left.sum {
+  height: calc(100% - 75px);
 }
 
 .panel.migration.left {
@@ -466,6 +515,7 @@ a:hover {
 
 .bodymap {
   opacity: 0.6;
+  z-index: 0;
 }
 
 ul {
@@ -478,4 +528,48 @@ ul {
 
 .lowerlist {
   margin-top: 0px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: auto;
+}
+
+.loading img {
+  margin-top: 20%;
+  max-width: 100%;
+}
+
+.loading h1 {
+  margin-top: 16px;
+}
+
+.loading svg {
+  margin-top: 32px;
+  margin-left: 40%;
+}
+
+.panel.info.one.sum {
+  margin-left: 0px;
+}
+
+.panel.info.one.two.sum {
+  margin-left: calc(50% - 20px);
+}
+
+.settingsgear {
+  width: 30px;
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.settingsgear:hover {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }

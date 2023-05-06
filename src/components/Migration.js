@@ -48,31 +48,14 @@ function Migration(props) {
       let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
-      let edges_t = props.tree.map((value, index) => {
-        return { data: { source: findLabel(value[0]), target: findLabel(value[1]), label: 1, id: `${findLabel(value[0])}->${findLabel(value[1])}`, clsource: value[0], cltarget: value[1] } }
+      let edges = props.migration.map((value, index) => {
+        return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
       })
-
-      let edges = [];
-
-      for (const [i, edge] of edges_t.entries()) {
-        let flag = false;
-        for (const [j, edge2] of edges.entries()) {
-          if (edge.data.source == edge2.data.source && edge.data.target == edge2.data.target) {
-            edges[j].data.label++;
-            flag = true;
-            break;
-          }
-        }
-        if (!flag && edge.data.source !== edge.data.target) edges.push(edges_t[i]);
-      }
-
       for (const [i, edge] of edges.entries()) {
         if (edge.data.label == 1) {
           edges[i].data.label = "";
         }
       }
-
-      console.log(edges);
     
       const [graphData, setGraphData] = useState({
         nodes: nodes,
@@ -153,8 +136,6 @@ function Migration(props) {
       edges.map((value, index) => {
         let source = value.data.source;
         let target = value.data.target;
-        console.log(value.data.id);
-        console.log(source);
         styleSheet.push({
           selector: `edge[id='${source}->${target}']`,
           style: {
@@ -167,17 +148,30 @@ function Migration(props) {
       })
     
       let myCyRef;
+
+      const queryParameters = new URLSearchParams(window.location.search);
+      let rotated = props.rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
+      if (rotated === null) {
+        rotated = false;
+      }
+
       const layout = {
         name: "dagre",
         fit: true,
         circle: true,
         directed: true,
-        padding: 50,
+        padding: 10,
         // spacingFactor: 1.5,
         animate: true,
         animationDuration: 1000,
         avoidOverlap: true,
         nodeDimensionsIncludeLabels: false,
+        transform: (node, position) => {
+          return {
+            x: rotated ? -2*position.y : position.x,
+            y: rotated ? position.x : position.y
+          }
+        },
         ready: function() {
           const listener = (eventName, eventData) => {
             // Respond to event from other graph here
@@ -200,10 +194,49 @@ function Migration(props) {
               })
               node.trigger('select');
             }
+            if (eventName === 'selectNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`edge[id='${eventData.nodeId}']`).css({
+                width: 10
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'deselectNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`edge[id='${eventData.nodeId}']`).css({
+                width: 3
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'hoverNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${eventData.nodeId}']`).css({
+                'border-width': 20,
+              })
+              edge.trigger('select');
+            }
+            if (eventName === 'dehoverNodeSum') {
+              const edge = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${eventData.nodeId}']`).css({
+                'border-width': 10,
+              })
+              edge.trigger('select');
+            }
           };
           props.evtbus.addListener(listener);
         }
       };
+
+      let mu = edges.length;
+      let gamma = edges.filter((item) => { return item.data.label !== '' }).length
+
+      if (!props.rightcol) {
+        localStorage.setItem("mu", mu);
+        localStorage.setItem("gamma", gamma);
+      } else {
+        localStorage.setItem("mu2", mu);
+        localStorage.setItem("gamma2", gamma);
+      }
     
       return <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
@@ -219,13 +252,8 @@ function Migration(props) {
         cy={cy => {
           myCyRef = cy;
     
-          console.log("EVT", cy);
-    
           cy.on("tap", "node", evt => {
             var node = evt.target;
-            console.log("EVT", evt);
-            console.log("TARGET", node.data());
-            console.log("TARGET TYPE", typeof node[0]);
           });
 
           cy.on('mouseover', 'edge', function(event) {

@@ -218,6 +218,43 @@
                     "grey",
                     "left_cervical_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -436,6 +473,43 @@
                 [
                     "grey",
                     "left_cervical_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -656,6 +730,43 @@
                     "grey",
                     "left_cervical_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -874,6 +985,38 @@
                 [
                     "grey",
                     "left_cervical_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1094,6 +1237,43 @@
                     "grey",
                     "left_cervical_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -1312,6 +1492,38 @@
                 [
                     "grey",
                     "left_cervical_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1532,6 +1744,38 @@
                     "grey",
                     "left_cervical_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -1750,6 +1994,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -1970,6 +2256,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ]
             ]
         },
         {
@@ -2188,6 +2511,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -2408,6 +2768,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -2626,6 +3023,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -2846,6 +3285,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -3064,6 +3540,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -3284,6 +3797,48 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -3502,6 +4057,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
                 ]
             ]
         },
@@ -3722,6 +4314,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ]
             ]
         },
         {
@@ -3940,6 +4569,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -4160,6 +4826,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -4378,6 +5076,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
                 ]
             ]
         },
@@ -4598,6 +5333,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -4816,6 +5583,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -5036,6 +5845,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ]
             ]
         },
         {
@@ -5254,6 +6100,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
                 ]
             ]
         },
@@ -5474,6 +6357,48 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -5692,6 +6617,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -5912,6 +6874,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -6130,6 +7129,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -6350,6 +7391,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -6568,6 +7646,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -6788,6 +7903,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -7006,6 +8158,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -7226,6 +8420,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -7444,6 +8675,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
                 ]
             ]
         },
@@ -7664,6 +8932,48 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -7882,6 +9192,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
                 ]
             ]
         },
@@ -8102,6 +9449,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -8320,6 +9704,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -8540,6 +9966,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ]
             ]
         },
         {
@@ -8758,6 +10221,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
                 ]
             ]
         },
@@ -8978,6 +10478,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -9196,6 +10733,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
                 ]
             ]
         },
@@ -9416,6 +10985,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -9634,6 +11235,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
                 ]
             ]
         },
@@ -9854,6 +11487,48 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -10072,6 +11747,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
                 ]
             ]
         },
@@ -10292,6 +12004,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ]
             ]
         },
         {
@@ -10510,6 +12259,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -10730,6 +12516,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ]
             ]
         },
         {
@@ -10948,6 +12766,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
                 ]
             ]
         },
@@ -11168,6 +13018,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -11386,6 +13273,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
                 ]
             ]
         },
@@ -11606,6 +13525,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -11824,6 +13775,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
                 ]
             ]
         },
@@ -12044,6 +14027,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -12262,6 +14282,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -12482,6 +14534,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -12700,6 +14784,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -12920,6 +15041,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -13138,6 +15291,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -13358,6 +15543,48 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -13576,6 +15803,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
                 ]
             ]
         },
@@ -13796,6 +16060,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ]
             ]
         },
         {
@@ -14014,6 +16315,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -14234,6 +16577,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -14452,6 +16832,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -14672,6 +17084,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -14890,6 +17334,48 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -15110,6 +17596,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ]
             ]
         },
         {
@@ -15328,6 +17851,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
                 ]
             ]
         },
@@ -15548,6 +18108,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -15766,6 +18358,33 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -15986,6 +18605,33 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -16204,6 +18850,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -16424,6 +19102,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ]
             ]
         },
         {
@@ -16642,6 +19357,33 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -16862,6 +19604,33 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -17080,6 +19849,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -17300,6 +20106,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -17518,6 +20356,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -17738,6 +20608,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -17956,6 +20863,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -18176,6 +21115,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -18394,6 +21365,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -18614,6 +21622,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ]
             ]
         },
         {
@@ -18832,6 +21872,43 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
                 ]
             ]
         },
@@ -19052,6 +22129,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ]
             ]
         },
         {
@@ -19270,6 +22379,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -19490,6 +22631,33 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ]
             ]
         },
         {
@@ -19708,6 +22876,33 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
                 ]
             ]
         },
@@ -19928,6 +23123,43 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -20146,6 +23378,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
                 ]
             ]
         },
@@ -20366,6 +23630,38 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ]
             ]
         },
         {
@@ -20584,6 +23880,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -20804,6 +24132,33 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -21022,6 +24377,33 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -21242,6 +24624,48 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -21460,6 +24884,38 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -21680,6 +25136,33 @@
                     "grey",
                     "left_subclavicular_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -21898,6 +25381,33 @@
                 [
                     "grey",
                     "left_subclavicular_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "left_subclavicular_lymph_node",
+                    "prostate",
+                    4
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_subclavicular_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -22118,6 +25628,43 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -22336,6 +25883,38 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -22556,6 +26135,33 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ]
             ]
         },
         {
@@ -22774,6 +26380,33 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
                 ]
             ]
         },
@@ -22994,6 +26627,33 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ]
             ]
         },
         {
@@ -23212,6 +26872,33 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
                 ]
             ]
         },
@@ -23432,6 +27119,28 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ]
             ]
         },
         {
@@ -23650,6 +27359,28 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
                 ]
             ]
         },
@@ -23870,6 +27601,43 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -24088,6 +27856,43 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -24308,6 +28113,43 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -24526,6 +28368,43 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -24746,6 +28625,38 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -24964,6 +28875,43 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -25184,6 +29132,43 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -25402,6 +29387,43 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -25622,6 +29644,38 @@
                     "grey",
                     "right_humerus"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_humerus",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -25840,6 +29894,38 @@
                 [
                     "grey",
                     "right_humerus"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_humerus",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -26060,6 +30146,33 @@
                     "grey",
                     "right_humerus"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_humerus",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -26278,6 +30391,43 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -26498,6 +30648,48 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -26716,6 +30908,38 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_rib_8",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -26936,6 +31160,38 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_rib_8",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -27154,6 +31410,38 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_rib_8",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -27374,6 +31662,38 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_rib_8",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -27592,6 +31912,33 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_rib_8",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -27812,6 +32159,33 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "right_rib_8",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    3
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -28030,6 +32404,43 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_humerus",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "right_humerus",
+                    "left_cervical_lymph_node",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -28250,6 +32661,43 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -28468,6 +32916,48 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -28688,6 +33178,43 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    3
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "right_humerus",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -28906,6 +33433,48 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -29126,6 +33695,48 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "prostate",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_8",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         },
         {
@@ -29344,6 +33955,43 @@
                 [
                     "grey",
                     "right_rib_8"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
                 ]
             ]
         },
@@ -29564,7 +34212,148 @@
                     "grey",
                     "right_rib_8"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_8",
+                    "left_cervical_lymph_node",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "prostate",
+                    4
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "left_subclavicular_lymph_node",
+                    1
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_rib_8",
+                    1
+                ],
+                [
+                    "right_rib_8",
+                    "right_humerus",
+                    2
+                ],
+                [
+                    "left_cervical_lymph_node",
+                    "right_humerus",
+                    1
+                ],
+                [
+                    "prostate",
+                    "left_subclavicular_lymph_node",
+                    1
+                ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "right_rib_8",
+                "right_humerus",
+                39
+            ],
+            [
+                "left_cervical_lymph_node",
+                "right_rib_8",
+                12
+            ],
+            [
+                "right_rib_8",
+                "prostate",
+                63
+            ],
+            [
+                "left_cervical_lymph_node",
+                "right_humerus",
+                67
+            ],
+            [
+                "left_cervical_lymph_node",
+                "left_subclavicular_lymph_node",
+                42
+            ],
+            [
+                "prostate",
+                "left_subclavicular_lymph_node",
+                73
+            ],
+            [
+                "left_cervical_lymph_node",
+                "prostate",
+                17
+            ],
+            [
+                "right_humerus",
+                "right_rib_8",
+                63
+            ],
+            [
+                "right_humerus",
+                "prostate",
+                63
+            ],
+            [
+                "prostate",
+                "right_rib_8",
+                57
+            ],
+            [
+                "prostate",
+                "right_humerus",
+                39
+            ],
+            [
+                "right_humerus",
+                "left_cervical_lymph_node",
+                43
+            ],
+            [
+                "left_subclavicular_lymph_node",
+                "right_humerus",
+                60
+            ],
+            [
+                "left_subclavicular_lymph_node",
+                "prostate",
+                93
+            ],
+            [
+                "right_humerus",
+                "left_subclavicular_lymph_node",
+                18
+            ],
+            [
+                "left_subclavicular_lymph_node",
+                "left_cervical_lymph_node",
+                84
+            ],
+            [
+                "left_subclavicular_lymph_node",
+                "right_rib_8",
+                18
+            ],
+            [
+                "prostate",
+                "left_cervical_lymph_node",
+                13
+            ],
+            [
+                "right_rib_8",
+                "left_subclavicular_lymph_node",
+                6
+            ],
+            [
+                "right_rib_8",
+                "left_cervical_lymph_node",
+                13
+            ]
+        ]
+    }
 }

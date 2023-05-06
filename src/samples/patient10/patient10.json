@@ -138,7 +138,33 @@
                     "F2",
                     "Om"
                 ]
+            ],
+            "migration": [
+                [
+                    "ROv",
+                    "Om",
+                    4
+                ],
+                [
+                    "ROv",
+                    "LFT",
+                    2
+                ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "ROv",
+                "LFT",
+                1
+            ],
+            [
+                "ROv",
+                "Om",
+                1
+            ]
+        ]
+    }
 }

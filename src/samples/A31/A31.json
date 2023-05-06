@@ -234,6 +234,48 @@
                     "grey",
                     "left_adrenal_gland"
                 ]
+            ],
+            "migration": [
+                [
+                    "left_adrenal_gland",
+                    "prostate",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_rib_7",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -468,6 +510,43 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_inguinal_lymph_node",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "prostate",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -704,6 +783,43 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_inguinal_lymph_node",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -938,6 +1054,53 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_adrenal_gland",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_rib_7",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -1174,6 +1337,48 @@
                     "grey",
                     "prostate"
                 ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "prostate",
+                    "right_rib_7",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -1408,6 +1613,48 @@
                 [
                     "grey",
                     "prostate"
+                ]
+            ],
+            "migration": [
+                [
+                    "prostate",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "prostate",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "prostate",
+                    "right_rib_7",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -1644,6 +1891,33 @@
                     "grey",
                     "right_inguinal_lymph_node"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -1878,6 +2152,33 @@
                 [
                     "grey",
                     "right_inguinal_lymph_node"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -2114,6 +2415,48 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -2348,6 +2691,48 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -2584,6 +2969,48 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -2818,6 +3245,33 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -3054,6 +3508,33 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -3288,6 +3769,28 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
                 ]
             ]
         },
@@ -3524,6 +4027,28 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ]
             ]
         },
         {
@@ -3758,6 +4283,28 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
                 ]
             ]
         },
@@ -3994,6 +4541,28 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ]
             ]
         },
         {
@@ -4228,6 +4797,58 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_rib_7",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -4464,6 +5085,48 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -4698,6 +5361,33 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -4934,6 +5624,33 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -5168,6 +5885,28 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
                 ]
             ]
         },
@@ -5404,6 +6143,28 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ]
             ]
         },
         {
@@ -5638,6 +6399,28 @@
                 [
                     "grey",
                     "right_rib_7"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
                 ]
             ]
         },
@@ -5874,6 +6657,28 @@
                     "grey",
                     "right_rib_7"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_rib_7",
+                    "prostate",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "left_adrenal_gland",
+                    4
+                ],
+                [
+                    "right_rib_7",
+                    "right_subdural",
+                    3
+                ],
+                [
+                    "right_rib_7",
+                    "right_inguinal_lymph_node",
+                    4
+                ]
             ]
         },
         {
@@ -6108,6 +6913,48 @@
                 [
                     "grey",
                     "right_subdural"
+                ]
+            ],
+            "migration": [
+                [
+                    "right_subdural",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_subdural",
+                    "right_inguinal_lymph_node",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
                 ]
             ]
         },
@@ -6344,6 +7191,48 @@
                     "grey",
                     "right_subdural"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_subdural",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_subdural",
+                    "right_inguinal_lymph_node",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    3
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    3
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         },
         {
@@ -6579,7 +7468,153 @@
                     "grey",
                     "right_subdural"
                 ]
+            ],
+            "migration": [
+                [
+                    "right_subdural",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_subdural",
+                    "left_adrenal_gland",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_inguinal_lymph_node",
+                    2
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_subdural",
+                    2
+                ],
+                [
+                    "left_adrenal_gland",
+                    "prostate",
+                    1
+                ],
+                [
+                    "left_adrenal_gland",
+                    "right_rib_7",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "prostate",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "left_adrenal_gland",
+                    1
+                ],
+                [
+                    "right_inguinal_lymph_node",
+                    "right_rib_7",
+                    2
+                ],
+                [
+                    "right_subdural",
+                    "right_rib_7",
+                    1
+                ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "left_adrenal_gland",
+                "right_rib_7",
+                4
+            ],
+            [
+                "right_inguinal_lymph_node",
+                "prostate",
+                16
+            ],
+            [
+                "left_adrenal_gland",
+                "prostate",
+                4
+            ],
+            [
+                "left_adrenal_gland",
+                "right_inguinal_lymph_node",
+                4
+            ],
+            [
+                "right_subdural",
+                "right_rib_7",
+                20
+            ],
+            [
+                "right_inguinal_lymph_node",
+                "left_adrenal_gland",
+                16
+            ],
+            [
+                "right_inguinal_lymph_node",
+                "right_rib_7",
+                16
+            ],
+            [
+                "right_inguinal_lymph_node",
+                "right_subdural",
+                16
+            ],
+            [
+                "prostate",
+                "left_adrenal_gland",
+                5
+            ],
+            [
+                "prostate",
+                "right_inguinal_lymph_node",
+                4
+            ],
+            [
+                "prostate",
+                "right_rib_7",
+                2
+            ],
+            [
+                "right_rib_7",
+                "right_inguinal_lymph_node",
+                16
+            ],
+            [
+                "right_rib_7",
+                "left_adrenal_gland",
+                17
+            ],
+            [
+                "right_rib_7",
+                "prostate",
+                17
+            ],
+            [
+                "right_rib_7",
+                "right_subdural",
+                12
+            ],
+            [
+                "right_subdural",
+                "prostate",
+                3
+            ],
+            [
+                "right_subdural",
+                "right_inguinal_lymph_node",
+                2
+            ],
+            [
+                "right_subdural",
+                "left_adrenal_gland",
+                3
+            ]
+        ]
+    }
 }

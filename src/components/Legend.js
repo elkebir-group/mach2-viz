@@ -46,7 +46,6 @@ function Legend(props) {
                 src={map}
                 className='paneltitle bodymap'
             />
-            {console.log(props.coord_map)}
         </div>
     }
 }

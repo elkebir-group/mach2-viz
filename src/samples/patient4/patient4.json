@@ -146,7 +146,43 @@
                     "H1",
                     "ROv"
                 ]
+            ],
+            "migration": [
+                [
+                    "ROv",
+                    "LPv",
+                    2
+                ],
+                [
+                    "ROv",
+                    "LOv",
+                    2
+                ],
+                [
+                    "ROv",
+                    "RPv",
+                    2
+                ]
             ]
         }
-    ]
+    ],
+    "summary": {
+        "migration": [
+            [
+                "ROv",
+                "RPv",
+                1
+            ],
+            [
+                "ROv",
+                "LPv",
+                1
+            ],
+            [
+                "ROv",
+                "LOv",
+                1
+            ]
+        ]
+    }
 }

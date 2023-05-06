@@ -16,14 +16,12 @@ function insertParam(key, value) {
     // Change a url parameter using URLSearchParams
     let urlParams = new URLSearchParams(currentUrl.search);
     urlParams.set(key, value);
-    console.log(urlParams.toString());
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
     window.location.href = 'dualviz?' + urlParams.toString();
   
     // Reload the page
-    console.log(window.location);
     //window.location.reload();
 }
 
@@ -34,6 +32,10 @@ function handleKeyPress(event) {
   }
 
 function DualViz() {
+    const [mu, setMu] = useState(0);
+    const [gamma, setGamma] = useState(0);
+    const [mu2, setMu2] = useState(0);
+    const [gamma2, setGamma2] = useState(0);
     const queryParameters = new URLSearchParams(window.location.search);
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
@@ -55,6 +57,8 @@ function DualViz() {
     const tree2 = data2["tree"]
     const tree_labeling = data["labeling"];
     const tree_labeling2 = data2["labeling"];
+    const migration = data["migration"];
+    const migration2 = data2["migration"];
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
@@ -64,6 +68,20 @@ function DualViz() {
 
     let handleLabelChange2 = (event) => {
         insertParam("labeling2", event.target.value);
+    }
+
+    let rotateFn = (event) => {
+        let rotated = queryParameters.get("rotated") === "true";
+        insertParam("rotated", !rotated);
+    }
+
+    let rotateFn2 = (event) => {
+        let rotated = queryParameters.get("rotated2") === "true";
+        insertParam("rotated2", !rotated);
+    }
+
+    let gotoSummary = (event) => {
+      window.location = `${window.location.protocol}//${window.location.host}/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
     }
 
     const eventBus = {
@@ -98,9 +116,14 @@ function DualViz() {
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyPress);
+        setMu(localStorage.getItem("mu"));
+        setGamma(localStorage.getItem("gamma"));
+        setMu2(localStorage.getItem("mu2"));
+        setGamma2(localStorage.getItem("gamma2"));
     });
 
     return <div className="viz">
+        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         <div className="panel info one">
             <div className="titlewrapper">
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
@@ -116,7 +139,10 @@ function DualViz() {
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+                <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
+                <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>
@@ -132,13 +158,16 @@ function DualViz() {
                     )}
                 </select>
                 </b></p></label>
-                <h3 className="viztitle"><b>{data["name"]}</b></h3>
+                <h3 className="viztitle"><b>{data2["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                 <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2}/>
+                <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
+                <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>

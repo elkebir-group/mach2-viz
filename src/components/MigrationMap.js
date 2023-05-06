@@ -121,7 +121,7 @@ function MigrationMap(props) {
           style: {
             "border-width": "6px",
             "border-color": "#AAD8FF",
-            "border-opacity": "0.5",
+            "border-opacity": "1",
             "background-color": "#77828C",
             width: 50,
             height: 50,
