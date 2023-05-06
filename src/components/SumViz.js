@@ -5,12 +5,14 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import InlineSVG from 'react-inlinesvg';
 
 import Migration from "./Migration.js";
 import ClonalTree from "./ClonalTree.js";
 import MigrationSummary from "./MigrationSummary.js";
 import Loading from "./Loading.js";
-import InlineSVG from 'react-inlinesvg';
+import FilterMenu from "./FilterMenu.js";
+
 
 import gear from '../assets/settings-gear.svg'
 
@@ -43,6 +45,7 @@ function SumViz() {
     const [gamma, setGamma] = useState(0);
     const [muSum, setMuSum] = useState(0);
     const [gammaSum, setGammaSum] = useState(0);
+    const [showPanel, setShowPanel] = useState(false);
 
     const queryParameters = new URLSearchParams(window.location.search);
     const jsonContents=localStorage.getItem("json_data");
@@ -51,6 +54,8 @@ function SumViz() {
     const labelName = queryParameters.get("labeling");
 
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+
+    const numSolns = wholeData["solutions"].length;
 
     const migrationSummary = wholeData["summary"]["migration"]
 
@@ -138,7 +143,8 @@ function SumViz() {
                 <>
                     <div className="panel info one sum">
                         <div className="titlewrapper">
-                            <InlineSVG src={gear} className="settingsgear"/>
+                            <InlineSVG src={gear} className="settingsgear" onClick={() => setShowPanel(!showPanel)}/>
+                            <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary}/>
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                             <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>

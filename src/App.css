@@ -62,7 +62,7 @@ Link {
   }
 }
 
-h1, h2, h3, h4, h5, h6, p, header, span {
+h1, h2, h3, h4, h5, h6, p, header, span, label {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
@@ -569,7 +569,18 @@ ul {
 }
 
 .settingsgear:hover {
-  width: 40px;
-  height: 40px;
   cursor: pointer;
+}
+
+.filtermenu {
+  position: absolute;
+  margin-left: 40px;
+  margin-top: 10px;
+  z-index: 99999;
+}
+
+input {
+  padding: 5px;
+  width: 15px;
+  height: 15px;
 }

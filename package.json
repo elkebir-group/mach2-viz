@@ -1,5 +1,6 @@
 {
   "name": "machina-viz",
+  "homepage": "https://vikramr2.github.io/machina-viz",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -69,7 +70,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
-    "@svgr/cli": "^7.0.0"
+    "@svgr/cli": "^7.0.0",
+    "gh-pages": "^5.0.0"
   }
 }
