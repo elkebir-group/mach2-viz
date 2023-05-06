@@ -15,10 +15,17 @@ import {
   Link
 } from "react-router-dom";
 
+import { createBrowserHistory } from 'history';
+
+
 function App() {
+  const history = createBrowserHistory({
+    basename: '/machina-viz' // Replace with your repository name
+  });
+
   return (
     <div className="App">
-      <Router>
+      <Router basename='/machina-viz'>
         <Switch>
           <Route path="/about">
             <About/>
@@ -34,6 +41,24 @@ function App() {
           </Route>
           <Route path="/triviz">
             <TriViz/>
+          </Route>
+          <Route path="/machina-viz/about">
+            <About/>
+          </Route>
+          <Route path="/machina-viz/viz">
+            <Viz/>
+          </Route>
+          <Route path="/machina-viz/dualviz">
+            <DualViz/>
+          </Route>
+          <Route path="/machina-viz/sumviz">
+            <SumViz/>
+          </Route>
+          <Route path="/machina-viz/triviz">
+            <TriViz/>
+          </Route>
+          <Route path="/machina-viz">
+            <Home/>
           </Route>
           <Route exact path="/">
             <Home/>

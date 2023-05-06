@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
+import { useHistory } from 'react-router-dom';
 import Legend from "./Legend.js";
 import {
   BrowserRouter as Router,
@@ -10,25 +11,6 @@ import {
 } from "react-router-dom";
 import RightColumn from "./RightColumn.js";
 
-function insertParam(key, value) {
-  // Get the current url
-  let currentUrl = new URL(window.location.href);
-
-  // Change a url parameter using URLSearchParams
-  let urlParams = new URLSearchParams(currentUrl.search);
-  urlParams.set(key, value);
-  console.log(urlParams.toString());
-
-  // Replace the URL
-  //currentUrl.search = urlParams.toString();
-  window.location.href = 'viz?' + urlParams.toString();
-  //history.go('viz?' + urlParams.toString());
-
-  // Reload the page
-  //console.log(window.location);
-  //window.location.reload();
-}
-
 function handleKeyPress(event) {
   if (event.key === '/') {
     alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponsing anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panel.\n\nOn the right, rotate around an anatomical model to visualize the corresponding metastatic locations.');
@@ -36,6 +18,7 @@ function handleKeyPress(event) {
 }
 
 function Viz(props) {
+    const history = useHistory();
     const [mu, setMu] = useState(0);
     const [gamma, setGamma] = useState(0);
     const jsonContents=localStorage.getItem("json_data");
@@ -63,6 +46,17 @@ function Viz(props) {
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
     let coord_map = wholeData["map"]; 
+
+    let insertParam = (key, value) => {
+      // Get the current url
+      let currentUrl = new URL(window.location.href);
+
+      // Change a url parameter using URLSearchParams
+      let urlParams = new URLSearchParams(currentUrl.search);
+      urlParams.set(key, value);
+      history.push('/viz?' + urlParams.toString());
+      window.location.reload();
+    }
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
