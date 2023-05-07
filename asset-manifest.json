@@ -1,11 +1,11 @@
 {
   "main.css": "/machina-viz/static/css/main.4a139607.chunk.css",
-  "main.js": "/machina-viz/static/js/main.13da293e.chunk.js",
-  "main.js.map": "/machina-viz/static/js/main.13da293e.chunk.js.map",
+  "main.js": "/machina-viz/static/js/main.8117454b.chunk.js",
+  "main.js.map": "/machina-viz/static/js/main.8117454b.chunk.js.map",
   "static/js/1.b9699fdd.chunk.js": "/machina-viz/static/js/1.b9699fdd.chunk.js",
   "static/js/1.b9699fdd.chunk.js.map": "/machina-viz/static/js/1.b9699fdd.chunk.js.map",
-  "static/js/2.53e3b637.chunk.js": "/machina-viz/static/js/2.53e3b637.chunk.js",
-  "static/js/2.53e3b637.chunk.js.map": "/machina-viz/static/js/2.53e3b637.chunk.js.map",
+  "static/js/2.93211c62.chunk.js": "/machina-viz/static/js/2.93211c62.chunk.js",
+  "static/js/2.93211c62.chunk.js.map": "/machina-viz/static/js/2.93211c62.chunk.js.map",
   "runtime~main.js": "/machina-viz/static/js/runtime~main.7aee411d.js",
   "runtime~main.js.map": "/machina-viz/static/js/runtime~main.7aee411d.js.map",
   "static/media/map.jpeg": "/machina-viz/static/media/map.0c0c2213.jpeg",
@@ -13,6 +13,6 @@
   "static/media/settings-gear.svg": "/machina-viz/static/media/settings-gear.80b88740.svg",
   "static/css/main.4a139607.chunk.css.map": "/machina-viz/static/css/main.4a139607.chunk.css.map",
   "index.html": "/machina-viz/index.html",
-  "precache-manifest.e9fcdc42f6c8f103433724abe632cf23.js": "/machina-viz/precache-manifest.e9fcdc42f6c8f103433724abe632cf23.js",
+  "precache-manifest.8a74994f9f71a7658066065c71798ded.js": "/machina-viz/precache-manifest.8a74994f9f71a7658066065c71798ded.js",
   "service-worker.js": "/machina-viz/service-worker.js"
 }
