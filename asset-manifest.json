@@ -1,7 +1,7 @@
 {
   "main.css": "/machina-viz/static/css/main.4a139607.chunk.css",
-  "main.js": "/machina-viz/static/js/main.8238c1a1.chunk.js",
-  "main.js.map": "/machina-viz/static/js/main.8238c1a1.chunk.js.map",
+  "main.js": "/machina-viz/static/js/main.bffbfde3.chunk.js",
+  "main.js.map": "/machina-viz/static/js/main.bffbfde3.chunk.js.map",
   "static/js/1.b9699fdd.chunk.js": "/machina-viz/static/js/1.b9699fdd.chunk.js",
   "static/js/1.b9699fdd.chunk.js.map": "/machina-viz/static/js/1.b9699fdd.chunk.js.map",
   "static/js/2.93211c62.chunk.js": "/machina-viz/static/js/2.93211c62.chunk.js",
@@ -13,6 +13,6 @@
   "static/media/settings-gear.svg": "/machina-viz/static/media/settings-gear.80b88740.svg",
   "static/css/main.4a139607.chunk.css.map": "/machina-viz/static/css/main.4a139607.chunk.css.map",
   "index.html": "/machina-viz/index.html",
-  "precache-manifest.de891f3bf30158760082ee7843d4d6db.js": "/machina-viz/precache-manifest.de891f3bf30158760082ee7843d4d6db.js",
+  "precache-manifest.93c7752615942790201467b7c96c0a84.js": "/machina-viz/precache-manifest.93c7752615942790201467b7c96c0a84.js",
   "service-worker.js": "/machina-viz/service-worker.js"
 }
