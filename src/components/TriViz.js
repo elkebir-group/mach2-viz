@@ -17,7 +17,7 @@ function insertParam(key, value) {
     let currentUrl = new URL(window.location.href);
   
     // Change a url parameter using URLSearchParams
-    let urlParams = new URLSearchParams(currentUrl.search);
+    let urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
     urlParams.set(key, value);
     console.log(urlParams.toString());
   
@@ -27,7 +27,7 @@ function insertParam(key, value) {
   
     // Reload the page
     console.log(window.location);
-    //window.location.reload();
+    window.location.reload();
 }
 
 function handleKeyPress(event) {

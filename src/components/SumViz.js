@@ -22,7 +22,7 @@ function insertParam(key, value) {
   
     // Change a url parameter using URLSearchParams
     console.log(currentUrl.hash);
-    let urlParams = new URLSearchParams(currentUrl.hash.slice(1));
+    let urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
     urlParams.set(key, value);
   
     // Replace the URL
@@ -30,7 +30,7 @@ function insertParam(key, value) {
     window.location.href = '#/sumviz?' + urlParams.toString();
   
     // Reload the page
-    //window.location.reload();
+    window.location.reload();
 }
 
 function handleKeyPress(event) {

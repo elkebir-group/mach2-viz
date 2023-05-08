@@ -14,7 +14,7 @@ function insertParam(key, value) {
     let currentUrl = new URL(window.location.href);
   
     // Change a url parameter using URLSearchParams
-    let urlParams = new URLSearchParams(currentUrl.search);
+    let urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
     urlParams.set(key, value);
   
     // Replace the URL
@@ -22,7 +22,7 @@ function insertParam(key, value) {
     window.location.href = '#/dualviz?' + urlParams.toString();
   
     // Reload the page
-    //window.location.reload();
+    window.location.reload();
 }
 
 function handleKeyPress(event) {
