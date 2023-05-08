@@ -3,7 +3,7 @@ Visualizing the solution space for the
 
 ## JSON-Compression
 MACHINA-Viz takes file inputs in a json file format. The json is in the following format:
-```json
+```
 {
   "name": <patient name>,
   "solutions": [
