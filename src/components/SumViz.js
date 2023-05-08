@@ -26,7 +26,7 @@ function insertParam(key, value) {
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
-    window.location.href = 'sumviz?' + urlParams.toString();
+    window.location.href = '#/sumviz?' + urlParams.toString();
   
     // Reload the page
     //window.location.reload();
@@ -47,7 +47,7 @@ function SumViz() {
     const [gammaSum, setGammaSum] = useState(0);
     const [showPanel, setShowPanel] = useState(false);
 
-    const queryParameters = new URLSearchParams(window.location.search);
+    const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
@@ -82,7 +82,7 @@ function SumViz() {
     }
 
     let addTab = (event) => {
-        window.location = `${window.location.protocol}//${window.location.host}/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+        window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     const eventBus = {
@@ -147,7 +147,7 @@ function SumViz() {
                             <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary}/>
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                            <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                            <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
                         <div className="panel migration top left sum">
                             <p className="paneltitle"><b>Migration Graph</b></p>

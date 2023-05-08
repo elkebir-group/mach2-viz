@@ -19,7 +19,7 @@ function insertParam(key, value) {
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
-    window.location.href = 'dualviz?' + urlParams.toString();
+    window.location.href = '#/dualviz?' + urlParams.toString();
   
     // Reload the page
     //window.location.reload();
@@ -36,7 +36,7 @@ function DualViz() {
     const [gamma, setGamma] = useState(0);
     const [mu2, setMu2] = useState(0);
     const [gamma2, setGamma2] = useState(0);
-    const queryParameters = new URLSearchParams(window.location.search);
+    const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
@@ -81,7 +81,7 @@ function DualViz() {
     }
 
     let gotoSummary = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
     }
 
     const eventBus = {
@@ -135,7 +135,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
@@ -160,7 +160,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data2["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
