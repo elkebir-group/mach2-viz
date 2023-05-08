@@ -210,7 +210,7 @@ input {
 .panel.title {
   margin: 20px;
   margin-bottom: -20px;
-  width: calc(80%-60px);
+  width: calc(100%-60px);
   padding-left: 20px;
   height: calc(15%);
   overflow-y: scroll; 
@@ -226,7 +226,7 @@ input {
 .panel.example {
   margin: 20px;
   margin-top: -50px;
-  width: calc(80%-60px);
+  width: calc(100%-60px);
   padding-left: 20px;
   height: calc(65%);
   overflow-y: scroll; 
