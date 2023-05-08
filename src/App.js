@@ -9,7 +9,7 @@ import SumViz from "./components/SumViz";
 import TriViz from "./components/TriViz";
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link
@@ -20,12 +20,11 @@ import { createBrowserHistory } from 'history';
 
 function App() {
   const history = createBrowserHistory({
-    basename: '/machina-viz' // Replace with your repository name
+    basename: '/machina-viz/#' // Replace with your repository name
   });
 
   return (
     <div className="App">
-      <Router basename='/machina-viz'>
         <Switch>
           <Route path="/about">
             <About/>
@@ -64,7 +63,6 @@ function App() {
             <Home/>
           </Route>
         </Switch>
-      </Router>
     </div>
   );
 }

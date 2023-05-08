@@ -22,10 +22,13 @@ function Viz(props) {
     const [mu, setMu] = useState(0);
     const [gamma, setGamma] = useState(0);
     const jsonContents=localStorage.getItem("json_data");
-    const queryParameters = new URLSearchParams(window.location.search);
     const wholeData = JSON.parse(jsonContents);
+    const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
     const labelName = queryParameters.get("labeling");
+    console.log("window thingy:", window.location.hash)
+    console.log("queryParameters:", queryParameters.size)
+    console.log("labelName:", labelName);
     
     // const coloring = data["coloring"]
 
@@ -63,11 +66,11 @@ function Viz(props) {
     }
 
     let addTab = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     let gotoSummary = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/sumviz?labeling=${queryParameters.get("labeling")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/sumviz?labeling=${queryParameters.get("labeling")}`;
     }
 
     let rotateFn = (event) => {

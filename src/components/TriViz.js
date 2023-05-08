@@ -23,7 +23,7 @@ function insertParam(key, value) {
   
     // Replace the URL
     //currentUrl.search = urlParams.toString();
-    window.location.href = 'triviz?' + urlParams.toString();
+    window.location.href = '#/triviz?' + urlParams.toString();
   
     // Reload the page
     console.log(window.location);
@@ -46,7 +46,7 @@ function TriViz(props) {
     const [muSum, setMuSum] = useState(0);
     const [gammaSum, setGammaSum] = useState(0);
 
-    const queryParameters = new URLSearchParams(window.location.search);
+    const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
@@ -124,7 +124,7 @@ function TriViz(props) {
                 <div className="titlewrapper">
                     <h3 className="viztitle"><b>Summary</b></h3>
                     <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                    <a onClick={() => {window.location.href=`/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                    <a onClick={() => {window.location.href=`/machina-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                 </div>
                 <div className="panel migration top left sum">
                     <p className="paneltitle"><b>Migration Graph</b></p>
@@ -143,7 +143,7 @@ function TriViz(props) {
                   </select>
                   </b></p></label>
                   <h3 className="viztitle"><b>{data["name"]}</b></h3>
-                  <a onClick={() => {window.location.href=`/sumviz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                  <a onClick={() => {window.location.href=`/machina-viz/#/sumviz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
               </div>
               <div className="panel migration top left">
                   <p className="paneltitle"><b>Migration Graph</b></p>
@@ -166,7 +166,7 @@ function TriViz(props) {
                   </select>
                   </b></p></label>
                   <h3 className="viztitle"><b>{data2["name"]}</b></h3>
-                  <a onClick={() => {window.location.href=`/sumviz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                  <a onClick={() => {window.location.href=`/machina-viz/#/sumviz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
               </div>
               <div className="panel migration top left">
                   <p className="paneltitle"><b>Migration Graph</b></p>
