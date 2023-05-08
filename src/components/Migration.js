@@ -149,7 +149,7 @@ function Migration(props) {
     
       let myCyRef;
 
-      const queryParameters = new URLSearchParams(window.location.search);
+      const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
       let rotated = props.rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
       if (rotated === null) {
         rotated = false;

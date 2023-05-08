@@ -21,7 +21,8 @@ function insertParam(key, value) {
     let currentUrl = new URL(window.location.href);
   
     // Change a url parameter using URLSearchParams
-    let urlParams = new URLSearchParams(currentUrl.search);
+    console.log(currentUrl.hash);
+    let urlParams = new URLSearchParams(currentUrl.hash.slice(1));
     urlParams.set(key, value);
   
     // Replace the URL

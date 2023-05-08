@@ -51,14 +51,24 @@ function Viz(props) {
     let coord_map = wholeData["map"]; 
 
     let insertParam = (key, value) => {
-      // Get the current url
-      let currentUrl = new URL(window.location.href);
+      const url = new URL(window.location.href);
+      const searchParams = new URLSearchParams(`?${url.hash.slice(1).split('?')[1]}`);
 
-      // Change a url parameter using URLSearchParams
-      let urlParams = new URLSearchParams(currentUrl.search);
-      urlParams.set(key, value);
-      history.push('/viz?' + urlParams.toString());
+      // Modify or insert the parameter
+      searchParams.set(key, value);
+
+      // Update the hash portion of the URL
+      url.hash = 'viz?' + searchParams.toString();
+      window.location.href = url.toString();      
+
       window.location.reload();
+    }
+
+    let getParam = (key) => {
+      const url = new URL(window.location.href);
+      const searchParams = new URLSearchParams(`?${url.hash.slice(1).split('?')[1]}`);
+
+      return searchParams.get(key);
     }
 
     let handleLabelChange = (event) => {
