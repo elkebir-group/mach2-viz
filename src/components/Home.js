@@ -129,6 +129,8 @@ function Home(props) {
             <div className='panel home'>
                 <h1><b>Welcome to MACHINA-Viz!</b></h1>
                 <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
+                <p><b>A lightweight visualizer for <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA</a></b>. Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the about page for more information.</p>
+                
                 <h3>Examples</h3>
 
                 <div className="panel title">
