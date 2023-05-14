@@ -16,9 +16,9 @@ function About() {
             <div className='panel about'>
                 <div className='aboutcontainer'>
                     <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; home</Link></b></p>
-                    <h1 className='abouttitle'>Enter MACHINA-Viz</h1>
+                    <h1 className='abouttitle'>Enter MACH2</h1>
                 </div>
-                <p><b>MACHINA-Viz</b> is a personalized medical tool to visualize cancer metastasis.</p>
+                <p><b>MACH2</b> is a personalized tool to visualize cancer metastasis. It is a sequel to MACHINA, an algorithm designed to solve the Parsimonious Migration History Problem.</p>
                 <p><b>The Parsimonious Migration History Problem:</b> Given current oncological mutations at their respective anatomical sites, how can we infer their mutation tree as well as a network of anatomical sites inferring metastases?</p>
                 <p><b>Visualization Format:</b> All structures have directed edges.</p>
                 <ul style={{columns: 1}}>
@@ -30,7 +30,7 @@ function About() {
                     <img className="aboutimg" src={clonal} alt="Image 1"/>
                     <img className="aboutimg" src={migration} alt="Image 2"/>
                 </div>
-                <p><b>Generating inputs: </b>We have provided a <a href="https://github.com/vikramr2/json_compression">json compression</a> program that takes an output directory from MACHINA that contains <b>.tree</b> files and their corresponding <b>.labeling</b> files, and returns a <b>.json</b> file that can be used as input for this visualizer. For more information, see this <a href='https://github.com/vikramr2/json_compression/blob/main/README.md'>README</a>.</p>
+                <p><b>Generating inputs: </b>We have provided a <a href="https://github.com/vikramr2/json_compression">json compression</a> program that takes an output directory from MACHINA that contains <b>.tree</b> files and their corresponding <b>.labeling</b> files, and returns a <b>.json</b> file that can be used as input for this visualizer. For more information, see this <a href='https://github.com/vikramr2/json_compression/blob/main/README.md'>README</a>. Output from any algorithm that solves the PMH problem will be accepted provided that it is in a JSON format as shown in the README.</p>
                 <p><b>Questions? Contact</b></p>
                 <ul id="singlecol">
                     <li><p>Akul Joshi (<a href="mailto:akulj2@illinois.edu">akulj2@illinois.edu</a>)</p></li>
