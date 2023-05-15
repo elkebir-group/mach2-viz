@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "337d5d7c8f0ed4a8720d",
+    "revision": "326a9a688dd8d0eb45cb",
     "url": "/machina-viz/static/css/main.0eaa7807.chunk.css"
   },
   {
-    "revision": "337d5d7c8f0ed4a8720d",
-    "url": "/machina-viz/static/js/main.337d5d7c.chunk.js"
+    "revision": "326a9a688dd8d0eb45cb",
+    "url": "/machina-viz/static/js/main.326a9a68.chunk.js"
   },
   {
     "revision": "84db0e82a2ff27b56ba4",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/machina-viz/static/media/settings-gear.80b88740.svg"
   },
   {
-    "revision": "aea42e9e73fa7b082ddefaf9b2ed126a",
+    "revision": "d9bfa1c6431444866e1c137289552d1c",
     "url": "/machina-viz/index.html"
   }
 ];
