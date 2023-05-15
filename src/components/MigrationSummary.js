@@ -192,13 +192,13 @@ function MigrationSummary(props) {
     };
 
     let mu = 0;
-    let gamma = 0;
+    let gamma = edges.length;
     edges.map((edge) => {
       if (edge.data.label == '') {
         mu += 1;
       } else {
         mu += parseInt(edge.data.label);
-        gamma += parseInt(edge.data.label) - 1;
+        //gamma += parseInt(edge.data.label) - 1;
       }
     })
 
