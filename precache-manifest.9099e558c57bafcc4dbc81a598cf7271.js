@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/machina-viz/static/media/settings-gear.80b88740.svg"
   },
   {
-    "revision": "d9bfa1c6431444866e1c137289552d1c",
+    "revision": "392b9242161f6b8436b2f5c590285c52",
     "url": "/machina-viz/index.html"
   }
 ];
