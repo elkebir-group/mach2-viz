@@ -20,7 +20,7 @@ import { createBrowserHistory } from 'history';
 
 function App() {
   const history = createBrowserHistory({
-    basename: '/machina-viz/#' // Replace with your repository name
+    basename: '/mach2-viz/#' // Replace with your repository name
   });
 
   return (
@@ -41,22 +41,22 @@ function App() {
           <Route path="/triviz">
             <TriViz/>
           </Route>
-          <Route path="/machina-viz/about">
+          <Route path="/mach2-viz/about">
             <About/>
           </Route>
-          <Route path="/machina-viz/viz">
+          <Route path="/mach2-viz/viz">
             <Viz/>
           </Route>
-          <Route path="/machina-viz/dualviz">
+          <Route path="/mach2-viz/dualviz">
             <DualViz/>
           </Route>
-          <Route path="/machina-viz/sumviz">
+          <Route path="/mach2-viz/sumviz">
             <SumViz/>
           </Route>
-          <Route path="/machina-viz/triviz">
+          <Route path="/mach2-viz/triviz">
             <TriViz/>
           </Route>
-          <Route path="/machina-viz">
+          <Route path="/mach2-viz">
             <Home/>
           </Route>
           <Route exact path="/">
