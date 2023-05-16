@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "dee48a1f81595554f1c5",
+    "revision": "2f2a59756c93676c9829",
     "url": "/mach2-viz/static/css/main.deecf185.chunk.css"
   },
   {
-    "revision": "dee48a1f81595554f1c5",
-    "url": "/mach2-viz/static/js/main.dee48a1f.chunk.js"
+    "revision": "2f2a59756c93676c9829",
+    "url": "/mach2-viz/static/js/main.2f2a5975.chunk.js"
   },
   {
     "revision": "84db0e82a2ff27b56ba4",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/mach2-viz/static/media/settings-gear.80b88740.svg"
   },
   {
-    "revision": "e3b2a1e0ba511e07e19bc5b13b44cf59",
+    "revision": "96473e39540f2b3a33f1bbd99fcf815f",
     "url": "/mach2-viz/index.html"
   }
 ];
