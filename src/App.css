@@ -170,6 +170,15 @@ input {
   top:-200%;
   opacity: 0;
   z-index: -1;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+}
+
+input[type="checkbox"] {
+  opacity: 1;
+  order: 1px solid black;
+  
 }
 
 .dot .tooltiptext {
@@ -579,8 +588,3 @@ ul {
   z-index: 99999;
 }
 
-input {
-  padding: 5px;
-  width: 15px;
-  height: 15px;
-}

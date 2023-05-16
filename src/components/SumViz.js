@@ -13,6 +13,8 @@ import MigrationSummary from "./MigrationSummary.js";
 import Loading from "./Loading.js";
 import FilterMenu from "./FilterMenu.js";
 
+import DefaultDict from "../utils/DefaultDict.js";
+
 
 import gear from '../assets/settings-gear.svg'
 
@@ -48,13 +50,27 @@ function SumViz() {
     const [gammaSum, setGammaSum] = useState(0);
     const [showPanel, setShowPanel] = useState(false);
 
+    let selected = new DefaultDict(true);
+    let selectedStorage = JSON.parse(localStorage.getItem("selected"));
+    
+    for (let key in selectedStorage) {
+        selected[key] = selectedStorage[key];
+    }
+
+    let violations = new DefaultDict(0);
+    let violationsStorage = JSON.parse(localStorage.getItem("violations"));
+
+    for (let key in violationsStorage) {
+        violations[key] = violationsStorage[key];
+    }
+
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
     const labelName = queryParameters.get("labeling");
 
-    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+    let data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
 
     const numSolns = wholeData["solutions"].length;
 
@@ -67,9 +83,9 @@ function SumViz() {
       })
       .map((item, index, self) => [item, `${self.indexOf(item)}`]);
 
-    const tree = data["tree"]
-    const tree_labeling = data["labeling"];
-    const migration = data["migration"];
+    let tree = data["tree"]
+    let tree_labeling = data["labeling"];
+    let migration = data["migration"];
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
@@ -138,14 +154,30 @@ function SumViz() {
         setGammaSum(localStorage.getItem("gammasum"));
     }, [isLoading])
 
+    let toggleSelected = (name) => {
+        selected[name] = !selected[name];
+        let name_parts = name.split('\u2192');
+        
+        for (let i = 0; i < migrationSummary.length; i++) {
+            if (migrationSummary[i][0] == name_parts[0] && migrationSummary[i][1] == name_parts[1]) {
+                for (let j = 0; j < migrationSummary[i][2].length; j++) {
+                    (selected[name] ? (violations[migrationSummary[i][2][j]] -= 1) : (violations[migrationSummary[i][2][j]] += 1))
+                }
+            }
+        }
+
+        localStorage.setItem("violations", JSON.stringify(violations));
+        localStorage.setItem("selected", JSON.stringify(selected));
+    }
+
     return (
         <div className="viz">
             {!isLoading ? (
                 <>
                     <div className="panel info one sum">
                         <div className="titlewrapper">
-                            <InlineSVG src={gear} className="settingsgear" onClick={() => setShowPanel(!showPanel)}/>
-                            <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary}/>
+                            <InlineSVG src={gear} className="settingsgear" onClick={() => {console.log(window.location.state); setShowPanel(!showPanel)}} />
+                            <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                             <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
@@ -154,14 +186,14 @@ function SumViz() {
                             <p className="paneltitle"><b>Migration Graph</b></p>
                             <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                            <MigrationSummary data={migrationSummary} coloring={coloring} evtbus={eventBus}/>
+                            <MigrationSummary data={migrationSummary} coloring={coloring} selected={selected} evtbus={eventBus}/>
                         </div>
                     </div>
                     <div className="panel info one two sum">
                         <div className="titlewrapper">
                             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                             <select name="labelings" id="labelings" onChange={handleLabelChange}>
-                                {labelnames.map(l => 
+                                {(labelnames.filter(name => (violations[name] == 0))).map(l => 
                                 {return (l === queryParameters.get("labeling")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                                 )}
                             </select>

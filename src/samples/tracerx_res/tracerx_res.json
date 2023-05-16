@@ -10087,77 +10087,176 @@
             [
                 "lung2",
                 "relapse1",
-                12
-            ],
-            [
-                "p.lung",
-                "lung2",
-                12
-            ],
-            [
-                "lung3",
-                "lung4",
-                6
-            ],
-            [
-                "lung3",
-                "bone1",
-                8
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-004",
+                    "p.lung-T-006",
+                    "p.lung-T-007",
+                    "p.lung-T-010",
+                    "p.lung-T-011",
+                    "p.lung-T-016",
+                    "p.lung-T-017",
+                    "p.lung-T-018",
+                    "p.lung-T-024",
+                    "p.lung-T-027",
+                    "p.lung-T-028"
+                ]
             ],
             [
                 "p.lung",
                 "p.lymphnode1",
-                12
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-004",
+                    "p.lung-T-006",
+                    "p.lung-T-007",
+                    "p.lung-T-010",
+                    "p.lung-T-011",
+                    "p.lung-T-016",
+                    "p.lung-T-017",
+                    "p.lung-T-018",
+                    "p.lung-T-024",
+                    "p.lung-T-027",
+                    "p.lung-T-028"
+                ]
+            ],
+            [
+                "lung3",
+                "lung4",
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-004",
+                    "p.lung-T-007",
+                    "p.lung-T-011",
+                    "p.lung-T-017",
+                    "p.lung-T-024"
+                ]
+            ],
+            [
+                "lung3",
+                "bone1",
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-004",
+                    "p.lung-T-006",
+                    "p.lung-T-010",
+                    "p.lung-T-011",
+                    "p.lung-T-018",
+                    "p.lung-T-024",
+                    "p.lung-T-027"
+                ]
+            ],
+            [
+                "p.lung",
+                "lung2",
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-004",
+                    "p.lung-T-006",
+                    "p.lung-T-007",
+                    "p.lung-T-010",
+                    "p.lung-T-011",
+                    "p.lung-T-016",
+                    "p.lung-T-017",
+                    "p.lung-T-018",
+                    "p.lung-T-024",
+                    "p.lung-T-027",
+                    "p.lung-T-028"
+                ]
+            ],
+            [
+                "lung3",
+                "lung1",
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-006",
+                    "p.lung-T-007",
+                    "p.lung-T-011",
+                    "p.lung-T-016",
+                    "p.lung-T-017",
+                    "p.lung-T-018",
+                    "p.lung-T-028"
+                ]
             ],
             [
                 "lung2",
                 "lung3",
-                2
-            ],
-            [
-                "lung3",
-                "lung1",
-                8
+                [
+                    "p.lung-T-001",
+                    "p.lung-T-006"
+                ]
             ],
             [
                 "lung2",
                 "lung1",
-                2
+                [
+                    "p.lung-T-004",
+                    "p.lung-T-010"
+                ]
             ],
             [
                 "lung1",
                 "lung3",
-                4
+                [
+                    "p.lung-T-004",
+                    "p.lung-T-010",
+                    "p.lung-T-024",
+                    "p.lung-T-027"
+                ]
             ],
             [
                 "lung1",
                 "lung4",
-                6
+                [
+                    "p.lung-T-006",
+                    "p.lung-T-010",
+                    "p.lung-T-016",
+                    "p.lung-T-018",
+                    "p.lung-T-027",
+                    "p.lung-T-028"
+                ]
             ],
             [
                 "lung2",
                 "bone1",
-                2
+                [
+                    "p.lung-T-007",
+                    "p.lung-T-016"
+                ]
             ],
             [
                 "bone1",
                 "lung3",
-                4
+                [
+                    "p.lung-T-007",
+                    "p.lung-T-016",
+                    "p.lung-T-017",
+                    "p.lung-T-028"
+                ]
             ],
             [
                 "relapse1",
                 "lung3",
-                2
+                [
+                    "p.lung-T-011",
+                    "p.lung-T-018"
+                ]
             ],
             [
                 "relapse1",
                 "bone1",
-                2
+                [
+                    "p.lung-T-017",
+                    "p.lung-T-028"
+                ]
             ],
             [
                 "relapse1",
                 "lung1",
-                2
+                [
+                    "p.lung-T-024",
+                    "p.lung-T-027"
+                ]
             ]
         ]
     }

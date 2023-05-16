@@ -2810,52 +2810,125 @@
             [
                 "perigastric_lymph_node",
                 "periportal_lymph_node",
-                7
-            ],
-            [
-                "prostate",
-                "right_iliac_lymph_node",
-                16
+                [
+                    "T-perigastric_lymph_node-0",
+                    "T-perigastric_lymph_node-1",
+                    "T-prostate-1",
+                    "T-prostate-4",
+                    "T-right_iliac_lymph_node-1",
+                    "T-right_iliac_lymph_node-4",
+                    "T-right_iliac_lymph_node-7"
+                ]
             ],
             [
                 "perigastric_lymph_node",
                 "prostate",
-                2
-            ],
-            [
-                "periportal_lymph_node",
-                "prostate",
-                2
+                [
+                    "T-perigastric_lymph_node-0",
+                    "T-perigastric_lymph_node-1"
+                ]
             ],
             [
                 "periportal_lymph_node",
                 "perigastric_lymph_node",
-                7
+                [
+                    "T-periportal_lymph_node-0",
+                    "T-periportal_lymph_node-1",
+                    "T-prostate-0",
+                    "T-prostate-3",
+                    "T-right_iliac_lymph_node-0",
+                    "T-right_iliac_lymph_node-3",
+                    "T-right_iliac_lymph_node-6"
+                ]
             ],
             [
-                "prostate",
                 "periportal_lymph_node",
-                4
+                "prostate",
+                [
+                    "T-periportal_lymph_node-0",
+                    "T-periportal_lymph_node-1"
+                ]
             ],
             [
                 "prostate",
                 "perigastric_lymph_node",
-                4
+                [
+                    "T-prostate-1",
+                    "T-prostate-2",
+                    "T-prostate-4",
+                    "T-prostate-5"
+                ]
             ],
             [
-                "right_iliac_lymph_node",
-                "periportal_lymph_node",
-                6
-            ],
-            [
-                "right_iliac_lymph_node",
                 "prostate",
-                9
+                "periportal_lymph_node",
+                [
+                    "T-prostate-0",
+                    "T-prostate-2",
+                    "T-prostate-3",
+                    "T-prostate-5"
+                ]
+            ],
+            [
+                "prostate",
+                "right_iliac_lymph_node",
+                [
+                    "T-perigastric_lymph_node-0",
+                    "T-perigastric_lymph_node-1",
+                    "T-periportal_lymph_node-0",
+                    "T-periportal_lymph_node-1",
+                    "T-prostate-0",
+                    "T-prostate-1",
+                    "T-prostate-2",
+                    "T-prostate-3",
+                    "T-prostate-4",
+                    "T-prostate-5",
+                    "T-right_iliac_lymph_node-0",
+                    "T-right_iliac_lymph_node-1",
+                    "T-right_iliac_lymph_node-2",
+                    "T-right_iliac_lymph_node-3",
+                    "T-right_iliac_lymph_node-4",
+                    "T-right_iliac_lymph_node-5"
+                ]
             ],
             [
                 "right_iliac_lymph_node",
                 "perigastric_lymph_node",
-                6
+                [
+                    "T-right_iliac_lymph_node-1",
+                    "T-right_iliac_lymph_node-2",
+                    "T-right_iliac_lymph_node-4",
+                    "T-right_iliac_lymph_node-5",
+                    "T-right_iliac_lymph_node-7",
+                    "T-right_iliac_lymph_node-8"
+                ]
+            ],
+            [
+                "right_iliac_lymph_node",
+                "periportal_lymph_node",
+                [
+                    "T-right_iliac_lymph_node-0",
+                    "T-right_iliac_lymph_node-2",
+                    "T-right_iliac_lymph_node-3",
+                    "T-right_iliac_lymph_node-5",
+                    "T-right_iliac_lymph_node-6",
+                    "T-right_iliac_lymph_node-8"
+                ]
+            ],
+            [
+                "right_iliac_lymph_node",
+                "prostate",
+                [
+                    "T-right_iliac_lymph_node-0",
+                    "T-right_iliac_lymph_node-1",
+                    "T-right_iliac_lymph_node-2",
+                    "T-right_iliac_lymph_node-3",
+                    "T-right_iliac_lymph_node-4",
+                    "T-right_iliac_lymph_node-5",
+                    "T-right_iliac_lymph_node-6",
+                    "T-right_iliac_lymph_node-7",
+                    "T-right_iliac_lymph_node-8"
+                ]
             ]
         ]
     }

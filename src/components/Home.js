@@ -13,6 +13,8 @@ import download from "../assets/download.png";
 import axios from 'axios'
 import fileDownload from 'js-file-download'
 
+import DefaultDict from "../utils/DefaultDict.js";
+
 import A7 from "../samples/A7/A7.json";
 import A10 from "../samples/A10/A10.json";
 import A22 from "../samples/A22/A22.json";
@@ -61,6 +63,9 @@ function Home(props) {
     var which_color = true;
     const color1 = "#EBEBEB";
     const color2 = "#A3A3A3";
+
+    localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     for (let i = 0; i < default_patients.length; i++) {
         var current_patient = default_patients[i];

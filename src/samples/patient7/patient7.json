@@ -193,33 +193,45 @@
         "migration": [
             [
                 "RUt",
-                "Bwl",
-                1
+                "Bm",
+                [
+                    "patient7"
+                ]
             ],
             [
                 "RUt",
                 "Brn",
-                1
+                [
+                    "patient7"
+                ]
+            ],
+            [
+                "RUt",
+                "Bwl",
+                [
+                    "patient7"
+                ]
             ],
             [
                 "RUt",
                 "LOv",
-                1
-            ],
-            [
-                "RUt",
-                "RPv",
-                1
-            ],
-            [
-                "RUt",
-                "Bm",
-                1
+                [
+                    "patient7"
+                ]
             ],
             [
                 "RUt",
                 "ROv",
-                1
+                [
+                    "patient7"
+                ]
+            ],
+            [
+                "RUt",
+                "RPv",
+                [
+                    "patient7"
+                ]
             ]
         ]
     }
