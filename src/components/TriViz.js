@@ -38,7 +38,7 @@ function insertParam(key, value) {
 
 function handleKeyPress(event) {
     if (event.key === '/') {
-      alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponsing anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panel.\n\nThe dual visualization window allows you to compare different solutions side by side!');
+      alert('Instructions:\n\nIn this view, you can compare the summary and two different solutions. In the summary graph, corresponding migration and clonal tree components with bold on hover.\n\nToggle and move around the migration graphs and clonal trees. Hover over nodes in the clonal trees to find the corresponding anatomical location for the node.\n\nSelect different labelings from the dropdown on the top left of the panels.\n\nYou can close out panels by clicking the [X].');
     }
 }
 
