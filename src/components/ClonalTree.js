@@ -46,7 +46,10 @@ function ClonalTree(props) {
       if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
   }
 
-  const nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
+  const nodes = props.tree.map(array => {
+    // Create a new array excluding the third element
+    return array.filter((_, index) => index !== 2);
+  }).flat().filter(onlyUnique).map((value, index) => {
     return { data: { id: value, label: findLabel(value), type: "ip"} };
   });
   const edges = props.tree.map((value, index) => {
@@ -212,7 +215,7 @@ function ClonalTree(props) {
       props.evtbus.addListener(listener);
     }
   };
-
+  console.log(nodes.map((node) => node.data.id))
   return <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
     // pan={{ x: 200, y: 200 }}

@@ -35,12 +35,19 @@ function Viz(props) {
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
 
     // console.log(data["labeling"])
-    let coloring = data["labeling"]
-      .map((item) => item[1])
-      .filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      })
-      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    let coloring = wholeData["coloring"];
+    console.log(coloring)
+
+    if (coloring === undefined || coloring.length === 0) {
+      coloring = data["labeling"]
+        .map((item) => item[1])
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        })
+        .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    }
+
+    console.log(coloring);
 
     const tree = data["tree"]
     const tree_labeling = data["labeling"]
@@ -76,11 +83,11 @@ function Viz(props) {
     }
 
     let addTab = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     let gotoSummary = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/sumviz?labeling=${queryParameters.get("labeling")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/sumviz?labeling=${queryParameters.get("labeling")}`;
     }
 
     let rotateFn = (event) => {
