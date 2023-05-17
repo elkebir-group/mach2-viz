@@ -45,7 +45,10 @@ function Migration(props) {
         return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
       }
     
-      let nodes = props.tree.flat().filter(onlyUnique).map((value, index) => {
+      let nodes = props.tree.map(array => {
+        // Create a new array excluding the third element
+        return array.filter((_, index) => index !== 2);
+      }).flat().filter(onlyUnique).map((value, index) => {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
       let edges = props.migration.map((value, index) => {

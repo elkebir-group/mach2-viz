@@ -46,12 +46,17 @@ function DualViz() {
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
     const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
 
-    let coloring = data["labeling"]
-      .map((item) => item[1])
-      .filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      })
-      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    let coloring = wholeData["coloring"];
+    console.log(coloring)
+
+    if (coloring === undefined || coloring.length === 0) {
+      coloring = data["labeling"]
+        .map((item) => item[1])
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        })
+        .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    }
 
     const tree = data["tree"]
     const tree2 = data2["tree"]
@@ -81,7 +86,7 @@ function DualViz() {
     }
 
     let gotoSummary = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
+      window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`;
     }
 
     const eventBus = {
@@ -135,7 +140,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={() => {window.location.href=`/mach2-viz/#/viz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>
@@ -160,7 +165,7 @@ function DualViz() {
                 </b></p></label>
                 <h3 className="viztitle"><b>{data2["name"]}</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={() => {window.location.href=`/mach2-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left">
                 <p className="paneltitle"><b>Migration Graph</b></p>

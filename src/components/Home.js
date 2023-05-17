@@ -29,6 +29,8 @@ import patient7 from "../samples/patient7/patient7.json";
 import patient9 from "../samples/patient9/patient9.json";
 import patient10 from "../samples/patient10/patient10.json";
 import tracerx_res from "../samples/tracerx_res/tracerx_res.json";
+import tracerx_res_old from "../samples/tracerx_res_old/tracerx_old_all.json";
+import tracerx_res_new from "../samples/tracerx_res_new/tracerx_new_all.json";
 
 function Home(props) {
     let handleDownload = (url, filename) => {
@@ -54,11 +56,13 @@ function Home(props) {
       "patient7": patient7,
       "patient9": patient9,
       "patient10": patient10,
-      "tracerx_res": tracerx_res
+      "tracerx_res": tracerx_res,
+      "tracerx_res_old": tracerx_res_old,
+      "tracerx_res_new": tracerx_res_new
     }
 
-    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1", "patient2", "patient3", "patient4", "patient7", "patient9", "patient10", "tracerx_res"]
-    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx"]
+    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1", "patient2", "patient3", "patient4", "patient7", "patient9", "patient10", "tracerx_res", "tracerx_res_old", "tracerx_res_new"]
+    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx", "tracerx", "tracerx"]
     var div_elements = []
     var which_color = true;
     const color1 = "#EBEBEB";

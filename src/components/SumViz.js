@@ -76,12 +76,17 @@ function SumViz() {
 
     const migrationSummary = wholeData["summary"]["migration"]
 
-    let coloring = data["labeling"]
-      .map((item) => item[1])
-      .filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      })
-      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    let coloring = wholeData["coloring"];
+    console.log(coloring)
+
+    if (coloring === undefined || coloring.length === 0) {
+      coloring = data["labeling"]
+        .map((item) => item[1])
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        })
+        .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    }
 
     let tree = data["tree"]
     let tree_labeling = data["labeling"];
@@ -99,7 +104,7 @@ function SumViz() {
     }
 
     let addTab = (event) => {
-        window.location = `${window.location.protocol}//${window.location.host}/machina-viz/#/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+        window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/triviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     }
 
     const eventBus = {
@@ -180,7 +185,7 @@ function SumViz() {
                             <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                            <a onClick={() => {window.location.href=`/machina-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                            <a onClick={() => {window.location.href=`/mach2-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                         </div>
                         <div className="panel migration top left sum">
                             <p className="paneltitle"><b>Migration Graph</b></p>

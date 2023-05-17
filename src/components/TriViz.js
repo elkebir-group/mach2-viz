@@ -79,12 +79,17 @@ function TriViz(props) {
         violations[key] = violationsStorage[key];
     }
 
-    let coloring = data["labeling"]
-      .map((item) => item[1])
-      .filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      })
-      .map((item, index) => [item, `${index}`]);
+    let coloring = wholeData["coloring"];
+    console.log(coloring)
+
+    if (coloring === undefined || coloring.length === 0) {
+      coloring = data["labeling"]
+        .map((item) => item[1])
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        })
+        .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    }
 
       const tree = data["tree"]
       const tree2 = data2["tree"]
@@ -165,7 +170,7 @@ function TriViz(props) {
                     <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
                     <h3 className="viztitle"><b>Summary</b></h3>
                     <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                    <a onClick={() => {window.location.href=`/machina-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                    <a onClick={() => {window.location.href=`/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
                 </div>
                 <div className="panel migration top left sum">
                     <p className="paneltitle"><b>Migration Graph</b></p>
@@ -184,7 +189,7 @@ function TriViz(props) {
                   </select>
                   </b></p></label>
                   <h3 className="viztitle"><b>{data["name"]}</b></h3>
-                  <a onClick={() => {window.location.href=`/machina-viz/#/sumviz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                  <a onClick={() => {window.location.href=`/mach2-viz/#/sumviz?labeling=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
               </div>
               <div className="panel migration top left">
                   <p className="paneltitle"><b>Migration Graph</b></p>
@@ -207,7 +212,7 @@ function TriViz(props) {
                   </select>
                   </b></p></label>
                   <h3 className="viztitle"><b>{data2["name"]}</b></h3>
-                  <a onClick={() => {window.location.href=`/machina-viz/#/sumviz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                  <a onClick={() => {window.location.href=`/mach2-viz/#/sumviz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
               </div>
               <div className="panel migration top left">
                   <p className="paneltitle"><b>Migration Graph</b></p>
