@@ -9,6 +9,8 @@ import {
 import Migration from "./Migration.js";
 import ClonalTree from "./ClonalTree.js";
 
+import DefaultDict from "../utils/DefaultDict.js";
+
 function insertParam(key, value) {
     // Get the current url
     let currentUrl = new URL(window.location.href);
@@ -45,6 +47,9 @@ function DualViz() {
 
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
     const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
+
+    localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
 
     let coloring = wholeData["coloring"];
     console.log(coloring)

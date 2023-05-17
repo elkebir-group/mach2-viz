@@ -172,7 +172,7 @@ function SumViz() {
         }
 
         localStorage.setItem("violations", JSON.stringify(violations));
-        localStorage.setItem("selected", JSON.stringify(selected));
+        localStorage.setItem("selected", JSON.stringify(selected));        
     }
 
     return (
@@ -181,7 +181,16 @@ function SumViz() {
                 <>
                     <div className="panel info one sum">
                         <div className="titlewrapper">
-                            <InlineSVG src={gear} className="settingsgear" onClick={() => {console.log(window.location.state); setShowPanel(!showPanel)}} />
+                            <InlineSVG src={gear} className="settingsgear" onClick={() => 
+                                { 
+                                    setShowPanel(!showPanel); 
+                                    if (showPanel) { 
+                                        if (labelnames.filter(name => (violations[name] == 0)).filter(name => (name == labelName)).length == 0) {
+                                            insertParam("labeling", labelnames.filter(name => (violations[name] == 0))[0]); 
+                                        }
+                                    }
+                                }
+                            } />
                             <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>

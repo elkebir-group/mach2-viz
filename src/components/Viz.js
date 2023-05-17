@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import RightColumn from "./RightColumn.js";
 
+import DefaultDict from "../utils/DefaultDict.js";
+
 function handleKeyPress(event) {
   if (event.key === '/') {
     alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
@@ -29,6 +31,9 @@ function Viz(props) {
     console.log("window thingy:", window.location.hash)
     console.log("queryParameters:", queryParameters.size)
     console.log("labelName:", labelName);
+
+    localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     // const coloring = data["coloring"]
 
