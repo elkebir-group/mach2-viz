@@ -16,7 +16,7 @@ import FilterMenu from "./FilterMenu.js";
 import DefaultDict from "../utils/DefaultDict.js";
 
 
-import gear from '../assets/settings-gear.svg'
+import gear from '../assets/settings-gear.svg';
 
 function insertParam(key, value) {
     // Get the current url
