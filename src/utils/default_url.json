@@ -12,5 +12,7 @@
     "patient7": "viz?labeling=patient7",
     "patient9": "viz?labeling=patient9",
     "patient10": "viz?labeling=patient10",
-    "tracerx_res": "viz?labeling=p.lung-T-007"
+    "tracerx_res": "viz?labeling=p.lung-T-007",
+    "tracerx_res_old": "viz?labeling=T-0",
+    "tracerx_res_new": "viz?labeling=T-0"
 }
