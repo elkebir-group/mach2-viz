@@ -42,8 +42,20 @@ function DualViz() {
     const jsonContents=localStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
-    const labelName = queryParameters.get("labeling");
-    const labelName2 = queryParameters.get("labeling2");
+    let labelName = queryParameters.get("labeling");
+    let labelName2 = queryParameters.get("labeling2");
+
+    console.log(wholeData);
+    console.log(labelName, labelName2);
+
+    if (labelName == "undefined") {
+      insertParam("labeling", wholeData["solutions"][0]["name"]);
+    }
+    if (labelName2 == "undefined") {
+      insertParam("labeling2", wholeData["solutions"][0]["name"]);
+    }
+
+    console.log(labelName, labelName2);
 
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
     const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];

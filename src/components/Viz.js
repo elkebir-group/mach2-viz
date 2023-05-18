@@ -13,6 +13,22 @@ import RightColumn from "./RightColumn.js";
 
 import DefaultDict from "../utils/DefaultDict.js";
 
+function insertParam(key, value) {
+  // Get the current url
+  let currentUrl = new URL(window.location.href);
+
+  // Change a url parameter using URLSearchParams
+  let urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
+  urlParams.set(key, value);
+
+  // Replace the URL
+  //currentUrl.search = urlParams.toString();
+  window.location.href = '#/viz?' + urlParams.toString();
+
+  // Reload the page
+  window.location.reload();
+}
+
 function handleKeyPress(event) {
   if (event.key === '/') {
     alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
@@ -27,10 +43,11 @@ function Viz(props) {
     const wholeData = JSON.parse(jsonContents);
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
-    const labelName = queryParameters.get("labeling");
-    console.log("window thingy:", window.location.hash)
-    console.log("queryParameters:", queryParameters.size)
-    console.log("labelName:", labelName);
+    let labelName = queryParameters.get("labeling");
+
+    if (labelName == "undefined") {
+      insertParam("labeling", wholeData["solutions"][0]["name"]);
+    }
 
     localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
     localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
@@ -61,20 +78,6 @@ function Viz(props) {
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
     let coord_map = wholeData["map"]; 
-
-    let insertParam = (key, value) => {
-      const url = new URL(window.location.href);
-      const searchParams = new URLSearchParams(`?${url.hash.slice(1).split('?')[1]}`);
-
-      // Modify or insert the parameter
-      searchParams.set(key, value);
-
-      // Update the hash portion of the URL
-      url.hash = 'viz?' + searchParams.toString();
-      window.location.href = url.toString();      
-
-      window.location.reload();
-    }
 
     let getParam = (key) => {
       const url = new URL(window.location.href);
@@ -120,8 +123,6 @@ function Viz(props) {
         });
       },
     };
-
-
 
     return (
       <div className="viz">

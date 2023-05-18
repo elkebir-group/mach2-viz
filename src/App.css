@@ -604,3 +604,8 @@ input {
 .aboutimg {
   height: 200px
 }
+
+.graphfail {
+  padding-top: 20%;
+  width: 100%;
+}
