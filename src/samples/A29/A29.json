@@ -253,12 +253,17 @@
             [
                 "prostate",
                 "right_superficial_inguinal_lymph_node",
-                2
+                [
+                    "T-prostate-0",
+                    "T-prostate-1"
+                ]
             ],
             [
                 "right_superficial_inguinal_lymph_node",
                 "prostate",
-                1
+                [
+                    "T-right_superficial_inguinal_lymph_node-0"
+                ]
             ]
         ]
     }
