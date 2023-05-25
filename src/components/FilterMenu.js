@@ -2,7 +2,7 @@ import React from "react"
 
 function FilterMenu(props) {
     if (props.show) { 
-        const edges = props.data.map((text, index) => {
+        const edges = props.data.filter(e => e[2] < props.numSolns).map((text, index) => {
             return (
                 <div>
                     <input type="checkbox" 
@@ -18,7 +18,7 @@ function FilterMenu(props) {
         });
 
         return (
-            <div className="filtermenu panel">
+            <div className={`filtermenu ${props.sum} panel`}>
                 {edges}
             </div>
         )

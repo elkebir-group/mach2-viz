@@ -144,6 +144,19 @@ function SumViz() {
     };
 
     useEffect(() => {
+        const handleOutsideClick = (event) => {
+          if (!event.target.closest('.outside-click-container')) {
+            setShowPanel(false);
+          }
+        };
+  
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+          document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    useEffect(() => {
         //let intervalId = setInterval(() => {
         //    setProgress(prevProgress => prevProgress + 10);
         //}, 1000);
@@ -187,17 +200,10 @@ function SumViz() {
                 <>
                     <div className="panel info one sum">
                         <div className="titlewrapper">
-                            <InlineSVG src={gear} className="settingsgear" onClick={() => 
-                                { 
-                                    setShowPanel(!showPanel); 
-                                    if (showPanel) { 
-                                        if (labelnames.filter(name => (violations[name] == 0)).filter(name => (name == labelName)).length == 0) {
-                                            insertParam("labeling", labelnames.filter(name => (violations[name] == 0))[0]); 
-                                        }
-                                    }
-                                }
-                            } />
-                            <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
+                            <InlineSVG src={gear} className="settingsgear" onClick={() => { setShowPanel(!showPanel); }} />
+                            <div className="outside-click-container">
+                                <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} sum='sum'/>
+                            </div>
                             <h3 className="viztitle"><b>Summary</b></h3>
                             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                             <a onClick={() => {window.location.href=`/mach2-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>

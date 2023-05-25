@@ -609,3 +609,7 @@ input {
   padding-top: 20%;
   width: 100%;
 }
+
+.filtermenu.sum {
+  margin-left: 5px;
+}
