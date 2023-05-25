@@ -168,6 +168,30 @@ function TriViz(props) {
 
     localStorage.setItem("violations", JSON.stringify(violations));
     localStorage.setItem("selected", JSON.stringify(selected));
+
+    window.location.reload()
+}
+
+var filterOut = [];
+var filterJson = selected;
+
+if (wholeData['name'] === filterJson['title']) {
+  for (let key in filterJson) {
+    if (key !== 'title' && !filterJson[key]) {
+      filterOut.push(key.split('→'));
+    }
+  }
+}
+
+var solutionsOut = [];
+for (let solution of wholeData['solutions']) {
+    for (let e of solution['migration']) {
+        for (let f of filterOut) {
+            if (f[0] == e[0] && f[1] == e[1]) {
+                solutionsOut.push(solution['name']);
+            }
+        }
+    }
 }
 
     return <div className="viz">
@@ -197,7 +221,7 @@ function TriViz(props) {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                {data != null && <MigrationSummary data={migrationSummary} coloring={coloring} evtbus={eventBus}/>}
+                {data != null && <MigrationSummary data={migrationSummary} coloring={coloring} evtbus={eventBus} title={wholeData['name']}/>}
                 {data == null && <h1 className="graphfail">--No Graphs Possible--</h1>}
             </div>
         </div>
@@ -206,7 +230,7 @@ function TriViz(props) {
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                 {data != null && 
                 <select name="labelings" id="labelings" onChange={handleLabelChange}>
-                    {(labelnames.filter(name => (violations[name] == 0))).map(l => 
+                    {labelnames.filter(name => !(solutionsOut.includes(name))).map(l => 
                     {return (l === queryParameters.get("labeling")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                     )}
                 </select>
@@ -238,7 +262,7 @@ function TriViz(props) {
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                 {data != null && 
                 <select name="labelings" id="labelings" onChange={handleLabelChange2}>
-                    {(labelnames.filter(name => (violations[name] == 0))).map(l => 
+                    {labelnames.filter(name => !(solutionsOut.includes(name))).map(l => 
                     {return (l === queryParameters.get("labeling2")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                     )}
                 </select>

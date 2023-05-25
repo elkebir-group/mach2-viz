@@ -9,6 +9,19 @@ Cytoscape.use(dagre);
 Cytoscape.use(COSEBilkent);
 
 function MigrationSummary(props) {
+    var filterOut = [];
+    var filterJson = JSON.parse(localStorage.getItem("selected"))
+
+    if (props.title === filterJson['title']) {
+      for (let key in filterJson) {
+        if (key !== 'title' && !filterJson[key]) {
+          filterOut.push(key.split('→'));
+        }
+      }
+    }
+
+    console.log(filterOut);
+
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
     const colorPalette = [
       "#a6cee3",
@@ -45,7 +58,14 @@ function MigrationSummary(props) {
         return { data: { id:  value, label: value, type: "ip"} };
     });
 
-    let edges = props.data.map((value, index) => {
+    let edges = props.data.filter(e => {
+      for (let f of filterOut) {
+        if (f[0] == e[0] && f[1] == e[1]) {
+          return false;
+        }
+      }
+      return true;
+    }).map((value, index) => {
       return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
     })
 
