@@ -52,7 +52,7 @@ function Migration(props) {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
       let edges = props.migration.map((value, index) => {
-        return { data: { source: value[0], target: value[1], label: value[2].length, id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
+        return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
       })
       for (const [i, edge] of edges.entries()) {
         if (edge.data.label == 1) {
