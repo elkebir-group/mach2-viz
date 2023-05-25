@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react'
 import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
@@ -216,7 +216,7 @@ function ClonalTree(props) {
     }
   };
   console.log(nodes.map((node) => node.data.id))
-  return <CytoscapeComponent
+  const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
     // pan={{ x: 200, y: 200 }}
     style={{ width: width, height: height }}
@@ -319,7 +319,8 @@ function ClonalTree(props) {
       });
     }}
     abc={console.log("myCyRef", myCyRef)}
-  />
+    />), [graphData] )
+    return memoizedGraphComponent;
 }
 
 export default ClonalTree;

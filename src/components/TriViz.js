@@ -135,6 +135,19 @@ function TriViz(props) {
     };
 
     useEffect(() => {
+        const handleOutsideClick = (event) => {
+          if (!event.target.closest('.outside-click-container')) {
+            setShowPanel(false);
+          }
+        };
+  
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+          document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
+    useEffect(() => {
     //let intervalId = setInterval(() => {
     //    setProgress(prevProgress => prevProgress + 10);
     //}, 1000);
@@ -212,7 +225,9 @@ for (let solution of wholeData['solutions']) {
                         }
                     }
                 } />
-                <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
+                <div className="outside-click-container">
+                    <FilterMenu show={showPanel} numSolns={numSolns} data={migrationSummary} selected={selected} toggleSelected={toggleSelected} />
+                </div>
                 <h3 className="viztitle"><b>Summary</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                 <a onClick={() => {window.location.href=`/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling2")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>

@@ -584,7 +584,7 @@ ul {
 
 .filtermenu {
   position: absolute;
-  margin-left: 40px;
+  margin-left: 5px;
   margin-top: 10px;
   z-index: 99999;
 }
@@ -608,8 +608,4 @@ input {
 .graphfail {
   padding-top: 20%;
   width: 100%;
-}
-
-.filtermenu.sum {
-  margin-left: 5px;
 }
