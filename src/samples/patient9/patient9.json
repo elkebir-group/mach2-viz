@@ -94,16 +94,12 @@
             [
                 "LOv",
                 "Om",
-                [
-                    "patient9"
-                ]
+                1
             ],
             [
                 "LOv",
                 "ROv",
-                [
-                    "patient9"
-                ]
+                1
             ]
         ]
     }

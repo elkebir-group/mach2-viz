@@ -7527,288 +7527,93 @@
         "migration": [
             [
                 "left_adrenal_gland",
+                "right_rib_7",
+                4
+            ],
+            [
+                "right_inguinal_lymph_node",
                 "prostate",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-2",
-                    "T-right_rib_7-2",
-                    "T-right_subdural-2"
-                ]
+                16
+            ],
+            [
+                "left_adrenal_gland",
+                "prostate",
+                4
             ],
             [
                 "left_adrenal_gland",
                 "right_inguinal_lymph_node",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-2",
-                    "T-right_rib_7-2",
-                    "T-right_subdural-2"
-                ]
+                4
             ],
             [
-                "left_adrenal_gland",
+                "right_subdural",
                 "right_rib_7",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-2",
-                    "T-right_rib_7-2",
-                    "T-right_subdural-2"
-                ]
-            ],
-            [
-                "prostate",
-                "left_adrenal_gland",
-                [
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-2",
-                    "T-prostate-3",
-                    "T-prostate-4"
-                ]
-            ],
-            [
-                "prostate",
-                "right_inguinal_lymph_node",
-                [
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-3",
-                    "T-prostate-4"
-                ]
-            ],
-            [
-                "prostate",
-                "right_rib_7",
-                [
-                    "T-prostate-3",
-                    "T-prostate-4"
-                ]
+                20
             ],
             [
                 "right_inguinal_lymph_node",
                 "left_adrenal_gland",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-2",
-                    "T-prostate-3",
-                    "T-prostate-4",
-                    "T-right_inguinal_lymph_node-0",
-                    "T-right_inguinal_lymph_node-1",
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
-            ],
-            [
-                "right_inguinal_lymph_node",
-                "prostate",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-2",
-                    "T-prostate-3",
-                    "T-prostate-4",
-                    "T-right_inguinal_lymph_node-0",
-                    "T-right_inguinal_lymph_node-1",
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
+                16
             ],
             [
                 "right_inguinal_lymph_node",
                 "right_rib_7",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-2",
-                    "T-prostate-3",
-                    "T-prostate-4",
-                    "T-right_inguinal_lymph_node-0",
-                    "T-right_inguinal_lymph_node-1",
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
+                16
             ],
             [
                 "right_inguinal_lymph_node",
                 "right_subdural",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-2",
-                    "T-prostate-3",
-                    "T-prostate-4",
-                    "T-right_inguinal_lymph_node-0",
-                    "T-right_inguinal_lymph_node-1",
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
+                16
+            ],
+            [
+                "prostate",
+                "left_adrenal_gland",
+                5
+            ],
+            [
+                "prostate",
+                "right_inguinal_lymph_node",
+                4
+            ],
+            [
+                "prostate",
+                "right_rib_7",
+                2
+            ],
+            [
+                "right_rib_7",
+                "right_inguinal_lymph_node",
+                16
             ],
             [
                 "right_rib_7",
                 "left_adrenal_gland",
-                [
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-11",
-                    "T-right_rib_7-12",
-                    "T-right_rib_7-13",
-                    "T-right_rib_7-14",
-                    "T-right_rib_7-15",
-                    "T-right_rib_7-16",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_rib_7-4",
-                    "T-right_rib_7-5",
-                    "T-right_rib_7-6",
-                    "T-right_rib_7-7",
-                    "T-right_rib_7-8",
-                    "T-right_rib_7-9"
-                ]
+                17
             ],
             [
                 "right_rib_7",
                 "prostate",
-                [
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-11",
-                    "T-right_rib_7-12",
-                    "T-right_rib_7-13",
-                    "T-right_rib_7-14",
-                    "T-right_rib_7-15",
-                    "T-right_rib_7-16",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_rib_7-4",
-                    "T-right_rib_7-5",
-                    "T-right_rib_7-6",
-                    "T-right_rib_7-7",
-                    "T-right_rib_7-8",
-                    "T-right_rib_7-9"
-                ]
-            ],
-            [
-                "right_rib_7",
-                "right_inguinal_lymph_node",
-                [
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-11",
-                    "T-right_rib_7-12",
-                    "T-right_rib_7-13",
-                    "T-right_rib_7-14",
-                    "T-right_rib_7-15",
-                    "T-right_rib_7-16",
-                    "T-right_rib_7-3",
-                    "T-right_rib_7-4",
-                    "T-right_rib_7-5",
-                    "T-right_rib_7-6",
-                    "T-right_rib_7-7",
-                    "T-right_rib_7-8",
-                    "T-right_rib_7-9"
-                ]
+                17
             ],
             [
                 "right_rib_7",
                 "right_subdural",
-                [
-                    "T-right_rib_7-11",
-                    "T-right_rib_7-12",
-                    "T-right_rib_7-13",
-                    "T-right_rib_7-14",
-                    "T-right_rib_7-15",
-                    "T-right_rib_7-16",
-                    "T-right_rib_7-4",
-                    "T-right_rib_7-5",
-                    "T-right_rib_7-6",
-                    "T-right_rib_7-7",
-                    "T-right_rib_7-8",
-                    "T-right_rib_7-9"
-                ]
+                12
+            ],
+            [
+                "right_subdural",
+                "prostate",
+                3
+            ],
+            [
+                "right_subdural",
+                "right_inguinal_lymph_node",
+                2
             ],
             [
                 "right_subdural",
                 "left_adrenal_gland",
-                [
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
-            ],
-            [
-                "right_subdural",
-                "prostate",
-                [
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
-            ],
-            [
-                "right_subdural",
-                "right_inguinal_lymph_node",
-                [
-                    "T-right_subdural-0",
-                    "T-right_subdural-1"
-                ]
-            ],
-            [
-                "right_subdural",
-                "right_rib_7",
-                [
-                    "T-left_adrenal_gland-0",
-                    "T-prostate-0",
-                    "T-prostate-1",
-                    "T-prostate-2",
-                    "T-prostate-3",
-                    "T-prostate-4",
-                    "T-right_inguinal_lymph_node-0",
-                    "T-right_inguinal_lymph_node-1",
-                    "T-right_rib_7-0",
-                    "T-right_rib_7-1",
-                    "T-right_rib_7-10",
-                    "T-right_rib_7-11",
-                    "T-right_rib_7-12",
-                    "T-right_rib_7-2",
-                    "T-right_rib_7-3",
-                    "T-right_rib_7-4",
-                    "T-right_rib_7-5",
-                    "T-right_subdural-0",
-                    "T-right_subdural-1",
-                    "T-right_subdural-2"
-                ]
+                3
             ]
         ]
     }

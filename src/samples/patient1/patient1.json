@@ -253,73 +253,53 @@
         "migration": [
             [
                 "ROv",
-                "ApC",
-                [
-                    "patient1"
-                ]
-            ],
-            [
-                "ROv",
                 "LFTB",
-                [
-                    "patient1"
-                ]
+                1
             ],
             [
                 "ROv",
-                "LOv",
-                [
-                    "patient1"
-                ]
+                "SBwl",
+                1
+            ],
+            [
+                "SBwl",
+                "Om",
+                1
+            ],
+            [
+                "SBwl",
+                "LFTB",
+                1
             ],
             [
                 "ROv",
                 "Om",
-                [
-                    "patient1"
-                ]
+                1
+            ],
+            [
+                "SBwl",
+                "LOv",
+                1
+            ],
+            [
+                "SBwl",
+                "ApC",
+                1
+            ],
+            [
+                "ROv",
+                "LOv",
+                1
+            ],
+            [
+                "ROv",
+                "ApC",
+                1
             ],
             [
                 "ROv",
                 "RFTA",
-                [
-                    "patient1"
-                ]
-            ],
-            [
-                "ROv",
-                "SBwl",
-                [
-                    "patient1"
-                ]
-            ],
-            [
-                "SBwl",
-                "ApC",
-                [
-                    "patient1"
-                ]
-            ],
-            [
-                "SBwl",
-                "LFTB",
-                [
-                    "patient1"
-                ]
-            ],
-            [
-                "SBwl",
-                "LOv",
-                [
-                    "patient1"
-                ]
-            ],
-            [
-                "SBwl",
-                "Om",
-                [
-                    "patient1"
-                ]
+                1
             ]
         ]
     }

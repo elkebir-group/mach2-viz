@@ -344,66 +344,48 @@
         "migration": [
             [
                 "LOv",
-                "Adnx",
-                [
-                    "patient3"
-                ]
-            ],
-            [
-                "LOv",
-                "CDSB",
-                [
-                    "patient3"
-                ]
-            ],
-            [
-                "LOv",
-                "ClnE",
-                [
-                    "patient3"
-                ]
-            ],
-            [
-                "LOv",
-                "LFTC",
-                [
-                    "patient3"
-                ]
-            ],
-            [
-                "LOv",
-                "Om",
-                [
-                    "patient3"
-                ]
-            ],
-            [
-                "LOv",
                 "RFTA",
-                [
-                    "patient3"
-                ]
+                1
+            ],
+            [
+                "LOv",
+                "Adnx",
+                1
             ],
             [
                 "LOv",
                 "ROv",
-                [
-                    "patient3"
-                ]
+                1
+            ],
+            [
+                "LOv",
+                "CDSB",
+                1
+            ],
+            [
+                "LOv",
+                "ClnE",
+                1
             ],
             [
                 "Om",
                 "CDSB",
-                [
-                    "patient3"
-                ]
+                1
+            ],
+            [
+                "LOv",
+                "LFTC",
+                1
             ],
             [
                 "Om",
                 "ClnE",
-                [
-                    "patient3"
-                ]
+                1
+            ],
+            [
+                "LOv",
+                "Om",
+                1
             ]
         ]
     }
