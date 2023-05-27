@@ -32,15 +32,16 @@ def main(
     # Load json data
     with open(input, 'r') as file:
         json_data = json.load(file)
+        labels = [solution["name"] for solution in json_data["solutions"]]
+
 
     # Convert JSON to a string
     json_string = json.dumps(json_data)
 
+    # Open the webpage and set the data in localstorage
     driver.get('https://elkebir-group.github.io/mach2-viz')
-
-    driver.execute_script(f'''
-        window.localStorage.setItem('json_data', {json_string})
-    ''')
+    driver.execute_script(f"window.localStorage.setItem('json_data', '{json_string}')")
+    driver.get(f'https://elkebir-group.github.io/mach2-viz/#/mach2-viz/viz?labeling={labels[0]}')
 
     while(True):
         pass
