@@ -1,10 +1,9 @@
 import typer
 import json
-import signal
+import platform
 
-from sys import exit
 from selenium import webdriver
-from functools import partial
+from shutil import which
 
 def main(
     input: str = typer.Option(..., "--input", "-i"),
@@ -22,12 +21,10 @@ def main(
         driver = webdriver.Safari()
     elif browser == "edge":
         driver = webdriver.Edge()
-    elif browser == "opera":
-        driver = webdriver.Opera()
     elif browser == "explorer" or browser == "ie":
         driver = webdriver.Ie()
     else:
-        raise ValueError("Invalid browser argument. Must choose from: chrome, firefox, safari, edge, opera, explorer or ie")
+        raise ValueError("Invalid browser argument. Must choose from: chrome, firefox, safari, edge, explorer or ie")
     
     # Load json data
     with open(input, 'r') as file:
