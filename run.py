@@ -1,7 +1,9 @@
 import typer
 import json
+import sys
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 def main(
     input: str = typer.Option(..., "--input", "-i"),
@@ -12,12 +14,15 @@ def main(
 
     # Select driver based on the argument
     if browser == "chrome":
-        driver = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_experimental_option("detach", True)
+        driver = webdriver.Chrome(options=chrome_options)
     elif browser == "firefox":
         driver = webdriver.Firefox()
     elif browser == "safari":
         driver = webdriver.Safari()
     elif browser == "edge":
+
         driver = webdriver.Edge()
     elif browser == "explorer" or browser == "ie":
         driver = webdriver.Ie()
@@ -29,17 +34,13 @@ def main(
         json_data = json.load(file)
         labels = [solution["name"] for solution in json_data["solutions"]]
 
-
     # Convert JSON to a string
     json_string = json.dumps(json_data)
 
     # Open the webpage and set the data in localstorage
     driver.get('https://elkebir-group.github.io/mach2-viz')
-    driver.execute_script(f"window.localStorage.setItem('json_data', '{json_string}')")
+    driver.execute_script(f"window.sessionStorage.setItem('json_data', '{json_string}')")
     driver.get(f'https://elkebir-group.github.io/mach2-viz/#/mach2-viz/viz?labeling={labels[0]}')
-
-    while(True):
-        pass
 
 if __name__ == "__main__":
     typer.run(main)
