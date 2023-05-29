@@ -3,7 +3,6 @@ import json
 import sys
 
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
 def main(
     input: str = typer.Option(..., "--input", "-i"),
@@ -14,7 +13,7 @@ def main(
 
     # Select driver based on the argument
     if browser == "chrome":
-        chrome_options = Options()
+        chrome_options = webdriver.ChromeOptions()
         chrome_options.add_experimental_option("detach", True)
         driver = webdriver.Chrome(options=chrome_options)
     elif browser == "firefox":
