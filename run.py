@@ -1,9 +1,7 @@
 import typer
 import json
-import platform
 
 from selenium import webdriver
-from shutil import which
 
 def main(
     input: str = typer.Option(..., "--input", "-i"),

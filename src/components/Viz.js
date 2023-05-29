@@ -39,7 +39,7 @@ function Viz(props) {
     const history = useHistory();
     const [mu, setMu] = useState(0);
     const [gamma, setGamma] = useState(0);
-    const jsonContents=localStorage.getItem("json_data");
+    const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
@@ -49,8 +49,8 @@ function Viz(props) {
       insertParam("labeling", wholeData["solutions"][0]["name"]);
     }
 
-    localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
-    localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     // const coloring = data["coloring"]
 
@@ -105,8 +105,8 @@ function Viz(props) {
 
     useEffect(() => {
       document.addEventListener("keydown", handleKeyPress);
-      setMu(localStorage.getItem("mu"));
-      setGamma(localStorage.getItem("gamma"));
+      setMu(sessionStorage.getItem("mu"));
+      setGamma(sessionStorage.getItem("gamma"));
     });
 
     const eventBus = {

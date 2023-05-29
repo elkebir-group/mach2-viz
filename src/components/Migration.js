@@ -244,11 +244,11 @@ function Migration(props) {
       })
 
       if (!props.rightcol) {
-        localStorage.setItem("mu", mu);
-        localStorage.setItem("gamma", gamma);
+        sessionStorage.setItem("mu", mu);
+        sessionStorage.setItem("gamma", gamma);
       } else {
-        localStorage.setItem("mu2", mu);
-        localStorage.setItem("gamma2", gamma);
+        sessionStorage.setItem("mu2", mu);
+        sessionStorage.setItem("gamma2", gamma);
       }
     
       const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent

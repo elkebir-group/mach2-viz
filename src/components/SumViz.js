@@ -51,21 +51,21 @@ function SumViz() {
     const [showPanel, setShowPanel] = useState(false);
 
     let selected = new DefaultDict(true);
-    let selectedStorage = JSON.parse(localStorage.getItem("selected"));
+    let selectedStorage = JSON.parse(sessionStorage.getItem("selected"));
     
     for (let key in selectedStorage) {
         selected[key] = selectedStorage[key];
     }
 
     let violations = new DefaultDict(0);
-    let violationsStorage = JSON.parse(localStorage.getItem("violations"));
+    let violationsStorage = JSON.parse(sessionStorage.getItem("violations"));
 
     for (let key in violationsStorage) {
         violations[key] = violationsStorage[key];
     }
 
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
-    const jsonContents=localStorage.getItem("json_data");
+    const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
     const labelName = queryParameters.get("labeling");
@@ -164,18 +164,18 @@ function SumViz() {
         
         // clearInterval(intervalId);
         document.addEventListener("keydown", handleKeyPress);
-        setMu(localStorage.getItem("mu"));
-        setGamma(localStorage.getItem("gamma"));
-        setMuSum(localStorage.getItem("musum"));
-        setGammaSum(localStorage.getItem("gammasum"));
+        setMu(sessionStorage.getItem("mu"));
+        setGamma(sessionStorage.getItem("gamma"));
+        setMuSum(sessionStorage.getItem("musum"));
+        setGammaSum(sessionStorage.getItem("gammasum"));
         setIsLoading(false)
 
         //return () => clearInterval(intervalId);
     }, []);
 
     useEffect(() => {
-        setMuSum(localStorage.getItem("musum"));
-        setGammaSum(localStorage.getItem("gammasum"));
+        setMuSum(sessionStorage.getItem("musum"));
+        setGammaSum(sessionStorage.getItem("gammasum"));
     }, [isLoading])
 
     let toggleSelected = (name) => {
@@ -191,8 +191,8 @@ function SumViz() {
             }
         }
 
-        localStorage.setItem("violations", JSON.stringify(violations));
-        localStorage.setItem("selected", JSON.stringify(selected));        
+        sessionStorage.setItem("violations", JSON.stringify(violations));
+        sessionStorage.setItem("selected", JSON.stringify(selected));        
 
         window.location.reload()
     }

@@ -39,7 +39,7 @@ function DualViz() {
     const [mu2, setMu2] = useState(0);
     const [gamma2, setGamma2] = useState(0);
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
-    const jsonContents=localStorage.getItem("json_data");
+    const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
     let labelName = queryParameters.get("labeling");
@@ -60,8 +60,8 @@ function DualViz() {
     const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
     const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
 
-    localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
-    localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
 
     let coloring = wholeData["coloring"];
     console.log(coloring)
@@ -138,10 +138,10 @@ function DualViz() {
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyPress);
-        setMu(localStorage.getItem("mu"));
-        setGamma(localStorage.getItem("gamma"));
-        setMu2(localStorage.getItem("mu2"));
-        setGamma2(localStorage.getItem("gamma2"));
+        setMu(sessionStorage.getItem("mu"));
+        setGamma(sessionStorage.getItem("gamma"));
+        setMu2(sessionStorage.getItem("mu2"));
+        setGamma2(sessionStorage.getItem("gamma2"));
     });
 
     return <div className="viz">

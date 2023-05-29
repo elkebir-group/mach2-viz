@@ -68,8 +68,8 @@ function Home(props) {
     const color1 = "#EBEBEB";
     const color2 = "#A3A3A3";
 
-    localStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
-    localStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     for (let i = 0; i < default_patients.length; i++) {
         var current_patient = default_patients[i];
@@ -85,7 +85,7 @@ function Home(props) {
             </li>
           </div>
           <div className="patientitem" style={{ backgroundColor: current_color }}>
-            <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {localStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
+            <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {sessionStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
               <li className="abouttext">
                 <div className='liwrapper'>
                   <p className='leftli'><b>{current_patient}</b></p>
@@ -124,7 +124,7 @@ function Home(props) {
 
         // let stateObj = {json_contents: json_contents};
         // history.pushState(stateObj, window.location.href);
-        localStorage.setItem("json_data", json_contents);
+        sessionStorage.setItem("json_data", json_contents);
   
         window.location = window.location + `viz?labeling=${labelnames[0]}`;
         // history.push(`viz?labeling=${labelnames[0]}`);

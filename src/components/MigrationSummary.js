@@ -10,7 +10,7 @@ Cytoscape.use(COSEBilkent);
 
 function MigrationSummary(props) {
     var filterOut = [];
-    var filterJson = JSON.parse(localStorage.getItem("selected"))
+    var filterJson = JSON.parse(sessionStorage.getItem("selected"))
 
     if (props.title === filterJson['title']) {
       for (let key in filterJson) {
@@ -222,8 +222,8 @@ function MigrationSummary(props) {
       }
     })
 
-    localStorage.setItem("musum", mu);
-    localStorage.setItem("gammasum", gamma);
+    sessionStorage.setItem("musum", mu);
+    sessionStorage.setItem("gammasum", gamma);
 
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}

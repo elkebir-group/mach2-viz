@@ -54,7 +54,7 @@ function TriViz(props) {
     const [showPanel, setShowPanel] = useState(false);
 
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
-    const jsonContents=localStorage.getItem("json_data");
+    const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
     const labelName = queryParameters.get("labeling");
@@ -66,14 +66,14 @@ function TriViz(props) {
     const migrationSummary = wholeData["summary"]["migration"];
 
     let selected = new DefaultDict(true);
-    let selectedStorage = JSON.parse(localStorage.getItem("selected"));
+    let selectedStorage = JSON.parse(sessionStorage.getItem("selected"));
     
     for (let key in selectedStorage) {
         selected[key] = selectedStorage[key];
     }
 
     let violations = new DefaultDict(0);
-    let violationsStorage = JSON.parse(localStorage.getItem("violations"));
+    let violationsStorage = JSON.parse(sessionStorage.getItem("violations"));
 
     for (let key in violationsStorage) {
         violations[key] = violationsStorage[key];
@@ -155,12 +155,12 @@ function TriViz(props) {
     //setTimeout(() => {
     //    clearInterval(intervalId);
         document.addEventListener("keydown", handleKeyPress);
-        setMu(localStorage.getItem("mu"));
-        setGamma(localStorage.getItem("gamma"));
-        setMu2(localStorage.getItem("mu2"));
-        setGamma2(localStorage.getItem("gamma2"));
-        setMuSum(localStorage.getItem("musum"));
-        setGammaSum(localStorage.getItem("gammasum"));
+        setMu(sessionStorage.getItem("mu"));
+        setGamma(sessionStorage.getItem("gamma"));
+        setMu2(sessionStorage.getItem("mu2"));
+        setGamma2(sessionStorage.getItem("gamma2"));
+        setMuSum(sessionStorage.getItem("musum"));
+        setGammaSum(sessionStorage.getItem("gammasum"));
         setIsLoading(false)
     //}, 10000);
 
@@ -179,8 +179,8 @@ function TriViz(props) {
         }
     }
 
-    localStorage.setItem("violations", JSON.stringify(violations));
-    localStorage.setItem("selected", JSON.stringify(selected));
+    sessionStorage.setItem("violations", JSON.stringify(violations));
+    sessionStorage.setItem("selected", JSON.stringify(selected));
 
     window.location.reload()
 }
