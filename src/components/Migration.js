@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react'
 import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
@@ -244,14 +244,14 @@ function Migration(props) {
       })
 
       if (!props.rightcol) {
-        localStorage.setItem("mu", mu);
-        localStorage.setItem("gamma", gamma);
+        sessionStorage.setItem("mu", mu);
+        sessionStorage.setItem("gamma", gamma);
       } else {
-        localStorage.setItem("mu2", mu);
-        localStorage.setItem("gamma2", gamma);
+        sessionStorage.setItem("mu2", mu);
+        sessionStorage.setItem("gamma2", gamma);
       }
     
-      return <CytoscapeComponent
+      const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
         // pan={{ x: 200, y: 200 }}
         style={{ width: width, height: height }}
@@ -326,7 +326,8 @@ function Migration(props) {
           });
         }}
         abc={console.log("myCyRef", myCyRef)}
-      />
+        />), [graphData] )
+        return memoizedGraphComponent;
 }
 
 export default Migration;

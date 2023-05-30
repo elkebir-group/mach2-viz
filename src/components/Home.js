@@ -13,6 +13,8 @@ import download from "../assets/download.png";
 import axios from 'axios'
 import fileDownload from 'js-file-download'
 
+import DefaultDict from "../utils/DefaultDict.js";
+
 import A7 from "../samples/A7/A7.json";
 import A10 from "../samples/A10/A10.json";
 import A22 from "../samples/A22/A22.json";
@@ -65,6 +67,9 @@ function Home(props) {
     var which_color = true;
     const color1 = "#EBEBEB";
     const color2 = "#A3A3A3";
+
+    sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
+    sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     for (let i = 0; i < default_patients.length; i++) {
         var current_patient = default_patients[i];
@@ -80,7 +85,7 @@ function Home(props) {
             </li>
           </div>
           <div className="patientitem" style={{ backgroundColor: current_color }}>
-            <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {localStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
+            <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {sessionStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
               <li className="abouttext">
                 <div className='liwrapper'>
                   <p className='leftli'><b>{current_patient}</b></p>
@@ -119,7 +124,7 @@ function Home(props) {
 
         // let stateObj = {json_contents: json_contents};
         // history.pushState(stateObj, window.location.href);
-        localStorage.setItem("json_data", json_contents);
+        sessionStorage.setItem("json_data", json_contents);
   
         window.location = window.location + `viz?labeling=${labelnames[0]}`;
         // history.push(`viz?labeling=${labelnames[0]}`);

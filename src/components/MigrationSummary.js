@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react'
 import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
@@ -9,6 +9,19 @@ Cytoscape.use(dagre);
 Cytoscape.use(COSEBilkent);
 
 function MigrationSummary(props) {
+    var filterOut = [];
+    var filterJson = JSON.parse(sessionStorage.getItem("selected"))
+
+    if (props.title === filterJson['title']) {
+      for (let key in filterJson) {
+        if (key !== 'title' && !filterJson[key]) {
+          filterOut.push(key.split('→'));
+        }
+      }
+    }
+
+    console.log(filterOut);
+
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
     const colorPalette = [
       "#a6cee3",
@@ -45,7 +58,14 @@ function MigrationSummary(props) {
         return { data: { id:  value, label: value, type: "ip"} };
     });
 
-    let edges = props.data.map((value, index) => {
+    let edges = props.data.filter(e => {
+      for (let f of filterOut) {
+        if (f[0] == e[0] && f[1] == e[1]) {
+          return false;
+        }
+      }
+      return true;
+    }).map((value, index) => {
       return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
     })
 
@@ -202,10 +222,10 @@ function MigrationSummary(props) {
       }
     })
 
-    localStorage.setItem("musum", mu);
-    localStorage.setItem("gammasum", gamma);
+    sessionStorage.setItem("musum", mu);
+    sessionStorage.setItem("gammasum", gamma);
 
-    return <CytoscapeComponent
+    const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
         // pan={{ x: 200, y: 200 }}
         style={{ width: width, height: height }}
@@ -284,7 +304,8 @@ function MigrationSummary(props) {
           });
         }}
         abc={console.log("myCyRef", myCyRef)}
-      />
+      />), [graphData] )
+      return memoizedGraphComponent;
 }
 
 export default MigrationSummary;
