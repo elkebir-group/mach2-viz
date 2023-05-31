@@ -4,7 +4,7 @@ import builtins
 
 from selenium import webdriver
 
-def main(
+def mach2viz(
     input: str = typer.Option(..., "--input", "-i"),
     browser: str = typer.Option("chrome", "--browser", "-b")
 ):
@@ -50,5 +50,8 @@ def main(
         print("Press ENTER to continue...")
         builtins.input()
 
+def main():
+    typer.run(mach2viz)
+
 if __name__ == "__main__":
-    typer.run(main)
+    main()
