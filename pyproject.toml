@@ -4,7 +4,7 @@ build-backend = "pdm.backend"
 
 [project]
 name = "mach2viz"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Vikram Ramavarapu", email="vikramr2@illinois.edu" },
 ]
