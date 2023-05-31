@@ -4,7 +4,7 @@ build-backend = "pdm.backend"
 
 [project]
 name = "mach2viz"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Vikram Ramavarapu", email="vikramr2@illinois.edu" },
 ]
@@ -24,7 +24,7 @@ dependencies = [
 ]
 
 [project.scripts]
-mach2 = "mach2viz.run:main"
+mach2viz = "mach2viz.run:main"
 
 [project.urls]
 "Homepage" = "https://github.com/elkebir-group/mach2-viz"
