@@ -263,6 +263,7 @@ input[type="checkbox"] {
   width: 100%;
   height: calc(50% - 40px);
   margin-top: 5px;
+  overflow: hidden;
 }
 
 .paneltitle {
