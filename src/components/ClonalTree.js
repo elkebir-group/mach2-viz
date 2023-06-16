@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
@@ -46,13 +46,13 @@ function ClonalTree(props) {
       if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
   }
 
-  const nodes = props.tree.map(array => {
+  let nodes = props.tree.map(array => {
     // Create a new array excluding the third element
     return array.filter((_, index) => index !== 2);
   }).flat().filter(onlyUnique).map((value, index) => {
     return { data: { id: value, label: findLabel(value), type: "ip"} };
   });
-  const edges = props.tree.map((value, index) => {
+  let edges = props.tree.map((value, index) => {
     return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
   })
 
@@ -60,6 +60,24 @@ function ClonalTree(props) {
     nodes: nodes,
     edges: edges
   });
+
+  useEffect(() => {
+    nodes = props.tree.map(array => {
+      // Create a new array excluding the third element
+      return array.filter((_, index) => index !== 2);
+    }).flat().filter(onlyUnique).map((value, index) => {
+      return { data: { id: value, label: findLabel(value), type: "ip"} }
+    });
+
+    edges = props.tree.map((value, index) => {
+      return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
+    })
+
+    setGraphData({
+      nodes: nodes,
+      edges: edges
+    })
+  }, [props.tree, props.labeling])
 
   let styleSheet = [
     {
@@ -215,7 +233,6 @@ function ClonalTree(props) {
       props.evtbus.addListener(listener);
     }
   };
-  console.log(nodes.map((node) => node.data.id))
   const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
     // pan={{ x: 200, y: 200 }}

@@ -32,8 +32,8 @@ function insertParam(key, value) {
     window.location.href = '#/triviz?' + urlParams.toString();
   
     // Reload the page
-    console.log(window.location);
-    window.location.reload();
+    //console.log(window.location);
+    //window.location.reload();
 }
 
 function handleKeyPress(event) {
@@ -57,11 +57,17 @@ function TriViz(props) {
     const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
+    const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
+    const [rotate2, setRotate2] = useState(queryParameters.get("rotated2") === "true");
+
     const labelName = queryParameters.get("labeling");
     const labelName2 = queryParameters.get("labeling2");
 
-    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
-    const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
+    const [labeling, setLabeling] = useState(labelName)
+    const [labeling2, setLabeling2] = useState(labelName2)
+
+    const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+    const [data2, setData2] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
 
     const migrationSummary = wholeData["summary"]["migration"];
 
@@ -91,32 +97,44 @@ function TriViz(props) {
         .map((item, index, self) => [item, `${self.indexOf(item)}`]);
     }
 
-    let tree = null;
-    let tree2 = null;
-    let tree_labeling = null;
-    let tree_labeling2 = null;
-    let migration = null;
-    let migration2 = null;
+    const [tree, setTree] = useState(data["tree"])
+    const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
+    const [migration, setMigration] = useState(data["migration"])
 
-    if (data != null) {
-        tree = data["tree"]
-        tree2 = data2["tree"]
-        tree_labeling = data["labeling"];
-        tree_labeling2 = data2["labeling"];
-        migration = data["migration"];
-        migration2 = data2["migration"];
-    }
+    const [tree2, setTree2] = useState(data["tree"])
+    const [tree_labeling2, setTreeLabeling2] = useState(data["labeling"])
+    const [migration2, setMigration2] = useState(data["migration"])
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
     const numSolns = wholeData["solutions"].length;
 
+    useEffect(() => {
+        setTree(data["tree"])
+        setTreeLabeling(data["labeling"])
+        setMigration(data["migration"])
+        setMu(sessionStorage.getItem("mu"));
+        setGamma(sessionStorage.getItem("gamma"));
+    }, [labeling])
+
+    useEffect(() => {
+        setTree2(data2["tree"])
+        setTreeLabeling2(data2["labeling"])
+        setMigration2(data2["migration"])
+        setMu2(sessionStorage.getItem("mu2"));
+        setGamma2(sessionStorage.getItem("gamma2"));
+    }, [labeling2])
+
     let handleLabelChange = (event) => {
         insertParam("labeling", event.target.value);
+        setLabeling(event.target.value)
+        setData(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let handleLabelChange2 = (event) => {
         insertParam("labeling2", event.target.value);
+        setLabeling2(event.target.value)
+        setData2(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     const eventBus = {
@@ -263,7 +281,7 @@ for (let solution of wholeData['solutions']) {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
-                {data != null && <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>}
+                {data != null && <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus} rotated={rotate}/>}
                 {data == null && <h1 className="graphfail">--No Graphs Possible--</h1>}
             </div>
             <div className="panel migration left">
@@ -295,7 +313,7 @@ for (let solution of wholeData['solutions']) {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
-                {data != null && <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus} rightcol={true}/>}
+                {data != null && <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus} rightcol={true} rotated={rotate2}/>}
                 {data == null && <h1 className="graphfail">--No Graphs Possible--</h1>}
             </div>
             <div className="panel migration left">

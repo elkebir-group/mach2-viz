@@ -1,0 +1,31 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "mach2viz"
+version = "0.0.3"
+authors = [
+  { name="Vikram Ramavarapu", email="vikramr2@illinois.edu" },
+]
+description = "Online interactive visualizer for Migration Analysis of Clonal History 2 (MACH2)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+keywords = ["Computational biology", "Bioinformatics", "Cancer", "Metastasis", "Phylogeny"]
+dependencies = [
+    'typer',
+    'selenium'
+]
+
+[project.scripts]
+mach2viz = "mach2viz.run:main"
+
+[project.urls]
+"Homepage" = "https://github.com/elkebir-group/mach2-viz"
+"Bug Tracker" = "https://github.com/elkebir-group/mach2-viz/issues"

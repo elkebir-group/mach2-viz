@@ -24,7 +24,7 @@ function insertParam(key, value) {
     window.location.href = '#/dualviz?' + urlParams.toString();
   
     // Reload the page
-    window.location.reload();
+    //window.location.reload();
 }
 
 function handleKeyPress(event) {
@@ -42,8 +42,14 @@ function DualViz() {
     const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
+    const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
+    const [rotate2, setRotate2] = useState(queryParameters.get("rotated2") === "true");
+
     let labelName = queryParameters.get("labeling");
     let labelName2 = queryParameters.get("labeling2");
+
+    const [labeling, setLabeling] = useState(labelName)
+    const [labeling2, setLabeling2] = useState(labelName2)
 
     console.log(wholeData);
     console.log(labelName, labelName2);
@@ -57,8 +63,11 @@ function DualViz() {
 
     console.log(labelName, labelName2);
 
-    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
-    const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
+    //const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+    //const data2 = wholeData["solutions"].filter((item) => {return item["name"] === labelName2})[0];
+
+    const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+    const [data2, setData2] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
 
     sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
@@ -75,31 +84,54 @@ function DualViz() {
         .map((item, index, self) => [item, `${self.indexOf(item)}`]);
     }
 
-    const tree = data["tree"]
-    const tree2 = data2["tree"]
-    const tree_labeling = data["labeling"];
-    const tree_labeling2 = data2["labeling"];
-    const migration = data["migration"];
-    const migration2 = data2["migration"];
+    const [tree, setTree] = useState(data["tree"])
+    const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
+    const [migration, setMigration] = useState(data["migration"])
+
+    const [tree2, setTree2] = useState(data["tree"])
+    const [tree_labeling2, setTreeLabeling2] = useState(data["labeling"])
+    const [migration2, setMigration2] = useState(data["migration"])
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
+    useEffect(() => {
+      setTree(data["tree"])
+      setTreeLabeling(data["labeling"])
+      setMigration(data["migration"])
+      setMu(sessionStorage.getItem("mu"));
+      setGamma(sessionStorage.getItem("gamma"));
+    }, [labeling])
+
+    useEffect(() => {
+      setTree2(data2["tree"])
+      setTreeLabeling2(data2["labeling"])
+      setMigration2(data2["migration"])
+      setMu2(sessionStorage.getItem("mu2"));
+      setGamma2(sessionStorage.getItem("gamma2"));
+    }, [labeling2])
+
     let handleLabelChange = (event) => {
         insertParam("labeling", event.target.value);
+        setLabeling(event.target.value)
+        setData(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let handleLabelChange2 = (event) => {
         insertParam("labeling2", event.target.value);
+        setLabeling2(event.target.value)
+        setData2(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let rotateFn = (event) => {
         let rotated = queryParameters.get("rotated") === "true";
         insertParam("rotated", !rotated);
+        setRotate(!rotated)
     }
 
     let rotateFn2 = (event) => {
         let rotated = queryParameters.get("rotated2") === "true";
         insertParam("rotated2", !rotated);
+        setRotate2(!rotated)
     }
 
     let gotoSummary = (event) => {
@@ -164,7 +196,7 @@ function DualViz() {
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>
+                <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus} rotated={rotate}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>
@@ -189,7 +221,7 @@ function DualViz() {
                 <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
-                <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
+                <Migration tree={tree2} labeling={tree_labeling2} migration={migration2} coloring={coloring} evtbus={eventBus2} rightcol={true} rotated={rotate2}/>
             </div>
             <div className="panel migration left">
                 <p className="paneltitle"><b>Clonal Tree</b></p>

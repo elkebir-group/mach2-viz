@@ -33,6 +33,11 @@ import tracerx_res_old from "../samples/tracerx_res_old/tracerx_old_all.json";
 import tracerx_res_new from "../samples/tracerx_res_new/tracerx_new_all.json";
 
 function Home(props) {
+  var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight;
+
+console.log("Window width: " + windowWidth);
+console.log("Window height: " + windowHeight);
     let handleDownload = (url, filename) => {
       axios.get(url, {
         responseType: 'blob',
@@ -80,17 +85,11 @@ function Home(props) {
 
         div_elements.push(<div className="patient-container">
           <div className="patientitem" style={{ backgroundColor: current_color }}>
-            <li className="dirtext">
               <p><b>{current_directory}</b></p>
-            </li>
           </div>
           <div className="patientitem" style={{ backgroundColor: current_color }}>
             <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {sessionStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
-              <li className="abouttext">
-                <div className='liwrapper'>
                   <p className='leftli'><b>{current_patient}</b></p>
-                </div>
-              </li>
             </Link>
             <img 
               className='rightli' 
@@ -141,34 +140,23 @@ function Home(props) {
                 <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the about page for more information.</p>
                 
                 <h3>Examples</h3>
-
-                <div className="panel title">
-                  <ol className="patientlist">
-                    <div className="patient-container">
-                      <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
-                        <li className="dirtext title">
-                          <p className='datasettitle'><b>Dataset</b></p>
-                        </li>
-                      </div>
-                      <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
-                        <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
-                          <li className="abouttext title">
-                          <p className='datasettitle'><b>Patient</b></p>
-                          </li>
-                        </Link>
-                      </div>
-                    </div>
-                  </ol>
+                <div className="patient-container">
+                  <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
+                      <p className='datasettitle'><b>Dataset</b></p>
+                  </div>
+                  <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
+                    <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
+                      <p className='datasettitle'><b>Patient</b></p>
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="panel example">
-                    <ol className="patientlist">
                       { 
                         div_elements.map(elem => (
                           elem
                         ))
                       }
-                    </ol>
               </div>
             </div>
             
