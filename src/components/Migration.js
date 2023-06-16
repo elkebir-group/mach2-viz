@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
@@ -64,6 +64,27 @@ function Migration(props) {
         nodes: nodes,
         edges: edges
       });
+
+      useEffect(() => {
+        let nodes = props.tree.map(array => {
+          // Create a new array excluding the third element
+          return array.filter((_, index) => index !== 2);
+        }).flat().filter(onlyUnique).map((value, index) => {
+          return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
+        });
+        let edges = props.migration.map((value, index) => {
+          return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
+        })
+        for (const [i, edge] of edges.entries()) {
+          if (edge.data.label == 1) {
+            edges[i].data.label = "";
+          }
+        }
+        setGraphData({
+          nodes: nodes,
+          edges: edges
+        })
+      }, [props.tree, props.labeling, props.migration, props.rotated])
 
       let styleSheet = [
         {
@@ -171,8 +192,8 @@ function Migration(props) {
         nodeDimensionsIncludeLabels: false,
         transform: (node, position) => {
           return {
-            x: rotated ? -2*position.y : position.x,
-            y: rotated ? position.x : position.y
+            x: props.rotated ? -2*position.y : position.x,
+            y: props.rotated ? position.x : position.y
           }
         },
         ready: function() {

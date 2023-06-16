@@ -25,8 +25,12 @@ function insertParam(key, value) {
   //currentUrl.search = urlParams.toString();
   window.location.href = '#/viz?' + urlParams.toString();
 
-  // Reload the page
-  window.location.reload();
+  if (key === "labeling" || key === "rotated") {
+
+  } else {
+    // Reload the page
+    window.location.reload();
+  }
 }
 
 function handleKeyPress(event) {
@@ -45,6 +49,10 @@ function Viz(props) {
 
     let labelName = queryParameters.get("labeling");
 
+    const [labeling, setLabeling] = useState(labelName)
+
+    const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
+
     if (labelName == "undefined") {
       insertParam("labeling", wholeData["solutions"][0]["name"]);
     }
@@ -54,11 +62,15 @@ function Viz(props) {
     
     // const coloring = data["coloring"]
 
-    const data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+    
 
     // console.log(data["labeling"])
     let coloring = wholeData["coloring"];
-    console.log(coloring)
+
+    const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+    const [tree, setTree] = useState(data["tree"])
+    const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
+    const [migration, setMigration] = useState(data["migration"])
 
     if (coloring === undefined || coloring.length === 0) {
       coloring = data["labeling"]
@@ -69,11 +81,13 @@ function Viz(props) {
         .map((item, index, self) => [item, `${self.indexOf(item)}`]);
     }
 
-    console.log(coloring);
-
-    const tree = data["tree"]
-    const tree_labeling = data["labeling"]
-    const migration = data["migration"]
+    useEffect(() => {
+      setTree(data["tree"])
+      setTreeLabeling(data["labeling"])
+      setMigration(data["migration"])
+      setMu(sessionStorage.getItem("mu"));
+      setGamma(sessionStorage.getItem("gamma"));
+    }, [labeling])
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
@@ -88,6 +102,8 @@ function Viz(props) {
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
+      setLabeling(event.target.value)
+      setData(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let addTab = (event) => {
@@ -101,6 +117,7 @@ function Viz(props) {
     let rotateFn = (event) => {
       let rotated = queryParameters.get("rotated") === "true";
       insertParam("rotated", !rotated);
+      setRotate(!rotated)
     }
 
     useEffect(() => {
@@ -132,7 +149,7 @@ function Viz(props) {
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
               <select name="labelings" id="labelings" onChange={handleLabelChange}>
                 {labelnames.map(l => 
-                  {return (l === queryParameters.get("labeling")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
+                  {return (l === labeling) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                 )}
               </select>
             </b></p></label>
@@ -147,7 +164,7 @@ function Viz(props) {
                 <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={eventBus}/>
+                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={eventBus} rotated={rotate}/>
               </div>
               <div className="panel migration">
                 <p className="paneltitle"><b>Clonal Tree</b></p>

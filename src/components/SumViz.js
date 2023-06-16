@@ -32,7 +32,7 @@ function insertParam(key, value) {
     window.location.href = '#/sumviz?' + urlParams.toString();
   
     // Reload the page
-    window.location.reload();
+    //window.location.reload();
 }
 
 function handleKeyPress(event) {
@@ -68,9 +68,12 @@ function SumViz() {
     const jsonContents=sessionStorage.getItem("json_data");
     const wholeData = JSON.parse(jsonContents);
 
-    const labelName = queryParameters.get("labeling");
+    const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
 
-    let data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
+    const labelName = queryParameters.get("labeling");
+    const [labeling, setLabeling] = useState(labelName)
+
+    //let data = wholeData["solutions"].filter((item) => {return item["name"] === labelName})[0];
 
     const numSolns = wholeData["solutions"].length;
 
@@ -79,34 +82,51 @@ function SumViz() {
     let coloring = wholeData["coloring"];
     console.log(coloring)
 
-    if ((coloring === undefined || coloring.length === 0) && data != null) {
-      coloring = data["labeling"]
-        .map((item) => item[1])
-        .filter((value, index, self) => {
-          return self.indexOf(value) === index;
-        })
-        .map((item, index, self) => [item, `${self.indexOf(item)}`]);
-    }
+    //let tree = null;
+    //let tree_labeling = null;
+    //let migration = null;
 
-    let tree = null;
-    let tree_labeling = null;
-    let migration = null;
-
-    if (data != null) {
+    /*if (data != null) {
         tree = data["tree"]
         tree_labeling = data["labeling"];
         migration = data["migration"];
+    }*/
+
+    const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+    const [tree, setTree] = useState(data["tree"])
+    const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
+    const [migration, setMigration] = useState(data["migration"])
+
+    if ((coloring === undefined || coloring.length === 0) && data != null) {
+        coloring = data["labeling"]
+          .map((item) => item[1])
+          .filter((value, index, self) => {
+            return self.indexOf(value) === index;
+          })
+          .map((item, index, self) => [item, `${self.indexOf(item)}`]);
     }
 
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
+    useEffect(() => {
+        setTree(data["tree"])
+        setTreeLabeling(data["labeling"])
+        setMigration(data["migration"])
+        setMu(sessionStorage.getItem("mu"));
+        setGamma(sessionStorage.getItem("gamma"));
+        console.log(migration)
+    }, [labeling])
+
     let handleLabelChange = (event) => {
         insertParam("labeling", event.target.value);
+        setLabeling(event.target.value);
+        setData(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let rotateFn = (event) => {
         let rotated = queryParameters.get("rotated") === "true";
         insertParam("rotated", !rotated);
+        setRotate(!rotated)
     }
 
     let addTab = (event) => {
@@ -266,7 +286,7 @@ function SumViz() {
                             <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
                             <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
                             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                            {data != null && <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus}/>}
+                            {data != null && <Migration tree={tree} labeling={tree_labeling} migration={migration} coloring={coloring} evtbus={eventBus} rotated={rotate}/>}
                             {data == null && <h1 className="graphfail">--No Graphs Possible--</h1>}
                         </div>
                         <div className="panel migration left">
