@@ -234,7 +234,7 @@ input[type="checkbox"] {
 }
 
 .panel.example {
-  width: calc(100%-60px);
+  width: calc(100%);
   height: calc(65%);
   overflow-y: scroll; 
   scrollbar-width: none;
