@@ -1,5 +1,8 @@
-# MACHINA-Viz
-Visualizing the solution space for the parsimonious migration history problem with polytomy resolution. Solutions are generated via the MACHINA algorithm ([El-Kebir et. al.](https://www.nature.com/articles/s41588-018-0106-z)).
+# MACH2-Viz
+MACH2 is an upgraded version of MACHINA. Visualizing the solution space for the parsimonious migration history problem with polytomy resolution. Solutions are generated via the MACHINA algorithm ([El-Kebir et. al.](https://www.nature.com/articles/s41588-018-0106-z)) and MACH2 (Roddur et. al.).
+
+## Current Deployed Version
+To view the current deployment of MACH2Viz, go to [this link](https://elkebir-group.github.io/mach2-viz/#/)
 
 ## File Inputs
 MACHINA-Viz takes file inputs in a json file format. The json is in the following format:
