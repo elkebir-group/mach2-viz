@@ -460,7 +460,7 @@ img {
 }
 
 .panel.info.one {
-  width: calc(50% - 50px);
+  width: calc(50% - 70px);
 }
 
 .panel.info.one.two {

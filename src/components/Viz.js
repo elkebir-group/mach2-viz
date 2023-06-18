@@ -24,13 +24,6 @@ function insertParam(key, value) {
   // Replace the URL
   //currentUrl.search = urlParams.toString();
   window.location.href = '#/viz?' + urlParams.toString();
-
-  if (key === "labeling" || key === "rotated") {
-
-  } else {
-    // Reload the page
-    window.location.reload();
-  }
 }
 
 function handleKeyPress(event) {
@@ -48,26 +41,29 @@ function Viz(props) {
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
     let labelName = queryParameters.get("labeling");
+    let labelName2 = queryParameters.get("labeling2");
 
     const [labeling, setLabeling] = useState(labelName)
+    const [labeling2, setLabeling2] = useState(labelName2)
 
     const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
+    const [type, setType] = useState(queryParameters.get("type"))
 
     if (labelName == "undefined") {
       insertParam("labeling", wholeData["solutions"][0]["name"]);
+    }
+    if (labelName2 == "undefined") {
+      insertParam("labeling2", wholeData["solutions"][0]["name"]);
     }
 
     sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
-    // const coloring = data["coloring"]
-
-    
-
     // console.log(data["labeling"])
     let coloring = wholeData["coloring"];
 
     const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+    const [data2, setData2] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
     const [tree, setTree] = useState(data["tree"])
     const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
     const [migration, setMigration] = useState(data["migration"])
@@ -106,8 +102,18 @@ function Viz(props) {
       setData(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
+    let handleLabelChange2 = (event) => {
+      insertParam("labeling2", event.target.value);
+      setLabeling2(event.target.value)
+      setData2(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
+    }
+
     let addTab = (event) => {
-      window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+      //window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
+      insertParam("type", "dualviz")
+      insertParam("labeling2", labeling)
+      setData2(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+      setType('dualviz')
     }
 
     let gotoSummary = (event) => {
@@ -144,7 +150,7 @@ function Viz(props) {
     return (
       <div className="viz">
         <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
-        <div className="panel info">
+        <div className={`panel info ${type === 'dualviz' ? 'one' : ''}`}>
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
               <select name="labelings" id="labelings" onChange={handleLabelChange}>
@@ -157,23 +163,36 @@ function Viz(props) {
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
             <Link to="" style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
           </div>
-          <div className="columnwrapper">
-            <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
-              <div className="panel migration top">
-                <p className="paneltitle"><b>Migration Graph</b></p>
-                <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
-                <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
-                <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-                <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={eventBus} rotated={rotate}/>
-              </div>
-              <div className="panel migration">
-                <p className="paneltitle"><b>Clonal Tree</b></p>
-                <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
-              </div>
+          <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
+            <div className={`panel migration top ${type === 'dualviz' ? 'left' : ''}`}>
+              <p className="paneltitle"><b>Migration Graph</b></p>
+              <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
+              <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+              <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
+              <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={eventBus} rotated={rotate}/>
             </div>
-            <RightColumn coord_map={coord_map} coloring={coloring} tree={tree} labeling={tree_labeling} evtbus={eventBus}/>
+            <div className={`panel migration ${type === 'dualviz' ? 'left': ''}`}>
+              <p className="paneltitle"><b>Clonal Tree</b></p>
+              <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+            </div>
           </div>
         </div>
+        {type == 'dualviz' ? 
+          <div className="panel info one two">
+            <div className="titlewrapper">
+                <label className="titleelem left" for="labelings"><p><b>Full Labeling:
+                <select name="labelings" id="labelings" onChange={handleLabelChange2}>
+                    {labelnames.map(l => 
+                    {return (l === queryParameters.get("labeling2")) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
+                    )}
+                </select>
+                </b></p></label>
+                <h3 className="viztitle"><b>{data2["name"]}</b></h3>
+                <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
+                <a onClick={() => {window.location.href=`/mach2-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                    </div>
+          </div> : 
+          <></>}
         <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
       </div>
     )
