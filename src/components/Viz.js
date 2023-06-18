@@ -200,6 +200,11 @@ function Viz(props) {
       insertParam('type', 'sumviz')
     }
 
+    let closeSummary = (event) => {
+      setType('viz')
+      insertParam('type', 'viz')
+    }
+
     let rotateFn = (event) => {
       let rotated = queryParameters.get("rotated") === "true";
       insertParam("rotated", !rotated);
@@ -218,9 +223,11 @@ function Viz(props) {
       setGamma(sessionStorage.getItem("gamma"));
       setMu2(sessionStorage.getItem("mu2"));
       setGamma2(sessionStorage.getItem("gamma2"));
+      setMuSum(sessionStorage.getItem("musum"));
+      setGammaSum(sessionStorage.getItem("gammasum"));
     });
 
-    const eventBus = {
+    const [evtBus, setEvtBus] = useState({
       listeners: [],
       addListener(callback) {
         this.listeners.push(callback);
@@ -233,7 +240,7 @@ function Viz(props) {
           listener(eventName, eventData);
         });
       },
-    };
+    });
 
     const eventBus2 = {
       listeners: [],
@@ -252,26 +259,27 @@ function Viz(props) {
 
     return (
       <div className="viz">
-        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
+        {type !== 'sumviz' && type !== 'triviz' ? 
+          <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
+          : <></>}
         {type == 'sumviz' ?
           <div className="panel info one">
             <div className="titlewrapper">
                 <h3 className="viztitle"><b>Summary</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={() => {window.location.href=`/mach2-viz/#/viz?labeling=${queryParameters.get("labeling")}`}} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
+                <a onClick={closeSummary} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className="panel migration top left sum">
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                {data != null && <MigrationSummary data={migrationSummary} coloring={coloring} selected={selected} evtbus={eventBus} title={wholeData['name']}/>}
-                {data == null && <h1 className="graphfail">--No Graphs Possible--</h1>}
+                <MigrationSummary data={migrationSummary} coloring={coloring} selected={selected} evtbus={evtBus} title={wholeData['name']} setEvtBus={setEvtBus}/>
             </div>
           </div> :
           <></>}
         <div className={`panel info ${
             type === 'dualviz' ? 'one' : 
-            type === 'sumviz' ? 'one two ' :
+            type === 'sumviz' ? 'one two' :
             ''
           }`}>
           <div className="titlewrapper">
@@ -284,7 +292,9 @@ function Viz(props) {
             </b></p></label>
             <h3 className="viztitle"><b>{data["name"]}</b></h3>
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-            <Link onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
+            {type !== 'sumviz' ? 
+              <Link onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
+              : <></>}
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
             <div className={`panel migration top ${type === 'dualviz' ? 'left' : ''}`}>
@@ -292,11 +302,11 @@ function Viz(props) {
               <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
               <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-              <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={eventBus} rotated={rotate}/>
+              <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={evtBus} rotated={rotate}/>
             </div>
             <div className={`panel migration ${type === 'dualviz' ? 'left': ''}`}>
               <p className="paneltitle"><b>Clonal Tree</b></p>
-              <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={eventBus}/>
+              <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={evtBus}/>
             </div>
           </div>
         </div>
@@ -329,7 +339,10 @@ function Viz(props) {
             </div>
           </div> : 
           <></>}
-        <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
+        {type !== 'dualviz' && type !== 'triviz' ?
+          <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
+          : <></>
+        }
       </div>
     )
 }

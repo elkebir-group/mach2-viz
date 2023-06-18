@@ -208,6 +208,7 @@ function MigrationSummary(props) {
             }
           };
           props.evtbus.addListener(listener);
+          props.setEvtBus(props.evtbus)
         }
     };
 

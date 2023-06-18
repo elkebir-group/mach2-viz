@@ -482,6 +482,7 @@ img {
 
 .panel.migration.top.left.sum {
   height: calc(100% - 75px);
+  width: calc(100% - 50px);
 }
 
 .datasettitle {
