@@ -4,7 +4,6 @@ import './App.css';
 import About from './components/About.js'
 import Viz from './components/Viz.js'
 import Home from './components/Home.js'
-import DualViz from "./components/DualViz";
 import SumViz from "./components/SumViz";
 import TriViz from "./components/TriViz";
 
@@ -32,9 +31,6 @@ function App() {
           <Route path="/viz">
             <Viz/>
           </Route>
-          <Route path="/dualviz">
-            <DualViz/>
-          </Route>
           <Route path="/sumviz">
             <SumViz/>
           </Route>
@@ -46,9 +42,6 @@ function App() {
           </Route>
           <Route path="/mach2-viz/viz">
             <Viz/>
-          </Route>
-          <Route path="/mach2-viz/dualviz">
-            <DualViz/>
           </Route>
           <Route path="/mach2-viz/sumviz">
             <SumViz/>
