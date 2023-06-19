@@ -272,7 +272,6 @@ function ClonalTree(props) {
   // Memoization: Log the graph layout so that when states change, we dont have to recompute everything
   const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
-    // pan={{ x: 200, y: 200 }}
     style={{ width: width, height: height }}
     zoomingEnabled={true}
     maxZoom={3}
@@ -284,11 +283,7 @@ function ClonalTree(props) {
     cy={cy => {
       myCyRef = cy;
 
-
-      cy.on("tap", "node", evt => {
-        var node = evt.target;
-      });
-
+      // Here we handle events on the graph
       cy.on('mouseover', 'node', function(event) {
         // Get the node information
         var node = event.target;
@@ -314,6 +309,7 @@ function ClonalTree(props) {
 
         const nodeId = event.target.id();
 
+        // Style the anatomical location tag on hover
         var labeltag = document.querySelector(`#${label}`);
         if (labeltag !== null) {
           labeltag.style.opacity = 1;
@@ -321,6 +317,7 @@ function ClonalTree(props) {
           labeltag.style.fontWeight = 'bold';
         }
 
+        // Enlarge the node on hover
         props.evtbus.fireEvent('hoverNodeSC', { nodeId });
       });
 
@@ -343,11 +340,14 @@ function ClonalTree(props) {
           labeltag.style.fontWeight = 'normal';
         }
 
+        // Shrink the node back to size
         props.evtbus.fireEvent('dehoverNodeSC', { nodeId });
       });
 
       cy.on('mouseover', 'edge', function(event) {
         const { target } = event;
+
+        // Enlarge the edge
         target.css({
           width: 10
         })
@@ -355,12 +355,16 @@ function ClonalTree(props) {
         let source = findLabel(target.data().source);
         let sink = findLabel(target.data().target);
         let label = target.data().label;
+
+        // Widen the edge in the migration graph as well
         props.evtbus.fireEvent('selectNode', { nodeId, source, sink, target});
         props.evtbus.fireEvent('selectNodeSC', { nodeId, source, sink, target, label});
       });
 
       cy.on('mouseout', 'edge', function(event) {
         const { target } = event;
+
+        // Shrink edge back
         target.css({
           width: 3
         })
@@ -368,6 +372,8 @@ function ClonalTree(props) {
         let source = findLabel(target.data().source);
         let sink = findLabel(target.data().target);
         let label = target.data().label;
+
+        // Shrink migration edge back
         props.evtbus.fireEvent('deselectNode', { nodeId, source, sink, target});
         props.evtbus.fireEvent('deselectNodeSC', { nodeId, source, sink, target, label});
       });
