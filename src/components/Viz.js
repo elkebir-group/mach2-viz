@@ -2,21 +2,19 @@ import React, { useState, useEffect, useContext } from "react"
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
 import { useHistory } from 'react-router-dom';
-import Legend from "./Legend.js";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import RightColumn from "./RightColumn.js";
 
 import DefaultDict from "../utils/DefaultDict.js";
-import FilterMenu from "./FilterMenu.js";
 import MigrationSummary from "./MigrationSummary.js";
 
 import InlineSVG from 'react-inlinesvg';
 import gear from '../assets/settings-gear.svg';
+import { event } from "jquery";
 
 function insertParam(key, value) {
   // Get the current url
@@ -64,8 +62,6 @@ function Viz(props) {
 
     const [type, setType] = useState(queryParameters.get("type"))
 
-    const [showPanel, setShowPanel] = useState(false);
-
     if (labelName == "undefined") {
       insertParam("labeling", wholeData["solutions"][0]["name"]);
       setLabeling(wholeData["solutions"][0]["name"])
@@ -78,10 +74,7 @@ function Viz(props) {
     sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
-    // console.log(data["labeling"])
     let coloring = wholeData["coloring"];
-
-    const numSolns = wholeData["solutions"].length;
 
     const migrationSummary = wholeData["summary"]["migration"]
 
@@ -155,18 +148,23 @@ function Viz(props) {
 
     let addTab = (event) => {
       //window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
-      insertParam("type", "dualviz")
+      if (type === 'sumviz') {
+        insertParam("type", "triviz")
+        setType('triviz')
+      } else {
+        insertParam("type", "dualviz")
+        setType('dualviz')
+      }
       insertParam("labeling2", labeling)
       setLabeling2(labeling)
       setData2(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
       setMu2(sessionStorage.getItem("mu2"));
       setGamma2(sessionStorage.getItem("gamma2"));
-      setType('dualviz')
     }
 
     let closeTab = (tabIndex) => {
-      if (type === 'dualviz') {
-        setType('viz')
+      if (type === 'dualviz' || type === 'triviz') {
+        setType(type === 'dualviz' ? 'viz' : 'sumviz')
         console.log(tabIndex)
         if (tabIndex == 1) {
           setData(data2)
@@ -196,13 +194,23 @@ function Viz(props) {
     }, [tree2])
 
     let gotoSummary = (event) => {
-      setType('sumviz');
-      insertParam('type', 'sumviz')
+      if (type === 'dualviz') {
+        setType('triviz');
+        insertParam('type', 'triviz')
+      } else {
+        setType('sumviz');
+        insertParam('type', 'sumviz')
+      }
     }
 
     let closeSummary = (event) => {
-      setType('viz')
-      insertParam('type', 'viz')
+      if (type === 'sumviz') {
+        setType('viz')
+        insertParam('type', 'viz')
+      } else {
+        setType('dualviz')
+        insertParam('type', 'dualviz')
+      }
     }
 
     let rotateFn = (event) => {
@@ -262,8 +270,8 @@ function Viz(props) {
         {type !== 'sumviz' && type !== 'triviz' ? 
           <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
           : <></>}
-        {type == 'sumviz' ?
-          <div className="panel info one">
+        {(type === 'sumviz' || type === 'triviz') ?
+          <div className={`panel info ${type === 'sumviz' ? 'one' : 'tri'}`}>
             <div className="titlewrapper">
                 <h3 className="viztitle"><b>Summary</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
@@ -280,6 +288,7 @@ function Viz(props) {
         <div className={`panel info ${
             type === 'dualviz' ? 'one' : 
             type === 'sumviz' ? 'one two' :
+            type === 'triviz' ? 'tri two' :
             ''
           }`}>
           <div className="titlewrapper">
@@ -291,27 +300,29 @@ function Viz(props) {
               </select>
             </b></p></label>
             <h3 className="viztitle"><b>{data["name"]}</b></h3>
-            <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
+            {(type !== 'dualviz' && type !== 'triviz' && type !== 'sumviz') ?
+              <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
+              <></>}
             {type !== 'sumviz' ? 
               <Link onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></Link>
               : <></>}
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
-            <div className={`panel migration top ${type === 'dualviz' ? 'left' : ''}`}>
+            <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
               <p className="paneltitle"><b>Migration Graph</b></p>
               <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
               <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
               <Migration tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={evtBus} rotated={rotate}/>
             </div>
-            <div className={`panel migration ${type === 'dualviz' ? 'left': ''}`}>
+            <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left': ''}`}>
               <p className="paneltitle"><b>Clonal Tree</b></p>
               <ClonalTree tree={tree} labeling={tree_labeling} coloring={coloring} evtbus={evtBus}/>
             </div>
           </div>
         </div>
-        {type == 'dualviz' ? 
-          <div className="panel info one two">
+        {(type == 'dualviz' || type == 'triviz') ? 
+          <div className={`panel info ${type === 'dualviz' ? 'one two' : 'tri three'}`}>
             <div className="titlewrapper">
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                 <select name="labelings" id="labelings" onChange={handleLabelChange2}>
@@ -321,20 +332,19 @@ function Viz(props) {
                 </select>
                 </b></p></label>
                 <h3 className="viztitle"><b>{data2["name"]}</b></h3>
-                <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
                 <a onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
             </div>
             <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
-              <div className={`panel migration top ${type === 'dualviz' ? 'left' : ''}`}>
+              <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
-                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={eventBus2} rightcol={true} rotated={rotate2}/>
+                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={type === 'dualviz' ? eventBus2 : evtBus} rightcol={true} rotated={rotate2}/>
               </div>
-              <div className={`panel migration ${type === 'dualviz' ? 'left': ''}`}>
+              <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left': ''}`}>
                 <p className="paneltitle"><b>Clonal Tree</b></p>
-                <ClonalTree tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={eventBus2} rightcol={true}/>
+                <ClonalTree tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={type === 'dualviz' ? eventBus2 : evtBus} rightcol={true}/>
               </div>
             </div>
           </div> : 

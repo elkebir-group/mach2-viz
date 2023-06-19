@@ -4,8 +4,6 @@ import './App.css';
 import About from './components/About.js'
 import Viz from './components/Viz.js'
 import Home from './components/Home.js'
-import SumViz from "./components/SumViz";
-import TriViz from "./components/TriViz";
 
 import {
   HashRouter as Router,
@@ -31,23 +29,11 @@ function App() {
           <Route path="/viz">
             <Viz/>
           </Route>
-          <Route path="/sumviz">
-            <SumViz/>
-          </Route>
-          <Route path="/triviz">
-            <TriViz/>
-          </Route>
           <Route path="/mach2-viz/about">
             <About/>
           </Route>
           <Route path="/mach2-viz/viz">
             <Viz/>
-          </Route>
-          <Route path="/mach2-viz/sumviz">
-            <SumViz/>
-          </Route>
-          <Route path="/mach2-viz/triviz">
-            <TriViz/>
           </Route>
           <Route path="/mach2-viz">
             <Home/>
