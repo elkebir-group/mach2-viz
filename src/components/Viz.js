@@ -12,14 +12,12 @@ import {
 import DefaultDict from "../utils/DefaultDict.js";
 import MigrationSummary from "./MigrationSummary.js";
 
-import InlineSVG from 'react-inlinesvg';
-import gear from '../assets/settings-gear.svg';
-import { event } from "jquery";
-
+/** Insert a URL parameter
+ * 
+ * @param {*} key (string) variable name
+ * @param {*} value (string) variable value
+ */
 function insertParam(key, value) {
-  // Get the current url
-  let currentUrl = new URL(window.location.href);
-
   // Change a url parameter using URLSearchParams
   let urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
   urlParams.set(key, value);
@@ -29,6 +27,10 @@ function insertParam(key, value) {
   window.location.href = '#/viz?' + urlParams.toString();
 }
 
+/** TODO: Replace this with an actual window rather than just an alert message
+ * 
+ * @param {*} event Event metadata
+ */
 function handleKeyPress(event) {
   if (event.key === '/') {
     alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');

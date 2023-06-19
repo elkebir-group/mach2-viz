@@ -8,6 +8,17 @@ import dagre from 'cytoscape-dagre';
 Cytoscape.use(dagre);
 Cytoscape.use(COSEBilkent);
 
+/** Migration graph showing the anatomical cancer metastases
+ * 
+ * @param {*} props 
+ * - labeling:  anatomic labeling for the nodes
+ * - coloring:  coloring scheme
+ * - tree:      clonal tree edgelist
+ * - migration: precomputed migration graph
+ * - rightcol:  Is this a dualviz right column migration graph?
+ * - rotated:   Is the graph rotated?
+ * @returns JSX/HTML
+ */
 function Migration(props) {
       var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 

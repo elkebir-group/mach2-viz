@@ -8,10 +8,22 @@ import dagre from 'cytoscape-dagre';
 Cytoscape.use(dagre);
 Cytoscape.use(COSEBilkent);
 
+/** For the summary visualizer. Union the migration graphs.
+ * 
+ * Summary graphs are edge-weighted by the number of solutions that edge appears in.
+ * Therefore the max weight is the number of solutions there are
+ * 
+ * @param {*} props 
+ * - title:     Name of the dataset
+ * - data:      Full data including all solutions
+ * - coloring:  Coloring scheme for the nodes
+ * - evtbus
+ * @returns 
+ */
 function MigrationSummary(props) {
+    // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
     var filterJson = JSON.parse(sessionStorage.getItem("selected"))
-
     if (props.title === filterJson['title']) {
       for (let key in filterJson) {
         if (key !== 'title' && !filterJson[key]) {
@@ -19,8 +31,6 @@ function MigrationSummary(props) {
         }
       }
     }
-
-    console.log(filterOut);
 
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
     const colorPalette = [
@@ -69,6 +79,8 @@ function MigrationSummary(props) {
       return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
     })
 
+    // Dont label edge weights of 1
+    // BTW Edges are weighted by the number of solutions they appear in
     for (const [i, edge] of edges.entries()) {
       if (edge.data.label == 1) {
         edges[i].data.label = "";
@@ -167,6 +179,7 @@ function MigrationSummary(props) {
 
     let myCyRef;
 
+    // TODO: Probably remove since theres no rotation button for summary
     const queryParameters = new URLSearchParams(window.location.search);
     let rotated = queryParameters.get("rotatedsum") === "true";
     if (rotated === null) {
@@ -212,6 +225,7 @@ function MigrationSummary(props) {
         }
     };
 
+    // Compute mu and gamma for the summary
     let mu = 0;
     let gamma = edges.length;
     edges.map((edge) => {
