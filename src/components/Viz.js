@@ -178,7 +178,7 @@ function Viz(props) {
         }
         insertParam('type', 'viz')
       } else {
-        window.location = `${window.location.protocol}//${window.location.host}/#/`
+        window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/`
       }
     }
 
