@@ -8,10 +8,10 @@ import {
 import clonal from "../assets/clonal.jpeg";
 import migration from "../assets/migration.jpeg";
 
+/**
+ * This page is simply a description of the application with a contact list
+ */
 function About() {
-    /**
-     * This page is simply a description of the application with a contact list
-     */
     return (
         <div className='about'>
             <div className='panel about'>

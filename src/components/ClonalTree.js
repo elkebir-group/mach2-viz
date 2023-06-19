@@ -5,12 +5,32 @@ import Cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
 import dagre from 'cytoscape-dagre';
 
+// Load Cytoscape submodules
 Cytoscape.use(COSEBilkent);
 Cytoscape.use(dagre);
 
+/** This component contains the clonal tree showing the tumor phylogeny
+ * 
+ * @param {*} props The JSX props used on this tag
+ *  - coloring: (array) The coloring scheme of the tree
+ *  - labeling: (array) The anatomical labels of each clone
+ *  - tree:     (array) The tree topology as an edgelist
+ *  - evtbus:   (obj) The event handler that is shared between graph structures
+ *  - rightcol: (boolean) is this tree in the right column (for dual visualizations)
+ * @returns The JSX/HTML structure of the component
+ */
 function ClonalTree(props) {
+  const [width, setWith] = useState("100%");
+  const [height, setHeight] = useState("100%");
+
+  // Regex to check whether a string is a hex value representing a color
   var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
+  /* Default color palette
+  
+  Colorings can be specified as either:
+  - [node, index (int)]       : The second element is an index (mod length) chosen from the default color palette
+  - [node, hex color (string)]: The second element is a custom hex color */
   const colorPalette = [
     "#a6cee3",
     "#1f78b4",
@@ -27,6 +47,13 @@ function ClonalTree(props) {
   ]
   const ncolors = colorPalette.length;
 
+  // DEFINE FUNCTIONS HERE
+
+  /** Given a clonal label, find its corresponding color in the graph
+   * 
+   * @param {*} label (string) the clonal label
+   * @returns the hex value string of the color corresponding to the label
+   */
   function getColor(label) {
     if (!label) return '#000';
     let color = props.coloring.map((value, index) => {
@@ -34,20 +61,25 @@ function ClonalTree(props) {
     return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
   }
 
-  const [width, setWith] = useState("100%");
-  const [height, setHeight] = useState("100%");
-
+  /** Filter an array into only unique elements*/
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index;
   }
 
+  /** Find corresponding anatomical label of clone
+   * 
+   * @param {*} node clone ID
+   * @returns anatomical location of clone
+   */
   function findLabel(node) {
     return props.labeling.map((value, index) => {
       if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
   }
 
+  // Define the nodes and edges of the graph
   let nodes = props.tree.map(array => {
-    // Create a new array excluding the third element
+    // Entry structure in tree [u, v, time] s.t. time is the temporal value of the clonal mutation 
+    // Create a new array excluding the third element since 
     return array.filter((_, index) => index !== 2);
   }).flat().filter(onlyUnique).map((value, index) => {
     return { data: { id: value, label: findLabel(value), type: "ip"} };
@@ -56,14 +88,16 @@ function ClonalTree(props) {
     return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
   })
 
+  // Set the graph as a React state
   const [graphData, setGraphData] = useState({
     nodes: nodes,
     edges: edges
   });
 
+  // Handle graph changes (this is for when we switch the solution)
   useEffect(() => {
+    // Reset nodes and labeling
     nodes = props.tree.map(array => {
-      // Create a new array excluding the third element
       return array.filter((_, index) => index !== 2);
     }).flat().filter(onlyUnique).map((value, index) => {
       return { data: { id: value, label: findLabel(value), type: "ip"} }
@@ -73,12 +107,16 @@ function ClonalTree(props) {
       return { data: { source: value[0], target: value[1], label: `${value[0]}->${value[1]}`, migration: `${findLabel(value[0])}->${findLabel(value[1])}`} }
     })
 
+    // Set the graph state
     setGraphData({
       nodes: nodes,
       edges: edges
     })
+  
+  // Set this change dependent on the tree or labeling change
   }, [props.tree, props.labeling])
 
+  // This is like CSS for the Cytoscape graph
   let styleSheet = [
     {
       selector: "node",
@@ -87,15 +125,8 @@ function ClonalTree(props) {
         width: 15,
         height: 15,
         label: "data(id)",
-
-        // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-        // "height": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-        // "text-valign": "center",
-        // "text-halign": "center",
         "overlay-padding": "6px",
         "z-index": "10",
-        //text props
-        //"text-outline-color": "#4a56a6",
         "text-outline-width": "2px",
         color: "white",
         fontSize: 15
@@ -110,6 +141,7 @@ function ClonalTree(props) {
         "background-color": "#77828C",
         width: 50,
         height: 50,
+
         //text props
         "text-outline-color": "#77828C",
         "text-outline-width": 8
@@ -119,7 +151,6 @@ function ClonalTree(props) {
       selector: "edge",
       style: {
         width: 3,
-        // "line-color": "#6774cb",
         "line-color": "#AAD8FF",
         "target-arrow-color": "#6774cb",
         "target-arrow-shape": "triangle",
@@ -128,6 +159,7 @@ function ClonalTree(props) {
     }
   ];
 
+  // Set the coloring dynamically in the stylesheet using the coloring props
   props.coloring.map((value, index) => {
     styleSheet.push({
       selector: `node[label='${value[0]}']`,
@@ -137,6 +169,7 @@ function ClonalTree(props) {
     })
   })
 
+  // Style the edges dynamically via gradients based on the node colors
   edges.map((value, index) => {
     let source = value.data.source;
     let target = value.data.target;
@@ -151,9 +184,10 @@ function ClonalTree(props) {
     })
   })
 
+  // The layout encompasses node positions on load, animations, and events
   let myCyRef;
   const layout = {
-    name: "dagre",
+    name: "dagre",  // Dagre: Layout graph like a DAG (this is good for trees!)
     fit: true,
     // circle: true,
     directed: true,
@@ -164,9 +198,10 @@ function ClonalTree(props) {
     avoidOverlap: true,
     nodeDimensionsIncludeLabels: false,
     ready: function() {
+      // Event listener
       const listener = (eventName, eventData) => {
         // Respond to event from other graph here
-        // For example:
+        // When a node ge
         if (eventName === 'selectNodeCl') {
           const node = myCyRef.getElementById(eventData.nodeId);
           myCyRef.$(`edge[migration='${eventData.nodeId}']`).css({
@@ -233,6 +268,8 @@ function ClonalTree(props) {
       props.evtbus.addListener(listener);
     }
   };
+
+  // Memoization: Log the graph layout so that when states change, we dont have to recompute everything
   const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
     elements={CytoscapeComponent.normalizeElements(graphData)}
     // pan={{ x: 200, y: 200 }}
