@@ -15,6 +15,7 @@ import fileDownload from 'js-file-download'
 
 import DefaultDict from "../utils/DefaultDict.js";
 
+// Import the patient sample datasets
 import A7 from "../samples/A7/A7.json";
 import A10 from "../samples/A10/A10.json";
 import A22 from "../samples/A22/A22.json";
@@ -32,12 +33,16 @@ import tracerx_res from "../samples/tracerx_res/tracerx_res.json";
 import tracerx_res_old from "../samples/tracerx_res_old/tracerx_old_all.json";
 import tracerx_res_new from "../samples/tracerx_res_new/tracerx_new_all.json";
 
-function Home(props) {
-  var windowWidth = window.innerWidth;
-var windowHeight = window.innerHeight;
-
-console.log("Window width: " + windowWidth);
-console.log("Window height: " + windowHeight);
+/** The home page for the visualizer
+ * 
+ * @returns JSX/HTML
+ */
+function Home() {
+    /** Download the json dataset when the icon is clicked
+     * 
+     * @param {*} url (string) The url to download from 
+     * @param {*} filename (string) The filename to alias as
+     */
     let handleDownload = (url, filename) => {
       axios.get(url, {
         responseType: 'blob',
@@ -47,6 +52,7 @@ console.log("Window height: " + windowHeight);
       })
     }
 
+    // Dictionary mapping dataset name to json object
     var json_dict = {
       "A7": A7,
       "A10": A10,
@@ -66,6 +72,7 @@ console.log("Window height: " + windowHeight);
       "tracerx_res_new": tracerx_res_new
     }
 
+    // Table values
     var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1", "patient2", "patient3", "patient4", "patient7", "patient9", "patient10", "tracerx_res", "tracerx_res_old", "tracerx_res_new"]
     var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx", "tracerx", "tracerx"]
     var div_elements = []
@@ -73,9 +80,11 @@ console.log("Window height: " + windowHeight);
     const color1 = "#EBEBEB";
     const color2 = "#A3A3A3";
 
+    // TODO: Perhaps remove this since we're using a different filtration scheme
     sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
+    // Construct div elements representing the table entries
     for (let i = 0; i < default_patients.length; i++) {
         var current_patient = default_patients[i];
         var current_directory = default_dirs[i];
@@ -102,31 +111,31 @@ console.log("Window height: " + windowHeight);
         which_color = !which_color;
     }
 
-    if (document.getElementsByClassName('label').length > 1) {
-      const elements = document.getElementsByClassName('label');
-      while(elements.length > 0){
-        elements[0].parentNode.removeChild(elements[0]);
-      }
-    }
-
+    /** TODO: Maybe change the name of this funciton?
+     * But this handles the file upload
+     * 
+     * @param {*} e (obj) Event metadata
+     */
     let handleChange = (e) => {
+      // Get the filename from the metadata
       const reader = new FileReader();
       const file = e.target.files[0];
       let json_contents;
   
       reader.onload = function(readerEvt) {
+        // Load the json data from the file
         let jsonString = readerEvt.target.result;
         json_contents = jsonString;
-
         const data = JSON.parse(json_contents);
+
+        // Fetch the first label to default to on viz
         let labelnames = data["solutions"].map((value, index) => {return value["name"]});
 
-        // let stateObj = {json_contents: json_contents};
-        // history.pushState(stateObj, window.location.href);
+        // Store the data in session storage so that the viz route can pull the data
         sessionStorage.setItem("json_data", json_contents);
   
+        // Update the window location to the viz route
         window.location = window.location + `viz?labeling=${labelnames[0]}`;
-        // history.push(`viz?labeling=${labelnames[0]}`);
       }
       // Read the file as a text
       reader.readAsText(file);

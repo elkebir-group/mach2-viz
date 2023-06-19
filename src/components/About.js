@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from "react-dom";
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
     Link
   } from "react-router-dom";
 
+// Figures
 import clonal from "../assets/clonal.jpeg";
 import migration from "../assets/migration.jpeg";
 
+/**
+ * This page is simply a description of the application with a contact list
+ */
 function About() {
     return (
         <div className='about'>
@@ -33,8 +34,10 @@ function About() {
                 <p><b>Generating inputs: </b>We have provided a <a href="https://github.com/vikramr2/json_compression">json compression</a> program that takes an output directory from MACHINA that contains <b>.tree</b> files and their corresponding <b>.labeling</b> files, and returns a <b>.json</b> file that can be used as input for this visualizer. For more information, see this <a href='https://github.com/vikramr2/json_compression/blob/main/README.md'>README</a>. Output from any algorithm that solves the PMH problem will be accepted provided that it is in a JSON format as shown in the README.</p>
                 <p><b>Questions? Contact</b></p>
                 <ul id="singlecol">
-                    <li><p>Akul Joshi (<a href="mailto:akulj2@illinois.edu">akulj2@illinois.edu</a>)</p></li>
                     <li><p>Vikram Ramavarapu (<a href="mailto:vikramr2@illinois.edu">vikramr2@illinois.edu</a>)</p></li>
+                    <li><p>Roman Mineyev (<a href="mailto:mineyev2@illinois.edu">mineyev2@illinois.edu</a>)</p></li>
+                    <li><p>Akul Joshi (<a href="mailto:akulj2@illinois.edu">akulj2@illinois.edu</a>)</p></li>
+                    <li><p>Mrinmoy Roddur (<a href="mailto:mroddur2@illinois.edu">mroddur2@illinois.edu</a>)</p></li>
                     <li><p>Mohammed El-Kebir (<a href="mailto:melkebir@illinois.edu">melkebir@illinois.edu</a>)</p></li>
                 </ul>
             </div>

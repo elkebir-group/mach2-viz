@@ -8,6 +8,17 @@ import dagre from 'cytoscape-dagre';
 Cytoscape.use(dagre);
 Cytoscape.use(COSEBilkent);
 
+/** Migration graph showing the anatomical cancer metastases
+ * 
+ * @param {*} props 
+ * - labeling:  anatomic labeling for the nodes
+ * - coloring:  coloring scheme
+ * - tree:      clonal tree edgelist
+ * - migration: precomputed migration graph
+ * - rightcol:  Is this a dualviz right column migration graph?
+ * - rotated:   Is the graph rotated?
+ * @returns JSX/HTML
+ */
 function Migration(props) {
       var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
@@ -45,6 +56,7 @@ function Migration(props) {
         return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
       }
     
+      // The difference between this and the Clonal Tree is that the nodes are anatomical locations instead of clones
       let nodes = props.tree.map(array => {
         // Create a new array excluding the third element
         return array.filter((_, index) => index !== 2);
@@ -65,6 +77,7 @@ function Migration(props) {
         edges: edges
       });
 
+      // Likewise switch the graph data when any of the props values change
       useEffect(() => {
         let nodes = props.tree.map(array => {
           // Create a new array excluding the third element
@@ -173,6 +186,7 @@ function Migration(props) {
     
       let myCyRef;
 
+      // Is the migration graph rotated?
       const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
       let rotated = props.rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
       if (rotated === null) {
@@ -190,12 +204,15 @@ function Migration(props) {
         animationDuration: 1000,
         avoidOverlap: true,
         nodeDimensionsIncludeLabels: false,
+
+        // Position the nodes based on the rotated parameter
         transform: (node, position) => {
           return {
             x: props.rotated ? -2*position.y : position.x,
             y: props.rotated ? position.x : position.y
           }
         },
+
         ready: function() {
           const listener = (eventName, eventData) => {
             // Respond to event from other graph here
@@ -251,8 +268,11 @@ function Migration(props) {
         }
       };
 
-      // let mu = edges.length;
-      // let gamma = edges.filter((item) => { return item.data.label !== '' }).length
+      /** Parameter definitions
+       * 
+       * Migration Number (Mu):       Sum of the edge weights
+       * Comigration Number (Gamma):  Number of unique migrations
+       */
       let mu = 0;
       let gamma = edges.length;
       edges.map((edge) => {
@@ -264,6 +284,7 @@ function Migration(props) {
         }
       })
 
+      // Which mu and gamma are we setting (this is for dualviz)
       if (!props.rightcol) {
         sessionStorage.setItem("mu", mu);
         sessionStorage.setItem("gamma", gamma);
@@ -285,10 +306,6 @@ function Migration(props) {
         stylesheet={styleSheet}
         cy={cy => {
           myCyRef = cy;
-    
-          cy.on("tap", "node", evt => {
-            var node = evt.target;
-          });
 
           cy.on('mouseover', 'edge', function(event) {
             const { target } = event;
