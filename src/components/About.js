@@ -4,10 +4,14 @@ import {
     Link
   } from "react-router-dom";
 
+// Figures
 import clonal from "../assets/clonal.jpeg";
 import migration from "../assets/migration.jpeg";
 
 function About() {
+    /**
+     * This page is simply a description of the application with a contact list
+     */
     return (
         <div className='about'>
             <div className='panel about'>
