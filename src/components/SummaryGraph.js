@@ -20,7 +20,8 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) {
+function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onEdgeClicked}) {
+
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
     var filterJson = JSON.parse(sessionStorage.getItem("selected"))
@@ -52,12 +53,6 @@ function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) 
 
     function onlyUnique(array) {
       return [...new Set(array)];
-    }
-
-    function getColor(label) {
-      let color = coloring.map((value, index) => {
-        if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
-      return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
     }
 
     const [width, setWith] = useState("100%");
@@ -145,15 +140,16 @@ function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) 
           }
         }
     ];
-    
-    coloring.map((value, index) => {
-        styleSheet.push({
-          selector: `node[label='${value[0]}']`,
-          style: {
-            'border-color': hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
-          }
-        })
-    })
+
+    for (let key in coloringDict) {
+      let value = coloringDict[key];
+      styleSheet.push({
+        selector: `node[label='${key}']`,
+        style: {
+          'border-color': hexColorRegex.test(value) ? value : colorPalette[parseInt(value) % ncolors]
+        }
+      });
+    }
 
     edges.map((value, index) => {
         let source = value.data.source;
@@ -232,6 +228,11 @@ function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) 
     sessionStorage.setItem("musum", mu);
     sessionStorage.setItem("gammasum", gamma);
 
+    function getColor(label) {
+      let color = coloringDict[label];
+      return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
+    }
+
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
         // pan={{ x: 200, y: 200 }}
@@ -245,9 +246,10 @@ function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) 
         stylesheet={styleSheet}
         cy={cy => {
           myCyRef = cy;
-    
-          cy.on("tap", "node", evt => {
-            var node = evt.target;
+
+          cy.on("tap", "edge", evt => {
+            var edge = evt.target;
+            onEdgeClicked(edge);
           });
 
           cy.on('mouseover', 'edge', function(event) {
@@ -315,4 +317,4 @@ function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) 
       return memoizedGraphComponent;
 }
 
-export default MigrationSummary;
+export default SummaryGraph;

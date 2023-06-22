@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import DefaultDict from "../utils/DefaultDict.js";
-import MigrationSummary from "./MigrationSummary.js";
+import SummaryGraph from "./SummaryGraph.js";
 
 /** Insert a URL parameter
  * 
@@ -78,7 +78,7 @@ function Viz(props) {
     
     let coloring = wholeData["coloring"];
 
-    const migrationSummary = wholeData["summary"]["migration"]
+    const summaryGraph = wholeData["summary"]["migration"]
 
     const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
     const [data2, setData2] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
@@ -96,6 +96,12 @@ function Viz(props) {
           return self.indexOf(value) === index;
         })
         .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    }
+
+    // TODO: Change all pages to use dict?
+    let coloringDict = {};
+    for (var i = 0; i < coloring.length; i++) {
+      coloringDict[coloring[i][0]] = coloring[i][1];
     }
 
     useEffect(() => {
@@ -134,10 +140,10 @@ function Viz(props) {
       selected[name] = !selected[name];
       let name_parts = name.split('\u2192');
       
-      for (let i = 0; i < migrationSummary.length; i++) {
-          if (migrationSummary[i][0] == name_parts[0] && migrationSummary[i][1] == name_parts[1]) {
-              for (let j = 0; j < migrationSummary[i][2].length; j++) {
-                  (selected[name] ? (violations[migrationSummary[i][2][j]] -= 1) : (violations[migrationSummary[i][2][j]] += 1))
+      for (let i = 0; i < summaryGraph.length; i++) {
+          if (summaryGraph[i][0] == name_parts[0] && summaryGraph[i][1] == name_parts[1]) {
+              for (let j = 0; j < summaryGraph[i][2].length; j++) {
+                  (selected[name] ? (violations[summaryGraph[i][2][j]] -= 1) : (violations[summaryGraph[i][2][j]] += 1))
               }
           }
       }
@@ -266,6 +272,17 @@ function Viz(props) {
         });
       },
     };
+    
+    const [grayedEdgeNames, setGrayedEdgeNames] = useState([]);
+    function onEdgeClicked(edge) {
+      // TODO: Append the grayedEdgeName so that it can be filtered out in the other graph visualizations
+      console.log("clicked edge: " + edge.id());
+      edge.style({
+        'line-fill': 'solid',
+        'line-color': 'gray',
+        'target-arrow-color': 'gray',
+      });
+    }
 
     return (
       <div className="viz">
@@ -283,7 +300,7 @@ function Viz(props) {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                <MigrationSummary data={migrationSummary} coloring={coloring} selected={selected} evtbus={evtBus} title={wholeData['name']} setEvtBus={setEvtBus}/>
+                <SummaryGraph data={summaryGraph} coloringDict={coloringDict} evtbus={evtBus} title={wholeData['name']} setEvtBus={setEvtBus} onEdgeClicked={onEdgeClicked}/>
             </div>
           </div> :
           <></>}
