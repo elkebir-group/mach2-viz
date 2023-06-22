@@ -20,11 +20,11 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function MigrationSummary(props) {
+function MigrationSummary({data, coloring, selected, evtbus, title, setEvtBus}) {
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
     var filterJson = JSON.parse(sessionStorage.getItem("selected"))
-    if (props.title === filterJson['title']) {
+    if (title === filterJson['title']) {
       for (let key in filterJson) {
         if (key !== 'title' && !filterJson[key]) {
           filterOut.push(key.split('→'));
@@ -33,6 +33,7 @@ function MigrationSummary(props) {
     }
 
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
     const colorPalette = [
       "#a6cee3",
       "#1f78b4",
@@ -54,7 +55,7 @@ function MigrationSummary(props) {
     }
 
     function getColor(label) {
-      let color = props.coloring.map((value, index) => {
+      let color = coloring.map((value, index) => {
         if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
       return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
     }
@@ -62,13 +63,13 @@ function MigrationSummary(props) {
     const [width, setWith] = useState("100%");
     const [height, setHeight] = useState("100%");
 
-    let nodeSet = onlyUnique(props.data.map((value, index) => [value[0], value[1]]).flat())
+    let nodeSet = onlyUnique(data.map((value, index) => [value[0], value[1]]).flat())
 
     let nodes = nodeSet.map((value, index) => {
         return { data: { id:  value, label: value, type: "ip"} };
     });
 
-    let edges = props.data.filter(e => {
+    let edges = data.filter(e => {
       for (let f of filterOut) {
         if (f[0] == e[0] && f[1] == e[1]) {
           return false;
@@ -102,15 +103,8 @@ function MigrationSummary(props) {
             width: 100,
             height: 50,
             label: "data(label)",
-    
-            // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-            // "height": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-            // "text-valign": "center",
-            // "text-halign": "center",
             "overlay-padding": "6px",
             "z-index": "10",
-            //text props
-            //"text-outline-color": "#4a56a6",
             "text-outline-width": "2px",
             color: "white",
             fontSize: 15,
@@ -127,7 +121,6 @@ function MigrationSummary(props) {
             "background-color": "#77828C",
             width: 50,
             height: 50,
-            //text props
             "text-outline-color": "#77828C",
             "text-outline-width": 8
           }
@@ -142,7 +135,6 @@ function MigrationSummary(props) {
           selector: "edge",
           style: {
             width: 3,
-            // "line-color": "#6774cb",
             label: "data(label)",
             "target-arrow-color": "#6774cb",
             "target-arrow-shape": "triangle",
@@ -154,7 +146,7 @@ function MigrationSummary(props) {
         }
     ];
     
-    props.coloring.map((value, index) => {
+    coloring.map((value, index) => {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
           style: {
@@ -220,8 +212,8 @@ function MigrationSummary(props) {
               node.trigger('select');
             }
           };
-          props.evtbus.addListener(listener);
-          props.setEvtBus(props.evtbus)
+          evtbus.addListener(listener);
+          setEvtBus(evtbus)
         }
     };
 
@@ -264,8 +256,8 @@ function MigrationSummary(props) {
               width: 10
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('selectNodeSum', { nodeId, target});
-            props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
+            evtbus.fireEvent('selectNodeSum', { nodeId, target});
+            evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
           cy.on('mouseover', 'node', function(event) {
@@ -274,8 +266,8 @@ function MigrationSummary(props) {
               'border-width': 20,
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('hoverNodeSum', { nodeId });
-            props.evtbus.fireEvent('hoverNodeCl', { nodeId });
+            evtbus.fireEvent('hoverNodeSum', { nodeId });
+            evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -294,8 +286,8 @@ function MigrationSummary(props) {
               'border-width': 10,
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('dehoverNodeSum', { nodeId });
-            props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
+            evtbus.fireEvent('dehoverNodeSum', { nodeId });
+            evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -314,8 +306,8 @@ function MigrationSummary(props) {
               width: 3
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('deselectNodeSum', { nodeId, target});
-            props.evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+            evtbus.fireEvent('deselectNodeSum', { nodeId, target});
+            evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
         abc={console.log("myCyRef", myCyRef)}
