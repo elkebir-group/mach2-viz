@@ -272,16 +272,28 @@ function Viz(props) {
         });
       },
     };
-    
-    const [grayedEdgeNames, setGrayedEdgeNames] = useState([]);
-    function onEdgeClicked(edge) {
-      // TODO: Append the grayedEdgeName so that it can be filtered out in the other graph visualizations
-      console.log("clicked edge: " + edge.id());
-      edge.style({
-        'line-fill': 'solid',
-        'line-color': 'gray',
-        'target-arrow-color': 'gray',
-      });
+
+    const [unusedEdges, setUnusedEdges] = useState([]);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      console.log(count); // Logging the count when it changes
+    }, [count]);
+
+    const onSummaryEdgeTapped = (edge_id) => {
+      // let index = -1;
+      // for (let i = 0; i < unusedEdges.length; i++) {
+      //   if (unusedEdges[i] == edge_id){
+      //     index = i;
+      //     break;
+      //   }
+      // }
+
+      // if (index == -1) {
+      //   console.log("index is -1");
+      //   setUnusedEdges(unusedEdges => [...unusedEdges, edge_id]);
+      // }
+      setCount(count + 1);
     }
 
     return (
@@ -300,7 +312,7 @@ function Viz(props) {
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                <SummaryGraph data={summaryGraph} coloringDict={coloringDict} evtbus={evtBus} title={wholeData['name']} setEvtBus={setEvtBus} onEdgeClicked={onEdgeClicked}/>
+                <SummaryGraph data={summaryGraph} coloringDict={coloringDict} evtbus={evtBus} title={wholeData['name']} setEvtBus={setEvtBus} onSummaryEdgeTapped={onSummaryEdgeTapped}/>
             </div>
           </div> :
           <></>}

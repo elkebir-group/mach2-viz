@@ -20,7 +20,7 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onEdgeClicked}) {
+function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEdgeTapped}) {
 
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
@@ -233,6 +233,28 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onEdgeClick
       return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
     }
 
+    function onEdgeTapped(edge) {
+      let fill_type = edge.style('line-fill');
+      if (fill_type == 'solid') {
+        // means the edge is gray
+        edge.style({
+          'line-fill': 'linear-gradient',
+          'line-gradient-stop-colors': `${getColor(edge.source().id())} ${getColor(edge.target().id())}`,
+          'line-gradient-stop-positions': '33% 66%',
+          "target-arrow-color": `${getColor(edge.target().id())}`,
+        });
+      } else {
+        edge.style({
+          'line-fill': 'solid',
+          'line-color': '#b5b5b5',
+          'target-arrow-color': '#b5b5b5',
+        });
+      }
+
+
+      // TODO: add a deselect feature
+    }
+
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
         // pan={{ x: 200, y: 200 }}
@@ -249,7 +271,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onEdgeClick
 
           cy.on("tap", "edge", evt => {
             var edge = evt.target;
-            onEdgeClicked(edge);
+            onEdgeTapped(edge);
+            onSummaryEdgeTapped(edge.id());
           });
 
           cy.on('mouseover', 'edge', function(event) {
