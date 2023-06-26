@@ -20,11 +20,12 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function MigrationSummary(props) {
+function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEdgeTapped}) {
+
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
     var filterJson = JSON.parse(sessionStorage.getItem("selected"))
-    if (props.title === filterJson['title']) {
+    if (title === filterJson['title']) {
       for (let key in filterJson) {
         if (key !== 'title' && !filterJson[key]) {
           filterOut.push(key.split('→'));
@@ -33,6 +34,7 @@ function MigrationSummary(props) {
     }
 
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+
     const colorPalette = [
       "#a6cee3",
       "#1f78b4",
@@ -53,22 +55,16 @@ function MigrationSummary(props) {
       return [...new Set(array)];
     }
 
-    function getColor(label) {
-      let color = props.coloring.map((value, index) => {
-        if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
-      return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
-    }
-
     const [width, setWith] = useState("100%");
     const [height, setHeight] = useState("100%");
 
-    let nodeSet = onlyUnique(props.data.map((value, index) => [value[0], value[1]]).flat())
+    let nodeSet = onlyUnique(data.map((value, index) => [value[0], value[1]]).flat())
 
     let nodes = nodeSet.map((value, index) => {
         return { data: { id:  value, label: value, type: "ip"} };
     });
 
-    let edges = props.data.filter(e => {
+    let edges = data.filter(e => {
       for (let f of filterOut) {
         if (f[0] == e[0] && f[1] == e[1]) {
           return false;
@@ -102,15 +98,8 @@ function MigrationSummary(props) {
             width: 100,
             height: 50,
             label: "data(label)",
-    
-            // "width": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-            // "height": "mapData(score, 0, 0.006769776522008331, 20, 60)",
-            // "text-valign": "center",
-            // "text-halign": "center",
             "overlay-padding": "6px",
             "z-index": "10",
-            //text props
-            //"text-outline-color": "#4a56a6",
             "text-outline-width": "2px",
             color: "white",
             fontSize: 15,
@@ -127,7 +116,6 @@ function MigrationSummary(props) {
             "background-color": "#77828C",
             width: 50,
             height: 50,
-            //text props
             "text-outline-color": "#77828C",
             "text-outline-width": 8
           }
@@ -142,7 +130,6 @@ function MigrationSummary(props) {
           selector: "edge",
           style: {
             width: 3,
-            // "line-color": "#6774cb",
             label: "data(label)",
             "target-arrow-color": "#6774cb",
             "target-arrow-shape": "triangle",
@@ -153,15 +140,16 @@ function MigrationSummary(props) {
           }
         }
     ];
-    
-    props.coloring.map((value, index) => {
-        styleSheet.push({
-          selector: `node[label='${value[0]}']`,
-          style: {
-            'border-color': hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
-          }
-        })
-    })
+
+    for (let key in coloringDict) {
+      let value = coloringDict[key];
+      styleSheet.push({
+        selector: `node[label='${key}']`,
+        style: {
+          'border-color': hexColorRegex.test(value) ? value : colorPalette[parseInt(value) % ncolors]
+        }
+      });
+    }
 
     edges.map((value, index) => {
         let source = value.data.source;
@@ -220,8 +208,8 @@ function MigrationSummary(props) {
               node.trigger('select');
             }
           };
-          props.evtbus.addListener(listener);
-          props.setEvtBus(props.evtbus)
+          evtbus.addListener(listener);
+          setEvtBus(evtbus)
         }
     };
 
@@ -240,6 +228,33 @@ function MigrationSummary(props) {
     sessionStorage.setItem("musum", mu);
     sessionStorage.setItem("gammasum", gamma);
 
+    function getColor(label) {
+      let color = coloringDict[label];
+      return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
+    }
+
+    function onEdgeTapped(edge) {
+      let fill_type = edge.style('line-fill');
+      if (fill_type == 'solid') {
+        // means the edge is gray
+        edge.style({
+          'line-fill': 'linear-gradient',
+          'line-gradient-stop-colors': `${getColor(edge.source().id())} ${getColor(edge.target().id())}`,
+          'line-gradient-stop-positions': '33% 66%',
+          "target-arrow-color": `${getColor(edge.target().id())}`,
+        });
+      } else {
+        edge.style({
+          'line-fill': 'solid',
+          'line-color': '#b5b5b5',
+          'target-arrow-color': '#b5b5b5',
+        });
+      }
+
+
+      // TODO: add a deselect feature
+    }
+
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
         // pan={{ x: 200, y: 200 }}
@@ -253,9 +268,11 @@ function MigrationSummary(props) {
         stylesheet={styleSheet}
         cy={cy => {
           myCyRef = cy;
-    
-          cy.on("tap", "node", evt => {
-            var node = evt.target;
+
+          cy.on("tap", "edge", evt => {
+            var edge = evt.target;
+            onEdgeTapped(edge);
+            onSummaryEdgeTapped(edge.id());
           });
 
           cy.on('mouseover', 'edge', function(event) {
@@ -264,8 +281,8 @@ function MigrationSummary(props) {
               width: 10
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('selectNodeSum', { nodeId, target});
-            props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
+            evtbus.fireEvent('selectNodeSum', { nodeId, target});
+            evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
           cy.on('mouseover', 'node', function(event) {
@@ -274,8 +291,8 @@ function MigrationSummary(props) {
               'border-width': 20,
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('hoverNodeSum', { nodeId });
-            props.evtbus.fireEvent('hoverNodeCl', { nodeId });
+            evtbus.fireEvent('hoverNodeSum', { nodeId });
+            evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -294,8 +311,8 @@ function MigrationSummary(props) {
               'border-width': 10,
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('dehoverNodeSum', { nodeId });
-            props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
+            evtbus.fireEvent('dehoverNodeSum', { nodeId });
+            evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -314,8 +331,8 @@ function MigrationSummary(props) {
               width: 3
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('deselectNodeSum', { nodeId, target});
-            props.evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+            evtbus.fireEvent('deselectNodeSum', { nodeId, target});
+            evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
         abc={console.log("myCyRef", myCyRef)}
@@ -323,4 +340,4 @@ function MigrationSummary(props) {
       return memoizedGraphComponent;
 }
 
-export default MigrationSummary;
+export default SummaryGraph;
