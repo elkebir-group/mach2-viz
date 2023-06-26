@@ -209,7 +209,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEd
             }
           };
           evtbus.addListener(listener);
-          setEvtBus(evtbus)
         }
     };
 

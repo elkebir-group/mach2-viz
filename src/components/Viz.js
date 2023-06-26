@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import DefaultDict from "../utils/DefaultDict.js";
-import SummaryGraph from "./SummaryGraph.js";
+import SummaryPanel from "./SummaryPanel.js";
 
 /** Insert a URL parameter
  * 
@@ -38,7 +38,6 @@ function handleKeyPress(event) {
 }
 
 function Viz(props) {
-    const history = useHistory();
     const [mu, setMu] = useState(0);
     const [gamma, setGamma] = useState(0);
     const [mu2, setMu2] = useState(0);
@@ -51,10 +50,6 @@ function Viz(props) {
 
     let labelName = queryParameters.get("labeling");
     let labelName2 = queryParameters.get("labeling2");
-
-    let selected = new DefaultDict(true);
-    let violations = new DefaultDict(0);
-
 
     const [labeling, setLabeling] = useState(labelName)
     const [labeling2, setLabeling2] = useState(labelName2)
@@ -77,8 +72,6 @@ function Viz(props) {
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     let coloring = wholeData["coloring"];
-
-    const summaryGraph = wholeData["summary"]["migration"]
 
     const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
     const [data2, setData2] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
@@ -116,13 +109,6 @@ function Viz(props) {
 
     let coord_map = wholeData["map"]; 
 
-    let getParam = (key) => {
-      const url = new URL(window.location.href);
-      const searchParams = new URLSearchParams(`?${url.hash.slice(1).split('?')[1]}`);
-
-      return searchParams.get(key);
-    }
-
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
       setLabeling(event.target.value)
@@ -133,25 +119,6 @@ function Viz(props) {
       insertParam("labeling2", event.target.value);
       setLabeling2(event.target.value)
       setData2(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
-    }
-
-    let toggleSelected = (name) => {
-      selected['title'] = wholeData['name'];
-      selected[name] = !selected[name];
-      let name_parts = name.split('\u2192');
-      
-      for (let i = 0; i < summaryGraph.length; i++) {
-          if (summaryGraph[i][0] == name_parts[0] && summaryGraph[i][1] == name_parts[1]) {
-              for (let j = 0; j < summaryGraph[i][2].length; j++) {
-                  (selected[name] ? (violations[summaryGraph[i][2][j]] -= 1) : (violations[summaryGraph[i][2][j]] += 1))
-              }
-          }
-      }
-
-      sessionStorage.setItem("violations", JSON.stringify(violations));
-      sessionStorage.setItem("selected", JSON.stringify(selected));        
-
-      window.location.reload()
     }
 
     let addTab = (event) => {
@@ -211,16 +178,6 @@ function Viz(props) {
       }
     }
 
-    let closeSummary = (event) => {
-      if (type === 'sumviz') {
-        setType('viz')
-        insertParam('type', 'viz')
-      } else {
-        setType('dualviz')
-        insertParam('type', 'dualviz')
-      }
-    }
-
     let rotateFn = (event) => {
       let rotated = queryParameters.get("rotated") === "true";
       insertParam("rotated", !rotated);
@@ -258,64 +215,23 @@ function Viz(props) {
       },
     });
 
-    const eventBus2 = {
-      listeners: [],
-      addListener(callback) {
-        this.listeners.push(callback);
-      },
-      removeListener(callback) {
-        this.listeners = this.listeners.filter(listener => listener !== callback);
-      },
-      fireEvent(eventName, eventData) {
-        this.listeners.forEach((listener) => {
-          listener(eventName, eventData);
-        });
-      },
-    };
-
-    const [unusedEdges, setUnusedEdges] = useState([]);
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      console.log(count); // Logging the count when it changes
-    }, [count]);
-
-    const onSummaryEdgeTapped = (edge_id) => {
-      // let index = -1;
-      // for (let i = 0; i < unusedEdges.length; i++) {
-      //   if (unusedEdges[i] == edge_id){
-      //     index = i;
-      //     break;
-      //   }
-      // }
-
-      // if (index == -1) {
-      //   console.log("index is -1");
-      //   setUnusedEdges(unusedEdges => [...unusedEdges, edge_id]);
-      // }
-      setCount(count + 1);
-    }
-
     return (
       <div className="viz">
         {type !== 'sumviz' && type !== 'triviz' ? 
           <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
           : <></>}
         {(type === 'sumviz' || type === 'triviz') ?
-          <div className={`panel info ${type === 'sumviz' ? 'one' : 'tri'}`}>
-            <div className="titlewrapper">
-                <h3 className="viztitle"><b>Summary</b></h3>
-                <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={closeSummary} style={{ textDecoration: 'none', color: 'black'}}><p className='abouttext viz'><b>[X]</b></p></a>
-            </div>
-            <div className="panel migration top left sum">
-                <p className="paneltitle"><b>Migration Graph</b></p>
-                <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
-                <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                <SummaryGraph data={summaryGraph} coloringDict={coloringDict} evtbus={evtBus} title={wholeData['name']} setEvtBus={setEvtBus} onSummaryEdgeTapped={onSummaryEdgeTapped}/>
-            </div>
-          </div> :
-          <></>}
+          <SummaryPanel 
+            type={type}
+            setType={setType}
+            insertParam={insertParam}
+            wholeData={wholeData}
+            coloring={coloring}
+            muSum={muSum}
+            gammaSum={gammaSum}
+            evtBus={evtBus}
+            setEvtBus={setEvtBus}
+          /> : <></>}
         <div className={`panel info ${
             type === 'dualviz' ? 'one' : 
             type === 'sumviz' ? 'one two' :
@@ -371,11 +287,11 @@ function Viz(props) {
                 <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
                 <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
-                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={type === 'dualviz' ? eventBus2 : evtBus} rightcol={true} rotated={rotate2}/>
+                <Migration tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={evtBus} rightcol={true} rotated={rotate2}/>
               </div>
               <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left': ''}`}>
                 <p className="paneltitle"><b>Clonal Tree</b></p>
-                <ClonalTree tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={type === 'dualviz' ? eventBus2 : evtBus} rightcol={true}/>
+                <ClonalTree tree={tree2} labeling={tree_labeling2} coloring={coloring} evtbus={evtBus} rightcol={true}/>
               </div>
             </div>
           </div> : 
