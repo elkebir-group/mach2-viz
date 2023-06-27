@@ -221,15 +221,20 @@ function Viz(props) {
     // TODO: unusedEdges won't be updated unless I have a component that depends
     // on it
 
-    const [counter, setCounter] = useState(0);
+    const [unusedEdges, setUnusedEdges] = useState([]);
 
     useEffect(() => {
-      console.log('useEffect ran!');
-    }, [counter]);
+      console.log(unusedEdges);
+    }, [unusedEdges]);
 
     function onSummaryEdgeTapped(edge_id) {
-      // console.log("onSummaryEdgeTapped is called");
-      setCounter(counter + 1);
+      setUnusedEdges(unusedEdges => {
+          if (unusedEdges.includes(edge_id)) {
+            return unusedEdges.filter(e => e !== edge_id);
+          } else {
+            return [...unusedEdges, edge_id];
+          }
+      });
     }
 
     return (
