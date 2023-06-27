@@ -104,7 +104,7 @@ function Viz(props) {
       setMu(sessionStorage.getItem("mu"));
       setGamma(sessionStorage.getItem("gamma"));
     }, [labeling])
-
+    
     let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
     let coord_map = wholeData["map"]; 
@@ -215,6 +215,23 @@ function Viz(props) {
       },
     });
 
+
+
+    // keeping track of edges that are not used
+    // TODO: unusedEdges won't be updated unless I have a component that depends
+    // on it
+
+    const [counter, setCounter] = useState(0);
+
+    useEffect(() => {
+      console.log('useEffect ran!');
+    }, [counter]);
+
+    function onSummaryEdgeTapped(edge_id) {
+      // console.log("onSummaryEdgeTapped is called");
+      setCounter(counter + 1);
+    }
+
     return (
       <div className="viz">
         {type !== 'sumviz' && type !== 'triviz' ? 
@@ -231,6 +248,7 @@ function Viz(props) {
             gammaSum={gammaSum}
             evtBus={evtBus}
             setEvtBus={setEvtBus}
+            onSummaryEdgeTapped={onSummaryEdgeTapped}
           /> : <></>}
         <div className={`panel info ${
             type === 'dualviz' ? 'one' : 
