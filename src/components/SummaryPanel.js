@@ -12,7 +12,7 @@ function SummaryPanel({ type, setType, insertParam, wholeData, coloring, muSum, 
         }
     }
 
-    const summaryGraph = wholeData["summary"]["migration"]
+    const summaryGraph = wholeData["summary"]["migration"];
     
     let coloringDict = {};
     for (var i = 0; i < coloring.length; i++) {
