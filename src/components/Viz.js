@@ -145,8 +145,14 @@ function Viz(props) {
       setUsedData(tempUsedData);
 
       let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
-      console.log(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
-      setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      
+      if (!tempNames.includes(data["name"])) {
+        setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+
+      if (data2 !== undefined && !tempNames.includes(data2["name"])) {
+        setData2(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
       // TODO: Make error messages when there are no solutions left
     }
 
@@ -216,12 +222,15 @@ function Viz(props) {
     }, [usedData])
 
     useEffect(() => {
-      // insertParam("labeling", labelNames[0])
-      // insertParam("labeling2", labelNames[0])
-      labelName = queryParameters.get("labeling");
-      //labelName2 = queryParameters.get("labeling2");
-      setLabeling(labelNames[0])
-      //setLabeling2(labelName2)
+      if (!labelNames.includes(labeling)) {
+        insertParam("labeling", labelNames[0])
+        setLabeling(labelNames[0])
+      }
+
+      if (!labelNames.includes(labeling2)) {
+        insertParam("labeling2", labelNames[0])
+        setLabeling2(labelNames[0])
+      }
     }, [labelNames])
 
     let coord_map = usedData["map"]; 
