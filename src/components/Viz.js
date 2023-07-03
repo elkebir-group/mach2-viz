@@ -45,52 +45,71 @@ function Viz(props) {
     const [muSum, setMuSum] = useState(0);
     const [gammaSum, setGammaSum] = useState(0);
     const jsonContents=sessionStorage.getItem("json_data");
+    const wholeData = JSON.parse(jsonContents);
 
     // for filtering when selecting/unselecting edges on summary graph
-    const wholeData = JSON.parse(jsonContents);
-    const [unusedEdges, setUnusedEdges] = useState(["rib->brain"]);
+    const [deletedEdges, setDeletedEdges] = useState([]);
+    const [requiredEdges, setRequiredEdges] = useState([]);
 
     useEffect(() => {
-      console.log(unusedEdges);
-    }, [unusedEdges]);
+      updateUsedEdgesData();
+    }, [deletedEdges, requiredEdges]);
 
-    function onSummaryEdgeTapped(edge_id) {
-      updateUsedData();
-      // setUnusedEdges(unusedEdges => {
-      //     if (unusedEdges.includes(edge_id)) {
-      //       return unusedEdges.filter(e => e !== edge_id);
-      //     } else {
-      //       return [...unusedEdges, edge_id];
-      //     }
-      // });
+    function onDeleteSummaryEdge(edge_id) {
+      setDeletedEdges([...deletedEdges, edge_id]);
+    }
+
+    function onRequireSummaryEdge(edge_id) {
+      setRequiredEdges([...requiredEdges, edge_id]);
     }
 
     const [usedData, setUsedData] = useState(wholeData);
 
-    // TODO: Don't use set states for usedData, only for unusedEdges and usedEdges.
-    // usedData should update automatically according to them.
-    function updateUsedData() {
+    // using setStates for usedData because otherwise usedData will have to be calculated in EVERY re-render
+    function updateUsedEdgesData() {
+      console.log(deletedEdges);
+      console.log(requiredEdges);
+
       let tempUsedData = {
         "name": wholeData["name"],
         "solutions": []
       };
+
+      if (requiredEdges.length === 0 && deletedEdges.length === 0) {
+        setUsedData(wholeData);
+        return;
+      }
       
-      // filter through wholeData and only include trees without those edges
+      // filter out solutions that include deleted edges
       for (let i = 0; i < wholeData["solutions"].length; i++) {
-        let edge_found = false;
+        let deleted_edge_found = false;
+        let required_edge_found = false;
+
+        if (requiredEdges.length === 0) {
+          required_edge_found = true;
+        }
+        
         loop: for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
-          for (let k = 0; k < unusedEdges.length; k++) {
-            let edge_id_list = unusedEdges[k].split("->");
+          for (let k = 0; k < deletedEdges.length; k++) {
+            let edge_id_list = deletedEdges[k].split("->");
             if ((edge_id_list[0] === wholeData["solutions"][i]["migration"][j][0])
                 && (edge_id_list[1] === wholeData["solutions"][i]["migration"][j][1])) {
-              console.log("found matching edge");
-              edge_found = true;
+              deleted_edge_found = true;
               break loop;
+            }
+          }
+
+          for (let k = 0; k < requiredEdges.length; k++) {
+            let edge_id_list = requiredEdges[k].split("->");
+            if ((edge_id_list[0] === wholeData["solutions"][i]["migration"][j][0])
+            && (edge_id_list[1] === wholeData["solutions"][i]["migration"][j][1])) {
+              // once we found the required
+              required_edge_found = true;
             }
           }
         }
 
-        if (!edge_found) {
+        if (!deleted_edge_found && required_edge_found) {
           tempUsedData["solutions"].push(wholeData["solutions"][i]);
         }
       }
@@ -100,23 +119,20 @@ function Viz(props) {
         "migration": []
       };
 
-      for (let i = 0; i < wholeData["solutions"].length; i++) {
-        for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
+      for (let i = 0; i < tempUsedData["solutions"].length; i++) {
+        for (let j = 0; j < tempUsedData["solutions"][i]["migration"].length; j++) {
           let edge_found = false;
           for (let k = 0; k < summary["migration"].length; k++) {
-            // check if already included
-            // console.log(summary["migration"][k].slice(0,-1));
-            // console.log(wholeData["solutions"][i]["migration"][j].slice(0,-1));
-            if ((summary["migration"][k][0] === wholeData["solutions"][i]["migration"][j][0])
-                && (summary["migration"][k][1] === wholeData["solutions"][i]["migration"][j][1])) {
-              summary["migration"][k][2] += wholeData["solutions"][i]["migration"][j][2];
+            if ((summary["migration"][k][0] === tempUsedData["solutions"][i]["migration"][j][0])
+                && (summary["migration"][k][1] === tempUsedData["solutions"][i]["migration"][j][1])) {
+              summary["migration"][k][2] += tempUsedData["solutions"][i]["migration"][j][2];
               edge_found = true;
               break;
             }
           }
 
           if (!edge_found) {
-            summary["migration"].push(wholeData["solutions"][i]["migration"][j]);
+            summary["migration"].push(tempUsedData["solutions"][i]["migration"][j]);
           }
         }
       }
@@ -125,6 +141,8 @@ function Viz(props) {
       console.log(wholeData);
       console.log(tempUsedData);
       setUsedData(tempUsedData);
+
+      // TODO: Make error messages when there are no solutions left
     }
 
     let labelNames = usedData["solutions"].map((value, index) => {return value["name"]});
@@ -311,13 +329,14 @@ function Viz(props) {
             type={type}
             setType={setType}
             insertParam={insertParam}
-            wholeData={usedData}
+            usedData={usedData}
             coloring={coloring}
             muSum={muSum}
             gammaSum={gammaSum}
             evtBus={evtBus}
             setEvtBus={setEvtBus}
-            onSummaryEdgeTapped={onSummaryEdgeTapped}
+            onDeleteSummaryEdge={onDeleteSummaryEdge}
+            onRequireSummaryEdge={onRequireSummaryEdge}
           /> : <></>}
         <div className={`panel info ${
             type === 'dualviz' ? 'one' : 

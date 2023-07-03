@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import SummaryGraph from "./SummaryGraph.js";
 
-function SummaryPanel({ type, setType, insertParam, wholeData, coloring, muSum, gammaSum, evtBus, setEvtBus, onSummaryEdgeTapped}) {
+function SummaryPanel({ type, setType, insertParam, usedData, coloring, muSum, gammaSum, evtBus, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge}) {
     let closeSummary = (event) => {
         if (type === 'sumviz') {
             setType('viz')
@@ -12,7 +12,7 @@ function SummaryPanel({ type, setType, insertParam, wholeData, coloring, muSum, 
         }
     }
 
-    const summaryGraph = wholeData["summary"]["migration"];
+    const summaryGraph = usedData["summary"]["migration"];
     
     let coloringDict = {};
     for (var i = 0; i < coloring.length; i++) {
@@ -30,13 +30,14 @@ function SummaryPanel({ type, setType, insertParam, wholeData, coloring, muSum, 
                 <p className="paneltitle"><b>Migration Graph</b></p>
                 <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
                 <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                <SummaryGraph 
+                <SummaryGraph
                     data={summaryGraph} 
                     coloringDict={coloringDict} 
                     evtbus={evtBus} 
-                    title={wholeData['name']} 
+                    title={usedData['name']} 
                     setEvtBus={setEvtBus}
-                    onSummaryEdgeTapped={onSummaryEdgeTapped}
+                    onDeleteSummaryEdge={onDeleteSummaryEdge}
+                    onRequireSummaryEdge={onRequireSummaryEdge}
                 />
             </div>
         </div> 

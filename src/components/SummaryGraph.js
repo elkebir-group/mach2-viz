@@ -20,7 +20,7 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEdgeTapped}) {
+function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge}) {
 
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
@@ -83,10 +83,17 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEd
       }
     }
 
-    const [graphData, setGraphData] = useState({
-        nodes: nodes,
-        edges: edges
-    });
+    // const [graphData, setGraphData] = useState({
+    //     nodes: nodes,
+    //     edges: edges
+    // });
+
+    let graphData = {
+      nodes: nodes,
+      edges: edges
+    };
+
+    // console.log(graphData)
 
     let styleSheet = [
         {
@@ -233,26 +240,112 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEd
     }
 
     function onEdgeTapped(edge) {
-      let fill_type = edge.style('line-fill');
-      if (fill_type == 'solid') {
-        // means the edge is gray
-        edge.style({
-          'line-fill': 'linear-gradient',
-          'line-gradient-stop-colors': `${getColor(edge.source().id())} ${getColor(edge.target().id())}`,
-          'line-gradient-stop-positions': '33% 66%',
-          "target-arrow-color": `${getColor(edge.target().id())}`,
-        });
+      let edge_width = edge.style('width');
+      if (edge_width == '10px') {
+        onDeleteSummaryEdge(edge.id());
       } else {
+        // make the line thicker
         edge.style({
-          'line-fill': 'solid',
-          'line-color': '#b5b5b5',
-          'target-arrow-color': '#b5b5b5',
+          'width': 10
         });
+        onRequireSummaryEdge(edge.id());
+
+                // means the edge is gray
+        // edge.style({
+        //   'line-fill': 'linear-gradient',
+        //   'line-gradient-stop-colors': `${getColor(edge.source().id())} ${getColor(edge.target().id())}`,
+        //   'line-gradient-stop-positions': '33% 66%',
+        //   "target-arrow-color": `${getColor(edge.target().id())}`,
+        // });
       }
 
 
       // TODO: add a deselect feature
     }
+
+    // return (<CytoscapeComponent
+    //   elements={CytoscapeComponent.normalizeElements(graphData)}
+    //   // pan={{ x: 200, y: 200 }}
+    //   style={{ width: width, height: height }}
+    //   zoomingEnabled={true}
+    //   maxZoom={3}
+    //   minZoom={0.1}
+    //   autounselectify={false}
+    //   boxSelectionEnabled={true}
+    //   layout={layout}
+    //   stylesheet={styleSheet}
+    //   cy={cy => {
+    //     myCyRef = cy;
+
+    //     cy.on("tap", "edge", evt => {
+    //       console.log("edge tapped");
+    //       var edge = evt.target;
+    //       onEdgeTapped(edge);
+    //       onDeleteSummaryEdge(edge.id());
+    //     });
+
+    //     cy.on('mouseover', 'edge', function(event) {
+    //       const { target } = event;
+    //       target.css({
+    //         width: 10
+    //       })
+    //       const nodeId = event.target.id();
+    //       evtbus.fireEvent('selectNodeSum', { nodeId, target});
+    //       evtbus.fireEvent('selectNodeCl', { nodeId, target});
+    //     });
+
+    //     cy.on('mouseover', 'node', function(event) {
+    //       const { target } = event;
+    //       target.css({
+    //         'border-width': 20,
+    //       })
+    //       const nodeId = event.target.id();
+    //       evtbus.fireEvent('hoverNodeSum', { nodeId });
+    //       evtbus.fireEvent('hoverNodeCl', { nodeId });
+
+    //       var node = event.target;
+    //       var label = node.data('label');
+
+    //       var labeltag = document.querySelector(`#${label}`);
+    //       if (labeltag !== null) {
+    //         labeltag.style.opacity = 1;
+    //         labeltag.style.zIndex = 100;
+    //         labeltag.style.fontWeight = 'bold';
+    //       }
+    //     })
+
+    //     cy.on('mouseout', 'node', function(event) {
+    //       const { target } = event;
+    //       target.css({
+    //         'border-width': 10,
+    //       })
+    //       const nodeId = event.target.id();
+    //       evtbus.fireEvent('dehoverNodeSum', { nodeId });
+    //       evtbus.fireEvent('dehoverNodeCl', { nodeId });
+
+    //       var node = event.target;
+    //       var label = node.data('label');
+
+    //       var labeltag = document.querySelector(`#${label}`);
+    //       if (labeltag !== null) {
+    //         labeltag.style.opacity = 0.7;
+    //         labeltag.style.zIndex = 1;
+    //         labeltag.style.fontWeight = 'normal';
+    //       }
+    //     })
+  
+    //     cy.on('mouseout', 'edge', function(event) {
+    //       const { target } = event;
+    //       target.css({
+    //         width: 3
+    //       })
+    //       const nodeId = event.target.id();
+    //       evtbus.fireEvent('deselectNodeSum', { nodeId, target});
+    //       evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+    //     });
+    //   }}
+    //   abc={console.log("myCyRef", myCyRef)}
+    // />);
 
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
@@ -270,8 +363,10 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEd
 
           cy.on("tap", "edge", evt => {
             var edge = evt.target;
+            console.log("edge tapped");
+            // TODO: Cytoscape registers an increasing number of clicks
+            // each time I click
             onEdgeTapped(edge);
-            onSummaryEdgeTapped(edge.id());
           });
 
           cy.on('mouseover', 'edge', function(event) {
@@ -334,8 +429,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onSummaryEd
             evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
-        abc={console.log("myCyRef", myCyRef)}
-      />), [graphData] )
+      />), [data] )
       return memoizedGraphComponent;
 }
 
