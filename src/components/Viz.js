@@ -76,6 +76,7 @@ function Viz(props) {
       };
 
       if (requiredEdges.length === 0 && deletedEdges.length === 0) {
+        console.log("setting used data to whole data");
         setUsedData(wholeData);
         return;
       }
@@ -110,6 +111,7 @@ function Viz(props) {
         }
 
         if (!deleted_edge_found && required_edge_found) {
+          // console.log(wholeData["solutions"][i]);
           tempUsedData["solutions"].push(wholeData["solutions"][i]);
         }
       }
@@ -138,8 +140,8 @@ function Viz(props) {
       }
 
       tempUsedData["summary"] = summary;
-      console.log(wholeData);
-      console.log(tempUsedData);
+      // console.log(wholeData);
+      // console.log(tempUsedData);
       setUsedData(tempUsedData);
 
       // TODO: Make error messages when there are no solutions left

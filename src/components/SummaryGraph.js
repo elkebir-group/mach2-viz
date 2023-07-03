@@ -241,14 +241,16 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
 
     function onEdgeTapped(edge) {
       let edge_width = edge.style('width');
-      if (edge_width == '10px') {
+      // console.log(edge_width);
+      if (edge_width == '15px') {
         onDeleteSummaryEdge(edge.id());
       } else {
         // make the line thicker
         edge.style({
-          'width': 10
+          'width': 15
         });
-        onRequireSummaryEdge(edge.id());
+        // onRequireSummaryEdge(edge.id());
+        onDeleteSummaryEdge(edge.id());
 
                 // means the edge is gray
         // edge.style({
@@ -281,7 +283,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
     //       console.log("edge tapped");
     //       var edge = evt.target;
     //       onEdgeTapped(edge);
-    //       onDeleteSummaryEdge(edge.id());
     //     });
 
     //     cy.on('mouseover', 'edge', function(event) {
