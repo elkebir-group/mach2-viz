@@ -144,10 +144,13 @@ function Viz(props) {
       // console.log(tempUsedData);
       setUsedData(tempUsedData);
 
+      let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
+      console.log(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
       // TODO: Make error messages when there are no solutions left
     }
 
-    let labelNames = usedData["solutions"].map((value, index) => {return value["name"]});
+    const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => {return value["name"]}));
 
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
@@ -207,6 +210,19 @@ function Viz(props) {
       setMu(sessionStorage.getItem("mu"));
       setGamma(sessionStorage.getItem("gamma"));
     }, [labeling])
+
+    useEffect(() => {
+      setLabelNames(usedData["solutions"].map((value, index) => {return value["name"]}))
+    }, [usedData])
+
+    useEffect(() => {
+      // insertParam("labeling", labelNames[0])
+      // insertParam("labeling2", labelNames[0])
+      labelName = queryParameters.get("labeling");
+      //labelName2 = queryParameters.get("labeling2");
+      setLabeling(labelNames[0])
+      //setLabeling2(labelName2)
+    }, [labelNames])
 
     let coord_map = usedData["map"]; 
 
