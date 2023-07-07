@@ -52,7 +52,7 @@ function Viz(props) {
     const [requiredEdges, setRequiredEdges] = useState([]);
 
     useEffect(() => {
-      updateUsedEdgesData();
+      updateUsedData();
     }, [deletedEdges, requiredEdges]);
 
     function onDeleteSummaryEdge(edge_id) {
@@ -65,7 +65,7 @@ function Viz(props) {
 
     const [usedData, setUsedData] = useState(JSON.parse(jsonContents));
 
-    function updateUsedEdgesData() {
+    function updateUsedData() {
       // TODO: Assuming no edges are shared between requiredEdges and deletedEdges
       console.log(requiredEdges);
       console.log(deletedEdges);
@@ -127,16 +127,18 @@ function Viz(props) {
             if (tempUsedData["summary"]["migration"][k][0] === tempUsedData["solutions"][i]["migration"][j][0]
                 && tempUsedData["summary"]["migration"][k][1] === tempUsedData["solutions"][i]["migration"][j][1]) {
               edgeInSummary = true;
-              tempUsedData["summary"]["migration"][k][2] += tempUsedData["solutions"][i]["migration"][j][2];
+              tempUsedData["summary"]["migration"][k][2] += 1;
             }
           }
           if (!edgeInSummary) {
-            tempUsedData["summary"]["migration"].push([...tempUsedData["solutions"][i]["migration"][j]]);
+            let tempSummaryElement = [...tempUsedData["solutions"][i]["migration"][j].slice(0, -1), 1];
+            tempUsedData["summary"]["migration"].push(tempSummaryElement);
           }
         }
       }
       setUsedData(tempUsedData);
-
+      
+      // TODO: Vikram: make new function
       let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
       
       if (!tempNames.includes(data["name"])) {
@@ -147,107 +149,7 @@ function Viz(props) {
         setData2(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
       }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // using setStates for usedData because otherwise usedData will have to be calculated in EVERY re-render
-    function oldupdateUsedEdgesData() {
-      const wholeData = JSON.parse(jsonContents);
-      console.log(wholeData);
-
-      let tempUsedData = {
-        "name": wholeData["name"],
-        "solutions": []
-      };
-
-      if (requiredEdges.length === 0 && deletedEdges.length === 0) {
-        setUsedData(wholeData);
-        return;
-      }
-      
-      // filter out solutions that include deleted edges
-      for (let i = 0; i < wholeData["solutions"].length; i++) {
-        let deleted_edge_found = false;
-        let required_edge_found = false;
-
-        if (requiredEdges.length === 0) {
-          required_edge_found = true;
-        }
-        
-        loop: for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
-          for (let k = 0; k < deletedEdges.length; k++) {
-            let edge_id_list = deletedEdges[k].split("->");
-            if ((edge_id_list[0] === wholeData["solutions"][i]["migration"][j][0])
-                && (edge_id_list[1] === wholeData["solutions"][i]["migration"][j][1])) {
-              deleted_edge_found = true;
-              break loop;
-            }
-          }
-
-          for (let k = 0; k < requiredEdges.length; k++) {
-            let edge_id_list = requiredEdges[k].split("->");
-            if ((edge_id_list[0] === wholeData["solutions"][i]["migration"][j][0])
-            && (edge_id_list[1] === wholeData["solutions"][i]["migration"][j][1])) {
-              // once we found the required
-              required_edge_found = true;
-            }
-          }
-        }
-
-        if (!deleted_edge_found && required_edge_found) {
-          tempUsedData["solutions"].push(wholeData["solutions"][i]);
-        }
-      }
-      
-      // create a summary graph with edge weights
-      let summary = {
-        "migration": []
-      };
-
-      for (let i = 0; i < tempUsedData["solutions"].length; i++) {
-        for (let j = 0; j < tempUsedData["solutions"][i]["migration"].length; j++) {
-          let edge_found = false;
-          for (let k = 0; k < summary["migration"].length; k++) {
-            if ((summary["migration"][k][0] === tempUsedData["solutions"][i]["migration"][j][0])
-                && (summary["migration"][k][1] === tempUsedData["solutions"][i]["migration"][j][1])) {
-              summary["migration"][k][2] += tempUsedData["solutions"][i]["migration"][j][2];
-              edge_found = true;
-              break;
-            }
-          }
-
-          if (!edge_found) {
-            summary["migration"].push(tempUsedData["solutions"][i]["migration"][j]);
-          }
-        }
-      }
-
-      tempUsedData["summary"] = summary;
-      
-      setUsedData(tempUsedData);
-
-      let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
-      
-      if (!tempNames.includes(data["name"])) {
-        setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
-      }
-
-      if (data2 !== undefined && !tempNames.includes(data2["name"])) {
-        setData2(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
-      }
-      // TODO: Make error messages when there are no solutions left
-    }
-
+    
     const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => {return value["name"]}));
 
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
@@ -295,17 +197,16 @@ function Viz(props) {
         .map((item, index, self) => [item, `${self.indexOf(item)}`]);
     }
 
-    // TODO: Change all pages to use dict?
     let coloringDict = {};
     for (var i = 0; i < coloring.length; i++) {
       coloringDict[coloring[i][0]] = coloring[i][1];
     }
 
     useEffect(() => {
-      updateUsedEdgesData();
-      setTree(data["tree"])
-      setTreeLabeling(data["labeling"])
-      setMigration(data["migration"])
+      updateUsedData();
+      setTree(data["tree"]);
+      setTreeLabeling(data["labeling"]);
+      setMigration(data["migration"]);
       setMu(sessionStorage.getItem("mu"));
       setGamma(sessionStorage.getItem("gamma"));
     }, [labeling])
