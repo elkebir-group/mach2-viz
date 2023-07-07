@@ -45,7 +45,7 @@ function Viz(props) {
     const [muSum, setMuSum] = useState(0);
     const [gammaSum, setGammaSum] = useState(0);
     const jsonContents=sessionStorage.getItem("json_data");
-    const wholeData = JSON.parse(jsonContents);
+    // const wholeData = JSON.parse(jsonContents);
 
     // for filtering when selecting/unselecting edges on summary graph
     const [deletedEdges, setDeletedEdges] = useState([]);
@@ -63,12 +63,107 @@ function Viz(props) {
       setRequiredEdges([...requiredEdges, edge_id]);
     }
 
-    const [usedData, setUsedData] = useState(wholeData);
+    const [usedData, setUsedData] = useState(JSON.parse(jsonContents));
+
+    function updateUsedEdgesData() {
+      // TODO: Assuming no edges are shared between requiredEdges and deletedEdges
+      console.log(requiredEdges);
+      console.log(deletedEdges);
+
+      const wholeData = JSON.parse(jsonContents);
+
+      let tempUsedData = {
+        "name": wholeData["name"],
+        "solutions": [],
+        "summary": {
+          "migration": [],
+        },
+      };
+
+      if (requiredEdges.length === 0 && deletedEdges.length === 0) {
+        setUsedData(wholeData);
+        return;
+      }
+
+      for (let i = 0; i < wholeData["solutions"].length; i++) {
+        let foundDeletedEdge = false;
+        let foundRequiredEdge = false;
+
+        if (requiredEdges.length === 0) {
+          foundRequiredEdge = true;
+        }
+
+        for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
+          // check deleteEdges:
+          let migrationEdgeString = wholeData["solutions"][i]["migration"][j][0] + "->" + wholeData["solutions"][i]["migration"][j][1];
+          for (let k = 0; k < deletedEdges.length; k++) {
+            // create string from wholeData:
+            if (migrationEdgeString === deletedEdges[k]) {
+              foundDeletedEdge = true;
+            }
+          }
+
+          for (let k = 0; k < requiredEdges.length; k++) {
+            if (migrationEdgeString === requiredEdges[k]) {
+              foundRequiredEdge = true;
+            }
+          }
+        }
+
+        if (!foundDeletedEdge && foundRequiredEdge) {
+          // console.log(wholeData["solutions"][i]);
+          const tempSolution = JSON.parse(JSON.stringify(wholeData["solutions"][i]))
+          tempUsedData["solutions"].push(tempSolution);
+        }
+      }
+      
+      // check how to add summary in:
+      for (let i = 0; i < tempUsedData["solutions"].length; i++) {
+        for (let j = 0; j < tempUsedData["solutions"][i]["migration"].length; j++) {
+          let edgeInSummary = false;
+          // add edge to summary:
+          for (let k = 0; k < tempUsedData["summary"]["migration"].length; k++) {
+            // check if edge matches any of the summary edges:
+            if (tempUsedData["summary"]["migration"][k][0] === tempUsedData["solutions"][i]["migration"][j][0]
+                && tempUsedData["summary"]["migration"][k][1] === tempUsedData["solutions"][i]["migration"][j][1]) {
+              edgeInSummary = true;
+              tempUsedData["summary"]["migration"][k][2] += tempUsedData["solutions"][i]["migration"][j][2];
+            }
+          }
+          if (!edgeInSummary) {
+            tempUsedData["summary"]["migration"].push([...tempUsedData["solutions"][i]["migration"][j]]);
+          }
+        }
+      }
+      setUsedData(tempUsedData);
+
+      let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
+      
+      if (!tempNames.includes(data["name"])) {
+        setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+
+      if (data2 !== undefined && !tempNames.includes(data2["name"])) {
+        setData2(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     // using setStates for usedData because otherwise usedData will have to be calculated in EVERY re-render
-    function updateUsedEdgesData() {
-      console.log(deletedEdges);
-      console.log(requiredEdges);
+    function oldupdateUsedEdgesData() {
+      const wholeData = JSON.parse(jsonContents);
+      console.log(wholeData);
 
       let tempUsedData = {
         "name": wholeData["name"],
@@ -76,7 +171,6 @@ function Viz(props) {
       };
 
       if (requiredEdges.length === 0 && deletedEdges.length === 0) {
-        console.log("setting used data to whole data");
         setUsedData(wholeData);
         return;
       }
@@ -111,7 +205,6 @@ function Viz(props) {
         }
 
         if (!deleted_edge_found && required_edge_found) {
-          // console.log(wholeData["solutions"][i]);
           tempUsedData["solutions"].push(wholeData["solutions"][i]);
         }
       }
@@ -140,8 +233,7 @@ function Viz(props) {
       }
 
       tempUsedData["summary"] = summary;
-      // console.log(wholeData);
-      // console.log(tempUsedData);
+      
       setUsedData(tempUsedData);
 
       let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
@@ -210,6 +302,7 @@ function Viz(props) {
     }
 
     useEffect(() => {
+      updateUsedEdgesData();
       setTree(data["tree"])
       setTreeLabeling(data["labeling"])
       setMigration(data["migration"])
