@@ -45,7 +45,211 @@ function Viz(props) {
     const [muSum, setMuSum] = useState(0);
     const [gammaSum, setGammaSum] = useState(0);
     const jsonContents=sessionStorage.getItem("json_data");
-    const wholeData = JSON.parse(jsonContents);
+    // const wholeData = JSON.parse(jsonContents);
+
+    // for filtering when selecting/unselecting edges on summary graph
+    const [deletedEdges, setDeletedEdges] = useState([]);
+    const [requiredEdges, setRequiredEdges] = useState([]);
+
+    useEffect(() => {
+      updateUsedEdgesData();
+    }, [deletedEdges, requiredEdges]);
+
+    function onDeleteSummaryEdge(edge_id) {
+      setDeletedEdges([...deletedEdges, edge_id]);
+    }
+
+    function onRequireSummaryEdge(edge_id) {
+      setRequiredEdges([...requiredEdges, edge_id]);
+    }
+
+    const [usedData, setUsedData] = useState(JSON.parse(jsonContents));
+
+    function updateUsedEdgesData() {
+      // TODO: Assuming no edges are shared between requiredEdges and deletedEdges
+      console.log(requiredEdges);
+      console.log(deletedEdges);
+
+      const wholeData = JSON.parse(jsonContents);
+
+      let tempUsedData = {
+        "name": wholeData["name"],
+        "solutions": [],
+        "summary": {
+          "migration": [],
+        },
+      };
+
+      if (requiredEdges.length === 0 && deletedEdges.length === 0) {
+        setUsedData(wholeData);
+        return;
+      }
+
+      for (let i = 0; i < wholeData["solutions"].length; i++) {
+        let foundDeletedEdge = false;
+        let foundRequiredEdge = false;
+
+        if (requiredEdges.length === 0) {
+          foundRequiredEdge = true;
+        }
+
+        for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
+          // check deleteEdges:
+          let migrationEdgeString = wholeData["solutions"][i]["migration"][j][0] + "->" + wholeData["solutions"][i]["migration"][j][1];
+          for (let k = 0; k < deletedEdges.length; k++) {
+            // create string from wholeData:
+            if (migrationEdgeString === deletedEdges[k]) {
+              foundDeletedEdge = true;
+            }
+          }
+
+          for (let k = 0; k < requiredEdges.length; k++) {
+            if (migrationEdgeString === requiredEdges[k]) {
+              foundRequiredEdge = true;
+            }
+          }
+        }
+
+        if (!foundDeletedEdge && foundRequiredEdge) {
+          // console.log(wholeData["solutions"][i]);
+          const tempSolution = JSON.parse(JSON.stringify(wholeData["solutions"][i]))
+          tempUsedData["solutions"].push(tempSolution);
+        }
+      }
+      
+      // check how to add summary in:
+      for (let i = 0; i < tempUsedData["solutions"].length; i++) {
+        for (let j = 0; j < tempUsedData["solutions"][i]["migration"].length; j++) {
+          let edgeInSummary = false;
+          // add edge to summary:
+          for (let k = 0; k < tempUsedData["summary"]["migration"].length; k++) {
+            // check if edge matches any of the summary edges:
+            if (tempUsedData["summary"]["migration"][k][0] === tempUsedData["solutions"][i]["migration"][j][0]
+                && tempUsedData["summary"]["migration"][k][1] === tempUsedData["solutions"][i]["migration"][j][1]) {
+              edgeInSummary = true;
+              tempUsedData["summary"]["migration"][k][2] += tempUsedData["solutions"][i]["migration"][j][2];
+            }
+          }
+          if (!edgeInSummary) {
+            tempUsedData["summary"]["migration"].push([...tempUsedData["solutions"][i]["migration"][j]]);
+          }
+        }
+      }
+      setUsedData(tempUsedData);
+
+      let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
+      
+      if (!tempNames.includes(data["name"])) {
+        setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+
+      if (data2 !== undefined && !tempNames.includes(data2["name"])) {
+        setData2(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // using setStates for usedData because otherwise usedData will have to be calculated in EVERY re-render
+    function oldupdateUsedEdgesData() {
+      const wholeData = JSON.parse(jsonContents);
+      console.log(wholeData);
+
+      let tempUsedData = {
+        "name": wholeData["name"],
+        "solutions": []
+      };
+
+      if (requiredEdges.length === 0 && deletedEdges.length === 0) {
+        setUsedData(wholeData);
+        return;
+      }
+      
+      // filter out solutions that include deleted edges
+      for (let i = 0; i < wholeData["solutions"].length; i++) {
+        let deleted_edge_found = false;
+        let required_edge_found = false;
+
+        if (requiredEdges.length === 0) {
+          required_edge_found = true;
+        }
+        
+        loop: for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
+          for (let k = 0; k < deletedEdges.length; k++) {
+            let edge_id_list = deletedEdges[k].split("->");
+            if ((edge_id_list[0] === wholeData["solutions"][i]["migration"][j][0])
+                && (edge_id_list[1] === wholeData["solutions"][i]["migration"][j][1])) {
+              deleted_edge_found = true;
+              break loop;
+            }
+          }
+
+          for (let k = 0; k < requiredEdges.length; k++) {
+            let edge_id_list = requiredEdges[k].split("->");
+            if ((edge_id_list[0] === wholeData["solutions"][i]["migration"][j][0])
+            && (edge_id_list[1] === wholeData["solutions"][i]["migration"][j][1])) {
+              // once we found the required
+              required_edge_found = true;
+            }
+          }
+        }
+
+        if (!deleted_edge_found && required_edge_found) {
+          tempUsedData["solutions"].push(wholeData["solutions"][i]);
+        }
+      }
+      
+      // create a summary graph with edge weights
+      let summary = {
+        "migration": []
+      };
+
+      for (let i = 0; i < tempUsedData["solutions"].length; i++) {
+        for (let j = 0; j < tempUsedData["solutions"][i]["migration"].length; j++) {
+          let edge_found = false;
+          for (let k = 0; k < summary["migration"].length; k++) {
+            if ((summary["migration"][k][0] === tempUsedData["solutions"][i]["migration"][j][0])
+                && (summary["migration"][k][1] === tempUsedData["solutions"][i]["migration"][j][1])) {
+              summary["migration"][k][2] += tempUsedData["solutions"][i]["migration"][j][2];
+              edge_found = true;
+              break;
+            }
+          }
+
+          if (!edge_found) {
+            summary["migration"].push(tempUsedData["solutions"][i]["migration"][j]);
+          }
+        }
+      }
+
+      tempUsedData["summary"] = summary;
+      
+      setUsedData(tempUsedData);
+
+      let tempNames = tempUsedData["solutions"].map((value, index) => {return value["name"]})
+      
+      if (!tempNames.includes(data["name"])) {
+        setData(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+
+      if (data2 !== undefined && !tempNames.includes(data2["name"])) {
+        setData2(tempUsedData["solutions"].filter((item) => {return item["name"] === tempNames[0]})[0])
+      }
+      // TODO: Make error messages when there are no solutions left
+    }
+
+    const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => {return value["name"]}));
+
     const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
     let labelName = queryParameters.get("labeling");
@@ -59,22 +263,22 @@ function Viz(props) {
 
     const [type, setType] = useState(queryParameters.get("type"))
 
-    if (labelName == "undefined") {
-      insertParam("labeling", wholeData["solutions"][0]["name"]);
-      setLabeling(wholeData["solutions"][0]["name"])
+    if (labelName === "undefined") {
+      insertParam("labeling", usedData["solutions"][0]["name"]);
+      setLabeling(usedData["solutions"][0]["name"])
     }
-    if (labelName2 == "undefined") {
-      insertParam("labeling2", wholeData["solutions"][0]["name"]);
-      setLabeling2(wholeData["solutions"][0]["name"])
+    if (labelName2 === "undefined") {
+      insertParam("labeling2", usedData["solutions"][0]["name"]);
+      setLabeling2(usedData["solutions"][0]["name"])
     }
 
     sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
-    let coloring = wholeData["coloring"];
+    let coloring = usedData["coloring"];
 
-    const [data, setData] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
-    const [data2, setData2] = useState(wholeData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
+    const [data, setData] = useState(usedData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+    const [data2, setData2] = useState(usedData["solutions"].filter((item) => {return item["name"] === labeling2})[0]);
     const [tree, setTree] = useState(data["tree"])
     const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
     const [migration, setMigration] = useState(data["migration"])
@@ -98,27 +302,42 @@ function Viz(props) {
     }
 
     useEffect(() => {
+      updateUsedEdgesData();
       setTree(data["tree"])
       setTreeLabeling(data["labeling"])
       setMigration(data["migration"])
       setMu(sessionStorage.getItem("mu"));
       setGamma(sessionStorage.getItem("gamma"));
     }, [labeling])
-    
-    let labelnames = wholeData["solutions"].map((value, index) => {return value["name"]});
 
-    let coord_map = wholeData["map"]; 
+    useEffect(() => {
+      setLabelNames(usedData["solutions"].map((value, index) => {return value["name"]}))
+    }, [usedData])
+
+    useEffect(() => {
+      if (!labelNames.includes(labeling)) {
+        insertParam("labeling", labelNames[0])
+        setLabeling(labelNames[0])
+      }
+
+      if (!labelNames.includes(labeling2)) {
+        insertParam("labeling2", labelNames[0])
+        setLabeling2(labelNames[0])
+      }
+    }, [labelNames])
+
+    let coord_map = usedData["map"]; 
 
     let handleLabelChange = (event) => {
       insertParam("labeling", event.target.value);
       setLabeling(event.target.value)
-      setData(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
+      setData(usedData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let handleLabelChange2 = (event) => {
       insertParam("labeling2", event.target.value);
       setLabeling2(event.target.value)
-      setData2(wholeData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
+      setData2(usedData["solutions"].filter((item) => {return item["name"] === event.target.value})[0]);
     }
 
     let addTab = (event) => {
@@ -132,7 +351,7 @@ function Viz(props) {
       }
       insertParam("labeling2", labeling)
       setLabeling2(labeling)
-      setData2(wholeData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
+      setData2(usedData["solutions"].filter((item) => {return item["name"] === labeling})[0]);
       setMu2(sessionStorage.getItem("mu2"));
       setGamma2(sessionStorage.getItem("gamma2"));
     }
@@ -141,7 +360,7 @@ function Viz(props) {
       if (type === 'dualviz' || type === 'triviz') {
         setType(type === 'dualviz' ? 'viz' : 'sumviz')
         console.log(tabIndex)
-        if (tabIndex == 1) {
+        if (tabIndex === 1) {
           setData(data2)
           setLabeling(labeling2)
           setRotate(rotate2)
@@ -218,24 +437,7 @@ function Viz(props) {
 
 
     // keeping track of edges that are not used
-    // TODO: unusedEdges won't be updated unless I have a component that depends
-    // on it
-
-    const [unusedEdges, setUnusedEdges] = useState([]);
-
-    useEffect(() => {
-      console.log(unusedEdges);
-    }, [unusedEdges]);
-
-    function onSummaryEdgeTapped(edge_id) {
-      setUnusedEdges(unusedEdges => {
-          if (unusedEdges.includes(edge_id)) {
-            return unusedEdges.filter(e => e !== edge_id);
-          } else {
-            return [...unusedEdges, edge_id];
-          }
-      });
-    }
+    // update unusedEdges whenever
 
     return (
       <div className="viz">
@@ -247,13 +449,14 @@ function Viz(props) {
             type={type}
             setType={setType}
             insertParam={insertParam}
-            wholeData={wholeData}
+            usedData={usedData}
             coloring={coloring}
             muSum={muSum}
             gammaSum={gammaSum}
             evtBus={evtBus}
             setEvtBus={setEvtBus}
-            onSummaryEdgeTapped={onSummaryEdgeTapped}
+            onDeleteSummaryEdge={onDeleteSummaryEdge}
+            onRequireSummaryEdge={onRequireSummaryEdge}
           /> : <></>}
         <div className={`panel info ${
             type === 'dualviz' ? 'one' : 
@@ -264,7 +467,7 @@ function Viz(props) {
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
               <select name="labelings" id="labelings" onChange={handleLabelChange}>
-                {labelnames.map(l => 
+                {labelNames.map(l => 
                   {return (l === labeling) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                 )}
               </select>
@@ -291,12 +494,12 @@ function Viz(props) {
             </div>
           </div>
         </div>
-        {(type == 'dualviz' || type == 'triviz') ? 
+        {(type === 'dualviz' || type === 'triviz') ? 
           <div className={`panel info ${type === 'dualviz' ? 'one two' : 'tri three'}`}>
             <div className="titlewrapper">
                 <label className="titleelem left" for="labelings"><p><b>Full Labeling:
                 <select name="labelings" id="labelings" onChange={handleLabelChange2}>
-                    {labelnames.map(l => 
+                    {labelNames.map(l => 
                     {return (l === labeling2) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option>}
                     )}
                 </select>

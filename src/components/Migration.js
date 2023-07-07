@@ -19,7 +19,7 @@ Cytoscape.use(COSEBilkent);
  * - rotated:   Is the graph rotated?
  * @returns JSX/HTML
  */
-function Migration(props) {
+function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rotated }) {
       var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
       const colorPalette = [
@@ -46,24 +46,24 @@ function Migration(props) {
       }
     
       function findLabel(node) {
-        return props.labeling.map((value, index) => {
+        return labeling.map((value, index) => {
           if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
       }
 
       function getColor(label) {
-        let color = props.coloring.map((value, index) => {
+        let color = coloring.map((value, index) => {
           if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
         return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
       }
     
       // The difference between this and the Clonal Tree is that the nodes are anatomical locations instead of clones
-      let nodes = props.tree.map(array => {
+      let nodes = tree.map(array => {
         // Create a new array excluding the third element
         return array.filter((_, index) => index !== 2);
       }).flat().filter(onlyUnique).map((value, index) => {
         return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
       });
-      let edges = props.migration.map((value, index) => {
+      let edges = migration.map((value, index) => {
         return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
       })
       for (const [i, edge] of edges.entries()) {
@@ -79,13 +79,13 @@ function Migration(props) {
 
       // Likewise switch the graph data when any of the props values change
       useEffect(() => {
-        let nodes = props.tree.map(array => {
+        let nodes = tree.map(array => {
           // Create a new array excluding the third element
           return array.filter((_, index) => index !== 2);
         }).flat().filter(onlyUnique).map((value, index) => {
           return { data: { id:  findLabel(value), label: findLabel(value), type: "ip"} };
         });
-        let edges = props.migration.map((value, index) => {
+        let edges = migration.map((value, index) => {
           return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
         })
         for (const [i, edge] of edges.entries()) {
@@ -97,7 +97,7 @@ function Migration(props) {
           nodes: nodes,
           edges: edges
         })
-      }, [props.tree, props.labeling, props.migration, props.rotated])
+      }, [tree, labeling, migration, rotated])
 
       let styleSheet = [
         {
@@ -161,7 +161,7 @@ function Migration(props) {
         }
       ];
 
-      props.coloring.map((value, index) => {
+      coloring.map((value, index) => {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
           style: {
@@ -188,9 +188,9 @@ function Migration(props) {
 
       // Is the migration graph rotated?
       const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
-      let rotated = props.rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
-      if (rotated === null) {
-        rotated = false;
+      let is_rotated = rightcol ? queryParameters.get("rotated2") === "true" : queryParameters.get("rotated") === "true";
+      if (is_rotated === null) {
+        is_rotated = false;
       }
 
       const layout = {
@@ -208,8 +208,8 @@ function Migration(props) {
         // Position the nodes based on the rotated parameter
         transform: (node, position) => {
           return {
-            x: props.rotated ? -2*position.y : position.x,
-            y: props.rotated ? position.x : position.y
+            x: rotated ? -2*position.y : position.x,
+            y: rotated ? position.x : position.y
           }
         },
 
@@ -264,7 +264,7 @@ function Migration(props) {
               edge.trigger('select');
             }
           };
-          props.evtbus.addListener(listener);
+          evtbus.addListener(listener);
         }
       };
 
@@ -285,7 +285,7 @@ function Migration(props) {
       })
 
       // Which mu and gamma are we setting (this is for dualviz)
-      if (!props.rightcol) {
+      if (!rightcol) {
         sessionStorage.setItem("mu", mu);
         sessionStorage.setItem("gamma", gamma);
       } else {
@@ -313,7 +313,7 @@ function Migration(props) {
               width: 10
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('selectNodeCl', { nodeId, target});
+            evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
           cy.on('mouseover', 'node', function(event) {
@@ -322,7 +322,7 @@ function Migration(props) {
               'border-width': 20,
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('hoverNodeCl', { nodeId });
+            evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -341,7 +341,7 @@ function Migration(props) {
               'border-width': 10,
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('dehoverNodeCl', { nodeId });
+            evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -360,7 +360,7 @@ function Migration(props) {
               width: 3
             })
             const nodeId = event.target.id();
-            props.evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+            evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
         abc={console.log("myCyRef", myCyRef)}
