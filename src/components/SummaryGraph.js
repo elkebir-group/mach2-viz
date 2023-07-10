@@ -240,29 +240,13 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
     }
 
     function onEdgeTapped(edge) {
-      let edge_width = edge.style('width');
-      // console.log(edge_width);
-      if (edge_width == '15px') {
-        onDeleteSummaryEdge(edge.id());
-      } else {
-        // make the line thicker
-        edge.style({
-          'width': 15
-        });
-        // onRequireSummaryEdge(edge.id());
-        onDeleteSummaryEdge(edge.id());
-
-                // means the edge is gray
-        // edge.style({
-        //   'line-fill': 'linear-gradient',
-        //   'line-gradient-stop-colors': `${getColor(edge.source().id())} ${getColor(edge.target().id())}`,
-        //   'line-gradient-stop-positions': '33% 66%',
-        //   "target-arrow-color": `${getColor(edge.target().id())}`,
-        // });
-      }
-
-
-      // TODO: add a deselect feature
+      edge.style ({
+        "line-fill": "solid",
+        "line-color": "#FFF200",
+        "target-arrow-color": "#FFF200",
+        // "width": "15",
+      });
+      onRequireSummaryEdge(edge.id());
     }
 
     // return (<CytoscapeComponent

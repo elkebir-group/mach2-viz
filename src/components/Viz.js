@@ -87,11 +87,12 @@ function Viz(props) {
 
       for (let i = 0; i < wholeData["solutions"].length; i++) {
         let foundDeletedEdge = false;
-        let foundRequiredEdge = false;
+        // let foundRequiredEdge = false;
+        let requiredEdgeCounter = 0;
 
-        if (requiredEdges.length === 0) {
-          foundRequiredEdge = true;
-        }
+        // if (requiredEdges.length === 0) {
+        //   foundRequiredEdge = true;
+        // }
 
         for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
           // check deleteEdges:
@@ -105,12 +106,12 @@ function Viz(props) {
 
           for (let k = 0; k < requiredEdges.length; k++) {
             if (migrationEdgeString === requiredEdges[k]) {
-              foundRequiredEdge = true;
+              requiredEdgeCounter++;
             }
           }
         }
 
-        if (!foundDeletedEdge && foundRequiredEdge) {
+        if (!foundDeletedEdge && (requiredEdgeCounter === requiredEdges.length)) {
           // console.log(wholeData["solutions"][i]);
           const tempSolution = JSON.parse(JSON.stringify(wholeData["solutions"][i]))
           tempUsedData["solutions"].push(tempSolution);
