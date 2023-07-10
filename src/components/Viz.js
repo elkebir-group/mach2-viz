@@ -312,7 +312,6 @@ function Viz(props) {
     }
 
     useEffect(() => {
-      document.addEventListener("keydown", handleKeyPress);
       setMu(sessionStorage.getItem("mu"));
       setGamma(sessionStorage.getItem("gamma"));
       setMu2(sessionStorage.getItem("mu2"));
@@ -321,6 +320,12 @@ function Viz(props) {
       setGammaSum(sessionStorage.getItem("gammasum"));
       updateUsedData()
     }, []);
+
+    useEffect(() => {
+      document.addEventListener("keydown", handleKeyPress);
+      setMuSum(sessionStorage.getItem("musum"));
+      setGammaSum(sessionStorage.getItem("gammasum"));
+    })
 
     const [evtBus, setEvtBus] = useState({
       listeners: [],

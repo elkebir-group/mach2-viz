@@ -246,7 +246,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
         "target-arrow-color": "#FFF200",
         // "width": "15",
       });
-      onRequireSummaryEdge(edge.id());
+      onDeleteSummaryEdge(edge.id());
     }
 
     // return (<CytoscapeComponent
