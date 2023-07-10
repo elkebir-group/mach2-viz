@@ -80,10 +80,10 @@ function Viz(props) {
         },
       };
 
-      if (requiredEdges.length === 0 && deletedEdges.length === 0) {
+      /*if (requiredEdges.length === 0 && deletedEdges.length === 0) {
         setUsedData(wholeData);
         return;
-      }
+      }*/
 
       for (let i = 0; i < wholeData["solutions"].length; i++) {
         let foundDeletedEdge = false;
@@ -318,7 +318,8 @@ function Viz(props) {
       setGamma2(sessionStorage.getItem("gamma2"));
       setMuSum(sessionStorage.getItem("musum"));
       setGammaSum(sessionStorage.getItem("gammasum"));
-    });
+      updateUsedData()
+    }, []);
 
     const [evtBus, setEvtBus] = useState({
       listeners: [],

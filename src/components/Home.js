@@ -22,16 +22,19 @@ import A22 from "../samples/A22/A22.json";
 import A29 from "../samples/A29/A29.json";
 import A31 from "../samples/A31/A31.json";
 import A32 from "../samples/A32/A32.json";
-import patient1 from "../samples/patient1/patient1.json";
+import patient1_LOv from "../samples/patient1_LOv/patient1_LOv.json";
+import patient1_ROv from "../samples/patient1_ROv/patient1_ROv.json";
 import patient2 from "../samples/patient2/patient2.json";
-import patient3 from "../samples/patient3/patient3.json";
-import patient4 from "../samples/patient4/patient4.json";
-import patient7 from "../samples/patient7/patient7.json";
-import patient9 from "../samples/patient9/patient9.json";
+import patient3_LOv from "../samples/patient3_LOv/patient3_LOv.json";
+import patient3_ROv from "../samples/patient3_ROv/patient3_ROv.json";
+import patient4_LOv from "../samples/patient4_LOv/patient4_LOv.json";
+import patient4_ROv from "../samples/patient4_ROv/patient4_ROv.json";
+import patient7_LOv from "../samples/patient7_LOv/patient7_LOv.json";
+import patient7_ROv from "../samples/patient7_ROv/patient7_ROv.json";
+import patient9_LOv from "../samples/patient9_LOv/patient9_LOv.json";
+import patient9_ROv from "../samples/patient9_ROv/patient9_ROv.json";
 import patient10 from "../samples/patient10/patient10.json";
-import tracerx_res from "../samples/tracerx_res/tracerx_res.json";
-import tracerx_res_old from "../samples/tracerx_res_old/tracerx_old_all.json";
-import tracerx_res_new from "../samples/tracerx_res_new/tracerx_new_all.json";
+import tracerx from "../samples/tracerx/tracerx.json";
 
 /** The home page for the visualizer
  * 
@@ -60,21 +63,24 @@ function Home() {
       "A29": A29,
       "A31": A31,
       "A32": A32,
-      "patient1": patient1,
+      "patient1_LOv": patient1_LOv,
+      "patient1_ROv": patient1_ROv,
       "patient2": patient2,
-      "patient3": patient3,
-      "patient4": patient4,
-      "patient7": patient7,
-      "patient9": patient9,
+      "patient3_LOv": patient3_LOv,
+      "patient3_ROv": patient3_ROv,
+      "patient4_LOv": patient4_LOv,
+      "patient4_ROv": patient4_ROv,
+      "patient7_LOv": patient7_LOv,
+      "patient7_ROv": patient7_ROv,
+      "patient9_LOv": patient9_LOv,
+      "patient9_ROv": patient9_ROv,
       "patient10": patient10,
-      "tracerx_res": tracerx_res,
-      "tracerx_res_old": tracerx_res_old,
-      "tracerx_res_new": tracerx_res_new
+      "tracerx": tracerx,
     }
 
     // Table values
-    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1", "patient2", "patient3", "patient4", "patient7", "patient9", "patient10", "tracerx_res", "tracerx_res_old", "tracerx_res_new"]
-    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx", "tracerx", "tracerx"]
+    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1_LOv", "patient1_ROv", "patient2", "patient3_LOv", "patient3_ROv", "patient4_LOv", "patient4_ROv", "patient7_LOv", "patient7_ROv", "patient9_LOv", "patient9_ROv", "patient10", "tracerx"]
+    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx"]
     var div_elements = []
     var which_color = true;
     const color1 = "#EBEBEB";
