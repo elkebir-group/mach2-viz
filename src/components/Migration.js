@@ -77,6 +77,8 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
         edges: edges
       });
 
+      let myCyRef;
+
       // Likewise switch the graph data when any of the props values change
       useEffect(() => {
         let nodes = tree.map(array => {
@@ -183,8 +185,6 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
           }
         })
       })
-    
-      let myCyRef;
 
       // Is the migration graph rotated?
       const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
