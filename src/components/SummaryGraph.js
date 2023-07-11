@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
@@ -55,8 +54,10 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
       return [...new Set(array)];
     }
 
-    const [width, setWith] = useState("100%");
-    const [height, setHeight] = useState("100%");
+    // const [width, setWidth] = useState("100%");
+    // const [height, setHeight] = useState("100%");
+    const width = "100%";
+    const height = "100%";
 
     let nodeSet = onlyUnique(data.map((value, index) => [value[0], value[1]]).flat())
 
@@ -66,7 +67,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
 
     let edges = data.filter(e => {
       for (let f of filterOut) {
-        if (f[0] == e[0] && f[1] == e[1]) {
+        if (f[0] === e[0] && f[1] === e[1]) {
           return false;
         }
       }
@@ -158,7 +159,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
       });
     }
 
-    edges.map((value, index) => {
+    edges.map((value, _) => {
         let source = value.data.source;
         let target = value.data.target;
         styleSheet.push({
@@ -170,6 +171,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
             "target-arrow-color": `${getColor(target)}`
           }
         })
+
+        return 0;
     })
 
     let myCyRef;
@@ -229,6 +232,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
         mu += parseInt(edge.data.label);
         //gamma += parseInt(edge.data.label) - 1;
       }
+
+      return 0;
     })
 
     sessionStorage.setItem("musum", mu);
@@ -249,89 +254,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
       onRequireSummaryEdge(edge.id());
     }
 
-    // return (<CytoscapeComponent
-    //   elements={CytoscapeComponent.normalizeElements(graphData)}
-    //   // pan={{ x: 200, y: 200 }}
-    //   style={{ width: width, height: height }}
-    //   zoomingEnabled={true}
-    //   maxZoom={3}
-    //   minZoom={0.1}
-    //   autounselectify={false}
-    //   boxSelectionEnabled={true}
-    //   layout={layout}
-    //   stylesheet={styleSheet}
-    //   cy={cy => {
-    //     myCyRef = cy;
-
-    //     cy.on("tap", "edge", evt => {
-    //       console.log("edge tapped");
-    //       var edge = evt.target;
-    //       onEdgeTapped(edge);
-    //     });
-
-    //     cy.on('mouseover', 'edge', function(event) {
-    //       const { target } = event;
-    //       target.css({
-    //         width: 10
-    //       })
-    //       const nodeId = event.target.id();
-    //       evtbus.fireEvent('selectNodeSum', { nodeId, target});
-    //       evtbus.fireEvent('selectNodeCl', { nodeId, target});
-    //     });
-
-    //     cy.on('mouseover', 'node', function(event) {
-    //       const { target } = event;
-    //       target.css({
-    //         'border-width': 20,
-    //       })
-    //       const nodeId = event.target.id();
-    //       evtbus.fireEvent('hoverNodeSum', { nodeId });
-    //       evtbus.fireEvent('hoverNodeCl', { nodeId });
-
-    //       var node = event.target;
-    //       var label = node.data('label');
-
-    //       var labeltag = document.querySelector(`#${label}`);
-    //       if (labeltag !== null) {
-    //         labeltag.style.opacity = 1;
-    //         labeltag.style.zIndex = 100;
-    //         labeltag.style.fontWeight = 'bold';
-    //       }
-    //     })
-
-    //     cy.on('mouseout', 'node', function(event) {
-    //       const { target } = event;
-    //       target.css({
-    //         'border-width': 10,
-    //       })
-    //       const nodeId = event.target.id();
-    //       evtbus.fireEvent('dehoverNodeSum', { nodeId });
-    //       evtbus.fireEvent('dehoverNodeCl', { nodeId });
-
-    //       var node = event.target;
-    //       var label = node.data('label');
-
-    //       var labeltag = document.querySelector(`#${label}`);
-    //       if (labeltag !== null) {
-    //         labeltag.style.opacity = 0.7;
-    //         labeltag.style.zIndex = 1;
-    //         labeltag.style.fontWeight = 'normal';
-    //       }
-    //     })
-  
-    //     cy.on('mouseout', 'edge', function(event) {
-    //       const { target } = event;
-    //       target.css({
-    //         width: 3
-    //       })
-    //       const nodeId = event.target.id();
-    //       evtbus.fireEvent('deselectNodeSum', { nodeId, target});
-    //       evtbus.fireEvent('deselectNodeCl', { nodeId, target});
-    //     });
-    //   }}
-    //   abc={console.log("myCyRef", myCyRef)}
-    // />);
-
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
         elements={CytoscapeComponent.normalizeElements(graphData)}
         // pan={{ x: 200, y: 200 }}
@@ -339,7 +261,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
         zoomingEnabled={true}
         maxZoom={3}
         minZoom={0.1}
-        autounselectify={false}
+        autounselectify={true}
         boxSelectionEnabled={true}
         layout={layout}
         stylesheet={styleSheet}
@@ -349,8 +271,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
           cy.on("tap", "edge", evt => {
             var edge = evt.target;
             console.log("edge tapped");
-            // TODO: Cytoscape registers an increasing number of clicks
-            // each time I click
             onEdgeTapped(edge);
           });
 
@@ -360,8 +280,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
               width: 10
             })
             const nodeId = event.target.id();
-            evtbus.fireEvent('selectNodeSum', { nodeId, target});
-            evtbus.fireEvent('selectNodeCl', { nodeId, target});
+            // evtbus.fireEvent('selectNodeSum', { nodeId, target});
+            // evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
           cy.on('mouseover', 'node', function(event) {
@@ -370,8 +290,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
               'border-width': 20,
             })
             const nodeId = event.target.id();
-            evtbus.fireEvent('hoverNodeSum', { nodeId });
-            evtbus.fireEvent('hoverNodeCl', { nodeId });
+            // evtbus.fireEvent('hoverNodeSum', { nodeId });
+            // evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -390,8 +310,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
               'border-width': 10,
             })
             const nodeId = event.target.id();
-            evtbus.fireEvent('dehoverNodeSum', { nodeId });
-            evtbus.fireEvent('dehoverNodeCl', { nodeId });
+            // evtbus.fireEvent('dehoverNodeSum', { nodeId });
+            // evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -410,8 +330,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
               width: 3
             })
             const nodeId = event.target.id();
-            evtbus.fireEvent('deselectNodeSum', { nodeId, target});
-            evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+            // evtbus.fireEvent('deselectNodeSum', { nodeId, target});
+            // evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
       />), [data] )

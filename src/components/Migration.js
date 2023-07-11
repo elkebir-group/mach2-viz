@@ -38,8 +38,8 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
       ]
       const ncolors = colorPalette.length;
     
-      const [width, setWith] = useState("100%");
-      const [height, setHeight] = useState("100%");
+      const width = "100%";
+      const height = "100%";
     
       function onlyUnique(value, index, array) {
         return array.indexOf(value) === index;
@@ -47,12 +47,12 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
     
       function findLabel(node) {
         return labeling.map((value, index) => {
-          if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
+          if (value[0] === node) return value[1]}).filter((item) => {return item !== undefined})[0];
       }
 
       function getColor(label) {
         let color = coloring.map((value, index) => {
-          if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
+          if (value[0] === label) return value[1]}).filter((item) => {return item !== undefined})[0];
         return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
       }
     
@@ -300,7 +300,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
         zoomingEnabled={true}
         maxZoom={3}
         minZoom={0.1}
-        autounselectify={false}
+        autounselectify={true}
         boxSelectionEnabled={true}
         layout={layout}
         stylesheet={styleSheet}

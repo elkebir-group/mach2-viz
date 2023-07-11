@@ -276,7 +276,7 @@ function ClonalTree(props) {
     zoomingEnabled={true}
     maxZoom={3}
     minZoom={0.1}
-    autounselectify={false}
+    autounselectify={true}
     boxSelectionEnabled={true}
     layout={layout}
     stylesheet={styleSheet}
