@@ -10,7 +10,10 @@ import {
 } from "react-router-dom";
 
 import DefaultDict from "../utils/DefaultDict.js";
+
+// Panels
 import SummaryPanel from "./SummaryPanel.js";
+import MigrationPanel from "./MigrationPanel.js";
 
 /** Insert a URL parameter
  * 
@@ -67,8 +70,8 @@ function Viz(props) {
 
     function updateUsedData() {
       // TODO: Assuming no edges are shared between requiredEdges and deletedEdges
-      console.log(requiredEdges);
-      console.log(deletedEdges);
+      // console.log(requiredEdges);
+      // console.log(deletedEdges);
 
       const wholeData = JSON.parse(jsonContents);
 
@@ -372,6 +375,27 @@ function Viz(props) {
             type === 'triviz' ? 'tri two' :
             ''
           }`}>
+          {/* <MigrationPanel
+            type={type}
+            setType={setType}
+            handleLabelChange={handleLabelChange}
+            labeling={labeling}
+            labelNames={labelNames}
+            data={data}
+            closeTab={closeTab}
+
+            gamma={gamma}
+            mu={mu}
+            rotateFn={rotateFn}
+            tree={tree}
+            tree_labeling={tree_labeling}
+            coloring={coloring}
+            migration={migration}
+            evtBus={evtBus}
+            rotate={rotate}
+            coord_map={coord_map}
+          >
+          </MigrationPanel> */}
           <div className="titlewrapper">
             <label className="titleelem left" for="labelings"><p><b>Full Labeling:
               <select name="labelings" id="labelings" onChange={handleLabelChange}>

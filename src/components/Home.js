@@ -22,19 +22,19 @@ import A22 from "../samples/A22/A22.json";
 import A29 from "../samples/A29/A29.json";
 import A31 from "../samples/A31/A31.json";
 import A32 from "../samples/A32/A32.json";
-// import patient1_LOv from "../samples/patient1_LOv/patient1_LOv.json";
-// import patient1_ROv from "../samples/patient1_ROv/patient1_ROv.json";
-// import patient2 from "../samples/patient2/patient2.json";
-// import patient3_LOv from "../samples/patient3_LOv/patient3_LOv.json";
-// import patient3_ROv from "../samples/patient3_ROv/patient3_ROv.json";
-// import patient4_LOv from "../samples/patient4_LOv/patient4_LOv.json";
-// import patient4_ROv from "../samples/patient4_ROv/patient4_ROv.json";
-// import patient7_LOv from "../samples/patient7_LOv/patient7_LOv.json";
-// import patient7_ROv from "../samples/patient7_ROv/patient7_ROv.json";
-// import patient9_LOv from "../samples/patient9_LOv/patient9_LOv.json";
-// import patient9_ROv from "../samples/patient9_ROv/patient9_ROv.json";
-// import patient10 from "../samples/patient10/patient10.json";
-// import tracerx from "../samples/tracerx/tracerx.json";
+import patient1_LOv from "../samples/patient1_LOv/patient1_LOv.json";
+import patient1_ROv from "../samples/patient1_ROv/patient1_ROv.json";
+import patient2 from "../samples/patient2/patient2.json";
+import patient3_LOv from "../samples/patient3_LOv/patient3_LOv.json";
+import patient3_ROv from "../samples/patient3_ROv/patient3_ROv.json";
+import patient4_LOv from "../samples/patient4_LOv/patient4_LOv.json";
+import patient4_ROv from "../samples/patient4_ROv/patient4_ROv.json";
+import patient7_LOv from "../samples/patient7_LOv/patient7_LOv.json";
+import patient7_ROv from "../samples/patient7_ROv/patient7_ROv.json";
+import patient9_LOv from "../samples/patient9_LOv/patient9_LOv.json";
+import patient9_ROv from "../samples/patient9_ROv/patient9_ROv.json";
+import patient10 from "../samples/patient10/patient10.json";
+import tracerx from "../samples/tracerx/tracerx.json";
 
 /** The home page for the visualizer
  * 
@@ -63,19 +63,19 @@ function Home() {
       "A29": A29,
       "A31": A31,
       "A32": A32,
-      // "patient1_LOv": patient1_LOv,
-      // "patient1_ROv": patient1_ROv,
-      // "patient2": patient2,
-      // "patient3_LOv": patient3_LOv,
-      // "patient3_ROv": patient3_ROv,
-      // "patient4_LOv": patient4_LOv,
-      // "patient4_ROv": patient4_ROv,
-      // "patient7_LOv": patient7_LOv,
-      // "patient7_ROv": patient7_ROv,
-      // "patient9_LOv": patient9_LOv,
-      // "patient9_ROv": patient9_ROv,
-      // "patient10": patient10,
-      // "tracerx": tracerx,
+      "patient1_LOv": patient1_LOv,
+      "patient1_ROv": patient1_ROv,
+      "patient2": patient2,
+      "patient3_LOv": patient3_LOv,
+      "patient3_ROv": patient3_ROv,
+      "patient4_LOv": patient4_LOv,
+      "patient4_ROv": patient4_ROv,
+      "patient7_LOv": patient7_LOv,
+      "patient7_ROv": patient7_ROv,
+      "patient9_LOv": patient9_LOv,
+      "patient9_ROv": patient9_ROv,
+      "patient10": patient10,
+      "tracerx": tracerx,
     }
 
     // Table values
