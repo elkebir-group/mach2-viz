@@ -145,43 +145,53 @@ function Home() {
       }
       // Read the file as a text
       reader.readAsText(file);
+      
     }
 
     return (
         <div className='home'>
             <div className='panel home'>
-                <h1><b>Welcome to MACH2!</b></h1>
-                <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
-                <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the about page for more information.</p>
-                
-                <h3>Examples</h3>
-                <div className="patient-container">
-                  <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
-                      <p className='datasettitle'><b>Dataset</b></p>
-                  </div>
-                  <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
-                    <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
-                      <p className='datasettitle'><b>Patient</b></p>
-                    </Link>
-                  </div>
+                <div className='panel home intro'>
+                  <h1><b>Welcome to MACH2!</b></h1>
+                  <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
+                  <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the about page for more information.</p> 
                 </div>
 
-                <div className="panel example">
+                <h3>Examples</h3>
+                <div className="patient-list-container">
+                  {/* <div className="patient-container">
+                    <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
+                        <p className='datasettitle'><b>Dataset</b></p>
+                    </div>
+                    <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
+                      <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
+                        <p className='datasettitle'><b>Patient</b></p>
+                      </Link>
+                    </div>
+                  </div> */}
+                  <div className="panel example">
                       { 
                         div_elements.map(elem => (
                           elem
                         ))
                       }
-              </div>
+                  </div>
+                </div>
             </div>
-            
-            <input 
-              type="file"
-              id="json_upload" 
-              name="json_upload"
-              accept="application/JSON"
-              onChange={handleChange}/>
-            <label for="json_upload"><div id="addnew" className="dot"><h1 className="plus">+</h1><span class="tooltiptext"><b>Upload Patient JSON</b></span></div></label>
+            {/* <div>
+              <input 
+                type="file"
+                id="json_upload" 
+                name="json_upload"
+                accept="application/JSON"
+                onChange={handleChange}/>
+              <label for="json_upload">
+                <div id="addnew" className="dot">
+                  <h1 className="plus">+</h1>
+                  <span class="tooltiptext"><b>Upload Patient JSON</b></span>
+                </div>
+              </label>
+            </div> */}
         </div>
     );
 }
