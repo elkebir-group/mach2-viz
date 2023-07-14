@@ -98,22 +98,25 @@ function Home() {
 
         var link = URLs[current_patient];
 
-        div_elements.push(<div className="patient-container">
-          <div className="patientitem" style={{ backgroundColor: current_color }}>
-              <p><b>{current_directory}</b></p>
-          </div>
-          <div className="patientitem" style={{ backgroundColor: current_color }}>
-            <Link to={link} style={{ textDecoration: 'none', color: 'black'}} onClick={() => {sessionStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
+        div_elements.push(
+          <Link to={link} className="patient-link" onClick={() => {sessionStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
+            <div className="patient-container">
+              <div className="patientitem" style={{ backgroundColor: current_color }}>
+                  <p><b>{current_directory}</b></p>
+              </div>
+              <div className="patientitem" style={{ backgroundColor: current_color }}>
                   <p className='leftli'><b>{current_patient}</b></p>
-            </Link>
-            <img 
-              className='rightli' 
-              src={download}
-              onClick={() => handleDownload(`https://raw.githubusercontent.com/vikramr2/machina-viz/main/src/samples/${default_patients[i]}/${default_patients[i]}.json`, `${default_patients[i]}.json`)}
-            >
-            </img>
-          </div>
-        </div>)
+                <img 
+                  className='rightli' 
+                  src={download}
+                  onClick={() => handleDownload(`https://raw.githubusercontent.com/vikramr2/machina-viz/main/src/samples/${default_patients[i]}/${default_patients[i]}.json`, `${default_patients[i]}.json`)}
+                >
+                </img>
+              </div>
+            </div>
+          </Link>
+
+        )
         which_color = !which_color;
     }
 
@@ -150,8 +153,8 @@ function Home() {
 
     return (
         <div className='home'>
-            <div className='panel home'>
-                <div className='panel home intro'>
+            <div className='home-panel'>
+                <div className='home-panel-intro'>
                   <h1><b>Welcome to MACH2!</b></h1>
                   <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
                   <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the about page for more information.</p> 
@@ -159,23 +162,21 @@ function Home() {
 
                 <h3>Examples</h3>
                 <div className="patient-list-container">
-                  {/* <div className="patient-container">
-                    <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
-                        <p className='datasettitle'><b>Dataset</b></p>
+                  <div className="patient-container">
+                    <div className="patientitem" style={{ backgroundColor: "#717171" }}>
+                        <p className='datasettitle' style={{color: "black"}}><b>Dataset</b></p>
                     </div>
-                    <div className="patientitem" style={{ backgroundColor: "#A3A3A3" }}>
+                    <div className="patientitem" style={{ backgroundColor: "#717171" }}>
                       <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
-                        <p className='datasettitle'><b>Patient</b></p>
+                        <p className='datasettitle' style={{color: "black"}}><b>Patient</b></p>
                       </Link>
                     </div>
-                  </div> */}
-                  <div className="panel example">
-                      { 
-                        div_elements.map(elem => (
-                          elem
-                        ))
-                      }
                   </div>
+                  { 
+                    div_elements.map(elem => (
+                      elem
+                    ))
+                  }
                 </div>
             </div>
             {/* <div>
@@ -192,6 +193,14 @@ function Home() {
                 </div>
               </label>
             </div> */}
+          {/* <div className="home-button-container">
+            <button className="home-button">
+              test
+            </button>
+            <button className="home-button">
+              test
+            </button>
+          </div> */}
         </div>
     );
 }
