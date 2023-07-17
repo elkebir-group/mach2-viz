@@ -9,6 +9,7 @@ import {
 
 import URLs from "../utils/default_url.json";
 import download from "../assets/download.png";
+import upload_icon from "../assets/upload_icon.png"
 
 import axios from 'axios'
 import fileDownload from 'js-file-download'
@@ -161,17 +162,20 @@ function Home() {
                 </div>
 
                 <h3>Examples</h3>
-                <div className="patient-list-container">
+                <div className='patient-list-title-container'>
                   <div className="patient-container">
-                    <div className="patientitem" style={{ backgroundColor: "#717171" }}>
-                        <p className='datasettitle' style={{color: "black"}}><b>Dataset</b></p>
+                      <div className="patientitem" style={{ backgroundColor: "#717171" }}>
+                          <p className='datasettitle' style={{color: "black"}}><b>Dataset</b></p>
+                      </div>
+                      <div className="patientitem" style={{ backgroundColor: "#717171" }}>
+                        <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
+                          <p className='datasettitle' style={{color: "black"}}><b>Patient</b></p>
+                        </Link>
+                      </div>
                     </div>
-                    <div className="patientitem" style={{ backgroundColor: "#717171" }}>
-                      <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
-                        <p className='datasettitle' style={{color: "black"}}><b>Patient</b></p>
-                      </Link>
-                    </div>
-                  </div>
+                </div>
+                <div className="patient-list-container">
+
                   { 
                     div_elements.map(elem => (
                       elem
@@ -179,7 +183,7 @@ function Home() {
                   }
                 </div>
             </div>
-            {/* <div>
+            <div>
               <input 
                 type="file"
                 id="json_upload" 
@@ -187,20 +191,16 @@ function Home() {
                 accept="application/JSON"
                 onChange={handleChange}/>
               <label for="json_upload">
-                <div id="addnew" className="dot">
+                {/* <div id="addnew" className="dot">
                   <h1 className="plus">+</h1>
+                  <span class="tooltiptext"><b>Upload Patient JSON</b></span>
+                </div> */}
+                <div id="addnew">
+                  <img  src={upload_icon}></img>
                   <span class="tooltiptext"><b>Upload Patient JSON</b></span>
                 </div>
               </label>
-            </div> */}
-          {/* <div className="home-button-container">
-            <button className="home-button">
-              test
-            </button>
-            <button className="home-button">
-              test
-            </button>
-          </div> */}
+            </div>
         </div>
     );
 }
