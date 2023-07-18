@@ -105,7 +105,7 @@ function Home() {
               <div className="patientitem" style={{ backgroundColor: current_color }}>
                   <p><b>{current_directory}</b></p>
               </div>
-              <div className="patientitem" style={{ backgroundColor: current_color }}>
+              <div className="patientitem2" style={{ backgroundColor: current_color}}>
                   <p className='leftli'><b>{current_patient}</b></p>
                 <img 
                   className='rightli' 
@@ -155,33 +155,45 @@ function Home() {
     return (
         <div className='home'>
             <div className='home-panel'>
-                <div className='home-panel-intro'>
+                <div className='home-column-1'>
                   <h1><b>Welcome to MACH2!</b></h1>
-                  <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div>
-                  <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the about page for more information.</p> 
+                  {/* <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div> */}
+                  <div className="about-text">
+                    <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the Instructions page for how to use this website:</p> 
+                  </div>
+                  
+                    <Link to="about" style={{ textDecoration: 'none', color: 'black'}}>
+                      <button className="about-button">Instructions</button>
+                    </Link>
+
                 </div>
 
-                <h3>Examples</h3>
-                <div className='patient-list-title-container'>
-                  <div className="patient-container">
-                      <div className="patientitem" style={{ backgroundColor: "#717171" }}>
-                          <p className='datasettitle' style={{color: "black"}}><b>Dataset</b></p>
-                      </div>
-                      <div className="patientitem" style={{ backgroundColor: "#717171" }}>
-                        <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
-                          <p className='datasettitle' style={{color: "black"}}><b>Patient</b></p>
-                        </Link>
-                      </div>
-                    </div>
-                </div>
-                <div className="patient-list-container">
+                {/* <div className="line"></div> */}
 
-                  { 
-                    div_elements.map(elem => (
-                      elem
-                    ))
-                  }
+                <div className="home-column-2">
+                  <div className='patient-list-title-container'>
+                    <h3>Examples</h3>
+                    <div className="patient-container">
+                        <div className="patientitem" style={{ backgroundColor: "#717171" }}>
+                            <p className='datasettitle' style={{color: "black"}}><b>Dataset</b></p>
+                        </div>
+                        <div className="patientitem" style={{ backgroundColor: "#717171" }}>
+                          <Link to={link} style={{ textDecoration: 'none', color: 'black'}}>
+                            <p className='datasettitle' style={{color: "black"}}><b>Patient</b></p>
+                          </Link>
+                        </div>
+                      </div>
+                  </div>
+                  <div className="patient-list-container">
+
+                    { 
+                      div_elements.map(elem => (
+                        elem
+                      ))
+                    }
+                  </div>
                 </div>
+
             </div>
             <div>
               <input 
@@ -191,14 +203,14 @@ function Home() {
                 accept="application/JSON"
                 onChange={handleChange}/>
               <label for="json_upload">
-                {/* <div id="addnew" className="dot">
+                <div id="addnew" className="dot">
                   <h1 className="plus">+</h1>
                   <span class="tooltiptext"><b>Upload Patient JSON</b></span>
-                </div> */}
-                <div id="addnew">
+                </div>
+                {/* <div id="addnew">
                   <img  src={upload_icon}></img>
                   <span class="tooltiptext"><b>Upload Patient JSON</b></span>
-                </div>
+                </div> */}
               </label>
             </div>
         </div>

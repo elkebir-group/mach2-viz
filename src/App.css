@@ -22,6 +22,24 @@ html {
   }
 }
 
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+  scrollbar-gutter: auto; /* Set the gutter values */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Adjust the background color as needed */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Adjust the thumb color as needed */
+  border-radius: 4px; /* Adjust the border-radius as needed */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Adjust the thumb hover color as needed */
+}
+
 .App-header {
   background-color: #B3B3B3;
   min-height: 2vh;
@@ -62,14 +80,61 @@ Link {
   }
 }
 
+@font-face {
+  font-family: Lucon;
+  src: url('./assets/lucon.ttf') format('truetype');
+}
+
 h1, h2, h3, h4, h5, h6, p, header, span, label {
+  /* font-family: Lucon, monospace; */
   font-family: "Lucida Console", "Courier New", monospace;
+  /* font-family: "lucon", monospace; */
+  
 }
 
 .aboutdir {
   margin-top: 5px;
   width: 100%;
 }
+
+.about-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 175px;
+  height: 40px;
+  
+  background-color: #D7E3E3;
+  border-color: #9ea8a8;
+  border-radius: 10px;
+
+  font-family: Lucon;
+  font-size: 20px;
+
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.about-button:hover {
+  background-color: #9ea8a8;
+  /* cursor: pointer; */
+}
+
+.about-text {
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.line {
+  width: 80%;
+  height: 2px;
+  background-color: gray;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
 
 .dirtext {
   text-align: center;
@@ -102,8 +167,8 @@ h1, h2, h3, h4, h5, h6, p, header, span, label {
 
 .dot {
   display: table;
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
   background-color: #B3B3B3;
   border-radius: 50%;
   box-shadow: 10px 10px #D7E3E3;
@@ -115,6 +180,7 @@ h1, h2, h3, h4, h5, h6, p, header, span, label {
 }
 
 .plus {
+  font-family: 'Times New Roman', Times, serif;
   font-size: 60px;
   display: table-cell;
   vertical-align: middle;
@@ -340,11 +406,41 @@ input[type="checkbox"] {
   visibility: visible;
 }
 
+.home-column-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  border: 2px solid darkgray;
+  border-radius: 10px;
+
+  width: 70%;
+  height: auto;
+
+  margin: 20px;
+}
+
+.home-column-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  border: 2px solid darkgray;
+  border-radius: 10px;
+
+  margin: 20px;
+}
+
 
 .home-panel {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   overflow: hidden;
 
   border: 2px solid darkgray;
@@ -361,7 +457,12 @@ input[type="checkbox"] {
 }
 
 .home-panel-intro {
+  display: flex;
+  flex-direction: column;
   height: min-content;
+  align-items: center;
+
+  width: 80%;
 }
 
 .panel.home {
@@ -393,16 +494,17 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
 }
 
 .patient-list-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 68%;
+  width: 80%;
+  height: 100%;
   overflow-y: scroll;
+  margin-bottom: 30px;
 
   /* border: 2px solid darkgray; */
   /* border-radius: 10px; */
@@ -444,6 +546,16 @@ input[type="checkbox"] {
   height: 50px;
   /*margin-top: -5px;*/
   /* flex: 0.5; */
+}
+
+.patientitem2 {
+  width: 100%;
+  margin: 1px;
+  height: 50px;
+
+  @supports not (-webkit-scrollbar) {
+    width: calc(100% - 15px); /* Adjust width for browsers without WebKit */
+  }
 }
 
 .columnwrapper {
