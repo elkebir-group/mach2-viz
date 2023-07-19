@@ -15,6 +15,10 @@ import DefaultDict from "../utils/DefaultDict.js";
 import SummaryPanel from "./SummaryPanel.js";
 import MigrationPanel from "./MigrationPanel.js";
 
+// Popup
+import Popup from 'reactjs-popup'
+import HelpPopup from "./HelpPopup.js";
+
 /** Insert a URL parameter
  * 
  * @param {*} key (string) variable name
@@ -28,16 +32,6 @@ function insertParam(key, value) {
   // Replace the URL
   //currentUrl.search = urlParams.toString();
   window.location.href = '#/viz?' + urlParams.toString();
-}
-
-/** TODO: Replace this with an actual window rather than just an alert message
- * 
- * @param {*} event Event metadata
- */
-function handleKeyPress(event) {
-  if (event.key === '/') {
-    alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
-  }
 }
 
 function Viz(props) {
@@ -353,6 +347,25 @@ function Viz(props) {
       },
     });
 
+    // Popup
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    function togglePopup() {
+      setIsPopupOpen(!isPopupOpen);
+    }
+
+    /** TODO: Replace this with an actual window rather than just an alert message
+     * 
+     * @param {*} event Event metadata
+     */
+    function handleKeyPress(event) {
+      if (event.key === '/') {
+        // alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
+        togglePopup();
+      }
+    }
+
+
 
 
     // keeping track of edges that are not used
@@ -360,6 +373,7 @@ function Viz(props) {
 
     return (
       <div className="viz">
+        <HelpPopup isPopupOpen={isPopupOpen} togglePopup={togglePopup}></HelpPopup>
         {type !== 'sumviz' && type !== 'triviz' ? 
           <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
           : <></>}
