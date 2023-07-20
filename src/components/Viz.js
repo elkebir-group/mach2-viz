@@ -327,10 +327,13 @@ function Viz(props) {
     }, []);
 
     useEffect(() => {
-      document.addEventListener("keydown", handleKeyPress);
       setMuSum(sessionStorage.getItem("musum"));
       setGammaSum(sessionStorage.getItem("gammasum"));
     })
+
+    useEffect(() => {
+      document.addEventListener("keydown", handleKeyPress);
+    }, [])
 
     const [evtBus, setEvtBus] = useState({
       listeners: [],
@@ -361,6 +364,7 @@ function Viz(props) {
     function handleKeyPress(event) {
       if (event.key === '/') {
         // alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
+        console.log("/ key pressed!")
         togglePopup();
       }
     }

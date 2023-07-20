@@ -3,14 +3,28 @@ import Popup from 'reactjs-popup';
 
 export default function HelpPopup( {isPopupOpen, togglePopup}) {
     return(
-        <Popup open={isPopupOpen} togglePopup={togglePopup} modal>
+        <Popup open={isPopupOpen} togglePopup={togglePopup} overlayStyle={{ background: 'rgba(0, 0, 0, 0.6)', zIndex: 9999 }} animationType="fade" modal>
             {close => (
                 <div className="popup-container">
-                    <button className="close" onClick={close}>
+                    {/* <button className="close-x" onClick={close}>
                         &times;
+                    </button> */}
+                    <div className="header">
+                        Help
+                    </div>
+                    <p className="popup-container-text">Click and drag around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.</p>
+                    <p className="popup-container-text">Select different solutions from the dropdown on the top left of the panel.</p>
+                    <p className="popup-container-text">To compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.</p>
+
+                    <button
+                        className='close-button'
+                        onClick={() => {
+                        console.log('modal closed ');
+                        togglePopup();
+                        }}
+                    >
+                        Close
                     </button>
-                    <b><p>Help</p></b>
-                    <p>Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].</p>
                 </div>
             )}
 
