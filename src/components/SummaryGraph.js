@@ -270,12 +270,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     }
 
     function onEdgeTapped(edge, action) {
-      edge.style ({
-        "line-fill": "solid",
-        "line-color": "#FFF200",
-        "target-arrow-color": "#FFF200",
-        // "width": "15",
-      });
       if (action === 'require') {
         onRequireSummaryEdge(edge.id());
       } else {
@@ -306,16 +300,32 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             if (evt.originalEvent.shiftKey) {
               action = "delete"
             }
+
             var edge = evt.target;
+
+            if (action === 'require') {
+              edge.data('selected', 'true')
+              edge.css({
+                'font-weight': 'bold',
+                width: 10
+              })
+            }
+
             console.log("edge tapped", action);
             onEdgeTapped(edge, action);
           });
 
           cy.on('mouseover', 'edge', function(event) {
             const { target } = event;
-            target.css({
-              width: 10
-            })
+            if (target.data().selected !== 'true') {
+              target.css({
+                width: 10
+              })
+            } else {
+              target.css({
+                width: 13
+              })
+            }
             const nodeId = event.target.id();
             evtbus.fireEvent('selectNodeSum', { nodeId, target});
             evtbus.fireEvent('selectNodeCl', { nodeId, target});
@@ -363,9 +373,15 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     
           cy.on('mouseout', 'edge', function(event) {
             const { target } = event;
-            target.css({
-              width: 3
-            })
+            if (target.data().selected !== 'true') {
+              target.css({
+                width: 3
+              })
+            } else {
+              target.css({
+                width: 10
+              })
+            }
             const nodeId = event.target.id();
             evtbus.fireEvent('deselectNodeSum', { nodeId, target});
             evtbus.fireEvent('deselectNodeCl', { nodeId, target});
