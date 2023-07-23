@@ -19,6 +19,110 @@ import MigrationPanel from "./MigrationPanel.js";
 import Popup from 'reactjs-popup'
 import HelpPopup from "./HelpPopup.js";
 
+/**
+ * Finds the root of a tree represented by an edge list.
+ * @param {Array<Array<number>>} edgeList - The edge list representing the tree.
+ * Each inner array should contain three elements: [u, v, weight].
+ * @returns The root node of the tree, or null if the tree is empty or has disconnected components.
+ */
+function findRoot(edgeList) {
+  // Create a map to store the indegree of each node
+  const indegreeMap = new Map();
+
+  // Traverse the edge list and populate the indegree map
+  for (const [src, dest] of edgeList) {
+    if (!indegreeMap.has(src)) {
+      indegreeMap.set(src, 0);
+    }
+    if (!indegreeMap.has(dest)) {
+      indegreeMap.set(dest, 0);
+    }
+    indegreeMap.set(dest, indegreeMap.get(dest) + 1);
+  }
+
+  // Find the root (node with indegree 0)
+  let root;
+  indegreeMap.forEach((indegree, node) => {
+    if (indegree === 0) {
+      if (root) {
+        // If there is more than one node with indegree 0, then the tree is invalid.
+        throw new Error('Invalid tree: multiple roots');
+      }
+      root = node;
+    }
+  });
+
+  if (root === undefined) {
+    // If there is no node with indegree 0, then the tree is invalid.
+    throw new Error('Invalid tree: no root found');
+  }
+
+  return root;
+}
+
+/**
+ * Constructs a frequency dictionary from an array, where keys are elements in the array, 
+ * and values represent the number of occurrences of each element.
+ *
+ * @param {Array} arr - The input array from which to construct the frequency dictionary.
+ * @returns {Object} An object representing the frequency dictionary, 
+ *                   where keys are elements and values are their occurrences.
+ */
+function constructFrequencyDictionary(arr) {
+  const frequencyDict = {};
+  
+  for (const item of arr) {
+    if (frequencyDict[item]) {
+      frequencyDict[item]++;
+    } else {
+      frequencyDict[item] = 1;
+    }
+  }
+  
+  return frequencyDict;
+}
+
+/** Return location of clonal tree root
+ * 
+ * @param {Array} tree tree represented as an edgelist
+ * @param {Array} labeling anatomic labeling of clones
+ *  - Each entry is an array of two containing [clone, location]
+ */
+function fetchRootLocation(tree, labeling) {
+  var root = findRoot(tree);
+
+  for (const entry of labeling) {
+    if (entry[0] === root) {
+      return entry[1]
+    }
+  }
+
+  return null
+}
+
+/** Fetch tree roots across the data
+ * 
+ * @param {Object} data filtered MACH2 output data
+ */
+function fetchRoots(data) {
+  // Fetch each tree in the solution
+  var solutions = data['solutions'];
+  var trees = solutions.map((soln) => soln['tree']);
+
+  // Get the anatomic locations of the roots of each of the trees
+  var roots = trees.map((tree) => findRoot(tree));
+  var rootLocations = roots.map((root, index) => {
+    for (const entry of solutions[index]['labeling']) {
+      if (entry[0] === root) {
+        return entry[1]
+      }
+    }
+  })
+
+  // Construct a frequency mapping
+  return constructFrequencyDictionary(rootLocations);
+}
+
 /** Insert a URL parameter
  * 
  * @param {*} key (string) variable name
@@ -56,6 +160,11 @@ function Viz(props) {
   const [clonalL, setClonalL] = useState(false);
   const [clonalR, setClonalR] = useState(false);
 
+  // Roots data
+  const [roots, setRoots] = useState([]);
+  const [requiredRoots, setRequiredRoots] = useState([]);
+  const [deletedRoots, setDeletedRoots] = useState([]);
+
   // Use the clonalL field to set fontweight to bold according to the state
   // Styles ending in L are for the left panel
   // The leftText is for the original clonal tree
@@ -69,14 +178,24 @@ function Viz(props) {
 
   useEffect(() => {
     updateUsedData();
-  }, [deletedEdges, requiredEdges]);
+  }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots]);
 
   function onDeleteSummaryEdge(edge_id) {
-    setDeletedEdges([...deletedEdges, edge_id]);
+    let [source, target] = edge_id.split('->');
+    if (source !== 'roots') {
+      setDeletedEdges([...deletedEdges, edge_id]);
+    } else {
+      setDeletedRoots([...deletedRoots, target]);
+    }
   }
 
   function onRequireSummaryEdge(edge_id) {
-    setRequiredEdges([...requiredEdges, edge_id]);
+    let [source, target] = edge_id.split('->')
+    if (source !== 'roots') {
+      setRequiredEdges([...requiredEdges, edge_id]);
+    } else {
+      setRequiredRoots([...requiredRoots, target]);
+    }
   }
 
   function onToggleInputClonalL() {
@@ -119,7 +238,16 @@ function Viz(props) {
     }*/
 
     for (let i = 0; i < wholeData["solutions"].length; i++) {
+      let treeEntry = wholeData["solutions"][i]["tree"]
+      let labelingEntry = wholeData["solutions"][i]["labeling"]
+      let migrationEntry = wholeData["solutions"][i]["migration"]
+
+      let rootLocation = fetchRootLocation(treeEntry, labelingEntry);
+
       let foundDeletedEdge = false;
+      let foundRequiredRoot = requiredRoots.length === 0 || requiredRoots.includes(rootLocation);
+      let foundDeletedRoot  = deletedRoots.length !== 0 || deletedRoots.includes(rootLocation);
+
       // let foundRequiredEdge = false;
       let requiredEdgeCounter = 0;
 
@@ -127,9 +255,11 @@ function Viz(props) {
       //   foundRequiredEdge = true;
       // }
 
-      for (let j = 0; j < wholeData["solutions"][i]["migration"].length; j++) {
+      for (let j = 0; j < migrationEntry.length; j++) {
         // check deleteEdges:
-        let migrationEdgeString = wholeData["solutions"][i]["migration"][j][0] + "->" + wholeData["solutions"][i]["migration"][j][1];
+        let migrationEdgeString = migrationEntry[j][0] 
+          + "->" 
+          + wholeData["solutions"][i]["migration"][j][1];
         for (let k = 0; k < deletedEdges.length; k++) {
           // create string from wholeData:
           if (migrationEdgeString === deletedEdges[k]) {
@@ -144,7 +274,7 @@ function Viz(props) {
         }
       }
 
-      if (!foundDeletedEdge && (requiredEdgeCounter === requiredEdges.length)) {
+      if (!foundDeletedRoot && foundRequiredRoot && !foundDeletedEdge && (requiredEdgeCounter === requiredEdges.length)) {
         // console.log(wholeData["solutions"][i]);
         const tempSolution = JSON.parse(JSON.stringify(wholeData["solutions"][i]))
         tempUsedData["solutions"].push(tempSolution);
@@ -171,6 +301,7 @@ function Viz(props) {
       }
     }
     setUsedData(tempUsedData);
+    setRoots(fetchRoots(tempUsedData));
 
     // TODO: Vikram: make new function
     let tempNames = tempUsedData["solutions"].map((value, index) => { return value["name"] })
@@ -414,9 +545,6 @@ function Viz(props) {
     }
   }
 
-
-
-
   // keeping track of edges that are not used
   // update unusedEdges whenever
 
@@ -440,6 +568,7 @@ function Viz(props) {
           setEvtBus={setEvtBus}
           onDeleteSummaryEdge={onDeleteSummaryEdge}
           onRequireSummaryEdge={onRequireSummaryEdge}
+          roots={roots}
         /> : <></>}
       <div className={`panel info ${type === 'dualviz' ? 'one' :
         type === 'sumviz' ? 'one two' :

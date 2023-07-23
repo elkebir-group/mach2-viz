@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import SummaryGraph from "./SummaryGraph.js";
 
-function SummaryPanel({ type, setType, insertParam, usedData, coloring, muSum, gammaSum, evtBus, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge}) {
+function SummaryPanel({ type, setType, insertParam, usedData, coloring, muSum, gammaSum, evtBus, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge, roots}) {
     let closeSummary = (event) => {
         if (type === 'sumviz') {
             setType('viz')
@@ -38,6 +38,7 @@ function SummaryPanel({ type, setType, insertParam, usedData, coloring, muSum, g
                     setEvtBus={setEvtBus}
                     onDeleteSummaryEdge={onDeleteSummaryEdge}
                     onRequireSummaryEdge={onRequireSummaryEdge}
+                    roots={roots}
                 />
             </div>
         </div> 

@@ -19,7 +19,7 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge}) {
+function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge, roots}) {
 
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
@@ -75,6 +75,26 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
     }).map((value, index) => {
       return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
     })
+
+    // Insert a dummy node in the graph if there exist multiple clonal roots
+    // This node will connect to all edges in the graph
+    // Edges to those roots will be weighted by the number of solutions those roots appear in
+    if (Object.keys(roots).length > 1) {
+      nodes.push({ data: { id: "roots", label: "roots", type: "ip"}});
+
+      for (let root in roots) {
+        edges.push({
+          data: {
+            source: "roots",
+            target: root,
+            label: roots[root],
+            id: `roots->${root}`,
+            clsource: "roots",
+            cltarget: root
+          }
+        })
+      }
+    }
 
     // Dont label edge weights of 1
     // BTW Edges are weighted by the number of solutions they appear in
@@ -226,11 +246,13 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
     let mu = 0;
     let gamma = edges.length;
     edges.map((edge) => {
-      if (edge.data.label == '') {
-        mu += 1;
-      } else {
-        mu += parseInt(edge.data.label);
-        //gamma += parseInt(edge.data.label) - 1;
+      if (edge.data.source !== 'roots') {
+        if (edge.data.label == '') {
+          mu += 1;
+        } else {
+          mu += parseInt(edge.data.label);
+          //gamma += parseInt(edge.data.label) - 1;
+        }
       }
 
       return 0;
@@ -240,6 +262,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
     sessionStorage.setItem("gammasum", gamma);
 
     function getColor(label) {
+      if (label == "roots") {
+        return '#000'
+      }
       let color = coloringDict[label];
       return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
     }
@@ -279,7 +304,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
             target.css({
               width: 10
             })
-            const nodeId = event.target.id();
             // evtbus.fireEvent('selectNodeSum', { nodeId, target});
             // evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
@@ -289,7 +313,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
             target.css({
               'border-width': 20,
             })
-            const nodeId = event.target.id();
             // evtbus.fireEvent('hoverNodeSum', { nodeId });
             // evtbus.fireEvent('hoverNodeCl', { nodeId });
 
