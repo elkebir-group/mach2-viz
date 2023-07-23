@@ -19,7 +19,7 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSummaryEdge, onRequireSummaryEdge, roots}) {
+function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, onRequireSummaryEdge, roots}) {
 
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
@@ -316,8 +316,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
             target.css({
               width: 10
             })
-            // evtbus.fireEvent('selectNodeSum', { nodeId, target});
-            // evtbus.fireEvent('selectNodeCl', { nodeId, target});
+            const nodeId = event.target.id();
+            evtbus.fireEvent('selectNodeSum', { nodeId, target});
+            evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
           cy.on('mouseover', 'node', function(event) {
@@ -325,8 +326,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
             target.css({
               'border-width': 20,
             })
-            // evtbus.fireEvent('hoverNodeSum', { nodeId });
-            // evtbus.fireEvent('hoverNodeCl', { nodeId });
+            const nodeId = event.target.id();
+            evtbus.fireEvent('hoverNodeSum', { nodeId });
+            evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -345,8 +347,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
               'border-width': 10,
             })
             const nodeId = event.target.id();
-            // evtbus.fireEvent('dehoverNodeSum', { nodeId });
-            // evtbus.fireEvent('dehoverNodeCl', { nodeId });
+            evtbus.fireEvent('dehoverNodeSum', { nodeId });
+            evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
             var label = node.data('label');
@@ -365,8 +367,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
               width: 3
             })
             const nodeId = event.target.id();
-            // evtbus.fireEvent('deselectNodeSum', { nodeId, target});
-            // evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+            evtbus.fireEvent('deselectNodeSum', { nodeId, target});
+            evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
       />), [data] )

@@ -569,7 +569,6 @@ function Viz(props) {
           muSum={muSum}
           gammaSum={gammaSum}
           evtBus={evtBus}
-          setEvtBus={setEvtBus}
           onDeleteSummaryEdge={onDeleteSummaryEdge}
           onRequireSummaryEdge={onRequireSummaryEdge}
           roots={roots}

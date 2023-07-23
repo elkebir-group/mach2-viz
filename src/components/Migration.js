@@ -313,6 +313,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
               width: 10
             })
             const nodeId = event.target.id();
+            evtbus.fireEvent('selectNodeSum', { nodeId, target});
             evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
@@ -322,6 +323,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
               'border-width': 20,
             })
             const nodeId = event.target.id();
+            evtbus.fireEvent('hoverNodeSum', { nodeId });
             evtbus.fireEvent('hoverNodeCl', { nodeId });
 
             var node = event.target;
@@ -341,6 +343,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
               'border-width': 10,
             })
             const nodeId = event.target.id();
+            evtbus.fireEvent('dehoverNodeSum', { nodeId });
             evtbus.fireEvent('dehoverNodeCl', { nodeId });
 
             var node = event.target;
@@ -360,6 +363,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
               width: 3
             })
             const nodeId = event.target.id();
+            evtbus.fireEvent('deselectNodeSum', { nodeId, target});
             evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
