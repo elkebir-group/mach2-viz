@@ -198,6 +198,13 @@ function Viz(props) {
     }
   }
 
+  function clearData() {
+    setDeletedEdges([])
+    setRequiredEdges([])
+    setDeletedRoots([])
+    setRequiredRoots([])
+  }
+
   function onToggleInputClonalL() {
     if (!clonalL) setClonalL(!clonalL)
   }
@@ -571,6 +578,7 @@ function Viz(props) {
           evtBus={evtBus}
           onDeleteSummaryEdge={onDeleteSummaryEdge}
           onRequireSummaryEdge={onRequireSummaryEdge}
+          clearData={clearData}
           roots={roots}
         /> : <></>}
       <div className={`panel info ${type === 'dualviz' ? 'one' :

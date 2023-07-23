@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react"
 import SummaryGraph from "./SummaryGraph.js";
 
-function SummaryPanel({ type, setType, insertParam, usedData, coloring, muSum, gammaSum, evtBus, onDeleteSummaryEdge, onRequireSummaryEdge, roots}) {
+function SummaryPanel({ type, setType, insertParam, usedData, coloring, muSum, gammaSum, evtBus, onDeleteSummaryEdge, onRequireSummaryEdge, clearData, roots}) {
     let closeSummary = (event) => {
+        clearData()
         if (type === 'sumviz') {
             setType('viz')
             insertParam('type', 'viz')
