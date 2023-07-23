@@ -269,14 +269,18 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
       return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
     }
 
-    function onEdgeTapped(edge) {
+    function onEdgeTapped(edge, action) {
       edge.style ({
         "line-fill": "solid",
         "line-color": "#FFF200",
         "target-arrow-color": "#FFF200",
         // "width": "15",
       });
-      onRequireSummaryEdge(edge.id());
+      if (action === 'require') {
+        onRequireSummaryEdge(edge.id());
+      } else {
+        onDeleteSummaryEdge(edge.id());
+      }
     }
 
     const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
@@ -293,10 +297,18 @@ function SummaryGraph({data, coloringDict, evtbus, title, setEvtBus, onDeleteSum
         cy={cy => {
           myCyRef = cy;
 
+          cy.on("cxttap", "edge", evt => {
+            console.log("right clicked")
+          });
+
           cy.on("tap", "edge", evt => {
+            let action = "require"
+            if (evt.originalEvent.shiftKey) {
+              action = "delete"
+            }
             var edge = evt.target;
-            console.log("edge tapped");
-            onEdgeTapped(edge);
+            console.log("edge tapped", action);
+            onEdgeTapped(edge, action);
           });
 
           cy.on('mouseover', 'edge', function(event) {

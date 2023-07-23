@@ -246,7 +246,7 @@ function Viz(props) {
 
       let foundDeletedEdge = false;
       let foundRequiredRoot = requiredRoots.length === 0 || requiredRoots.includes(rootLocation);
-      let foundDeletedRoot  = deletedRoots.length !== 0 || deletedRoots.includes(rootLocation);
+      let foundDeletedRoot  = deletedRoots.length !== 0 && deletedRoots.includes(rootLocation);
 
       // let foundRequiredEdge = false;
       let requiredEdgeCounter = 0;
