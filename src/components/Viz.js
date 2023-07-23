@@ -245,7 +245,11 @@ function Viz(props) {
       let rootLocation = fetchRootLocation(treeEntry, labelingEntry);
 
       let foundDeletedEdge = false;
+
+      // We'll accept a root if we aren't requiring an edge or it is within our required list
       let foundRequiredRoot = requiredRoots.length === 0 || requiredRoots.includes(rootLocation);
+
+      // We'll blacklist a root if there even is a blacklist and it contains the root
       let foundDeletedRoot  = deletedRoots.length !== 0 && deletedRoots.includes(rootLocation);
 
       // let foundRequiredEdge = false;
