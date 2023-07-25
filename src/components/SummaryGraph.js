@@ -161,7 +161,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             label: "data(label)",
             "target-arrow-color": "#6774cb",
             "target-arrow-shape": "triangle",
-            "curve-style": "bezier",
+            "curve-style": "unbundled-bezier",            
             "text-outline-width": "2px",
             color: "white",
             fontSize: 15
@@ -182,13 +182,20 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     edges.map((value, _) => {
         let source = value.data.source;
         let target = value.data.target;
+
+        let controlPointX1 = (source.x + target.x) / 2; // Control point 1 x-coordinate is the average of Node A and Node B x-coordinates
+        let controlPointY1 = source.y - 50;  // Control point 1 y-coordinate is 50 units above Node A
+        let controlPointX2 = (source.x + target.x) / 2;  // Control point 2 x-coordinate is the average of Node A and Node B x-coordinates
+        let controlPointY2 = target.y - 50; // Control point 2 y-coordinate is 50 units above Node B
+
         styleSheet.push({
           selector: `edge[id='${source}->${target}']`,
           style: {
             'line-fill': 'linear-gradient',
             'line-gradient-stop-colors': `${getColor(source)} ${getColor(target)}`,
             'line-gradient-stop-positions': '33% 66%',
-            "target-arrow-color": `${getColor(target)}`
+            "target-arrow-color": `${getColor(target)}`,
+            'control-point': `${controlPointX1} ${controlPointY1} ${controlPointX2} ${controlPointY2}`,
           }
         })
 
@@ -320,6 +327,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             if (target.data().selected !== 'true') {
               target.css({
                 width: 10
+                // 'font-weight': 'bold',
               })
             } else {
               target.css({
@@ -376,6 +384,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             if (target.data().selected !== 'true') {
               target.css({
                 width: 3
+                // 'font-weight': 'normal',
               })
             } else {
               target.css({
