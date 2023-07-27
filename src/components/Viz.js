@@ -165,6 +165,9 @@ function Viz(props) {
   const [requiredRoots, setRequiredRoots] = useState([]);
   const [deletedRoots, setDeletedRoots] = useState([]);
 
+  // Summary filter operations stack
+  const [filterStack, setFilterStack] = useState([]);
+
   // Use the clonalL field to set fontweight to bold according to the state
   // Styles ending in L are for the left panel
   // The leftText is for the original clonal tree
@@ -184,17 +187,28 @@ function Viz(props) {
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
       setDeletedEdges([...deletedEdges, edge_id]);
+      setFilterStack([...filterStack, `deleted edge ${edge_id}`])
     } else {
       setDeletedRoots([...deletedRoots, target]);
+      setFilterStack([...filterStack, `deleted root ${target}`])
     }
   }
 
   function onRequireSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->')
     if (source !== 'roots') {
-      setRequiredEdges([...requiredEdges, edge_id]);
+      if (requiredEdges.includes(edge_id)) {
+        // If edge_id exists, remove all instances of edge_id from requiredEdges
+        const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
+        setRequiredEdges(updatedEdges);
+        setFilterStack([...filterStack, `relaxed edge ${edge_id}`])
+      } else {
+        setRequiredEdges([...requiredEdges, edge_id]);
+        setFilterStack([...filterStack, `required edge ${edge_id}`])
+      }
     } else {
       setRequiredRoots([...requiredRoots, target]);
+      setFilterStack([...filterStack, `required root ${target}`])
     }
   }
 
@@ -203,6 +217,7 @@ function Viz(props) {
     setRequiredEdges([])
     setDeletedRoots([])
     setRequiredRoots([])
+    setFilterStack([])
   }
 
   function onToggleInputClonalL() {
@@ -556,6 +571,7 @@ function Viz(props) {
     }
   }
 
+  console.log(filterStack)
   // keeping track of edges that are not used
   // update unusedEdges whenever
 
@@ -580,6 +596,8 @@ function Viz(props) {
           onRequireSummaryEdge={onRequireSummaryEdge}
           clearData={clearData}
           roots={roots}
+          requiredEdges={requiredEdges}
+          filterStack={filterStack}
         /> : <></>}
       <div className={`panel info ${type === 'dualviz' ? 'one' :
         type === 'sumviz' ? 'one two' :

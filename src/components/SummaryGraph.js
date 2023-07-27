@@ -19,7 +19,7 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, onRequireSummaryEdge, roots}) {
+function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, onRequireSummaryEdge, roots, requiredEdges}) {
 
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
@@ -311,11 +311,22 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             var edge = evt.target;
 
             if (action === 'require') {
-              edge.data('selected', 'true')
-              edge.css({
-                'font-weight': 'bold',
-                width: 10
-              })
+              console.log(edge.id())
+              if (!requiredEdges.includes(edge.id())) {
+                console.log('there')
+                edge.css({
+                  'font-weight': 'bold',
+                  width: 10
+                })
+                edge.data('selected', 'true')
+              } else {
+                console.log('here')
+                edge.css({
+                  'font-weight': 'normal',
+                  width: 3
+                })
+                edge.data('selected', 'false')
+              }
             }
 
             console.log("edge tapped", action);

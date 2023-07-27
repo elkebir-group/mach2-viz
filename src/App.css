@@ -364,6 +364,18 @@ input[type="checkbox"] {
   margin-left: 5px;
 }
 
+.panel.actionwrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  z-index: 999;
+}
+
+.recentAction {
+  padding-right: 5px;
+}
+
 .block label { display: flex; }
 
 /* ---------------------- home page ---------------------- */
@@ -815,6 +827,7 @@ img {
 }
 
 .panel.migration.top.left.sum {
+  position: relative;
   height: calc(100% - 75px);
   width: calc(100% - 50px);
 }
