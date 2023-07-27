@@ -161,7 +161,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             label: "data(label)",
             "target-arrow-color": "#6774cb",
             "target-arrow-shape": "triangle",
-            "curve-style": "unbundled-bezier",            
+            'arrow-scale': 1,
+            "curve-style": "bezier",
+            "edge-distances": "node-position",       
             "text-outline-width": "2px",
             color: "white",
             fontSize: 15
@@ -212,7 +214,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     }
 
     const layout = {
-        name: "dagre",
+        name: "circle",
         fit: true,
         circle: true,
         directed: true,
@@ -316,14 +318,16 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
                 console.log('there')
                 edge.css({
                   'font-weight': 'bold',
-                  width: 10
+                  width: 10,
+                  arrowScale: 1
                 })
                 edge.data('selected', 'true')
               } else {
                 console.log('here')
                 edge.css({
                   'font-weight': 'normal',
-                  width: 3
+                  width: 3,
+                  arrowScale: 1
                 })
                 edge.data('selected', 'false')
               }
@@ -337,12 +341,14 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             const { target } = event;
             if (target.data().selected !== 'true') {
               target.css({
-                width: 10
+                width: 6,
+                arrowScale: 0.5,
                 // 'font-weight': 'bold',
               })
             } else {
               target.css({
-                width: 13
+                width: 13,
+                arrowScale: 0.769,
               })
             }
             const nodeId = event.target.id();
@@ -394,12 +400,14 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             const { target } = event;
             if (target.data().selected !== 'true') {
               target.css({
-                width: 3
+                width: 3,
                 // 'font-weight': 'normal',
+                arrowScale: 1,
               })
             } else {
               target.css({
-                width: 10
+                width: 10,
+                arrowScale: 1,
               })
             }
             const nodeId = event.target.id();
