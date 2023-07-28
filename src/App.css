@@ -366,14 +366,29 @@ input[type="checkbox"] {
 
 .panel.actionwrapper {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 25px;
+  right: 25px;
   margin: 10px;
   z-index: 999;
 }
 
 .recentAction {
   padding-right: 5px;
+}
+
+.rightAlign {
+  position: absolute;
+  text-align: right;
+  right: 0;
+  margin-right: 10px;
+  margin-top: 0px;
+  font-size: 36px;
+  z-index: 999;
+}
+
+.rightAlign:hover {
+  color: blue;
+  cursor: pointer;
 }
 
 .block label { display: flex; }

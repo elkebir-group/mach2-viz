@@ -8,7 +8,6 @@ function SummaryPanel({
     usedData, 
     coloring, 
     muSum, 
-    gammaSum, 
     evtBus, 
     onDeleteSummaryEdge, 
     onRequireSummaryEdge, 
@@ -17,6 +16,8 @@ function SummaryPanel({
     requiredEdges, 
     filterStack,
 }) {
+    const [tooltip, setTooltip] = useState(false);
+
     let closeSummary = (event) => {
         clearData()
         if (type === 'sumviz') {
@@ -84,7 +85,7 @@ function SummaryPanel({
 
         return (
             <div className="panel actionwrapper">
-                <p><b>Most Recent Action: </b></p>
+                <p><b>Undo Most Recent Action: </b></p>
                 <p className="recentAction">{split[0]} {split[1]}</p>
                 <p className="recentAction"><span style={sourceStyle}>{source}</span> <span style={targetStyle}>{target}</span></p>
             </div>
@@ -111,9 +112,13 @@ function SummaryPanel({
             </div>
             <div className="panel migration top left sum">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <p className="paneltitle mu">{`\u03BC: ${muSum}`}</p>
-                <p className="paneltitle gamma">{`\u03B3: ${gammaSum}`}</p>
-                {generateTag(filterStack, coloringDict)}
+                <p className="paneltitle mu">{`solutions: ${usedData['solutions'].length}`}</p>
+                {filterStack.length > 0 ? <p 
+                    className="rightAlign"
+                    onMouseEnter={() => setTooltip(true)}
+                    onMouseLeave={() => setTooltip(false)}
+                >↩</p> : <></>}
+                {tooltip ? generateTag(filterStack, coloringDict) : <></>}
                 <SummaryGraph
                     data={summaryGraph}
                     coloringDict={coloringDict}
