@@ -185,11 +185,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
         let source = value.data.source;
         let target = value.data.target;
 
-        let controlPointX1 = (source.x + target.x) / 2; // Control point 1 x-coordinate is the average of Node A and Node B x-coordinates
-        let controlPointY1 = source.y - 50;  // Control point 1 y-coordinate is 50 units above Node A
-        let controlPointX2 = (source.x + target.x) / 2;  // Control point 2 x-coordinate is the average of Node A and Node B x-coordinates
-        let controlPointY2 = target.y - 50; // Control point 2 y-coordinate is 50 units above Node B
-
         styleSheet.push({
           selector: `edge[id='${source}->${target}']`,
           style: {
@@ -197,7 +192,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             'line-gradient-stop-colors': `${getColor(source)} ${getColor(target)}`,
             'line-gradient-stop-positions': '33% 66%',
             "target-arrow-color": `${getColor(target)}`,
-            'control-point': `${controlPointX1} ${controlPointY1} ${controlPointX2} ${controlPointY2}`,
           }
         })
 
@@ -301,7 +295,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
           myCyRef = cy;
 
           cy.on("cxttap", "edge", evt => {
-            console.log("right clicked")
+            // console.log("right clicked")
           });
 
           cy.on("tap", "edge", evt => {
@@ -313,9 +307,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             var edge = evt.target;
 
             if (action === 'require') {
-              console.log(edge.id())
+              // console.log(edge.id())
               if (!requiredEdges.includes(edge.id())) {
-                console.log('there')
+                // console.log('there')
                 edge.css({
                   'font-weight': 'bold',
                   width: 10,
@@ -323,7 +317,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
                 })
                 edge.data('selected', 'true')
               } else {
-                console.log('here')
+                // console.log('here')
                 edge.css({
                   'font-weight': 'normal',
                   width: 3,
@@ -333,7 +327,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               }
             }
 
-            console.log("edge tapped", action);
+            // console.log("edge tapped", action);
             onEdgeTapped(edge, action);
           });
 

@@ -18,6 +18,8 @@ import MigrationPanel from "./MigrationPanel.js";
 // Popup
 import Popup from 'reactjs-popup'
 import HelpPopup from "./HelpPopup.js";
+import NoSolutionsPopup from "./NoSolutionsPopup.js";
+import { filter } from "d3";
 
 /**
  * Finds the root of a tree represented by an edge list.
@@ -186,9 +188,11 @@ function Viz(props) {
   function onDeleteSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
+      console.log("delete");
       setDeletedEdges([...deletedEdges, edge_id]);
       setFilterStack([...filterStack, `deleted edge ${edge_id}`])
     } else {
+      console.log("delete root");
       setDeletedRoots([...deletedRoots, target]);
       setFilterStack([...filterStack, `deleted root ${target}`])
     }
@@ -198,15 +202,18 @@ function Viz(props) {
     let [source, target] = edge_id.split('->')
     if (source !== 'roots') {
       if (requiredEdges.includes(edge_id)) {
+        console.log("relax");
         // If edge_id exists, remove all instances of edge_id from requiredEdges
         const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
         setRequiredEdges(updatedEdges);
         setFilterStack([...filterStack, `relaxed edge ${edge_id}`])
       } else {
+        console.log("require");
         setRequiredEdges([...requiredEdges, edge_id]);
         setFilterStack([...filterStack, `required edge ${edge_id}`])
       }
     } else {
+      console.log("require root");
       setRequiredRoots([...requiredRoots, target]);
       setFilterStack([...filterStack, `required root ${target}`])
     }
@@ -301,7 +308,6 @@ function Viz(props) {
       }
 
       if (!foundDeletedRoot && foundRequiredRoot && !foundDeletedEdge && (requiredEdgeCounter === requiredEdges.length)) {
-        // console.log(wholeData["solutions"][i]);
         const tempSolution = JSON.parse(JSON.stringify(wholeData["solutions"][i]))
         tempUsedData["solutions"].push(tempSolution);
       }
@@ -326,10 +332,29 @@ function Viz(props) {
         }
       }
     }
+
+    // if (tempUsedData["summary"]["migration"].length == 0){
+    //   // check the filter stack to revert everything back to normal:
+    //   const last_edit = filterStack[filterStack.length - 1];
+    //   setFilterStack(filterStack.slice(0, -1));
+    //   if (last_edit.slice(0, 7) === 'deleted') {
+    //     console.log("the last command was a delete command");
+    //     setDeletedEdges(deletedEdges.slice(0, -1));
+    //   } else if (last_edit.slice(0, 13)  === 'required root') {
+    //     console.log("the last command was a require root command");
+    //     setDeletedEdges(requiredRoots.slice(0, -1));
+    //   } else {
+    //     console.log("the last command was a require command");
+    //     setRequiredEdges(setRequiredEdges.slice(0, -1));
+    //   }
+
+    //   toggleNoSolutionsPopup();
+    //   return;
+    // }
+
     setUsedData(tempUsedData);
     setRoots(fetchRoots(tempUsedData));
 
-    // TODO: Vikram: make new function
     let tempNames = tempUsedData["solutions"].map((value, index) => { return value["name"] })
 
     if (!tempNames.includes(data["name"])) {
@@ -526,16 +551,14 @@ function Viz(props) {
     setMuSum(sessionStorage.getItem("musum"));
     setGammaSum(sessionStorage.getItem("gammasum"));
     updateUsedData()
+
+    document.addEventListener("keydown", handleKeyPress);
   }, []);
 
   useEffect(() => {
-    setMuSum(sessionStorage.getItem("musum"));
-    setGammaSum(sessionStorage.getItem("gammasum"));
+    // setMuSum(sessionStorage.getItem("musum"));
+    // setGammaSum(sessionStorage.getItem("gammasum"));
   })
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyPress);
-  }, [])
 
   const [evtBus, setEvtBus] = useState({
     listeners: [],
@@ -552,11 +575,16 @@ function Viz(props) {
     },
   });
 
-  // Popup
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // Popups
+  const [isHelpPopupOpen, setIsHelpPopupOpen] = useState(false);
+  const [isNoSolutionsPopupOpen, setIsNoSolutionsPopupOpen] = useState(false);
 
-  function togglePopup() {
-    setIsPopupOpen(!isPopupOpen);
+  function toggleNoSolutionsPopup() {
+    setIsNoSolutionsPopupOpen(!isNoSolutionsPopupOpen);
+  }
+
+  function toggleHelpPopup() {
+    setIsHelpPopupOpen(!isHelpPopupOpen);
   }
 
   /** TODO: Replace this with an actual window rather than just an alert message
@@ -567,17 +595,18 @@ function Viz(props) {
     if (event.key === '/') {
       // alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
       console.log("/ key pressed!")
-      togglePopup();
+      toggleHelpPopup();
     }
   }
 
-  console.log(filterStack)
+  // console.log(filterStack)
   // keeping track of edges that are not used
   // update unusedEdges whenever
 
   return (
     <div className="viz">
-      <HelpPopup isPopupOpen={isPopupOpen} togglePopup={togglePopup}></HelpPopup>
+      <HelpPopup isPopupOpen={isHelpPopupOpen} togglePopup={toggleHelpPopup}></HelpPopup>
+      <NoSolutionsPopup isPopupOpen={isNoSolutionsPopupOpen} togglePopup={toggleNoSolutionsPopup}></NoSolutionsPopup>
       {type !== 'sumviz' && type !== 'triviz' ?
         <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         : <></>}
