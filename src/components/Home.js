@@ -1,15 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import ReactDOM from "react-dom";
+import React from 'react';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
   } from "react-router-dom";
 
 import URLs from "../utils/default_url.json";
 import download from "../assets/download.png";
-import upload_icon from "../assets/upload_icon.png"
 
 import axios from 'axios'
 import fileDownload from 'js-file-download'
@@ -110,6 +105,7 @@ function Home() {
                 <img 
                   className='rightli' 
                   src={download}
+                  alt="download"
                   onClick={() => handleDownload(`https://raw.githubusercontent.com/vikramr2/machina-viz/main/src/samples/${default_patients[i]}/${default_patients[i]}.json`, `${default_patients[i]}.json`)}
                 >
                 </img>

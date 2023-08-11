@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
-    BrowserRouter as Router,
     Link
   } from "react-router-dom";
 
 // Figures
-import clonal from "../assets/clonal.jpeg";
-import migration from "../assets/migration.jpeg";
 import sample_page from "../assets/sample_page.png";
 
 /**

@@ -99,6 +99,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     // Dont label edge weights of 1
     // BTW Edges are weighted by the number of solutions they appear in
     for (const [i, edge] of edges.entries()) {
+      // eslint-disable-next-line eqeqeq
       if (edge.data.label == 1) {
         edges[i].data.label = "";
       }
@@ -250,6 +251,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     let gamma = edges.length;
     edges.map((edge) => {
       if (edge.data.source !== 'roots') {
+        // eslint-disable-next-line eqeqeq
         if (edge.data.label == '') {
           mu += 1;
         } else {
@@ -265,7 +267,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     sessionStorage.setItem("gammasum", gamma);
 
     function getColor(label) {
-      if (label == "roots") {
+      if (label === "roots") {
         return '#000'
       }
       let color = coloringDict[label];

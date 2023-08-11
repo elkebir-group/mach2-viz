@@ -20,8 +20,8 @@ Cytoscape.use(dagre);
  * @returns The JSX/HTML structure of the component
  */
 function ClonalTree(props) {
-  const [width, setWith] = useState("100%");
-  const [height, setHeight] = useState("100%");
+  const width = "100%";
+  const height = "100%";
 
   // Regex to check whether a string is a hex value representing a color
   var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;

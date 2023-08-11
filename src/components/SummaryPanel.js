@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState } from "react"
 import SummaryGraph from "./SummaryGraph.js";
 
 function SummaryPanel({ 
@@ -108,7 +108,7 @@ function SummaryPanel({
             <div className="titlewrapper">
                 <h3 className="viztitle"><b>Summary</b></h3>
                 <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
-                <a onClick={closeSummary} style={{ textDecoration: 'none', color: 'black' }}><p className='abouttext viz'><b>[X]</b></p></a>
+                <p onClick={closeSummary} style={{ textDecoration: 'none', color: 'black' }}><p className='abouttext viz'><b>[X]</b></p></p>
             </div>
             <div className="panel migration top left sum">
                 <p className="paneltitle"><b>Migration Graph</b></p>

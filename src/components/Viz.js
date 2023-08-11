@@ -1,11 +1,7 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
-import { useHistory } from 'react-router-dom';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
@@ -13,13 +9,10 @@ import DefaultDict from "../utils/DefaultDict.js";
 
 // Panels
 import SummaryPanel from "./SummaryPanel.js";
-import MigrationPanel from "./MigrationPanel.js";
 
 // Popup
-import Popup from 'reactjs-popup'
 import HelpPopup from "./HelpPopup.js";
 import NoSolutionsPopup from "./NoSolutionsPopup.js";
-import { filter } from "d3";
 
 /**
  * Finds the root of a tree represented by an edge list.
@@ -119,6 +112,8 @@ function fetchRoots(data) {
         return entry[1]
       }
     }
+    // never reaches this
+    return 0;
   })
 
   // Construct a frequency mapping
