@@ -46,8 +46,10 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
       }
     
       function findLabel(node) {
-        return labeling.map((value, index) => {
-          if (value[0] === node) return value[1]}).filter((item) => {return item !== undefined})[0];
+        const found = labeling.find(value => value[0] === node);
+        return found ? found[1] : undefined;
+        // return labeling.map((value, index) => {
+          // if (value[0] === node) return value[1]}).filter((item) => {return item !== undefined})[0];
       }
 
       function getColor(label) {
@@ -67,6 +69,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
         return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
       })
       for (const [i, edge] of edges.entries()) {
+        // eslint-disable-next-line eqeqeq
         if (edge.data.label == 1) {
           edges[i].data.label = "";
         }
@@ -91,6 +94,7 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
           return { data: { source: value[0], target: value[1], label: value[2], id: `${value[0]}->${value[1]}`, clsource: value[0], cltarget: value[1] } }
         })
         for (const [i, edge] of edges.entries()) {
+          // eslint-disable-next-line eqeqeq
           if (edge.data.label == 1) {
             edges[i].data.label = "";
           }
@@ -162,17 +166,17 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
           }
         }
       ];
-
-      coloring.map((value, index) => {
+      
+      coloring.forEach((value, index) => {
         styleSheet.push({
           selector: `node[label='${value[0]}']`,
           style: {
             'border-color': hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
           }
-        })
-      })
+        });
+      });
 
-      edges.map((value, index) => {
+      edges.forEach((value, index) => {
         let source = value.data.source;
         let target = value.data.target;
         styleSheet.push({
@@ -275,12 +279,12 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
        */
       let mu = 0;
       let gamma = edges.length;
-      edges.map((edge) => {
+      edges.forEach((edge) => {
+        // eslint-disable-next-line eqeqeq
         if (edge.data.label == '') {
           mu += 1;
         } else {
           mu += parseInt(edge.data.label);
-          //gamma += parseInt(edge.data.label) - 1;
         }
       })
 

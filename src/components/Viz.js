@@ -677,19 +677,19 @@ function Viz(props) {
               {origExists ? (
                 // If origExists is true, render both Clonal Tree and View Input Tree links
                 <>
-                  <a
+                  <button
                     style={{ fontWeight: !clonalL ? 'bold' : 'normal' }}
                     onClick={onToggleOutputClonalL}
                   >
                     Clonal Tree
-                  </a>{" "}
+                  </button>{" "}
                   |{" "}
-                  <a
+                  <button
                     style={{ fontWeight: clonalL ? 'bold' : 'normal' }}
                     onClick={onToggleInputClonalL}
                   >
                     Input Tree
-                  </a>
+                  </button>
                 </>
               ) : (
                 // If origExists is false, render only Clonal Tree (fallback to <b> element)
@@ -710,7 +710,7 @@ function Viz(props) {
               </select>
             </b></p></label>
             <h3 className="viztitle"><b>{data2["name"]}</b></h3>
-            <a onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='abouttext viz'><b>[X]</b></p></a>
+            <p onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='abouttext viz'><b>[X]</b></p></p>
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
             <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
@@ -724,19 +724,19 @@ function Viz(props) {
               <p className="paneltitle">{origExists ? (
                 // If origExists is true, render both Clonal Tree and View Input Tree links
                 <>
-                  <a
+                  <button
                     style={{ fontWeight: !clonalR ? 'bold' : 'normal' }}
                     onClick={onToggleOutputClonalR}
                   >
                     Clonal Tree
-                  </a>{" "}
+                  </button>{" "}
                   |{" "}
-                  <a
+                  <button
                     style={{ fontWeight: clonalR ? 'bold' : 'normal' }}
                     onClick={onToggleInputClonalR}
                   >
                     Input Tree
-                  </a>
+                  </button>
                 </>
               ) : (
                 // If origExists is false, render only Clonal Tree (fallback to <b> element)
