@@ -53,9 +53,17 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
       }
 
       function getColor(label) {
-        let color = coloring.map((value, index) => {
-          if (value[0] === label) return value[1]}).filter((item) => {return item !== undefined})[0];
-        return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
+        // let color = coloring.map((value, index) => {
+        //   if (value[0] === label) return value[1]}).filter((item) => {return item !== undefined})[0];
+        // return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
+
+        let color = coloring.find(value => value[0] === label);
+        
+        if (color) {
+          color = color[1];
+        }
+
+        return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
       }
     
       // The difference between this and the Clonal Tree is that the nodes are anatomical locations instead of clones

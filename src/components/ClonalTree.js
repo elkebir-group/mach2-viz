@@ -55,10 +55,20 @@ function ClonalTree(props) {
    * @returns the hex value string of the color corresponding to the label
    */
   function getColor(label) {
+    // if (!label) return '#000';
+    // let color = props.coloring.map((value, index) => {
+    //   if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
+    // return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
+
     if (!label) return '#000';
-    let color = props.coloring.map((value, index) => {
-      if (value[0] === label) return value[1]}).filter((item) => {return item != undefined})[0];
-    return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
+  
+    let colorValue = props.coloring.find(value => value[0] === label);
+    
+    let color = colorValue ? colorValue[1] : undefined;
+  
+    return hexColorRegex.test(color) 
+      ? color 
+      : colorPalette[parseInt(color) % ncolors];
   }
 
   /** Filter an array into only unique elements*/
@@ -72,8 +82,12 @@ function ClonalTree(props) {
    * @returns anatomical location of clone
    */
   function findLabel(node) {
-    return props.labeling.map((value, index) => {
-      if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
+    // return props.labeling.map((value, index) => {
+    //   if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
+
+    let labelPair = props.labeling.find(value => value[0] === node);
+  
+    return labelPair ? labelPair[1] : undefined;
   }
 
   // Define the nodes and edges of the graph
@@ -160,7 +174,7 @@ function ClonalTree(props) {
   ];
 
   // Set the coloring dynamically in the stylesheet using the coloring props
-  props.coloring.map((value, index) => {
+  props.coloring.forEach((value, index) => {
     styleSheet.push({
       selector: `node[label='${value[0]}']`,
       style: {
@@ -170,7 +184,7 @@ function ClonalTree(props) {
   })
 
   // Style the edges dynamically via gradients based on the node colors
-  edges.map((value, index) => {
+  edges.forEach((value, index) => {
     let source = value.data.source;
     let target = value.data.target;
     styleSheet.push({

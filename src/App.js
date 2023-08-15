@@ -6,17 +6,15 @@ import Viz from './components/Viz.js'
 import Home from './components/Home.js'
 
 import {
-  HashRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import { createBrowserHistory } from 'history';
 
 
 function App() {
-  const history = createBrowserHistory({
+  createBrowserHistory({
     basename: '/mach2-viz/#' // Replace with your repository name
   });
 
