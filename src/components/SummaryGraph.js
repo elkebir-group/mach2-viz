@@ -276,9 +276,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
 
     function onEdgeTapped(edge, action) {
       if (action === 'require') {
-        onRequireSummaryEdge(edge.id());
+        return onRequireSummaryEdge(edge.id());
       } else {
-        onDeleteSummaryEdge(edge.id());
+        return onDeleteSummaryEdge(edge.id());
       }
     }
 
@@ -295,11 +295,13 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
         stylesheet={styleSheet}
         cy={cy => {
           myCyRef = cy;
-
+          
+          cy.off("cxttap", "edge");
           cy.on("cxttap", "edge", evt => {
             // console.log("right clicked")
           });
 
+          cy.off("tap", "edge");
           cy.on("tap", "edge", evt => {
             let action = "require"
             if (evt.originalEvent.shiftKey) {
@@ -308,31 +310,35 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
 
             var edge = evt.target;
 
-            if (action === 'require') {
-              // console.log(edge.id())
-              if (!requiredEdges.includes(edge.id())) {
-                // console.log('there')
-                edge.css({
-                  'font-weight': 'bold',
-                  width: 10,
-                  arrowScale: 1
-                })
-                edge.data('selected', 'true')
-              } else {
-                // console.log('here')
-                edge.css({
-                  'font-weight': 'normal',
-                  width: 3,
-                  arrowScale: 1
-                })
-                edge.data('selected', 'false')
+            let edgeTappedReturn = onEdgeTapped(edge, action);
+
+            if (edgeTappedReturn === -1) {
+              return;
+            } else {
+              if (action === 'require') {
+                // console.log(edge.id())
+                if (!requiredEdges.includes(edge.id())) {
+                  // console.log('there')
+                  edge.css({
+                    'font-weight': 'bold',
+                    width: 10,
+                    arrowScale: 1
+                  })
+                  edge.data('selected', 'true')
+                } else {
+                  // console.log('here')
+                  edge.css({
+                    'font-weight': 'normal',
+                    width: 3,
+                    arrowScale: 1
+                  })
+                  edge.data('selected', 'false')
+                }
               }
             }
-
-            // console.log("edge tapped", action);
-            onEdgeTapped(edge, action);
           });
-
+          
+          cy.off("mouseover", "edge");
           cy.on('mouseover', 'edge', function(event) {
             const { target } = event;
             if (target.data().selected !== 'true') {
@@ -352,6 +358,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             evtbus.fireEvent('selectNodeCl', { nodeId, target});
           });
 
+          cy.off("mouseover", "node");
           cy.on('mouseover', 'node', function(event) {
             const { target } = event;
             target.css({
@@ -372,6 +379,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             }
           })
 
+          cy.off("mouseout", "node");
           cy.on('mouseout', 'node', function(event) {
             const { target } = event;
             target.css({
@@ -391,7 +399,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               labeltag.style.fontWeight = 'normal';
             }
           })
-    
+
+          cy.off("mouseout", "edge");
           cy.on('mouseout', 'edge', function(event) {
             const { target } = event;
             if (target.data().selected !== 'true') {

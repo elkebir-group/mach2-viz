@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 
 export default function NoSolutionsPopup( {isPopupOpen, togglePopup}) {
     return(
-        <Popup open={isPopupOpen} togglePopup={togglePopup} overlayStyle={{ background: 'rgba(0, 0, 0, 0.6)', zIndex: 9999 }} animationType="fade" modal>
+        <Popup open={isPopupOpen} onClose={togglePopup}overlayStyle={{ background: 'rgba(0, 0, 0, 0.6)', zIndex: 9999 }} animationType="fade" modal>
             {close => (
                 <div className="no-sol-popup-container">
                     {/* <button className="close-x" onClick={close}>

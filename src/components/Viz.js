@@ -183,13 +183,16 @@ function Viz(props) {
   function onDeleteSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
+      // TODO: Update this to account for if there are no solutions
       console.log("delete");
+      setFilterStack([...filterStack, `deleted edge ${edge_id}`]);
       setDeletedEdges([...deletedEdges, edge_id]);
-      setFilterStack([...filterStack, `deleted edge ${edge_id}`])
     } else {
+      // TODO: Update this to account for if there are no solutions
       console.log("delete root");
+      setFilterStack([...filterStack, `deleted root ${target}`]);
       setDeletedRoots([...deletedRoots, target]);
-      setFilterStack([...filterStack, `deleted root ${target}`])
+
     }
   }
 
@@ -201,16 +204,18 @@ function Viz(props) {
         // If edge_id exists, remove all instances of edge_id from requiredEdges
         const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
         setRequiredEdges(updatedEdges);
-        setFilterStack([...filterStack, `relaxed edge ${edge_id}`])
+        setFilterStack([...filterStack, `relaxed edge ${edge_id}`]);
       } else {
+        // TODO: Update this to account for if there are no solutions
         console.log("require");
+        setFilterStack([...filterStack, `required edge ${edge_id}`]);
         setRequiredEdges([...requiredEdges, edge_id]);
-        setFilterStack([...filterStack, `required edge ${edge_id}`])
       }
     } else {
+      // TODO: Update this to account for if there are no solutions
       console.log("require root");
+      setFilterStack([...filterStack, `required root ${target}`]);
       setRequiredRoots([...requiredRoots, target]);
-      setFilterStack([...filterStack, `required root ${target}`])
     }
   }
 
@@ -328,24 +333,28 @@ function Viz(props) {
       }
     }
 
-    // if (tempUsedData["summary"]["migration"].length == 0){
-    //   // check the filter stack to revert everything back to normal:
-    //   const last_edit = filterStack[filterStack.length - 1];
-    //   setFilterStack(filterStack.slice(0, -1));
-    //   if (last_edit.slice(0, 7) === 'deleted') {
-    //     console.log("the last command was a delete command");
-    //     setDeletedEdges(deletedEdges.slice(0, -1));
-    //   } else if (last_edit.slice(0, 13)  === 'required root') {
-    //     console.log("the last command was a require root command");
-    //     setDeletedEdges(requiredRoots.slice(0, -1));
-    //   } else {
-    //     console.log("the last command was a require command");
-    //     setRequiredEdges(setRequiredEdges.slice(0, -1));
-    //   }
+    if (tempUsedData["summary"]["migration"].length == 0){
+      // TODO: Ensure that the filter stack is updated before we reach this point in the code
+      // check the filter stack to revert everything back to normal:
+      const last_edit = filterStack[filterStack.length - 1];
+      setFilterStack(filterStack.slice(0, -1));
+      if (last_edit.slice(0, 12) === 'deleted edge') {
+        console.log("the last command was a delete edge command");
+        setDeletedEdges(deletedEdges.slice(0, -1));
+      } else if (last_edit.slice(0, 12) === 'deleted root') {
+        console.log("the last command was a delete root command");
+        setDeletedEdges(deletedRoots.slice(0, -1));
+      } else if (last_edit.slice(0, 13)  === 'required root') {
+        console.log("the last command was a require root command");
+        setDeletedEdges(requiredRoots.slice(0, -1));
+      } else {
+        console.log("the last command was a require edge command");
+        setRequiredEdges(requiredEdges.slice(0, -1));
+      }
 
-    //   toggleNoSolutionsPopup();
-    //   return;
-    // }
+      toggleNoSolutionsPopup();
+      return -1;
+    }
 
     setUsedData(tempUsedData);
     setRoots(fetchRoots(tempUsedData));
@@ -359,6 +368,8 @@ function Viz(props) {
     if (data2 !== undefined && !tempNames.includes(data2["name"])) {
       setData2(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
     }
+
+    return 0;
   }
 
   const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => { return value["name"] }));
@@ -549,11 +560,6 @@ function Viz(props) {
 
     document.addEventListener("keydown", handleKeyPress);
   }, []);
-
-  useEffect(() => {
-    // setMuSum(sessionStorage.getItem("musum"));
-    // setGammaSum(sessionStorage.getItem("gammasum"));
-  })
 
   const [evtBus, setEvtBus] = useState({
     listeners: [],
