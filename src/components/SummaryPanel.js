@@ -110,6 +110,7 @@ function SummaryPanel({
 
             if (item === 'edge') {
                 setRequiredEdges(requiredEdges.filter(elem => elem !== object))
+                evtBus.fireEvent('unrequireEdge', { object })
             }
         }
 
