@@ -626,8 +626,16 @@ function Viz(props) {
           onRequireSummaryEdge={onRequireSummaryEdge}
           clearData={clearData}
           roots={roots}
+          deletedEdges={deletedEdges}
           requiredEdges={requiredEdges}
+          deletedRoots={deletedRoots}
+          requiredRoots={requiredRoots}
+          setDeletedEdges={setDeletedEdges}
+          setRequiredEdges={setRequiredEdges}
+          setDeletedRoots={setDeletedEdges}
+          setRequiredRoots={setRequiredRoots}
           filterStack={filterStack}
+          setFilterStack={setFilterStack}
         /> : <></>}
       <div className={`panel info ${type === 'dualviz' ? 'one' :
         type === 'sumviz' ? 'one two' :

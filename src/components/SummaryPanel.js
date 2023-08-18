@@ -13,7 +13,14 @@ function SummaryPanel({
     onRequireSummaryEdge, 
     clearData, 
     roots, 
-    requiredEdges, 
+    deletedEdges,
+    requiredEdges,
+    deletedRoots,
+    requiredRoots,
+    setDeletedEdges,
+    setRequiredEdges,
+    setDeletedRoots,
+    setRequiredRoots,
     filterStack,
 }) {
     const [tooltip, setTooltip] = useState(false);
@@ -92,6 +99,36 @@ function SummaryPanel({
         )
     }
 
+    function undoFunction() {
+        let recent = filterStack.pop()
+        let [action, item, object] = recent.split(' ')
+
+        if (action === 'required') {
+            if (item === 'root') {
+                setRequiredRoots(requiredRoots.filter(elem => elem !== object))
+                console.log(requiredRoots)
+            }
+
+            if (item === 'edge') {
+                setRequiredEdges(requiredEdges.filter(elem => elem !== object))
+            }
+        }
+
+        if (action === 'deleted') {
+            if (item === 'root') {
+                setDeletedRoots(deletedRoots.filter(elem => elem !== object))
+            }
+
+            if (item === 'edge') {
+                setDeletedEdges(deletedEdges.filter(elem => elem !== object))
+            }
+        }
+
+        console.log(action)
+        console.log(item)
+        console.log(object)
+    }
+
     var summaryGraph = usedData["summary"]["migration"];
 
     if (summaryGraph === undefined) {
@@ -115,6 +152,7 @@ function SummaryPanel({
                 <p className="paneltitle mu">{`solutions: ${usedData['solutions'].length}`}</p>
                 {filterStack.length > 0 ? <p 
                     className="rightAlign"
+                    onClick={undoFunction}
                     onMouseEnter={() => setTooltip(true)}
                     onMouseLeave={() => setTooltip(false)}
                 >↩</p> : <></>}

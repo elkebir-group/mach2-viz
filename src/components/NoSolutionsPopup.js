@@ -1,9 +1,9 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 
-export default function NoSolutionsPopup( {isPopupOpen, togglePopup}) {
+export default function NoSolutionsPopup({isPopupOpen, togglePopup}) {
     return(
-        <Popup open={isPopupOpen} onClose={togglePopup}overlayStyle={{ background: 'rgba(0, 0, 0, 0.6)', zIndex: 9999 }} animationType="fade" modal>
+        <Popup open={isPopupOpen} onClose={togglePopup} overlayStyle={{ background: 'rgba(0, 0, 0, 0.6)', zIndex: 9999 }} animationType="fade" modal>
             {close => (
                 <div className="no-sol-popup-container">
                     {/* <button className="close-x" onClick={close}>
@@ -16,10 +16,7 @@ export default function NoSolutionsPopup( {isPopupOpen, togglePopup}) {
 
                     <button
                         className='close-button'
-                        onClick={() => {
-                        console.log('modal closed ');
-                        togglePopup();
-                        }}
+                        onClick={togglePopup}
                     >
                         Close
                     </button>
