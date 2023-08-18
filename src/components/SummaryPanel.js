@@ -106,7 +106,6 @@ function SummaryPanel({
         if (action === 'required') {
             if (item === 'root') {
                 setRequiredRoots(requiredRoots.filter(elem => elem !== object))
-                console.log(requiredRoots)
             }
 
             if (item === 'edge') {

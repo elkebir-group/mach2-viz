@@ -80,7 +80,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
     // This node will connect to all edges in the graph
     // Edges to those roots will be weighted by the number of solutions those roots appear in
     if (Object.keys(roots).length > 1) {
-      nodes.push({ data: { id: "roots", label: "roots", type: "ip"}});
+      nodes.push({ data: { id: "roots", label: "roots", type: "ip", root: "true"}});
 
       for (let root in roots) {
         edges.push({
@@ -90,7 +90,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             label: roots[root],
             id: `roots->${root}`,
             clsource: "roots",
-            cltarget: root
+            cltarget: root, 
+            rootedge: "true"
           }
         })
       }
@@ -168,6 +169,18 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             "text-outline-width": "2px",
             color: "white",
             fontSize: 15
+          }
+        },
+        {
+          selector: "node[root='true']",
+          style: {
+            'border-color': '#bbb'
+          }
+        },
+        {
+          selector: "edge[rootedge='true']",
+          style: {
+            'line-style': 'dashed'
           }
         }
     ];
@@ -268,7 +281,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
 
     function getColor(label) {
       if (label === "roots") {
-        return '#000'
+        return '#bbb'
       }
       let color = coloringDict[label];
       return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
