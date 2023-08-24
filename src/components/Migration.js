@@ -379,7 +379,6 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
             evtbus.fireEvent('deselectNodeCl', { nodeId, target});
           });
         }}
-        abc={console.log("myCyRef", myCyRef)}
         />), [graphData] )
         return memoizedGraphComponent;
 }

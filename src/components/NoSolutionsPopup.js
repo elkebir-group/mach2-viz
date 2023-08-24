@@ -16,7 +16,7 @@ export default function NoSolutionsPopup({isPopupOpen, togglePopup}) {
 
                     <button
                         className='close-button'
-                        onClick={togglePopup}
+                        onClick={close}
                     >
                         Close
                     </button>

@@ -30,7 +30,7 @@ function About() {
                     <li><p><b>Summary (left):</b> You can also view a summary migration graph that is computed by unioning edges across migration graphs in each solution. Edges are weighted by the number of solutions they appear in.</p></li>
                 </ul>
                 <p>You can click on the long gray bars on the sides of the visualization page to add extra panels.</p>
-                <div class="image-container">
+                <div className="image-container">
                     {/* <img className="aboutimg" src={clonal} alt="Image 1"/>
                     <img className="aboutimg" src={migration} alt="Image 2"/> */}
                     <img className='aboutimg' src={sample_page} alt="Sample Page"></img>

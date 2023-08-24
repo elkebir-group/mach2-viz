@@ -182,9 +182,17 @@ function Home() {
                   </div>
                   <div className="patient-list-container">
 
-                    { 
+                    {/* { 
                       div_elements.map(elem => (
                         elem
+                      ))
+                    } */}
+
+                    { 
+                      div_elements.map((elem, index) => (
+                        <React.Fragment key={index}>
+                          {elem}
+                        </React.Fragment>
                       ))
                     }
                   </div>
@@ -198,10 +206,10 @@ function Home() {
                 name="json_upload"
                 accept="application/JSON"
                 onChange={handleChange}/>
-              <label for="json_upload">
+              <label htmlFor="json_upload">
                 <div id="addnew" className="dot">
                   <h1 className="plus">+</h1>
-                  <span class="tooltiptext"><b>Upload Patient JSON</b></span>
+                  <span className="tooltiptext"><b>Upload Patient JSON</b></span>
                 </div>
                 {/* <div id="addnew">
                   <img  src={upload_icon}></img>

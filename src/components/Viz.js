@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import ClonalTree from "./ClonalTree.js";
 import Migration from "./Migration.js";
-import {
-  Link
-} from "react-router-dom";
+// import {
+//   Link
+// } from "react-router-dom";
 
 import DefaultDict from "../utils/DefaultDict.js";
 
@@ -333,7 +333,7 @@ function Viz(props) {
       }
     }
 
-    if (tempUsedData["summary"]["migration"].length == 0){
+    if (tempUsedData["summary"]["migration"].length === 0){
       // TODO: Ensure that the filter stack is updated before we reach this point in the code
       // check the filter stack to revert everything back to normal:
       const last_edit = filterStack[filterStack.length - 1];
@@ -664,18 +664,24 @@ function Viz(props) {
           >
           </MigrationPanel> */}
         <div className="titlewrapper">
-          <label className="titleelem left" for="labelings"><p><b>Full Labeling:
-            <select name="labelings" id="labelings" onChange={handleLabelChange}>
-              {labelNames.map(l => { return (l === labeling) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option> }
-              )}
-            </select>
-          </b></p></label>
+          <label className="titleelem left" htmlFor="labelings">
+            <p><b>Full Labeling:
+              <select 
+                name="labelings" 
+                id="labelings" 
+                onChange={handleLabelChange} 
+                value={labeling}  // Set the value prop here
+              >
+                {labelNames.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+            </b></p>
+          </label>
           <h3 className="viztitle"><b>{data["name"]}</b></h3>
           {(type !== 'dualviz' && type !== 'triviz' && type !== 'sumviz') ?
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
             <></>}
           {type !== 'sumviz' ?
-            <Link onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black' }}><p className='abouttext viz'><b>[X]</b></p></Link>
+            <span onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
             : <></>}
         </div>
         <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
@@ -717,14 +723,20 @@ function Viz(props) {
       {(type === 'dualviz' || type === 'triviz') ?
         <div className={`panel info ${type === 'dualviz' ? 'one two' : 'tri three'}`}>
           <div className="titlewrapper">
-            <label className="titleelem left" for="labelings"><p><b>Full Labeling:
-              <select name="labelings" id="labelings" onChange={handleLabelChange2}>
-                {labelNames.map(l => { return (l === labeling2) ? <option value={l} selected>{l}</option> : <option value={l}>{l}</option> }
-                )}
-              </select>
-            </b></p></label>
+            <label className="titleelem left" htmlFor="labelings">
+              <p><b>Full Labeling:
+                <select 
+                  name="labelings" 
+                  id="labelings" 
+                  onChange={handleLabelChange2}
+                  value={labeling2}  // Set the value prop here
+                >
+                  {labelNames.map(l => <option key={l} value={l}>{l}</option>)}
+                </select>
+              </b></p>
+            </label>
             <h3 className="viztitle"><b>{data2["name"]}</b></h3>
-            <p onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='abouttext viz'><b>[X]</b></p></p>
+            <span onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
             <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>

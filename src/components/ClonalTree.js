@@ -392,7 +392,6 @@ function ClonalTree(props) {
         props.evtbus.fireEvent('deselectNodeSC', { nodeId, source, sink, target, label});
       });
     }}
-    abc={console.log("myCyRef", myCyRef)}
     />), [graphData] )
     return memoizedGraphComponent;
 }

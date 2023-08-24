@@ -644,6 +644,8 @@ ul {
 
 .titlewrapper {
   display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .titleelem {
@@ -658,6 +660,15 @@ ul {
 .titleelem.end {
   margin-right: 20px;
   text-align: end;
+}
+
+.panelclosebutton {
+  margin-right: 30px;
+}
+
+.panelclosebutton:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* ---------- Help Popup ---------- */
@@ -785,12 +796,27 @@ ul {
 
 
 .viztitle {
+  display: flex;
+  /* align-items: center; */
   z-index: 999;
   text-align: center;
   width:300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.sumviztitle {
+  display: flex;
+  /* align-items: center; */
+  z-index: 999;
+  text-align: center;
+  width:300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  margin-left: 30px;
 }
 
 .panel.popup {
