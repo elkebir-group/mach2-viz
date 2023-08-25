@@ -190,9 +190,9 @@ function Viz(props) {
     } else {
       // TODO: Update this to account for if there are no solutions
       console.log("delete root");
+      console.log(deletedRoots)
       setFilterStack([...filterStack, `deleted root ${target}`]);
       setDeletedRoots([...deletedRoots, target]);
-
     }
   }
 

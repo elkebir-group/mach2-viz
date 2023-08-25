@@ -263,6 +263,15 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               })
               edge.data('selected', 'false')
             }
+            if (eventName === 'requireEdge') {
+              let edge = myCyRef.$(`edge[id='${eventData.object}']`)
+              edge.css({
+                'font-weight': 'normal',
+                width: 10,
+                arrowScale: 1
+              })
+              edge.data('selected', 'true')
+            }
           };
           evtbus.addListener(listener);
         }

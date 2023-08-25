@@ -100,6 +100,7 @@ function SummaryPanel({
     }
 
     function undoFunction() {
+        setTooltip(false)
         let recent = filterStack.pop()
         let [action, item, object] = recent.split(' ')
 
@@ -122,6 +123,11 @@ function SummaryPanel({
             if (item === 'edge') {
                 setDeletedEdges(deletedEdges.filter(elem => elem !== object))
             }
+        }
+
+        if (action === 'relaxed') {
+            setRequiredEdges([...requiredEdges, object])
+            evtBus.fireEvent('requireEdge', { object })
         }
 
         console.log(action)
