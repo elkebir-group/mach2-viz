@@ -586,10 +586,10 @@ input[type="checkbox"] {
   width: 100%;
   margin: 1px;
   height: 50px;
+}
 
-  @supports not (-webkit-scrollbar) {
-    width: calc(100% - 15px); /* Adjust width for browsers without WebKit */
-  }
+@supports not (-webkit-scrollbar) {
+  width: calc(100% - 15px); /* Adjust width for browsers without WebKit */
 }
 
 .columnwrapper {
@@ -644,22 +644,34 @@ ul {
 
 .titlewrapper {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
 .titleelem {
-  flex: 1 1 50%;
+  /* flex: 1 1 50%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   text-align: center;
 }
 
 .titleelem.left {
   margin-left: 20px;
+  white-space: nowrap;
 }
 
 .titleelem.end {
+  margin-left: 0px;
   margin-right: 20px;
   text-align: end;
+
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0px;
+  text-overflow: ellipsis;
 }
 
 .panelclosebutton {
@@ -800,7 +812,7 @@ ul {
   /* align-items: center; */
   z-index: 999;
   text-align: center;
-  width:300px;
+  /* width:300px; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -808,13 +820,13 @@ ul {
 
 .sumviztitle {
   display: flex;
-  /* align-items: center; */
   z-index: 999;
   text-align: center;
-  width:300px;
-  white-space: nowrap;
+
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 0px;
+  text-overflow: ellipsis; */
 
   margin-left: 30px;
 }
@@ -899,6 +911,8 @@ img {
 }
 
 .panel.info.one {
+  margin-left: 10px;
+  margin-right: 10px;
   width: calc(50% - 50px);
 }
 
@@ -919,9 +933,17 @@ img {
   margin-left: calc(68% - 30px)
 }
 
+.panel.info.one.sum {
+  margin-left: 0px;
+}
+
+.panel.info.one.two.sum {
+  margin-left: calc(50% - 20px);
+}
+
 .panel.migration.top.left.sum {
   position: relative;
-  height: calc(100% - 75px);
+  height: calc(100% - 69px);
   width: calc(100% - 50px);
 }
 
@@ -996,14 +1018,6 @@ ul {
   margin-left: 40%;
 }
 
-.panel.info.one.sum {
-  margin-left: 0px;
-}
-
-.panel.info.one.two.sum {
-  margin-left: calc(50% - 20px);
-}
-
 .settingsgear {
   width: 30px;
   height: 30px;
@@ -1054,4 +1068,10 @@ input {
   .panel.example {
     height: calc(50%)
   }
+}
+
+/* Cursor type changing */
+.shift-click {
+  cursor: url("./assets/cursors/cursor8.cur"), no-drop;
+  /* cursor: crosshair; */
 }

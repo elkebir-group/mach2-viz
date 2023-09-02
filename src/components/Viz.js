@@ -642,27 +642,6 @@ function Viz(props) {
           type === 'triviz' ? 'tri two' :
             ''
         }`}>
-        {/* <MigrationPanel
-            type={type}
-            setType={setType}
-            handleLabelChange={handleLabelChange}
-            labeling={labeling}
-            labelNames={labelNames}
-            data={data}
-            closeTab={closeTab}
-
-            gamma={gamma}
-            mu={mu}
-            rotateFn={rotateFn}
-            tree={tree}
-            tree_labeling={tree_labeling}
-            coloring={coloring}
-            migration={migration}
-            evtBus={evtBus}
-            rotate={rotate}
-            coord_map={coord_map}
-          >
-          </MigrationPanel> */}
         <div className="titlewrapper">
           <label className="titleelem left" htmlFor="labelings">
             <p><b>Full Labeling:

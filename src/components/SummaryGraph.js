@@ -21,6 +21,18 @@ Cytoscape.use(COSEBilkent);
  */
 function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, onRequireSummaryEdge, roots, requiredEdges}) {
 
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Shift') {
+        document.body.classList.add('shift-click');
+      }
+    });
+    
+    document.addEventListener('keyup', function(event) {
+      if (event.key === 'Shift') {
+        document.body.classList.remove('shift-click');
+      }
+    });
+
     // TODO: Perhaps change this since we are redoing filtration
     var filterOut = [];
     var filterJson = JSON.parse(sessionStorage.getItem("selected"))
@@ -387,6 +399,11 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             const nodeId = event.target.id();
             evtbus.fireEvent('selectNodeSum', { nodeId, target});
             evtbus.fireEvent('selectNodeCl', { nodeId, target});
+
+            // change cursor type on shift click:
+            // if (shiftPressed) {
+            //   document.body.classList.add('shift-click');
+            // }
           });
 
           cy.off("mouseover", "node");
@@ -449,6 +466,9 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
             const nodeId = event.target.id();
             evtbus.fireEvent('deselectNodeSum', { nodeId, target});
             evtbus.fireEvent('deselectNodeCl', { nodeId, target});
+
+            // Change cursor back to normal cursor
+            // document.body.classList.remove('shift-click');
           });
         }}
       />), [data] )

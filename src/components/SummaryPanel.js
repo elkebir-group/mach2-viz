@@ -150,7 +150,7 @@ function SummaryPanel({
         <div className={`panel info ${type === 'sumviz' ? 'one' : 'tri'}`}>
             <div className="titlewrapper">
                 <h3 className="sumviztitle"><b>Summary</b></h3>
-                <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p>
+                <p className="titleelem end"><b>Press [/] for help</b></p>
                 <span onClick={closeSummary} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
             </div>
             <div className="panel migration top left sum">
