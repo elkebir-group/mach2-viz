@@ -120,18 +120,13 @@ function fetchRoots(data) {
   return constructFrequencyDictionary(rootLocations);
 }
 
-/** Insert a URL parameter
- * 
- * @param {*} key (string) variable name
- * @param {*} value (string) variable value
- */
+/** Insert a URL parameter */
 function insertParam(key, value) {
   // Change a url parameter using URLSearchParams
   let urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
   urlParams.set(key, value);
 
   // Replace the URL
-  //currentUrl.search = urlParams.toString();
   window.location.href = '#/viz?' + urlParams.toString();
 }
 
@@ -143,7 +138,6 @@ function Viz(props) {
   const [muSum, setMuSum] = useState(0);
   const [gammaSum, setGammaSum] = useState(0);
   const jsonContents = sessionStorage.getItem("json_data");
-  // const wholeData = JSON.parse(jsonContents);
 
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
@@ -183,12 +177,10 @@ function Viz(props) {
   function onDeleteSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
-      // TODO: Update this to account for if there are no solutions
       console.log("delete");
       setFilterStack([...filterStack, `deleted edge ${edge_id}`]);
       setDeletedEdges([...deletedEdges, edge_id]);
     } else {
-      // TODO: Update this to account for if there are no solutions
       console.log("delete root");
       console.log(deletedRoots)
       setFilterStack([...filterStack, `deleted root ${target}`]);
@@ -206,13 +198,11 @@ function Viz(props) {
         setRequiredEdges(updatedEdges);
         setFilterStack([...filterStack, `relaxed edge ${edge_id}`]);
       } else {
-        // TODO: Update this to account for if there are no solutions
         console.log("require");
         setFilterStack([...filterStack, `required edge ${edge_id}`]);
         setRequiredEdges([...requiredEdges, edge_id]);
       }
     } else {
-      // TODO: Update this to account for if there are no solutions
       console.log("require root");
       setFilterStack([...filterStack, `required root ${target}`]);
       setRequiredRoots([...requiredRoots, target]);
@@ -246,9 +236,6 @@ function Viz(props) {
   const [usedData, setUsedData] = useState(JSON.parse(jsonContents));
 
   function updateUsedData() {
-    // TODO: Assuming no edges are shared between requiredEdges and deletedEdges
-    // console.log(requiredEdges);
-    // console.log(deletedEdges);
 
     const wholeData = JSON.parse(jsonContents);
 
@@ -260,11 +247,6 @@ function Viz(props) {
         "migration": [],
       },
     };
-
-    /*if (requiredEdges.length === 0 && deletedEdges.length === 0) {
-      setUsedData(wholeData);
-      return;
-    }*/
 
     for (let i = 0; i < wholeData["solutions"].length; i++) {
       let treeEntry = wholeData["solutions"][i]["tree"]
@@ -283,11 +265,7 @@ function Viz(props) {
 
       // let foundRequiredEdge = false;
       let requiredEdgeCounter = 0;
-
-      // if (requiredEdges.length === 0) {
-      //   foundRequiredEdge = true;
-      // }
-
+      
       for (let j = 0; j < migrationEntry.length; j++) {
         // check deleteEdges:
         let migrationEdgeString = migrationEntry[j][0] 
@@ -354,6 +332,10 @@ function Viz(props) {
 
       toggleNoSolutionsPopup();
       return -1;
+    }
+
+    if(wholeData["coloring"]) {
+      tempUsedData["coloring"] = JSON.parse(JSON.stringify(wholeData["coloring"]));
     }
 
     setUsedData(tempUsedData);
@@ -423,12 +405,27 @@ function Viz(props) {
   }
 
   if (coloring === undefined || coloring.length === 0) {
-    coloring = data["labeling"]
-      .map((item) => item[1])
-      .filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      })
-      .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    // coloring = data["labeling"]
+    //   .map((item) => item[1])
+    //   .filter((value, index, self) => {
+    //     return self.indexOf(value) === index;
+    //   })
+    //   .map((item, index, self) => [item, `${self.indexOf(item)}`]);
+    // console.log("coloring is undefined");
+
+    // Extract labels from the data
+    const labels = data["labeling"].map((item) => item[1]);
+
+    // Get unique labels
+    const uniqueLabels = labels.filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
+    // Map each unique label to a new format: [label, indexAsString]
+    const formattedLabels = uniqueLabels.map((label, index) => [label, `${index}`]);
+
+    // Result
+    coloring = formattedLabels;
   }
 
   let coloringDict = {};
@@ -660,7 +657,7 @@ function Viz(props) {
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
             <></>}
           {type !== 'sumviz' ?
-            <span onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
+            <span onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='panelclosebutton'><b>[X]</b></p></span>
             : <></>}
         </div>
         <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>

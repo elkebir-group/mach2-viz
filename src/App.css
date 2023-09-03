@@ -650,6 +650,15 @@ ul {
   margin-bottom: 10px;
 }
 
+.panel.info.one.two .titlewrapper .viztitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 40px;
+}
+
 .titleelem {
   /* flex: 1 1 50%; */
   display: flex;
@@ -816,6 +825,8 @@ ul {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  
+  margin-right: 0px;
 }
 
 .sumviztitle {
@@ -911,8 +922,8 @@ img {
 }
 
 .panel.info.one {
-  margin-left: 10px;
-  margin-right: 10px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
   width: calc(50% - 50px);
 }
 

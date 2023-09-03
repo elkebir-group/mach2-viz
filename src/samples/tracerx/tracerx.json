@@ -11980,5 +11980,15 @@
             "lung1",
             2
         ]
+    ],
+    "coloring": [
+        ["p.lung", "#f5c17b"],
+        ["p.lymphnode1", "#f08532"],
+        ["relapse1", "#549d3e"],
+        ["bone1", "#ee9f9c"],
+        ["lung2", "#d1362b"],
+        ["lung1", "#bbde93"],
+        ["lung3", "#adcde2"],
+        ["lung4", "#3a76af"]
     ]
 }
