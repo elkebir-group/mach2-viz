@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import SummaryGraph from "./SummaryGraph.js";
 
 function SummaryPanel({ 
@@ -131,10 +131,9 @@ function SummaryPanel({
         }
 
         if (action === 'deletedrequired') {
-            let tempArray = deletedEdges.filter(elem => elem !== object)
-            //tempArray.push(`deletedrequired,${object}`)
-            setDeletedEdges(tempArray)
+            setDeletedEdges(deletedEdges.filter(elem => elem !== object))
             setRequiredEdges([...requiredEdges, object])
+            evtBus.fireEvent('requireEdge', { object })
         }
 
         if (action === 'relaxed') {
@@ -146,22 +145,6 @@ function SummaryPanel({
         console.log(item)
         console.log(object)
     }
-
-    /*useEffect(() => {
-        if (deletedEdges.length > 0) {
-            console.log(deletedEdges)
-            if (deletedEdges[deletedEdges.length - 1].split(',')[0] === 'deletedrequired') {
-                let lastelem = deletedEdges.pop()
-                let object = lastelem.split(',')[1]
-                setRequiredEdges([...requiredEdges, object])
-            }
-        }
-    }, [deletedEdges])*/
-
-    useEffect(() => {
-        let object = requiredEdges[requiredEdges.length - 1];
-        evtBus.fireEvent('requireEdge', { object })
-    })
 
     var summaryGraph = usedData["summary"]["migration"];
 
