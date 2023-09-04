@@ -267,6 +267,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               node.trigger('select');
             }
             if (eventName === 'unrequireEdge') {
+              console.log(eventData.object);
               let edge = myCyRef.$(`edge[id='${eventData.object}']`)
               edge.css({
                 'font-weight': 'normal',

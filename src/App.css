@@ -933,7 +933,7 @@ img {
 
 .panel.info.tri {
   margin-left: 0;
-  width: calc(34% - 30px);
+  width: calc(34% - 40px);
 }
 
 .panel.info.tri.two {

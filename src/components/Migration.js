@@ -58,7 +58,6 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
         // return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
 
         let color = coloring.find(value => value[0] === label);
-        console.log("found color for label " + (color[0]));
         
         if (color) {
           color = color[1];
