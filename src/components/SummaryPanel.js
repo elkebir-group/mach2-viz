@@ -22,8 +22,11 @@ function SummaryPanel({
     setDeletedRoots,
     setRequiredRoots,
     filterStack,
+    setFilterStack
 }) {
     const [tooltip, setTooltip] = useState(false);
+    //console.log(filterStack)
+    //console.log(deletedRoots)
 
     let closeSummary = (event) => {
         clearData()
@@ -72,7 +75,7 @@ function SummaryPanel({
         let sourceColor = findColor(dict, source);
         let targetColor = findColor(dict, target);
 
-        console.log(findColor(dict, source));
+        //console.log(findColor(dict, source));
 
         const sourceStyle = {
             display: 'inline-block',
@@ -101,8 +104,23 @@ function SummaryPanel({
 
     function undoFunction() {
         setTooltip(false)
-        let recent = filterStack.pop()
+
+        let tempStack = [...filterStack]
+        let recent = tempStack.pop()
+        setFilterStack(tempStack)
+
         let [action, item, object] = recent.split(' ')
+
+        if (action === 'deleted') {
+            if (item === 'root') {
+                //console.log(deletedRoots.filter(elem => elem !== object))
+                setDeletedRoots(deletedRoots.filter(elem => elem !== object))
+            }
+
+            if (item === 'edge') {
+                setDeletedEdges(deletedEdges.filter(elem => elem !== object))
+            }
+        }
 
         if (action === 'required') {
             if (item === 'root') {
@@ -115,24 +133,10 @@ function SummaryPanel({
             }
         }
 
-        if (action === 'deleted') {
-            if (item === 'root') {
-                setDeletedRoots(deletedRoots.filter(elem => elem !== object))
-            }
-
-            if (item === 'edge') {
-                setDeletedEdges(deletedEdges.filter(elem => elem !== object))
-            }
-        }
-
         if (action === 'relaxed') {
             setRequiredEdges([...requiredEdges, object])
             evtBus.fireEvent('requireEdge', { object })
         }
-
-        console.log(action)
-        console.log(item)
-        console.log(object)
     }
 
     var summaryGraph = usedData["summary"]["migration"];

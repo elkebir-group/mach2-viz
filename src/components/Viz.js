@@ -171,6 +171,7 @@ function Viz(props) {
   }*/
 
   useEffect(() => {
+    console.log(deletedRoots)
     updateUsedData();
   }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots]);
 
@@ -182,7 +183,6 @@ function Viz(props) {
       setDeletedEdges([...deletedEdges, edge_id]);
     } else {
       console.log("delete root");
-      console.log(deletedRoots)
       setFilterStack([...filterStack, `deleted root ${target}`]);
       setDeletedRoots([...deletedRoots, target]);
     }
@@ -194,8 +194,6 @@ function Viz(props) {
       if (requiredEdges.includes(edge_id)) {
         console.log("relax");
         // If edge_id exists, remove all instances of edge_id from requiredEdges
-        const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
-        setRequiredEdges(updatedEdges);
         setFilterStack([...filterStack, `relaxed edge ${edge_id}`]);
       } else {
         console.log("require");
