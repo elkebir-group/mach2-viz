@@ -558,7 +558,9 @@ function Viz(props) {
     document.addEventListener("keydown", handleKeyPress);
   }, []);
 
-  const evtBus = {
+  // NOTE: This is a state because undos need to thicken and unthicken the edge
+  // Setting a state will allow the object to change on runtime (adding listeners and firing events)
+  const [evtBus, setEvtBus] = useState({
     listeners: [],
     addListener(callback) {
       this.listeners.push(callback);
@@ -571,7 +573,7 @@ function Viz(props) {
         listener(eventName, eventData);
       });
     },
-  };
+  });
 
   // Popups
   const [isHelpPopupOpen, setIsHelpPopupOpen] = useState(false);
