@@ -310,13 +310,23 @@ function ClonalTree(props) {
         div.innerHTML = `<p>${label}&nbsp;</p>`;
       
         // Position the div element near the node
-        const canvas = document.getElementsByTagName('canvas')[0];
+        const nodePos = node.position();
+        
+        // Get the container element
+        const container = cy.container();
+        const zoomLevel = cy.zoom();
+
+
+        // Get the container's absolute position on the webpage
+        const containerRect = container.getBoundingClientRect();
+
+
         div.style.position = "absolute";
-        div.style.top = (node.renderedPosition('y') + canvas.height*0.5 + 30) + 'px';
-        div.style.left = node.renderedPosition('x') + 'px';
-        if (props.rightcol) {
-          div.style.left = 'calc(50% + ' + node.renderedPosition('x') + 'px)';
-        }
+        const absoluteX = containerRect.left + nodePos.x * zoomLevel + cy.pan().x + 15;
+        const absoluteY = containerRect.top + nodePos.y * zoomLevel + cy.pan().y - 15;
+
+        div.style.top = absoluteY + 'px';
+        div.style.left = absoluteX + 'px';
       
         // Add the div element to the page
         document.body.appendChild(div);

@@ -692,7 +692,7 @@ function Viz(props) {
                 <b>Clonal Tree</b>
               )}
             </p>
-            <ClonalTree key={refreshCounter} tree={!clonalL ? tree : originalTree} labeling={!clonalL ? tree_labeling : originalLabeling} coloring={coloring} evtbus={evtBus} />
+            <ClonalTree key={refreshCounter} tree={!clonalL ? tree : originalTree} labeling={!clonalL ? tree_labeling : originalLabeling} coloring={coloring} evtbus={evtBus} rightcol={type === 'sumviz' || type === 'triviz'}/>
           </div>
         </div>
       </div>
