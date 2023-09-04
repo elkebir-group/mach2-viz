@@ -558,7 +558,7 @@ function Viz(props) {
     document.addEventListener("keydown", handleKeyPress);
   }, []);
 
-  const [evtBus, setEvtBus] = useState({
+  const evtBus = {
     listeners: [],
     addListener(callback) {
       this.listeners.push(callback);
@@ -571,7 +571,7 @@ function Viz(props) {
         listener(eventName, eventData);
       });
     },
-  });
+  };
 
   // Popups
   const [isHelpPopupOpen, setIsHelpPopupOpen] = useState(false);
