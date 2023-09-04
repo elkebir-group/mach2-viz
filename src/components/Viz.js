@@ -178,7 +178,15 @@ function Viz(props) {
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
       console.log("delete");
-      setFilterStack([...filterStack, `deleted edge ${edge_id}`]);
+      // if the edge is currently required, unrequire it and then delete
+      if (requiredEdges.includes(edge_id)) {
+        const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
+        setRequiredEdges(updatedEdges);
+        setFilterStack([...filterStack, `deletedrequired edge ${edge_id}`]);
+      } else {
+        setFilterStack([...filterStack, `deleted edge ${edge_id}`]);
+      }
+
       setDeletedEdges([...deletedEdges, edge_id]);
     } else {
       console.log("delete root");

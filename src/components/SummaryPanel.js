@@ -72,6 +72,11 @@ function SummaryPanel({
         let sourceColor = findColor(dict, source);
         let targetColor = findColor(dict, target);
 
+        // Edge case: deleting a required edge
+        if (split[0] === 'deletedrequired') {
+            split[0] = 'deleted';
+        } 
+
         console.log(findColor(dict, source));
 
         const sourceStyle = {
@@ -123,6 +128,12 @@ function SummaryPanel({
             if (item === 'edge') {
                 setDeletedEdges(deletedEdges.filter(elem => elem !== object))
             }
+        }
+
+        if (action === 'deletedrequired') {
+            setDeletedEdges(deletedEdges.filter(elem => elem !== object))
+            setRequiredEdges([...requiredEdges, object])
+            evtBus.fireEvent('requireEdge', { object })
         }
 
         if (action === 'relaxed') {
