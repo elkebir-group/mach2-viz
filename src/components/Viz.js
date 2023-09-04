@@ -629,7 +629,7 @@ function Viz(props) {
           requiredRoots={requiredRoots}
           setDeletedEdges={setDeletedEdges}
           setRequiredEdges={setRequiredEdges}
-          setDeletedRoots={setDeletedEdges}
+          setDeletedRoots={setDeletedRoots}
           setRequiredRoots={setRequiredRoots}
           filterStack={filterStack}
           setFilterStack={setFilterStack}
