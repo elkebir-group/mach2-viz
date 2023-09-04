@@ -652,7 +652,7 @@ function Viz(props) {
               </select>
             </b></p>
           </label>
-          <h3 className="viztitle"><b>{data["name"]}</b></h3>
+          {/*<h3 className="viztitle"><b>{data["name"]}</b></h3>*/}
           {(type !== 'dualviz' && type !== 'triviz' && type !== 'sumviz') ?
             <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
             <></>}
@@ -711,7 +711,7 @@ function Viz(props) {
                 </select>
               </b></p>
             </label>
-            <h3 className="viztitle"><b>{data2["name"]}</b></h3>
+            {/*<h3 className="viztitle"><b>{data2["name"]}</b></h3>*/}
             <span onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
