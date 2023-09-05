@@ -278,6 +278,15 @@ function ClonalTree(props) {
           })
           node.trigger('select');
         }
+        if (eventName === 'resetClonal') {
+          let index = eventData.index
+          if (index === props.index) {
+            setGraphData({
+              nodes: nodes,
+              edges: edges
+            })
+          }
+        }
       };
       props.evtbus.addListener(listener);
     }

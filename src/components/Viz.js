@@ -556,14 +556,12 @@ function Viz(props) {
     setRotate2(!rotated2)
   }
 
-  let resetFn = (event) => {
-    let index = 1
+  let resetFn = (index) => {
     evtBus.fireEvent('resetMigration', { index })
   }
 
-  let resetFn2 = (event) => {
-    let index = 2
-    evtBus.fireEvent('resetMigration', { index })
+  let resetClonal = (index) => {
+    evtBus.fireEvent('resetClonal', {index})
   }
 
   useEffect(() => {
@@ -688,7 +686,7 @@ function Viz(props) {
             <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
             <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-            <button type="button" className="paneltitle button under" onClick={resetFn}>Reset</button>
+            <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
             <Migration key={refreshCounter} tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={evtBus} rotated={rotate}/>
           </div>
           <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
@@ -715,7 +713,15 @@ function Viz(props) {
                 <b>Clonal Tree</b>
               )}
             </p>
-            <ClonalTree key={refreshCounter} tree={!clonalL ? tree : originalTree} labeling={!clonalL ? tree_labeling : originalLabeling} coloring={coloring} evtbus={evtBus} rightcol={type === 'sumviz' || type === 'triviz'}/>
+            <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(1)}>Reset</button>
+            <ClonalTree 
+              key={refreshCounter} 
+              tree={!clonalL ? tree : originalTree} 
+              labeling={!clonalL ? tree_labeling : originalLabeling} 
+              coloring={coloring} 
+              evtbus={evtBus} 
+              rightcol={type === 'sumviz' || type === 'triviz'} 
+              index={1}/>
           </div>
         </div>
       </div>
@@ -743,7 +749,7 @@ function Viz(props) {
               <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
               <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
-              <button type="button" className="paneltitle button under" onClick={resetFn2}>Reset</button>
+              <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
               <Migration key={refreshCounter} tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={evtBus} rightcol={true} rotated={rotate2} />
             </div>
             <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
@@ -768,7 +774,15 @@ function Viz(props) {
                 // If origExists is false, render only Clonal Tree (fallback to <b> element)
                 <b>Clonal Tree</b>
               )}</p>
-              <ClonalTree key={refreshCounter} tree={!clonalR ? tree2 : originalTree} labeling={!clonalR ? tree_labeling2 : originalLabeling} coloring={coloring} evtbus={evtBus} rightcol={true} />
+              <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(2)}>Reset</button>
+              <ClonalTree 
+                key={refreshCounter} 
+                tree={!clonalR ? tree2 : originalTree} 
+                labeling={!clonalR ? tree_labeling2 : originalLabeling} 
+                coloring={coloring} 
+                evtbus={evtBus} 
+                rightcol={true} 
+                index={2}/>
             </div>
           </div>
         </div> :

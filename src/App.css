@@ -368,6 +368,10 @@ input[type="checkbox"] {
   margin-top: 100px;
 }
 
+.paneltitle.button.clonal {
+  margin-top: 30px;
+}
+
 .panel.actionwrapper {
   position: absolute;
   top: 25px;
