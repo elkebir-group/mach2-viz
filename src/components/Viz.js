@@ -400,6 +400,8 @@ function Viz(props) {
   const [tree_labeling2, setTreeLabeling2] = useState([])
   const [migration2, setMigration2] = useState([])
 
+  const [resets, setResets] = useState(0)
+
   // Flag if the original tree exists in the data, 
   // and fetch the data if it exists
   var origExists = true;
@@ -554,6 +556,16 @@ function Viz(props) {
     setRotate2(!rotated2)
   }
 
+  let resetFn = (event) => {
+    let index = 1
+    evtBus.fireEvent('resetMigration', { index })
+  }
+
+  let resetFn2 = (event) => {
+    let index = 2
+    evtBus.fireEvent('resetMigration', { index })
+  }
+
   useEffect(() => {
     setMu(sessionStorage.getItem("mu"));
     setGamma(sessionStorage.getItem("gamma"));
@@ -676,7 +688,8 @@ function Viz(props) {
             <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
             <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-            <Migration key={refreshCounter} tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={evtBus} rotated={rotate} />
+            <button type="button" className="paneltitle button under" onClick={resetFn}>Reset</button>
+            <Migration key={refreshCounter} tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={evtBus} rotated={rotate}/>
           </div>
           <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
           <p className="paneltitle">
@@ -730,6 +743,7 @@ function Viz(props) {
               <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
               <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
+              <button type="button" className="paneltitle button under" onClick={resetFn2}>Reset</button>
               <Migration key={refreshCounter} tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={evtBus} rightcol={true} rotated={rotate2} />
             </div>
             <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>

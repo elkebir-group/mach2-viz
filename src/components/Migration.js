@@ -275,6 +275,14 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
               })
               edge.trigger('select');
             }
+            if (eventName === 'resetMigration') {
+              if ((eventData.index === 1 && !rightcol) || (eventData.index === 2 && rightcol)) {
+                setGraphData({
+                  nodes: nodes,
+                  edges: edges
+                })
+              }
+            }
           };
           evtbus.addListener(listener);
         }

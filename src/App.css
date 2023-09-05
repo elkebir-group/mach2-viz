@@ -364,6 +364,10 @@ input[type="checkbox"] {
   margin-left: 5px;
 }
 
+.paneltitle.button.under {
+  margin-top: 100px;
+}
+
 .panel.actionwrapper {
   position: absolute;
   top: 25px;
