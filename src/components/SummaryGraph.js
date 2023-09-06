@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
@@ -284,6 +284,15 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
                 arrowScale: 1
               })
               edge.data('selected', 'true')
+            }
+            if (eventName === 'resetStack') {
+              let edges = myCyRef.$(`edge`)
+              edges.css({
+                'font-weight': 'normal',
+                width: 3,
+                arrowScale: 1
+              })
+              edges.data('selected', 'false')
             }
           };
           evtbus.addListener(listener);

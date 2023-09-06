@@ -22,6 +22,7 @@ function SummaryPanel({
     setDeletedRoots,
     setRequiredRoots,
     filterStack,
+    setFilterStack
 }) {
     const [tooltip, setTooltip] = useState(false);
 
@@ -146,6 +147,15 @@ function SummaryPanel({
         console.log(object)
     }
 
+    function resetFn() {
+        setFilterStack([])
+        setDeletedEdges([])
+        setRequiredEdges([])
+        setDeletedRoots([])
+        setRequiredRoots([])
+        evtBus.fireEvent('resetStack')
+    }
+
     var summaryGraph = usedData["summary"]["migration"];
 
     if (summaryGraph === undefined) {
@@ -174,6 +184,7 @@ function SummaryPanel({
                     onMouseLeave={() => setTooltip(false)}
                 >↩</p> : <></>}
                 {tooltip ? generateTag(filterStack, coloringDict) : <></>}
+                <button type="button" className="paneltitle button summary" onClick={resetFn}>Reset</button>
                 <SummaryGraph
                     data={summaryGraph}
                     coloringDict={coloringDict}

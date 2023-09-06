@@ -361,7 +361,7 @@ input[type="checkbox"] {
 
 .paneltitle.button {
   margin-top: 75px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .paneltitle.button.under {
@@ -370,6 +370,11 @@ input[type="checkbox"] {
 
 .paneltitle.button.clonal {
   margin-top: 30px;
+  margin-left: 10px
+}
+
+.paneltitle.button.summary {
+  margin-top: 50px;
 }
 
 .panel.actionwrapper {
