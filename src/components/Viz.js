@@ -13,6 +13,7 @@ import SummaryPanel from "./SummaryPanel.js";
 // Popup
 import HelpPopup from "./HelpPopup.js";
 import NoSolutionsPopup from "./NoSolutionsPopup.js";
+import { color, format } from "d3";
 
 /**
  * Finds the root of a tree represented by an edge list.
@@ -389,7 +390,7 @@ function Viz(props) {
   sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
   sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
 
-  let coloring = usedData["coloring"];
+
 
   const [data, setData] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling })[0]);
   const [data2, setData2] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling2 })[0]);
@@ -414,14 +415,25 @@ function Viz(props) {
     origExists = false;
   }
 
+  // let coloring = usedData["coloring"];
+  const [coloring, setColoring] = useState(usedData["coloring"]);
+
+  const colorPalette = [
+    "#a6cee3",
+    "#1f78b4",
+    "#b2df8a",
+    "#33a02c",
+    "#fb9a99",
+    "#e31a1c",
+    "#fdbf6f",
+    "#ff7f00",
+    "#cab2d6",
+    "#6a3d9a",
+    "#ffff99",
+    "#b15928"
+  ]
+
   if (coloring === undefined || coloring.length === 0) {
-    // coloring = data["labeling"]
-    //   .map((item) => item[1])
-    //   .filter((value, index, self) => {
-    //     return self.indexOf(value) === index;
-    //   })
-    //   .map((item, index, self) => [item, `${self.indexOf(item)}`]);
-    // console.log("coloring is undefined");
 
     // Extract labels from the data
     const labels = data["labeling"].map((item) => item[1]);
@@ -432,16 +444,22 @@ function Viz(props) {
     });
 
     // Map each unique label to a new format: [label, indexAsString]
-    const formattedLabels = uniqueLabels.map((label, index) => [label, `${index}`]);
+    const formattedLabels = uniqueLabels.map((label, index) => [label, `${colorPalette[index % colorPalette.length]}`]);
+
+    console.log(formattedLabels);
 
     // Result
-    coloring = formattedLabels;
+    setColoring(formattedLabels);
+    // coloring = formattedLabels;
   }
 
   let coloringDict = {};
-  for (var i = 0; i < coloring.length; i++) {
-    coloringDict[coloring[i][0]] = coloring[i][1];
-  }
+
+  useEffect(() => {
+    for (var i = 0; i < coloring.length; i++) {
+      coloringDict[coloring[i][0]] = coloring[i][1];
+    }
+  }, [coloring])
 
   useEffect(() => {
     updateUsedData();

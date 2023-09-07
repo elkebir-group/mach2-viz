@@ -46,21 +46,21 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
 
     var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
-    const colorPalette = [
-      "#a6cee3",
-      "#1f78b4",
-      "#b2df8a",
-      "#33a02c",
-      "#fb9a99",
-      "#e31a1c",
-      "#fdbf6f",
-      "#ff7f00",
-      "#cab2d6",
-      "#6a3d9a",
-      "#ffff99",
-      "#b15928"
-    ]
-    const ncolors = colorPalette.length;
+    // const colorPalette = [
+    //   "#a6cee3",
+    //   "#1f78b4",
+    //   "#b2df8a",
+    //   "#33a02c",
+    //   "#fb9a99",
+    //   "#e31a1c",
+    //   "#fdbf6f",
+    //   "#ff7f00",
+    //   "#cab2d6",
+    //   "#6a3d9a",
+    //   "#ffff99",
+    //   "#b15928"
+    // ]
+    // const ncolors = colorPalette.length;
 
     function onlyUnique(array) {
       return [...new Set(array)];
@@ -202,7 +202,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
       styleSheet.push({
         selector: `node[label='${key}']`,
         style: {
-          'border-color': hexColorRegex.test(value) ? value : colorPalette[parseInt(value) % ncolors]
+          // 'border-color': hexColorRegex.test(value) ? value : colorPalette[parseInt(value) % ncolors]
+          'border-color': value
         }
       });
     }
@@ -324,7 +325,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
         return '#bbb'
       }
       let color = coloringDict[label];
-      return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
+      // return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors];
+      return color;
     }
 
     function onEdgeTapped(edge, action) {
