@@ -195,6 +195,7 @@ h1, h2, h3, h4, h5, h6, p, header, span, label {
   border-color: #B9B9B9;
   border-radius: 10px;
   border-style: solid;
+  border-width: 3px;
   overflow: auto;
   animation: pulse 0.5s;
 }
@@ -325,16 +326,6 @@ input[type="checkbox"] {
 
 .panel.example::-webkit-scrollbar {
   display: none;
-}
-
-.panel.info {
-  position: absolute;
-  float: left;
-  margin-top: 20px;
-  height: calc(100% - 40px);
-  margin-left: 20px;
-  width: calc(100% - 85px);
-  overflow: hidden;
 }
 
 .panel.migration {
@@ -660,16 +651,9 @@ ul {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-}
+  margin-bottom: 5px;
+  height: 60px;
 
-.panel.info.one.two .titlewrapper .viztitle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  margin-right: 40px;
 }
 
 .titleelem {
@@ -682,6 +666,7 @@ ul {
 
 .titleelem.left {
   margin-left: 20px;
+  /* margin-bottom: 8px; */
   white-space: nowrap;
 }
 
@@ -934,34 +919,87 @@ img {
   cursor: pointer;
 }
 
+.panel.info {
+  position: absolute;
+  float: left;
+  margin-top: 20px;
+  height: calc(100% - 40px);
+  margin-left: 20px;
+  width: calc(100% - 85px);
+  overflow: hidden;
+}
+
+/* if using flexboxes, do something like this: */
+/* 
+.panel.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100% - 40px);
+  margin-top: 20px;
+  overflow: hidden;
+} */
+
+.panel.info.one.two .titlewrapper .viztitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 40px;
+}
+
 .panel.info.one {
-  /* margin-left: 10px;
-  margin-right: 10px; */
+  /* margin: 0; */
+  margin-left: 20px;
   width: calc(50% - 50px);
 }
 
 .panel.info.one.two {
+  /* margin-left: 0px; */
   margin-left: calc(50% - 15px);
 }
 
+/*
+  Math for evenly spacing panels:
+  width w = calc(33.3% - 30px)
+  space between panels x = (100% - 3*(33.3% - 30px)) / 4
+  So location of panel number i (starting from i=1) =i*x + (i-1)*w
+  the - 1px at the end is because the border thickness affects the visual location of
+  the panels. 
+*/
+/* properties of the summary (first) panel given a triviz state (3 panels are open) */
 .panel.info.tri {
-  margin-left: 0;
-  width: calc(34% - 40px);
+  margin-left: 0px;
+  top: 0;
+
+  left: calc((100% - 3*(33.3% - 30px)) / 4 - 1.5px);
+  width: calc(33.3% - 30px);
 }
 
+/* properties of the middle panel, given a triviz state (3 panels are open) */
 .panel.info.tri.two {
-  margin-left: calc(34% - 15px);
+  top: 0;
+  left: calc((33.3% - 30px) + 2*((100% - 3*(33.3% - 30px)) / 4) - 1.5px);
+  width: calc(33.3% - 30px);
 }
 
+/* properties of the last panel, given a triviz state (3 panels are open) */
 .panel.info.tri.three {
-  margin-left: calc(68% - 30px)
+  top: 0;
+  left: calc(2*(33.3% - 30px) + 3*((100% - 3*(33.3% - 30px)) / 4) - 1.5px);
+  width: calc(33.3% - 30px);
+
 }
 
 .panel.info.one.sum {
   margin-left: 0px;
 }
 
+
 .panel.info.one.two.sum {
+  /* margin-left: 0px; */
   margin-left: calc(50% - 20px);
 }
 
