@@ -9,6 +9,36 @@ import dagre from 'cytoscape-dagre';
 Cytoscape.use(COSEBilkent);
 Cytoscape.use(dagre);
 
+function findCorresponding(clonalMap, currNode, clonal) {
+  if (clonal) {
+    let corrNodes = [];
+    clonalMap.forEach((row) => {
+      if (row[1] === currNode) {
+        corrNodes.push(row[0]);
+      }
+    })
+    return corrNodes;
+  } else {
+    clonalMap.forEach((row) => {
+      if (row[0] === currNode) {
+        return [row[1]];
+      }
+    })
+  }
+}
+
+function getSubtree(tree, nodes) {
+  let edges = [];
+
+  tree.forEach((edge) => {
+    if (nodes.includes(edge[0]) && nodes.includes(edge[1])) {
+      edges.push(edge)
+    }
+  })
+
+  return edges;
+}
+
 /** This component contains the clonal tree showing the tumor phylogeny
  * 
  * @param {*} props The JSX props used on this tag
@@ -20,6 +50,7 @@ Cytoscape.use(dagre);
  * @returns The JSX/HTML structure of the component
  */
 function ClonalTree(props) {
+  console.log(props.clonalMap)
   const width = "100%";
   const height = "100%";
 
@@ -287,6 +318,51 @@ function ClonalTree(props) {
             })
           }
         }
+        if (eventName === 'clonalHover') {
+          let corrNodes = eventData.eventParams
+          console.log(props.index)
+
+          if (corrNodes !== undefined) {
+            corrNodes.forEach((source) => {
+              const node = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${source}']`).css({
+                width: 25,
+                height: 25
+              })
+              node.trigger('select');
+            })
+
+            let subtree = getSubtree(props.tree, corrNodes);
+            subtree.forEach((edge) => {
+              myCyRef.$(`edge[label='${edge[0]}->${edge[1]}']`).css({
+                width: 10
+              })
+            })
+          }
+        }
+
+        if (eventName === 'clonalDehover') {
+          let corrNodes = eventData.eventParams
+          console.log(props.index)
+
+          if (corrNodes !== undefined) {
+            corrNodes.forEach((source) => {
+              const node = myCyRef.getElementById(eventData.nodeId);
+              myCyRef.$(`node[id='${source}']`).css({
+                width: 15,
+                height: 15
+              })
+              node.trigger('select');
+            })
+
+            let subtree = getSubtree(props.tree, corrNodes);
+            subtree.forEach((edge) => {
+              myCyRef.$(`edge[label='${edge[0]}->${edge[1]}']`).css({
+                width: 3
+              })
+            })
+          }
+        }
       };
       props.evtbus.addListener(listener);
     }
@@ -352,6 +428,11 @@ function ClonalTree(props) {
 
         // Enlarge the node on hover
         props.evtbus.fireEvent('hoverNodeSC', { nodeId });
+
+        if (props.clonalMap !== []) {
+          let eventParams = findCorresponding(props.clonalMap, nodeId, props.clonal);
+          props.evtbus.fireEvent('clonalHover', { eventParams })
+        }
       });
 
       cy.on('mouseout', 'node', function(event){
@@ -375,6 +456,11 @@ function ClonalTree(props) {
 
         // Shrink the node back to size
         props.evtbus.fireEvent('dehoverNodeSC', { nodeId });
+
+        if (props.clonalMap !== []) {
+          let eventParams = findCorresponding(props.clonalMap, nodeId, props.clonal);
+          props.evtbus.fireEvent('clonalDehover', { eventParams })
+        }
       });
 
       cy.on('mouseover', 'edge', function(event) {

@@ -400,8 +400,8 @@ function Viz(props) {
   const [tree2, setTree2] = useState([])
   const [tree_labeling2, setTreeLabeling2] = useState([])
   const [migration2, setMigration2] = useState([])
-
-  const [resets, setResets] = useState(0)
+  const [clonalMap, setClonalMap] = useState([])
+  const [clonalMap2, setClonalMap2] = useState([])
 
   // Flag if the original tree exists in the data, 
   // and fetch the data if it exists
@@ -468,6 +468,10 @@ function Viz(props) {
     setMigration(data["migration"]);
     setMu(sessionStorage.getItem("mu"));
     setGamma(sessionStorage.getItem("gamma"));
+
+    if (data["origin_node"] !== undefined) {
+      setClonalMap(data["origin_node"])
+    }
   }, [labeling])
 
   useEffect(() => {
@@ -519,7 +523,6 @@ function Viz(props) {
   let closeTab = (tabIndex) => {
     if (type === 'dualviz' || type === 'triviz') {
       setType(type === 'dualviz' ? 'viz' : 'sumviz')
-      console.log(tabIndex)
       if (tabIndex === 1) {
         setData(data2)
         setLabeling(labeling2)
@@ -527,6 +530,10 @@ function Viz(props) {
         setTree(data2["tree"])
         setTreeLabeling(data2["labeling"])
         setMigration(data2["migration"])
+
+        if (data2["origin_node"] !== undefined) {
+          setClonalMap(data["origin_node"])
+        }
       }
       insertParam('type', 'viz')
     } else {
@@ -539,6 +546,10 @@ function Viz(props) {
       setTree2(data2["tree"])
       setTreeLabeling2(data2["labeling"])
       setMigration2(data2["migration"])
+
+      if (data2["origin_node"] !== undefined) {
+        setClonalMap2(data["origin_node"])
+      }
     }
   }, [data2])
 
@@ -739,7 +750,9 @@ function Viz(props) {
               coloring={coloring} 
               evtbus={evtBus} 
               rightcol={type === 'sumviz' || type === 'triviz'} 
-              index={1}/>
+              index={1}
+              clonalMap={clonalMap}
+              clonal={clonalL}/>
           </div>
         </div>
       </div>
@@ -800,7 +813,9 @@ function Viz(props) {
                 coloring={coloring} 
                 evtbus={evtBus} 
                 rightcol={true} 
-                index={2}/>
+                index={2}
+                clonalMap={clonalMap2}
+                clonal={clonalR}/>
             </div>
           </div>
         </div> :
