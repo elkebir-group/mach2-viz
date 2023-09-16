@@ -388,43 +388,45 @@ function ClonalTree(props) {
         var node = event.target;
         var label = node.data('label');
         
-        // Create the div element
-        var div = document.createElement("div");
-        div.setAttribute("class", "panel popup");
+        if (label !== undefined) {
+          // Create the div element
+          var div = document.createElement("div");
+          div.setAttribute("class", "panel popup");
 
-        div.innerHTML = `<p>${label}&nbsp;</p>`;
-      
-        // Position the div element near the node
-        const nodePos = node.position();
+          div.innerHTML = `<p>${label}&nbsp;</p>`;
         
-        // Get the container element
-        const container = cy.container();
-        const zoomLevel = cy.zoom();
+          // Position the div element near the node
+          const nodePos = node.position();
+          
+          // Get the container element
+          const container = cy.container();
+          const zoomLevel = cy.zoom();
 
 
-        // Get the container's absolute position on the webpage
-        const containerRect = container.getBoundingClientRect();
+          // Get the container's absolute position on the webpage
+          const containerRect = container.getBoundingClientRect();
 
 
-        div.style.position = "absolute";
-        const absoluteX = containerRect.left + nodePos.x * zoomLevel + cy.pan().x + 15;
-        const absoluteY = containerRect.top + nodePos.y * zoomLevel + cy.pan().y - 15;
+          div.style.position = "absolute";
+          const absoluteX = containerRect.left + nodePos.x * zoomLevel + cy.pan().x + 15;
+          const absoluteY = containerRect.top + nodePos.y * zoomLevel + cy.pan().y - 15;
 
-        div.style.top = absoluteY + 'px';
-        div.style.left = absoluteX + 'px';
-      
-        // Add the div element to the page
-        document.body.appendChild(div);
+          div.style.top = absoluteY + 'px';
+          div.style.left = absoluteX + 'px';
+        
+          // Add the div element to the page
+          document.body.appendChild(div);
+
+          // Style the anatomical location tag on hover
+          var labeltag = document.querySelector(`#${label}`);
+          if (labeltag !== null) {
+            labeltag.style.opacity = 1;
+            labeltag.style.zIndex = 100;
+            labeltag.style.fontWeight = 'bold';
+          }
+        }
 
         const nodeId = event.target.id();
-
-        // Style the anatomical location tag on hover
-        var labeltag = document.querySelector(`#${label}`);
-        if (labeltag !== null) {
-          labeltag.style.opacity = 1;
-          labeltag.style.zIndex = 100;
-          labeltag.style.fontWeight = 'bold';
-        }
 
         // Enlarge the node on hover
         props.evtbus.fireEvent('hoverNodeSC', { nodeId });
