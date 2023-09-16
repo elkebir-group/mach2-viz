@@ -13,7 +13,6 @@ import SummaryPanel from "./SummaryPanel.js";
 // Popup
 import HelpPopup from "./HelpPopup.js";
 import NoSolutionsPopup from "./NoSolutionsPopup.js";
-import { color, format } from "d3";
 
 /**
  * Finds the root of a tree represented by an edge list.
