@@ -139,6 +139,9 @@ function Viz(props) {
   const [gammaSum, setGammaSum] = useState(0);
   const jsonContents = sessionStorage.getItem("json_data");
 
+  const jsonDict = JSON.parse(jsonContents);
+  const multiSoln = jsonDict['profiles'] !== undefined;
+
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
   const [requiredEdges, setRequiredEdges] = useState([]);
@@ -241,11 +244,11 @@ function Viz(props) {
     if (clonalR) setClonalR(!clonalR)
   }
 
-  const [usedData, setUsedData] = useState(JSON.parse(jsonContents));
+  const [usedData, setUsedData] = useState(multiSoln ? jsonDict['profiles'][0] : jsonDict);
 
   function updateUsedData() {
 
-    const wholeData = JSON.parse(jsonContents);
+    const wholeData = multiSoln ? jsonDict['profiles'][0] : jsonDict;
 
     let tempUsedData = {
       "name": wholeData["name"],
@@ -388,8 +391,6 @@ function Viz(props) {
 
   sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
   sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
-
-
 
   const [data, setData] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling })[0]);
   const [data2, setData2] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling2 })[0]);
