@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/mach2-viz/static/media/sample_page.802f465b.png"
   },
   {
-    "revision": "e5d128666982eeeabae9cc97590309ce",
-    "url": "/mach2-viz/static/media/cursor8.e5d12866.cur"
-  },
-  {
     "revision": "97a55c954a18d2daae22c5f9114794d5",
     "url": "/mach2-viz/static/media/lucon.97a55c95.ttf"
+  },
+  {
+    "revision": "e5d128666982eeeabae9cc97590309ce",
+    "url": "/mach2-viz/static/media/cursor8.e5d12866.cur"
   },
   {
     "revision": "d38d58b41583be0326ef622f26d2d438",
