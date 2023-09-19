@@ -367,6 +367,7 @@ function Viz(props) {
   const multiSoln = Array.isArray(usedData['original'])
 
   const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => { return value["name"] }));
+  const [inputNames, setInputNames] = useState(multiSoln ? usedData["original"].map((value, index) => { return value["name"] }) : []);
 
   const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
 
@@ -507,8 +508,12 @@ function Viz(props) {
     setData2(usedData["solutions"].filter((item) => { return item["name"] === event.target.value })[0]);
   }
 
+  let handleInputChange = (event) => {
+    insertParam("input", event.target.value);
+    setInputTree(event.target.value)
+  }
+
   let addTab = (event) => {
-    //window.location = `${window.location.protocol}//${window.location.host}/mach2-viz/#/dualviz?labeling=${queryParameters.get("labeling")}&labeling2=${queryParameters.get("labeling")}`;
     if (type === 'sumviz') {
       insertParam("type", "triviz")
       setType('triviz')
@@ -698,9 +703,10 @@ function Viz(props) {
                 <select
                   name="inputs"
                   id="inputs"
+                  onChange={handleInputChange}
                   value={inputTree}
                 >
-                  {}
+                  {inputNames.map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
               </b></p>
             </label> : <></>
