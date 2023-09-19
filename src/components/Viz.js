@@ -140,7 +140,6 @@ function Viz(props) {
   const jsonContents = sessionStorage.getItem("json_data");
 
   const jsonDict = JSON.parse(jsonContents);
-  const multiSoln = jsonDict['profiles'] !== undefined;
 
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
@@ -244,11 +243,11 @@ function Viz(props) {
     if (clonalR) setClonalR(!clonalR)
   }
 
-  const [usedData, setUsedData] = useState(multiSoln ? jsonDict['profiles'][0] : jsonDict);
+  const [usedData, setUsedData] = useState(jsonDict);
 
   function updateUsedData() {
 
-    const wholeData = multiSoln ? jsonDict['profiles'][0] : jsonDict;
+    const wholeData = jsonDict;
 
     let tempUsedData = {
       "name": wholeData["name"],
@@ -365,6 +364,8 @@ function Viz(props) {
     return 0;
   }
 
+  const multiSoln = Array.isArray(usedData['original'])
+
   const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => { return value["name"] }));
 
   const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
@@ -402,6 +403,8 @@ function Viz(props) {
   const [migration2, setMigration2] = useState([])
   const [clonalMap, setClonalMap] = useState([])
   const [clonalMap2, setClonalMap2] = useState([])
+  const [inputTree, setInputTree] = useState(multiSoln ? jsonDict["original"][0]["name"] : "")
+  const [inputTree2, setInputTree2] = useState(multiSoln ? jsonDict["original"][0]["name"] : "")
 
   // Flag if the original tree exists in the data, 
   // and fetch the data if it exists
@@ -689,6 +692,19 @@ function Viz(props) {
             ''
         }`}>
         <div className="titlewrapper">
+          { multiSoln ?
+            <label className="titleelem left" htmlFor="inputs">
+              <p><b>Input Tree:
+                <select
+                  name="inputs"
+                  id="inputs"
+                  value={inputTree}
+                >
+                  {}
+                </select>
+              </b></p>
+            </label> : <></>
+          }
           <label className="titleelem left" htmlFor="labelings">
             <p><b>Full Labeling:
               <select 
