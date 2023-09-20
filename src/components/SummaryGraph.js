@@ -350,6 +350,18 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
         stylesheet={styleSheet}
         cy={cy => {
           myCyRef = cy;
+
+          cy.ready(function() {
+            requiredEdges.forEach(edgeId => {
+              let selectedEdge = cy.getElementById(edgeId);
+              selectedEdge.css({
+                'font-weight': 'bold',
+                width: 10,
+                arrowScale: 1
+              })
+              selectedEdge.data('selected', 'true')
+            });
+          })
           
           cy.off("cxttap", "edge");
           cy.on("cxttap", "edge", evt => {
