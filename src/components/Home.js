@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Link
   } from "react-router-dom";
@@ -12,8 +12,6 @@ import fileDownload from 'js-file-download'
 import DefaultDict from "../utils/DefaultDict.js";
 
 import { compressUrlSafe } from '../utils/lzma-url.js';
-
-import LoadingPopup from './LoadingPopup';
 
 // Import the patient sample datasets
 import A1 from "../samples/A1/A1.json";
@@ -42,8 +40,6 @@ import tracerx from "../samples/tracerx/tracerx.json";
  * @returns JSX/HTML
  */
 function Home() {
-    const [loadingAction, setLoadingAction] = useState(false);
-
     /** Download the json dataset when the icon is clicked
      * 
      * @param {*} url (string) The url to download from 
@@ -103,10 +99,7 @@ function Home() {
         var link = URLs[current_patient];
 
         div_elements.push(
-          <Link to={link} className="patient-link" onClick={() => {
-              if (default_patients[i] === 'A22') setLoadingAction(true);
-              sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(json_dict[default_patients[i]])))
-            }}>
+          <Link to={link} className="patient-link" onClick={() => {sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(json_dict[default_patients[i]])))}}>
             <div className="patient-container">
               <div className="patientitem" style={{ backgroundColor: current_color }}>
                   <p><b>{current_directory}</b></p>
@@ -159,13 +152,8 @@ function Home() {
       
     }
 
-    let toggleLoadingPopup = () => {
-      setLoadingAction(!loadingAction);
-    }
-
     return (
         <div className='home'>
-            <LoadingPopup isPopupOpen={loadingAction} togglePopup={toggleLoadingPopup}></LoadingPopup>
             <div className='home-panel'>
                 <div className='home-column-1'>
                   <h1><b>Welcome to MACH2!</b></h1>
