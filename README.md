@@ -4,37 +4,10 @@ MACH2 is an upgraded version of MACHINA. Visualizing the solution space for the 
 ## Current Deployed Version
 To view the current deployment of MACH2Viz, go to [this link](https://elkebir-group.github.io/mach2-viz/#/)
 
-## File Inputs
-MACHINA-Viz takes file inputs in a json file format. The json is in the following format:
-```
-{
-  "name": <patient name>,
-  "solutions": [
-    {
-      "name": <solution name>,
-      "tree": [
-        [u, v],
-        ...
-      ],
-      "labeling": [
-        [n, label],
-        ...
-      ],
-      "migration": [
-        [label_u, label_v, # occurences],
-        ...
-      ]
-    },
-    ...
-  ],
-  "summary": {
-    "migration": [
-      [label_u, label_v, # occurences],
-      ...
-    ]
-  }
-}
-```
-In a given solution, $u$ and $v$ are node IDs in a solution's clonal tree, $n$ is a clonal tree node ID, and $label$ is the anatomical labeling for $n$. The migration graph is stored as a weighted edge list between anatomical locations $label_u$ and $label_v$. The edges are weighted by the number of metastases between those two anatomical locations as inferred from the clonal tree. The summary is a migration graph where the number of metastases are counted across the entire solution space.
-### JSON Compression
-If you have outputs from MACHINA that need to be compressed, use [json_compression](https://github.com/vikramr2/json_compression).
+## Running MACH2-Viz on Localhost
+To run MACH2-Viz on localhost, simply do the following:  
+1. Clone this repository
+2. Run `npm install`
+3. Run `npm start`  
+  a. **NOTE:** You may run into dependency issues with OpenSSL  
+  b. in which case simply run `export NODE_OPTIONS=--openssl-legacy-provider` and try again
