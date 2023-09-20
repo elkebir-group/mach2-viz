@@ -182,6 +182,8 @@ function Viz(props) {
   }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots]);
 
   function onDeleteSummaryEdge(edge_id) {
+    if (largeFile) setLoadingAction(true);
+
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
       //console.log("delete");
@@ -204,6 +206,8 @@ function Viz(props) {
   }
 
   function onRequireSummaryEdge(edge_id) {
+    if (largeFile) setLoadingAction(true);
+
     let [source, target] = edge_id.split('->')
     if (source !== 'roots') {
       if (requiredEdges.includes(edge_id)) {
@@ -233,18 +237,26 @@ function Viz(props) {
   }
 
   function onToggleInputClonalL() {
+    if (largeFile) setLoadingAction(true);
+
     if (!clonalL) setClonalL(!clonalL)
   }
 
   function onToggleOutputClonalL() {
+    if (largeFile) setLoadingAction(true);
+
     if (clonalL) setClonalL(!clonalL)
   }
 
   function onToggleInputClonalR() {
+    if (largeFile) setLoadingAction(true);
+
     if (!clonalR) setClonalR(!clonalR)
   }
 
   function onToggleOutputClonalR() {
+    if (largeFile) setLoadingAction(true);
+    
     if (clonalR) setClonalR(!clonalR)
   }
 
