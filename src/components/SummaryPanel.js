@@ -22,7 +22,8 @@ function SummaryPanel({
     setDeletedRoots,
     setRequiredRoots,
     filterStack,
-    setFilterStack
+    setFilterStack,
+    setLoadingAction
 }) {
     const [tooltip, setTooltip] = useState(false);
 
@@ -194,6 +195,7 @@ function SummaryPanel({
                     onRequireSummaryEdge={onRequireSummaryEdge}
                     roots={roots}
                     requiredEdges={requiredEdges}
+                    setLoadingAction={setLoadingAction}
                 />
             </div>
         </div>

@@ -19,7 +19,7 @@ Cytoscape.use(COSEBilkent);
  * - rotated:   Is the graph rotated?
  * @returns JSX/HTML
  */
-function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rotated }) {
+function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rotated, setLoadingAction }) {
       var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
       const colorPalette = [
@@ -326,6 +326,10 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
         stylesheet={styleSheet}
         cy={cy => {
           myCyRef = cy;
+
+          cy.ready(function() {
+            setLoadingAction(false);
+          })
 
           cy.on('mouseover', 'edge', function(event) {
             const { target } = event;

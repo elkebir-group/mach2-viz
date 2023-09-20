@@ -19,7 +19,7 @@ Cytoscape.use(COSEBilkent);
  * - evtbus
  * @returns 
  */
-function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, onRequireSummaryEdge, roots, requiredEdges}) {
+function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, onRequireSummaryEdge, roots, requiredEdges, setLoadingAction}) {
 
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Shift') {
@@ -361,6 +361,8 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               })
               selectedEdge.data('selected', 'true')
             });
+
+            setLoadingAction(false);
           })
           
           cy.off("cxttap", "edge");

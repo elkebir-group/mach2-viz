@@ -526,18 +526,30 @@ function Viz(props) {
   let coord_map = usedData["map"];
 
   let handleLabelChange = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     insertParam("labeling", event.target.value);
     setLabeling(event.target.value)
     setData(usedData["solutions"].filter((item) => { return item["name"] === event.target.value })[0]);
   }
 
   let handleLabelChange2 = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     insertParam("labeling2", event.target.value);
     setLabeling2(event.target.value)
     setData2(usedData["solutions"].filter((item) => { return item["name"] === event.target.value })[0]);
   }
 
   let handleInputChange = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     insertParam("input", event.target.value);
     setInputTree(event.target.value);
 
@@ -551,6 +563,10 @@ function Viz(props) {
   }
 
   let handleInputChange2 = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     insertParam("input2", event.target.value);
     setInputTree2(event.target.value);
 
@@ -564,6 +580,10 @@ function Viz(props) {
   }
 
   let addTab = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     if (type === 'sumviz') {
       insertParam("type", "triviz")
       setType('triviz')
@@ -579,6 +599,10 @@ function Viz(props) {
   }
 
   let closeTab = (tabIndex) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     if (type === 'dualviz' || type === 'triviz') {
       setType(type === 'dualviz' ? 'viz' : 'sumviz')
       if (tabIndex === 1) {
@@ -624,6 +648,10 @@ function Viz(props) {
   }, [type]);
 
   let gotoSummary = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     if (type === 'dualviz') {
       setType('triviz');
       insertParam('type', 'triviz')
@@ -634,22 +662,38 @@ function Viz(props) {
   }
 
   let rotateFn = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     let rotated = queryParameters.get("rotated") === "true";
     insertParam("rotated", !rotated);
     setRotate(!rotated)
   }
 
   let rotateFn2 = (event) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     let rotated2 = queryParameters.get("rotated2") === "true";
     insertParam("rotated2", !rotated2);
     setRotate2(!rotated2)
   }
 
   let resetFn = (index) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     evtBus.fireEvent('resetMigration', { index })
   }
 
   let resetClonal = (index) => {
+    if (largeFile) {
+      setLoadingAction(true);
+    }
+
     evtBus.fireEvent('resetClonal', {index})
   }
 
@@ -744,6 +788,7 @@ function Viz(props) {
           setRequiredRoots={setRequiredRoots}
           filterStack={filterStack}
           setFilterStack={setFilterStack}
+          setLoadingAction={setLoadingAction}
         /> : <></>}
       <div className={`panel info ${type === 'dualviz' ? 'one' :
         type === 'sumviz' ? 'one two' :
@@ -792,7 +837,15 @@ function Viz(props) {
             <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
             <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
-            <Migration key={refreshCounter} tree={tree} labeling={tree_labeling} coloring={coloring} migration={migration} evtbus={evtBus} rotated={rotate}/>
+            <Migration 
+              key={refreshCounter} 
+              tree={tree} 
+              labeling={tree_labeling} 
+              coloring={coloring} 
+              migration={migration} 
+              evtbus={evtBus} 
+              rotated={rotate}
+              setLoadingAction={setLoadingAction}/>
           </div>
           <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
           <p className="paneltitle">
@@ -828,7 +881,8 @@ function Viz(props) {
               rightcol={type === 'sumviz' || type === 'triviz'} 
               index={1}
               clonalMap={clonalMap}
-              clonal={clonalL}/>
+              clonal={clonalL}
+              setLoadingAction={setLoadingAction}/>
           </div>
         </div>
       </div>
@@ -871,7 +925,16 @@ function Viz(props) {
               <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
               <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
-              <Migration key={refreshCounter} tree={tree2} labeling={tree_labeling2} coloring={coloring} migration={migration2} evtbus={evtBus} rightcol={true} rotated={rotate2} />
+              <Migration 
+                key={refreshCounter} 
+                tree={tree2} 
+                labeling={tree_labeling2} 
+                coloring={coloring} 
+                migration={migration2} 
+                evtbus={evtBus} 
+                rightcol={true} 
+                rotated={rotate2} 
+                setLoadingAction={setLoadingAction}/>
             </div>
             <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
               <p className="paneltitle">{origExists ? (
@@ -905,7 +968,8 @@ function Viz(props) {
                 rightcol={true} 
                 index={2}
                 clonalMap={clonalMap2}
-                clonal={clonalR}/>
+                clonal={clonalR}
+                setLoadingAction={setLoadingAction}/>
             </div>
           </div>
         </div> :
