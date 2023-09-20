@@ -19,7 +19,7 @@ export default function HelpPopup( {isPopupOpen, togglePopup} ) {
                     <button
                         className='close-button'
                         onClick={() => {
-                        console.log('modal closed ');
+                        //console.log('modal closed ');
                         togglePopup();
                         }}
                     >

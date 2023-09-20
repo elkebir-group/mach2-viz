@@ -78,7 +78,7 @@ function SummaryPanel({
             split[0] = 'deleted';
         } 
 
-        console.log(findColor(dict, source));
+        //console.log(findColor(dict, source));
 
         const sourceStyle = {
             display: 'inline-block',
@@ -142,9 +142,9 @@ function SummaryPanel({
             evtBus.fireEvent('requireEdge', { object })
         }
 
-        console.log(action)
-        console.log(item)
-        console.log(object)
+        //console.log(action)
+        //console.log(item)
+        //console.log(object)
     }
 
     function resetFn() {

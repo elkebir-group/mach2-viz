@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
@@ -44,7 +44,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
       }
     }
 
-    var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+    // var hexColorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
     // const colorPalette = [
     //   "#a6cee3",
@@ -268,7 +268,7 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               node.trigger('select');
             }
             if (eventName === 'unrequireEdge') {
-              console.log(eventData.object);
+              //console.log(eventData.object);
               let edge = myCyRef.$(`edge[id='${eventData.object}']`)
               edge.css({
                 'font-weight': 'normal',

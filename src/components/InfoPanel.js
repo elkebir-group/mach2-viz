@@ -8,7 +8,7 @@ function InfoPanel(props) {
     let closeTab = (tabIndex) => {
         if (type === 'dualviz' || type === 'triviz') {
           setType(type === 'dualviz' ? 'viz' : 'sumviz')
-          console.log(tabIndex)
+          //console.log(tabIndex)
           if (tabIndex == 1) {
             setData(data2)
             setLabeling(labeling2)

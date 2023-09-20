@@ -50,7 +50,7 @@ function getSubtree(tree, nodes) {
  * @returns The JSX/HTML structure of the component
  */
 function ClonalTree(props) {
-  console.log(props.clonalMap)
+  //console.log(props.clonalMap)
   const width = "100%";
   const height = "100%";
 
@@ -320,7 +320,7 @@ function ClonalTree(props) {
         }
         if (eventName === 'clonalHover') {
           let corrNodes = eventData.eventParams
-          console.log(props.index)
+          //console.log(props.index)
 
           if (corrNodes !== undefined) {
             corrNodes.forEach((source) => {
@@ -343,7 +343,7 @@ function ClonalTree(props) {
 
         if (eventName === 'clonalDehover') {
           let corrNodes = eventData.eventParams
-          console.log(props.index)
+          //console.log(props.index)
 
           if (corrNodes !== undefined) {
             corrNodes.forEach((source) => {

@@ -179,7 +179,7 @@ function Viz(props) {
   function onDeleteSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
-      console.log("delete");
+      //console.log("delete");
       // if the edge is currently required, unrequire it and then delete
       if (requiredEdges.includes(edge_id)) {
         const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
@@ -191,8 +191,8 @@ function Viz(props) {
 
       setDeletedEdges([...deletedEdges, edge_id]);
     } else {
-      console.log("delete root");
-      console.log(deletedRoots)
+      //console.log("delete root");
+      //console.log(deletedRoots)
       setFilterStack([...filterStack, `deleted root ${target}`]);
       setDeletedRoots([...deletedRoots, target]);
     }
@@ -202,18 +202,18 @@ function Viz(props) {
     let [source, target] = edge_id.split('->')
     if (source !== 'roots') {
       if (requiredEdges.includes(edge_id)) {
-        console.log("relax");
+        //console.log("relax");
         // If edge_id exists, remove all instances of edge_id from requiredEdges
         const updatedEdges = requiredEdges.filter((edge) => edge !== edge_id);
         setRequiredEdges(updatedEdges);
         setFilterStack([...filterStack, `relaxed edge ${edge_id}`]);
       } else {
-        console.log("require");
+        //console.log("require");
         setFilterStack([...filterStack, `required edge ${edge_id}`]);
         setRequiredEdges([...requiredEdges, edge_id]);
       }
     } else {
-      console.log("require root");
+      //console.log("require root");
       setFilterStack([...filterStack, `required root ${target}`]);
       setRequiredRoots([...requiredRoots, target]);
     }
@@ -327,16 +327,16 @@ function Viz(props) {
       const last_edit = filterStack[filterStack.length - 1];
       setFilterStack(filterStack.slice(0, -1));
       if (last_edit.slice(0, 12) === 'deleted edge') {
-        console.log("the last command was a delete edge command");
+        //console.log("the last command was a delete edge command");
         setDeletedEdges(deletedEdges.slice(0, -1));
       } else if (last_edit.slice(0, 12) === 'deleted root') {
-        console.log("the last command was a delete root command");
+        //console.log("the last command was a delete root command");
         setDeletedEdges(deletedRoots.slice(0, -1));
       } else if (last_edit.slice(0, 13)  === 'required root') {
-        console.log("the last command was a require root command");
+        //console.log("the last command was a require root command");
         setDeletedEdges(requiredRoots.slice(0, -1));
       } else {
-        console.log("the last command was a require edge command");
+        //console.log("the last command was a require edge command");
         setRequiredEdges(requiredEdges.slice(0, -1));
       }
 
@@ -465,7 +465,7 @@ function Viz(props) {
     // Map each unique label to a new format: [label, indexAsString]
     const formattedLabels = uniqueLabels.map((label, index) => [label, `${colorPalette[index % colorPalette.length]}`]);
 
-    console.log(formattedLabels);
+    //console.log(formattedLabels);
 
     // Result
     setColoring(formattedLabels);
@@ -678,6 +678,9 @@ function Viz(props) {
     },
   });
 
+  // just to clear errors
+  console.log(setEvtBus)
+
   // Popups
   const [isHelpPopupOpen, setIsHelpPopupOpen] = useState(false);
   const [isNoSolutionsPopupOpen, setIsNoSolutionsPopupOpen] = useState(false);
@@ -697,7 +700,7 @@ function Viz(props) {
   function handleKeyPress(event) {
     if (event.key === '/') {
       // alert('Instructions:\n\nToggle and move around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.\n\nSelect different solutions from the dropdown on the top left of the panel.\n\nTo compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.\n\nYou can return home by clicking the [X].');
-      console.log("/ key pressed!")
+      //console.log("/ key pressed!")
       toggleHelpPopup();
     }
   }
