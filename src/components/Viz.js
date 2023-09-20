@@ -353,12 +353,25 @@ function Viz(props) {
 
     let tempNames = tempUsedData["solutions"].map((value, index) => { return value["name"] })
 
-    if (!tempNames.includes(data["name"])) {
-      setData(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
-    }
+    if (multiSoln) {
+      let tempNames1 = tempNames.filter((value, index) => { return inputData['solution_names'].includes(value) });
+      let tempNames2 = tempNames.filter((value, index) => { return inputData2['solution_names'].includes(value) });
 
-    if (data2 !== undefined && !tempNames.includes(data2["name"])) {
-      setData2(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
+      if (!tempNames1.includes(data["name"])) {
+        setData(tempUsedData['solutions'].filter((item) => { return item['name'] === tempNames1[0] })[0])
+      }
+  
+      if (multiSoln && data2 !== undefined && !tempNames2.includes(data2['name'])) {
+        setData2(tempUsedData['solutions'].filter((item) => { return item['name'] === tempNames2[0]})[0])
+      }
+    } else {
+      if (!tempNames.includes(data["name"])) {
+        setData(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
+      }
+
+      if (data2 !== undefined && !tempNames.includes(data2["name"])) {
+        setData2(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
+      }
     }
 
     return 0;
@@ -406,6 +419,8 @@ function Viz(props) {
   const [clonalMap2, setClonalMap2] = useState([])
   const [inputTree, setInputTree] = useState(multiSoln ? jsonDict["original"][0]["name"] : "")
   const [inputTree2, setInputTree2] = useState(multiSoln ? jsonDict["original"][0]["name"] : "")
+  const [inputData, setInputData] = useState(multiSoln ? jsonDict["original"][0] : "")
+  const [inputData2, setInputData2] = useState(multiSoln ? jsonDict["original"][0] : "")
 
   // Flag if the original tree exists in the data, 
   // and fetch the data if it exists
@@ -480,6 +495,16 @@ function Viz(props) {
 
   useEffect(() => {
     setLabelNames(usedData["solutions"].map((value, index) => { return value["name"] }))
+
+    if (multiSoln) {
+      let solutionNames = usedData["solutions"].map((value, index) => { return value["name"] });
+
+      let temps = usedData["original"].filter((value, index) => {
+        return value['solution_names'].some(item => solutionNames.includes(item))
+      }).map((value, index) => { return value["name"] })
+
+      setInputNames(temps);
+    }
   }, [usedData])
 
   useEffect(() => {
@@ -510,7 +535,28 @@ function Viz(props) {
 
   let handleInputChange = (event) => {
     insertParam("input", event.target.value);
-    setInputTree(event.target.value)
+    setInputTree(event.target.value);
+
+    usedData['original'].forEach((elem) => {
+      if (elem['name'] === event.target.value) {
+        setInputData(elem);
+        setLabeling(elem['solution_names'][0]);
+        setData(usedData['solutions'].filter((item) => {return item["name"] === elem['solution_names'][0]})[0]);
+      }
+    })
+  }
+
+  let handleInputChange2 = (event) => {
+    insertParam("input2", event.target.value);
+    setInputTree2(event.target.value);
+
+    usedData['original'].forEach((elem) => {
+      if (elem['name'] === event.target.value) {
+        setInputData2(elem);
+        setLabeling2(elem['solution_names'][0]);
+        setData2(usedData['solutions'].filter((item) => {return item["name"] === elem['solution_names'][0]})[0]);
+      }
+    })
   }
 
   let addTab = (event) => {
@@ -538,6 +584,8 @@ function Viz(props) {
         setTree(data2["tree"])
         setTreeLabeling(data2["labeling"])
         setMigration(data2["migration"])
+        setInputData(inputData2)
+        setInputTree(inputTree2)
 
         if (data2["origin_node"] !== undefined) {
           setClonalMap(data["origin_node"])
@@ -699,7 +747,7 @@ function Viz(props) {
         <div className="titlewrapper">
           { multiSoln ?
             <label className="titleelem left" htmlFor="inputs">
-              <p><b>Input Tree:
+              <p><b>{multiSoln && type === 'triviz' ? '' : 'Input Tree: '}
                 <select
                   name="inputs"
                   id="inputs"
@@ -711,15 +759,15 @@ function Viz(props) {
               </b></p>
             </label> : <></>
           }
-          <label className="titleelem left" htmlFor="labelings">
-            <p><b>Full Labeling:
+          <label className="titleelem end" htmlFor="labelings">
+            <p><b>{multiSoln && type === 'triviz' ? '' : 'Full Labeling: '}
               <select 
                 name="labelings" 
                 id="labelings" 
                 onChange={handleLabelChange} 
                 value={labeling}  // Set the value prop here
               >
-                {labelNames.map(l => <option key={l} value={l}>{l}</option>)}
+                {labelNames.filter(l => multiSoln ? inputData['solution_names'].includes(l) : true).map(l => <option key={l} value={l}>{l}</option>)}
               </select>
             </b></p>
           </label>
@@ -767,8 +815,8 @@ function Viz(props) {
             <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(1)}>Reset</button>
             <ClonalTree 
               key={refreshCounter} 
-              tree={!clonalL ? tree : originalTree} 
-              labeling={!clonalL ? tree_labeling : originalLabeling} 
+              tree={!clonalL ? tree : multiSoln ? inputData['tree'] : originalTree} 
+              labeling={!clonalL ? tree_labeling : multiSoln ? inputData['labeling'] : originalLabeling} 
               coloring={coloring} 
               evtbus={evtBus} 
               rightcol={type === 'sumviz' || type === 'triviz'} 
@@ -781,15 +829,29 @@ function Viz(props) {
       {(type === 'dualviz' || type === 'triviz') ?
         <div className={`panel info ${type === 'dualviz' ? 'one two' : 'tri three'}`}>
           <div className="titlewrapper">
+            { multiSoln ?
+              <label className="titleelem left" htmlFor="inputs">
+                <p><b>{multiSoln && type === 'triviz' ? '' : 'Input Tree: '}
+                  <select
+                    name="inputs"
+                    id="inputs"
+                    onChange={handleInputChange2}
+                    value={inputTree2}
+                  >
+                    {inputNames.map(l => <option key={l} value={l}>{l}</option>)}
+                  </select>
+                </b></p>
+              </label> : <></>
+            }
             <label className="titleelem left" htmlFor="labelings">
-              <p><b>Full Labeling:
+              <p><b>{multiSoln && type === 'triviz' ? '' : 'Full Labeling: '}
                 <select 
                   name="labelings" 
                   id="labelings" 
                   onChange={handleLabelChange2}
                   value={labeling2}  // Set the value prop here
                 >
-                  {labelNames.map(l => <option key={l} value={l}>{l}</option>)}
+                  {labelNames.filter(l => multiSoln ? inputData2['solution_names'].includes(l) : true).map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
               </b></p>
             </label>
@@ -830,8 +892,8 @@ function Viz(props) {
               <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(2)}>Reset</button>
               <ClonalTree 
                 key={refreshCounter} 
-                tree={!clonalR ? tree2 : originalTree} 
-                labeling={!clonalR ? tree_labeling2 : originalLabeling} 
+                tree={!clonalR ? tree2 : multiSoln ? inputData2['tree'] : originalTree} 
+                labeling={!clonalR ? tree_labeling2 : multiSoln ? inputData2['labeling'] : originalLabeling} 
                 coloring={coloring} 
                 evtbus={evtBus} 
                 rightcol={true} 
