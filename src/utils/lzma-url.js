@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /*
 The LZMA impementation is taken from https://npm.is/lzma-js, converted to an ES module and with some features stripped off (e.g. async mode, worker support)
 

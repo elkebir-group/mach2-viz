@@ -14,6 +14,7 @@ import SummaryPanel from "./SummaryPanel.js";
 // Popup
 import HelpPopup from "./HelpPopup.js";
 import NoSolutionsPopup from "./NoSolutionsPopup.js";
+import LoadingPopup from "./LoadingPopup.js";
 
 /**
  * Finds the root of a tree represented by an edge list.
@@ -141,6 +142,9 @@ function Viz(props) {
   const jsonContents = decompressUrlSafe(sessionStorage.getItem("json_data"));
 
   const jsonDict = JSON.parse(jsonContents);
+  const largeFile = jsonDict['solutions'].length > 1000;
+
+  const [loadingAction, setLoadingAction] = useState(true);
 
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
@@ -247,7 +251,6 @@ function Viz(props) {
   const [usedData, setUsedData] = useState(jsonDict);
 
   function updateUsedData() {
-
     const wholeData = jsonDict;
 
     let tempUsedData = {
@@ -374,7 +377,7 @@ function Viz(props) {
         setData2(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
       }
     }
-
+    setLoadingAction(false);
     return 0;
   }
 
@@ -712,6 +715,7 @@ function Viz(props) {
     <div className="viz">
       <HelpPopup isPopupOpen={isHelpPopupOpen} togglePopup={toggleHelpPopup}></HelpPopup>
       <NoSolutionsPopup isPopupOpen={isNoSolutionsPopupOpen} togglePopup={toggleNoSolutionsPopup}></NoSolutionsPopup>
+      {largeFile && <LoadingPopup isPopupOpen={loadingAction} togglePopup={toggleNoSolutionsPopup}></LoadingPopup>}
       {type !== 'sumviz' && type !== 'triviz' ?
         <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         : <></>}

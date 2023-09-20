@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 /**
  * Convert between Uint8Array and Base64 strings
  * Allows for any encoded JS string to be converted (as opposed to atob()/btoa() which only supports latin1)

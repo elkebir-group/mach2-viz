@@ -780,6 +780,10 @@ ul {
   padding-bottom: 20px;
 }
 
+.no-sol-popup-container.extra {
+  background-color: rgb(183, 222, 183);
+}
+
 .no-sol-popup-container > .header {
   display: flex;
   flex-direction: column;
