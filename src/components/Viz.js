@@ -663,7 +663,8 @@ function Viz(props) {
 
   // NOTE: This is a state because undos need to thicken and unthicken the edge
   // Setting a state will allow the object to change on runtime (adding listeners and firing events)
-  const [evtBus, setEvtBus] = useState({
+  // eslint-disable-next-line no-unused-vars
+  const [evtBus, _] = useState({
     listeners: [],
     addListener(callback) {
       this.listeners.push(callback);
@@ -677,9 +678,6 @@ function Viz(props) {
       });
     },
   });
-
-  // just to clear errors
-  console.log(setEvtBus)
 
   // Popups
   const [isHelpPopupOpen, setIsHelpPopupOpen] = useState(false);
