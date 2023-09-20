@@ -256,7 +256,7 @@ function Viz(props) {
 
   function onToggleOutputClonalR() {
     if (largeFile) setLoadingAction(true);
-    
+
     if (clonalR) setClonalR(!clonalR)
   }
 
@@ -766,6 +766,14 @@ function Viz(props) {
   // console.log(filterStack)
   // keeping track of edges that are not used
   // update unusedEdges whenever
+
+  // Just in case
+  useEffect(() => {
+    // Simulate a task that takes some time (e.g., fetching data)
+    setTimeout(() => {
+      setLoadingAction(false); // Set loading to false after task is complete
+    }, 2000); // Adjust the delay as needed
+  }, []); // Empty dependency array means this effect runs once after the component mounts
 
   return (
     <div className="viz">
