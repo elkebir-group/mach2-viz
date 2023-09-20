@@ -779,7 +779,7 @@ function Viz(props) {
     <div className="viz">
       <HelpPopup isPopupOpen={isHelpPopupOpen} togglePopup={toggleHelpPopup}></HelpPopup>
       <NoSolutionsPopup isPopupOpen={isNoSolutionsPopupOpen} togglePopup={toggleNoSolutionsPopup}></NoSolutionsPopup>
-      {largeFile && <LoadingPopup isPopupOpen={loadingAction} togglePopup={toggleNoSolutionsPopup}></LoadingPopup>}
+      {largeFile && loadingAction && <LoadingPopup isPopupOpen={loadingAction} togglePopup={toggleNoSolutionsPopup}></LoadingPopup>}
       {type !== 'sumviz' && type !== 'triviz' ?
         <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         : <></>}
