@@ -6,6 +6,7 @@ import Migration from "./Migration.js";
 // } from "react-router-dom";
 
 import DefaultDict from "../utils/DefaultDict.js";
+import { decompressUrlSafe } from '../utils/lzma-url.js';
 
 // Panels
 import SummaryPanel from "./SummaryPanel.js";
@@ -137,7 +138,7 @@ function Viz(props) {
   const [gamma2, setGamma2] = useState(0);
   const [muSum, setMuSum] = useState(0);
   const [gammaSum, setGammaSum] = useState(0);
-  const jsonContents = sessionStorage.getItem("json_data");
+  const jsonContents = decompressUrlSafe(sessionStorage.getItem("json_data"));
 
   const jsonDict = JSON.parse(jsonContents);
 

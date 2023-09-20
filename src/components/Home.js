@@ -11,6 +11,8 @@ import fileDownload from 'js-file-download'
 
 import DefaultDict from "../utils/DefaultDict.js";
 
+import { compressUrlSafe } from '../utils/lzma-url.js';
+
 // Import the patient sample datasets
 import A1 from "../samples/A1/A1.json";
 import A7 from "../samples/A7/A7.json";
@@ -97,7 +99,7 @@ function Home() {
         var link = URLs[current_patient];
 
         div_elements.push(
-          <Link to={link} className="patient-link" onClick={() => {sessionStorage.setItem("json_data", JSON.stringify(json_dict[default_patients[i]]))}}>
+          <Link to={link} className="patient-link" onClick={() => {sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(json_dict[default_patients[i]])))}}>
             <div className="patient-container">
               <div className="patientitem" style={{ backgroundColor: current_color }}>
                   <p><b>{current_directory}</b></p>
@@ -140,7 +142,7 @@ function Home() {
         let labelnames = data["solutions"].map((value, index) => {return value["name"]});
 
         // Store the data in session storage so that the viz route can pull the data
-        sessionStorage.setItem("json_data", json_contents);
+        sessionStorage.setItem("json_data", compressUrlSafe(json_contents));
   
         // Update the window location to the viz route
         window.location = window.location + `viz?labeling=${labelnames[0]}`;
