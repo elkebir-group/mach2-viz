@@ -12,6 +12,7 @@ import fileDownload from 'js-file-download'
 import DefaultDict from "../utils/DefaultDict.js";
 
 // Import the patient sample datasets
+import A1 from "../samples/A1/A1.json";
 import A7 from "../samples/A7/A7.json";
 import A10 from "../samples/A10/A10.json";
 import A22 from "../samples/A22/A22.json";
@@ -53,6 +54,7 @@ function Home() {
 
     // Dictionary mapping dataset name to json object
     var json_dict = {
+      "A1": A1,
       "A7": A7,
       "A10": A10,
       "A22": A22,
@@ -75,8 +77,8 @@ function Home() {
     }
 
     // Table values
-    var default_patients = ["A7", "A10", "A22", "A29", "A31", "A32", "patient1_LOv", "patient1_ROv", "patient2", "patient3_LOv", "patient3_ROv", "patient4_LOv", "patient4_ROv", "patient7_LOv", "patient7_ROv", "patient9_LOv", "patient9_ROv", "patient10", "tracerx"]
-    var default_dirs = ["hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx"]
+    var default_patients = ["A1", "A7", "A10", "A22", "A29", "A31", "A32", "patient1_LOv", "patient1_ROv", "patient2", "patient3_LOv", "patient3_ROv", "patient4_LOv", "patient4_ROv", "patient7_LOv", "patient7_ROv", "patient9_LOv", "patient9_ROv", "patient10", "tracerx"]
+    var default_dirs = ["hoadley_2016", "hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx"]
     var div_elements = []
     var which_color = true;
     const color1 = "#EBEBEB";
