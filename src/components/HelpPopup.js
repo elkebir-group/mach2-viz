@@ -15,7 +15,7 @@ export default function HelpPopup( {isPopupOpen, togglePopup} ) {
                     <p className="popup-container-text">Click and drag around the migration graph and clonal tree. Hover over nodes in the clonal tree to find the corresponding anatomical location for the node.</p>
                     <p className="popup-container-text">Select different solutions from the dropdown on the top left of the panel.</p>
                     <p className="popup-container-text">To compare with another solution, click the [+] on the right. To view the solution space summary, click the [+] on the left.</p>
-
+                    <p className="popup-container-text">For more help, please select the "Instructions" button in the home page. You can return to the home page by pressing "[X]" on all the currently opened panels.</p>
                     <button
                         className='close-button'
                         onClick={() => {

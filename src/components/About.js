@@ -22,17 +22,18 @@ function About() {
                 <p><b>Visualization Format:</b></p>
                 <p>Upon selecting one of the examples on the home page, you will be redirected to the visualization page. The page showcases multiple panels. The descriptions along with an image of the panels are shown below:</p>
                 <ul style={{columns: 1}}>
-                    <li><p><b>MACH2 Solutions (right):</b>The solutions computed by MACH2 are displayed here. Change between possible solutions by selecting the drop down menu at the top of the panel. Each graph in this panel is described below:</p></li>
+                    <li><p><b>MACH2 Solutions (middle and right):</b>The solutions computed by MACH2 are displayed here. Change between possible solutions by selecting the drop down menu at the top of the panel. Each graph in this panel is described below:</p></li>
                     <ul style={{columns: 1}}>
-                        <li><p><b>Clonal Tree (bottom right):</b> This is a tree of oncological mutations. Each node in this tree is a variant allele in the cancer patient. Each edge is a mutation from one variant to another.</p></li>
-                        <li><p><b>Migration Graph (top right):</b> Each node in the clonal tree has a tag with an anatomical location inferred using <a href='https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics)'>Maximum Parsimony</a>. The clonal tree is compressed into a migration graph where each node represents an anatomical location, and each edge is a metastasis (e.g. a migration) between two anatomical locations.</p></li>   
+                        <li><p><b>Clonal Tree (bottom right and bottom middle):</b> This is a tree of oncological mutations. Each node in this tree is a variant allele in the cancer patient. Each edge is a mutation from one variant to another.
+                        In the case of multiple clonal tree solutions, you can click the drop-down on the main panel (labeled "jsons/hoadley16_A7-1" below) to select between them.
+                        Additionally, you can see that there are buttons that say "Clonal Tree" and "Input Tree". The clonal tree displays the tree of mutations after polytomy refinement done by MACH2. The input tree is simply the original tree before these refinements are applied.
+                        </p></li>
+                        <li><p><b>Migration Graph (top right and top middle):</b> Each node in the clonal tree has a tag with an anatomical location inferred using <a href='https://en.wikipedia.org/wiki/Maximum_parsimony_(phylogenetics)'>Maximum Parsimony</a>. The clonal tree is compressed into a migration graph where each node represents an anatomical location, and each edge is a metastasis (e.g. a migration) between two anatomical locations.</p></li>   
                     </ul>
                     <li><p><b>Summary (left):</b> You can also view a summary migration graph that is computed by unioning edges across migration graphs in each solution. Edges are weighted by the number of solutions they appear in.</p></li>
                 </ul>
-                <p>You can click on the long gray bars on the sides of the visualization page to add extra panels.</p>
+                <p>You can click on the long gray bars on the sides of the visualization page to add extra panels. You can also click the "[X]" buttons on the top right corners of panels to delete them.</p>
                 <div className="image-container">
-                    {/* <img className="aboutimg" src={clonal} alt="Image 1"/>
-                    <img className="aboutimg" src={migration} alt="Image 2"/> */}
                     <img className='aboutimg' src={sample_page} alt="Sample Page"></img>
                 </div>
                 <p><b>Generating inputs: </b>We have provided a <a href="https://github.com/vikramr2/json_compression">json compression</a> program that takes an output directory from MACHINA that contains <b>.tree</b> files and their corresponding <b>.labeling</b> files, and returns a <b>.json</b> file that can be used as input for this visualizer. Click the "+" icon in the home page to use this feature. For more information, see this <a href='https://github.com/vikramr2/json_compression/blob/main/README.md'>README</a>. Output from any algorithm that solves the PMH problem will be accepted provided that it is in a JSON format as shown in the README.</p>
