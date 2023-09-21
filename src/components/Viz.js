@@ -14,7 +14,6 @@ import SummaryPanel from "./SummaryPanel.js";
 // Popup
 import HelpPopup from "./HelpPopup.js";
 import NoSolutionsPopup from "./NoSolutionsPopup.js";
-import LoadingPopup from "./LoadingPopup.js";
 
 /**
  * Finds the root of a tree represented by an edge list.
@@ -142,9 +141,6 @@ function Viz(props) {
   const jsonContents = decompressUrlSafe(sessionStorage.getItem("json_data"));
 
   const jsonDict = JSON.parse(jsonContents);
-  const largeFile = jsonDict['solutions'].length > 1000;
-
-  const [loadingAction, setLoadingAction] = useState(true);
 
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
@@ -182,8 +178,6 @@ function Viz(props) {
   }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots]);
 
   function onDeleteSummaryEdge(edge_id) {
-    if (largeFile) setLoadingAction(true);
-
     let [source, target] = edge_id.split('->');
     if (source !== 'roots') {
       //console.log("delete");
@@ -206,8 +200,6 @@ function Viz(props) {
   }
 
   function onRequireSummaryEdge(edge_id) {
-    if (largeFile) setLoadingAction(true);
-
     let [source, target] = edge_id.split('->')
     if (source !== 'roots') {
       if (requiredEdges.includes(edge_id)) {
@@ -237,26 +229,18 @@ function Viz(props) {
   }
 
   function onToggleInputClonalL() {
-    if (largeFile) setLoadingAction(true);
-
     if (!clonalL) setClonalL(!clonalL)
   }
 
   function onToggleOutputClonalL() {
-    if (largeFile) setLoadingAction(true);
-
     if (clonalL) setClonalL(!clonalL)
   }
 
   function onToggleInputClonalR() {
-    if (largeFile) setLoadingAction(true);
-
     if (!clonalR) setClonalR(!clonalR)
   }
 
   function onToggleOutputClonalR() {
-    if (largeFile) setLoadingAction(true);
-
     if (clonalR) setClonalR(!clonalR)
   }
 
@@ -389,7 +373,6 @@ function Viz(props) {
         setData2(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
       }
     }
-    setLoadingAction(false);
     return 0;
   }
 
@@ -538,30 +521,18 @@ function Viz(props) {
   let coord_map = usedData["map"];
 
   let handleLabelChange = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     insertParam("labeling", event.target.value);
     setLabeling(event.target.value)
     setData(usedData["solutions"].filter((item) => { return item["name"] === event.target.value })[0]);
   }
 
   let handleLabelChange2 = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     insertParam("labeling2", event.target.value);
     setLabeling2(event.target.value)
     setData2(usedData["solutions"].filter((item) => { return item["name"] === event.target.value })[0]);
   }
 
   let handleInputChange = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     insertParam("input", event.target.value);
     setInputTree(event.target.value);
 
@@ -575,10 +546,6 @@ function Viz(props) {
   }
 
   let handleInputChange2 = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     insertParam("input2", event.target.value);
     setInputTree2(event.target.value);
 
@@ -592,10 +559,6 @@ function Viz(props) {
   }
 
   let addTab = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     if (type === 'sumviz') {
       insertParam("type", "triviz")
       setType('triviz')
@@ -611,10 +574,6 @@ function Viz(props) {
   }
 
   let closeTab = (tabIndex) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     if (type === 'dualviz' || type === 'triviz') {
       setType(type === 'dualviz' ? 'viz' : 'sumviz')
       if (tabIndex === 1) {
@@ -660,10 +619,6 @@ function Viz(props) {
   }, [type]);
 
   let gotoSummary = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     if (type === 'dualviz') {
       setType('triviz');
       insertParam('type', 'triviz')
@@ -674,38 +629,22 @@ function Viz(props) {
   }
 
   let rotateFn = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     let rotated = queryParameters.get("rotated") === "true";
     insertParam("rotated", !rotated);
     setRotate(!rotated)
   }
 
   let rotateFn2 = (event) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     let rotated2 = queryParameters.get("rotated2") === "true";
     insertParam("rotated2", !rotated2);
     setRotate2(!rotated2)
   }
 
   let resetFn = (index) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     evtBus.fireEvent('resetMigration', { index })
   }
 
   let resetClonal = (index) => {
-    if (largeFile) {
-      setLoadingAction(true);
-    }
-
     evtBus.fireEvent('resetClonal', {index})
   }
 
@@ -719,6 +658,12 @@ function Viz(props) {
     updateUsedData()
 
     document.addEventListener("keydown", handleKeyPress);
+
+    let loadingOverlay = document.getElementById('overlay');
+
+    if (loadingOverlay) {
+      loadingOverlay.parentElement.removeChild(loadingOverlay);
+    }
   }, []);
 
   // NOTE: This is a state because undos need to thicken and unthicken the edge
@@ -767,19 +712,10 @@ function Viz(props) {
   // keeping track of edges that are not used
   // update unusedEdges whenever
 
-  // Just in case
-  useEffect(() => {
-    // Simulate a task that takes some time (e.g., fetching data)
-    setTimeout(() => {
-      setLoadingAction(false); // Set loading to false after task is complete
-    }, 2000); // Adjust the delay as needed
-  }, []); // Empty dependency array means this effect runs once after the component mounts
-
   return (
     <div className="viz">
       <HelpPopup isPopupOpen={isHelpPopupOpen} togglePopup={toggleHelpPopup}></HelpPopup>
       <NoSolutionsPopup isPopupOpen={isNoSolutionsPopupOpen} togglePopup={toggleNoSolutionsPopup}></NoSolutionsPopup>
-      {largeFile && loadingAction && <LoadingPopup isPopupOpen={loadingAction} togglePopup={toggleNoSolutionsPopup}></LoadingPopup>}
       {type !== 'sumviz' && type !== 'triviz' ?
         <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
         : <></>}
@@ -808,7 +744,6 @@ function Viz(props) {
           setRequiredRoots={setRequiredRoots}
           filterStack={filterStack}
           setFilterStack={setFilterStack}
-          setLoadingAction={setLoadingAction}
         /> : <></>}
       <div className={`panel info ${type === 'dualviz' ? 'one' :
         type === 'sumviz' ? 'one two' :
@@ -864,8 +799,7 @@ function Viz(props) {
               coloring={coloring} 
               migration={migration} 
               evtbus={evtBus} 
-              rotated={rotate}
-              setLoadingAction={setLoadingAction}/>
+              rotated={rotate}/>
           </div>
           <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
           <p className="paneltitle">
@@ -901,8 +835,7 @@ function Viz(props) {
               rightcol={type === 'sumviz' || type === 'triviz'} 
               index={1}
               clonalMap={clonalMap}
-              clonal={clonalL}
-              setLoadingAction={setLoadingAction}/>
+              clonal={clonalL}/>
           </div>
         </div>
       </div>
@@ -953,8 +886,7 @@ function Viz(props) {
                 migration={migration2} 
                 evtbus={evtBus} 
                 rightcol={true} 
-                rotated={rotate2} 
-                setLoadingAction={setLoadingAction}/>
+                rotated={rotate2}/>
             </div>
             <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
               <p className="paneltitle">{origExists ? (
@@ -988,8 +920,7 @@ function Viz(props) {
                 rightcol={true} 
                 index={2}
                 clonalMap={clonalMap2}
-                clonal={clonalR}
-                setLoadingAction={setLoadingAction}/>
+                clonal={clonalR}/>
             </div>
           </div>
         </div> :

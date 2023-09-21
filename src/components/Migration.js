@@ -327,10 +327,6 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
         cy={cy => {
           myCyRef = cy;
 
-          cy.ready(function() {
-            setLoadingAction(false);
-          })
-
           cy.on('mouseover', 'edge', function(event) {
             const { target } = event;
             target.css({

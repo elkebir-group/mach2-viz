@@ -382,10 +382,6 @@ function ClonalTree(props) {
     cy={cy => {
       myCyRef = cy;
 
-      cy.ready(function() {
-        props.setLoadingAction(false);
-      })
-
       // Here we handle events on the graph
       cy.on('mouseover', 'node', function(event) {
         // Get the node information

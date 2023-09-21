@@ -99,7 +99,30 @@ function Home() {
         var link = URLs[current_patient];
 
         div_elements.push(
-          <Link to={link} className="patient-link" onClick={() => {sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(json_dict[default_patients[i]])))}}>
+          <Link className="patient-link" onClick={() => {
+            // Create overlay div
+            const overlay = document.createElement('div');
+            overlay.id = 'overlay';
+
+            // Create loading container div
+            const loadingContainer = document.createElement('div');
+            loadingContainer.id = 'loading-container';
+
+            // Create h1 element
+            const loadingHeader = document.createElement('h1');
+            loadingHeader.textContent = 'Loading...';
+
+            // Append elements
+            loadingContainer.appendChild(loadingHeader);
+            overlay.appendChild(loadingContainer);
+            document.body.appendChild(overlay);
+
+            // Add a small delay (e.g., 100ms) before the sessionStorage operation
+            setTimeout(() => {
+              sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(json_dict[default_patients[i]])));
+              window.location.href = `#/${link}`
+            }, 100);
+          }}>
             <div className="patient-container">
               <div className="patientitem" style={{ backgroundColor: current_color }}>
                   <p><b>{current_directory}</b></p>

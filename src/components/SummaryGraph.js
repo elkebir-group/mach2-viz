@@ -361,8 +361,6 @@ function SummaryGraph({data, coloringDict, evtbus, title, onDeleteSummaryEdge, o
               })
               selectedEdge.data('selected', 'true')
             });
-
-            setLoadingAction(false);
           })
           
           cy.off("cxttap", "edge");
