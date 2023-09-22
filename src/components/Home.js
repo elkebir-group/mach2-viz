@@ -150,28 +150,47 @@ function Home() {
      * @param {*} e (obj) Event metadata
      */
     let handleChange = (e) => {
-      // Get the filename from the metadata
-      const reader = new FileReader();
-      const file = e.target.files[0];
-      let json_contents;
-  
-      reader.onload = function(readerEvt) {
-        // Load the json data from the file
-        let jsonString = readerEvt.target.result;
-        json_contents = jsonString;
-        const data = JSON.parse(json_contents);
+      // Create overlay div
+      const overlay = document.createElement('div');
+      overlay.id = 'overlay';
 
-        // Fetch the first label to default to on viz
-        let labelnames = data["solutions"].map((value, index) => {return value["name"]});
+      // Create loading container div
+      const loadingContainer = document.createElement('div');
+      loadingContainer.id = 'loading-container';
 
-        // Store the data in session storage so that the viz route can pull the data
-        sessionStorage.setItem("json_data", compressUrlSafe(json_contents));
-  
-        // Update the window location to the viz route
-        window.location = window.location + `viz?labeling=${labelnames[0]}`;
-      }
-      // Read the file as a text
-      reader.readAsText(file);
+      // Create h1 element
+      const loadingHeader = document.createElement('h1');
+      loadingHeader.textContent = 'Loading...';
+
+      // Append elements
+      loadingContainer.appendChild(loadingHeader);
+      overlay.appendChild(loadingContainer);
+      document.body.appendChild(overlay);
+
+      setTimeout(() => {
+        // Get the filename from the metadata
+        const reader = new FileReader();
+        const file = e.target.files[0];
+        let json_contents;
+    
+        reader.onload = function(readerEvt) {
+          // Load the json data from the file
+          let jsonString = readerEvt.target.result;
+          json_contents = jsonString;
+          const data = JSON.parse(json_contents);
+
+          // Fetch the first label to default to on viz
+          let labelnames = data["solutions"].map((value, index) => {return value["name"]});
+
+          // Store the data in session storage so that the viz route can pull the data
+          sessionStorage.setItem("json_data", compressUrlSafe(json_contents));
+    
+          // Update the window location to the viz route
+          window.location = window.location + `viz?labeling=${labelnames[0]}`;
+        }
+        // Read the file as a text
+        reader.readAsText(file);
+      }, 100)
       
     }
 
