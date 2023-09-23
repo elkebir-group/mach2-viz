@@ -1,5 +1,7 @@
 # Getting Started
 
+[Back](documentation.md)
+
 - [Getting Started](#getting-started)
   - [To run MACH2-Viz Online](#to-run-mach2-viz-online)
   - [To run MACH2-Viz Locally](#to-run-mach2-viz-locally)

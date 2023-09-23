@@ -1,5 +1,7 @@
 # Summary View
 
+[Back](documentation.md)
+
 - [Summary View](#summary-view)
   - [Basic Functionality](#basic-functionality)
     - [The Summary Graph](#the-summary-graph)

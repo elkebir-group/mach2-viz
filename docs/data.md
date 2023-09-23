@@ -1,5 +1,7 @@
 # Writing JSON for MACH2-Viz
 
+[Back](documentation.md)
+
 - [Writing JSON for MACH2-Viz](#writing-json-for-mach2-viz)
   - [General format](#general-format)
     - [Required Field Descriptions](#required-field-descriptions)

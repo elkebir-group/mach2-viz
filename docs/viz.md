@@ -1,5 +1,7 @@
 # Navigating the Visualizer
 
+[Back](documentation.md)
+
 - [Navigating the Visualizer](#navigating-the-visualizer)
   - [Basic Functions](#basic-functions)
   - [Data-Dependent Functions](#data-dependent-functions)

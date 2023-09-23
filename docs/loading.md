@@ -1,5 +1,7 @@
 # Loading Data
 
+[Back](documentation.md)
+
 - [Loading Data](#loading-data)
   - [Loading an Example JSON](#loading-an-example-json)
   - [Uploading your own JSON](#uploading-your-own-json)

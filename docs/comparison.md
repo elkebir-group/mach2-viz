@@ -1,5 +1,7 @@
 # Comparing Solutions
 
+[Back](documentation.md)
+
 - [Comparing Solutions](#comparing-solutions)
   - [Basic Features of the Dual-Panel Visualization](#basic-features-of-the-dual-panel-visualization)
   - [Polytomy Refinement Visualization](#polytomy-refinement-visualization)
