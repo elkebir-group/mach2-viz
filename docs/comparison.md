@@ -1,5 +1,9 @@
 # Comparing Solutions
 
+- [Comparing Solutions](#comparing-solutions)
+  - [Basic Features of the Dual-Panel Visualization](#basic-features-of-the-dual-panel-visualization)
+  - [Polytomy Refinement Visualization](#polytomy-refinement-visualization)
+
 When you open up a dual viz by opening up a viz screen and clickingg the `+` on the right, you will see the following.
 
 ![dual-viz](../figures/dual-viz.jpeg)

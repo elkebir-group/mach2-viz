@@ -1,5 +1,10 @@
 # Loading Data
 
+- [Loading Data](#loading-data)
+  - [Loading an Example JSON](#loading-an-example-json)
+  - [Uploading your own JSON](#uploading-your-own-json)
+  - [Dataset Sources](#dataset-sources)
+
 When you first open the visualizer, you will see the following homepage.
 
 ![homepage](../figures/homepage.jpeg)

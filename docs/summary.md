@@ -1,5 +1,11 @@
 # Summary View
 
+- [Summary View](#summary-view)
+  - [Basic Functionality](#basic-functionality)
+    - [The Summary Graph](#the-summary-graph)
+  - [Constraining the Solution Space](#constraining-the-solution-space)
+  - [Multi-rooted data](#multi-rooted-data)
+
 When you open up a sumary panel by clicking the `+` bar on the left from either a single or dual panel viz, you will see one of the screens below:
 
 ![sum-viz](../figures/sum-viz.jpeg)

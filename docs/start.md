@@ -1,5 +1,9 @@
 # Getting Started
 
+- [Getting Started](#getting-started)
+  - [To run MACH2-Viz Online](#to-run-mach2-viz-online)
+  - [To run MACH2-Viz Locally](#to-run-mach2-viz-locally)
+
 ## To run MACH2-Viz Online
 
 - Simply visit the following [link](https://elkebir-group.github.io/mach2-viz/#/)
