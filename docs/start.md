@@ -1,10 +1,10 @@
 # Getting Started
 
-## To run MACH2-Viz Online**
+## To run MACH2-Viz Online
 
 - Simply visit the following [link](https://elkebir-group.github.io/mach2-viz/#/)
   
-## To run MACH2-Viz Locally**
+## To run MACH2-Viz Locally
 
 - **Prerequisites**
   - Have `node` installed
