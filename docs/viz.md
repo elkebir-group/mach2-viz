@@ -1,5 +1,9 @@
 # Navigating the Visualizer
 
+- [Navigating the Visualizer](#navigating-the-visualizer)
+  - [Basic Functions](#basic-functions)
+  - [Data-Dependent Functions](#data-dependent-functions)
+
 When you first open the visualizer, you will see a layout that looks like the following:
 
 ![viz](../figures/first-viz.jpeg)
