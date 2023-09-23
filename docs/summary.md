@@ -40,3 +40,12 @@ Notice how the solutions on the right are only selectable between the remaining 
 ## Multi-rooted data
 
 If your solution space has multiple possible roots across all clonal trees, your summary graph will look like the following
+
+![multi-root](../figures/multi-root.jpeg)
+*Multiple roots exist in this dataset, hence the `roots` node in the summary graph.*
+
+The `roots` node points to any node such that it exists as a root of a clone tree somewhere in the solution space. That way, we introduce some more functionality.
+
+- **Requiring a root**: To get all solutions such that only a single selected node roots the trees in the solution space, simply click on the edge going from `roots` to that node.
+- **Deleting a root:** To get the complement of the above constraint, the dataset such that any node but the selected one roots clonal trees in the solution space, simply shift-click the same edge.
+- **ex.** If I only want solutions such that the brain is the primary tumor (eg. the root) then I will just click on `roots->brain` above.
