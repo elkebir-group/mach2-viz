@@ -3,6 +3,7 @@
 When you first open the visualizer, you will see a layout that looks like the following:
 
 ![viz](../figures/first-viz.jpeg)
+*The basic viz view of MACH2-Viz. Both a clone tree and its corresponding migration graph will display. View more functionality below.*
 
 ## Basic Functions
 
@@ -30,3 +31,4 @@ When you first open the visualizer, you will see a layout that looks like the fo
   - You will also be able to select between input trees in the dropdown menu in the top of the window, just like you can in selection between solutions. See the example below.
 
 ![multi-input](../figures/multi-input.jpeg)
+*A viz panel for a dataset with multiple input trees. There is a dropdown for input trees on the top  left, and the unlabeled input tree is displayed on the bottom panel.*

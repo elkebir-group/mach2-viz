@@ -3,6 +3,7 @@
 When you first open the visualizer, you will see the following homepage.
 
 ![homepage](../figures/homepage.jpeg)
+*The homepage of MACH2-Viz. You can view instructions for using the app, view example solutions, or upload your own solutions via the `+` icon.*
 
 ## Loading an Example JSON
 
