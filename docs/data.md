@@ -1,5 +1,15 @@
 # Writing JSON for MACH2-Viz
 
+- [Writing JSON for MACH2-Viz](#writing-json-for-mach2-viz)
+  - [General format](#general-format)
+    - [Required Field Descriptions](#required-field-descriptions)
+  - [Visualizing the Input Tree](#visualizing-the-input-tree)
+    - [Including the Input Tree](#including-the-input-tree)
+    - [Multiple Input Trees](#multiple-input-trees)
+    - [Origin Node Mapping](#origin-node-mapping)
+  - [(WIP) Temporality](#wip-temporality)
+  - [JSON Compression](#json-compression)
+  
 ## General format
 
 When uploading a JSON, the required parameters are the following:
