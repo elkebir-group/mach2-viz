@@ -32,10 +32,9 @@ Suppose, due to some clinical data, we are certain that a migration from `lung` 
 Notice how the solutions on the right are only selectable between the remaining set after the constraints have been set. Moreover, the solutions number on the top left of the summary panel is set to the number of remaining solutions.
 
 <!-- markdownlint-disable -->
-<div style="text-align:center">
-    <img src='../figures/constrained.jpeg' height=400></img>
-</div>
+<img src='../figures/constrained.jpeg' height=400></img>
 <!-- markdownlint-ensable -->
+
 *The constrained graph after requiring `lung->liver` and deleting `kidney->liver`. Note that there are only 4 solutions left. To undo any changes, either `reset` or click the undo arrow on the top right.*
 
 ## Multi-rooted data
