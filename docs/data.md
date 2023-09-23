@@ -104,7 +104,7 @@ If your data has multiple possible input trees for a single patient, then your `
 ]
 ```
 
-See [A1](../src/samples/A1/A1.json) [lines 3-256] for a real example. 
+See [A1](../src/samples/A1/A1.json) [lines 3-256] for a real example.
 
 ### Origin Node Mapping
 

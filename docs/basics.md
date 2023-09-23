@@ -1,4 +1,4 @@
-# Basic Controls
+# Loading Data
 
 When you first open the visualizer, you will see the following homepage.
 
