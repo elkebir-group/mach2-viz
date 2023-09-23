@@ -6,6 +6,9 @@ When you first open the visualizer, you will see a layout that looks like the fo
 
 ## Basic Functions
 
+- **View migration and comigration numbers**. In the top left corner of the migration graph panel, you will see the calculated migration and comigration numbers:
+  - $\mu$: The migration number, the total number of migration events.
+  - $\gamma$: The number of unique migrations, where uniqueness is given by the anatomical locations at which the migration is happening.
 - **Toggle the solutions** with the dropdown menu in the top left.
 - **Zoom, pan, and drag nodes** in both the tree and migration graph.
 - **Hover corresponding nodes and edges**. When you hover over a node or edge in the migration graph, the corresponding edges in the clonal tree will highlight as well. Likewise vice versa.

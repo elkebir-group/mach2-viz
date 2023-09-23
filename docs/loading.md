@@ -8,7 +8,9 @@ When you first open the visualizer, you will see the following homepage.
 
 You can select one of the example datasets to visualize from the table on the right-hand side. On the `Dataset` column, you will see the source of the sample dataset. You can see the sources of the datasets in the bottom of this page.
   
-You can click on an entry of the table to load up one of the examples. **NOTE: If a dataset has more than 100 solutions, it may be a bit laggy**.
+You can click on an entry of the table to load up one of the examples.
+  
+**NOTE: If a dataset has more than 100 solutions, it may be a bit laggy**.
 
 ## Uploading your own JSON
 
