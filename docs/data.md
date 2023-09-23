@@ -52,11 +52,132 @@ These are the required parameters for which an input for the MACH2-Viz should ha
 
 ### Including the Input Tree
 
+To include the input tree. You simply add a field `"original"` to the json. It is in a format as follows:
+
+```json
+"original": {
+    "tree": [
+        ["u", "v"],
+        //...
+    ],
+    "labeling": [
+        ["leaf_node", "leaf_label"],
+        //...
+    ]
+}
+```
+
+In the `"tree"` field, you have the edgelist for the original clone tree where every node is a clone id. In the `"lableing"` field, there are anatomical labelings for the leaves (the current state) of the input clonal tree.
+
+See [A10](../src/samples/A10/A10.json) [lines 3-92] for a real example.
+
 ### Multiple Input Trees
+
+If your data has multiple possible input trees for a single patient, then your `"original"` field will need to be an array:
+
+```json
+"original": [
+    {
+        "tree": [
+            ["u", "v"],
+            //...
+        ],
+        "labeling": [
+            ["leaf_node", "leaf_label"],
+            //...
+        ]
+    },
+    {
+        //...
+    },
+    //...
+]
+```
+
+See [A1](../src/samples/A1/A1.json) [lines 3-256] for a real example. 
 
 ### Origin Node Mapping
 
+Polytomy refinement is the extension of a node with more than one child into a subtree such that nodes have less children each.
+
+```text
+   A             A
+ / | \   --->   / \
+B  C  D        B   A^1
+                   / \
+                  C   D
+```
+
+If your solutions perform polytomy refinement on the input tree, you might want to visualize correspondence between clones in the input tree and clones in the refined tree. To indicate this mapping, in each solution entry, there needs to be an `"origin_node"` field.
+
+```json
+"solutions": [
+    {
+        "name": "soln",
+        "tree": [
+            ["A", "B"],
+            ["A", "A^1"],
+            ["A^1", "C"],
+            ["A^!", "D"]
+        ],
+        "labeling": [
+            //...
+        ],
+        "origin_node": [
+            ["A", "A"],
+            ["A^1", "A"],
+            ["B", "B"],
+            ["C", "C"],
+            ["D", "D"]
+        ]
+    }
+]
+```
+
+As you can see, the `"origin_node"` field maps nodes in the output to nodes in the input. Both `"A"` and `"A^1"` maps to `"A"` in the input. All other nodes in the example maps to themselves as they were not refined from the input.
+
 ## (WIP) Temporality
+
+**NOTE: This feature is still being developed. We hope to have animated tree and migration graph growths with timestamped data.**
+  
+Optionally, you can add a temporal element to clonal tree and migration edges. This third element, or 'weightage', on the edges indicate a time step in which the mutation or migration may have happened. Consider the example in [A1.json](../src/samples/A1/A1.json).
+
+```json
+"migration": [
+    [
+        "adrenal",
+        "liver",
+        2
+    ],
+    [
+        "breast",
+        "lung",
+        1
+    ],
+]
+```
+  
+```json
+"tree": [
+    [
+        "2^breast",
+        "2^adrenal",
+        3
+    ],
+    [
+        "2^breast",
+        "2_breast",
+        -1
+    ],
+    [
+        "2^adrenal",
+        "7",
+        4
+    ]
+]
+```
+  
+From this data, we can see that the metastasis from the adrenal gland to the liver happened after the breast to lung migration. In this data, intra-tumor mutations aren't being timestamped (hence -1). However, we see that the mutation from the `2^breast` to the `2^adrenal` clone happens before `2^adrenal` to `7`.
 
 ## JSON Compression
 

@@ -1,6 +1,6 @@
 # <img src="public/favicon.ico" height="50"></img> MACH2-Viz
 
-MACH2 is an upgraded version of [MACHINA](https://github.com/raphael-group/machina). MACH2-Viz visualizes the solution space for algorithms running the parsimonious migration history problem with polytomy resolution. Solutions are generated via MACH2 (Roddur et. al.). MACH2-Viz is backwards compatible with MACHINA, and it allows input from any cancer migration history inference software as long as the data can be compiled into valid JSON format for MACH2-Viz to parse.
+MACH2 is an upgraded version of [MACHINA](https://github.com/raphael-group/machina), [(El-Kebir et. al.)](https://www.nature.com/articles/s41588-018-0106-z). MACH2-Viz visualizes the solution space for algorithms running the parsimonious migration history problem with polytomy resolution. Solutions are generated via MACH2 (Roddur et. al.). MACH2-Viz also supports data from MACHINA or any cancer migration history inference software as long as the data can be compiled into valid JSON format for MACH2-Viz to parse.
 
 ## Current Deployed Version
 
