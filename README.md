@@ -1,4 +1,4 @@
-## <img src="public/favicon.ico" height="30"></img> MACH2-Viz
+# <img src="public/favicon.ico" height="50"></img> MACH2-Viz
 
 MACH2 is an upgraded version of MACHINA. Visualizing the solution space for the parsimonious migration history problem with polytomy resolution. Solutions are generated via the MACHINA algorithm ([El-Kebir et. al.](https://www.nature.com/articles/s41588-018-0106-z)) and MACH2 (Roddur et. al.).
 
