@@ -20,3 +20,24 @@ You can hover over nodes and edges in the summary graph and see highlighting cor
 
 ![hover-sum](../figures/hover-sum.jpeg)
 *My mouse is hovering over the `lung` node in the summary graph. The corresponding nodes and edges are highlighting on the right side as well.*
+
+## Constraining the Solution Space
+
+Suppose, due to some clinical data, we are certain that a migration from `lung` to `liver` occured, but we are also certain that a migration from `kidney` to `liver` couldn't have happened. To address this, we need to require an edge and delete an edge from the summary graph.
+
+- **To require an edge** simply click on that edge in the summary graph. We will then click on `lung->liver`.
+  - **To unrequire an edge** either click on the edge again, or hit the undo arrow on the top right corner of the summary panel.
+- **To delete an edge** hold down the shift key so that the cursor changes  and click on that edge in the summary graph. We will then shift-click `kidney->liver`.
+  
+Notice how the solutions on the right are only selectable between the remaining set after the constraints have been set. Moreover, the solutions number on the top left of the summary panel is set to the number of remaining solutions.
+
+<!-- markdownlint-disable -->
+<div style="text-align:center">
+    <img src='../figures/constrained.jpeg' height=400></img>
+</div>
+<!-- markdownlint-ensable -->
+*The constrained graph after requiring `lung->liver` and deleting `kidney->liver`. Note that there are only 4 solutions left. To undo any changes, either `reset` or click the undo arrow on the top right.*
+
+## Multi-rooted data
+
+If your solution space has multiple possible roots across all clonal trees, your summary graph will look like the following
