@@ -36,7 +36,15 @@ function About() {
                 <div className="image-container">
                     <img className='aboutimg' src={sample_page} alt="Sample Page"></img>
                 </div>
-                <p><b>Generating inputs: </b>We have provided a <a href="https://github.com/vikramr2/json_compression">json compression</a> program that takes an output directory from MACHINA that contains <b>.tree</b> files and their corresponding <b>.labeling</b> files, and returns a <b>.json</b> file that can be used as input for this visualizer. Click the "+" icon in the home page to use this feature. For more information, see this <a href='https://github.com/vikramr2/json_compression/blob/main/README.md'>README</a>. Output from any algorithm that solves the PMH problem will be accepted provided that it is in a JSON format as shown in the README.</p>
+                <p><b>Filtering Solutions:</b></p>
+                <p>The user has an option to delete or require edges displayed on the Summary Panel. Their functions are described below:</p>
+                <ul style={{columns: 1}}>
+                    <li><p><b>Delete edges: </b>Shift+Click on an edge in the summary panel to delete it. By deleting it, the MACH2 solution panels will only show solutions that do not have the edge in their solution.</p></li>
+                    <li><p><b>Require edges: </b>Click on an edge in the summary panel to require it. By requiring it, the MACH2 solution panels will only show solutions that have that edge in their solution.</p></li>
+                </ul>
+                <p>To undo actions, you can click the undo arrow that will appear on the top right corner of the summary panel after editing the summary panel edges.</p>
+                <p><b>Generating inputs:</b></p>
+                <p>We have provided a <a href="https://github.com/vikramr2/json_compression">json compression</a> program that takes an output directory from MACHINA that contains <b>.tree</b> files and their corresponding <b>.labeling</b> files, and returns a <b>.json</b> file that can be used as input for this visualizer. Click the "+" icon in the home page to use this feature. For more information, see this <a href='https://github.com/vikramr2/json_compression/blob/main/README.md'>README</a>. Output from any algorithm that solves the PMH problem will be accepted provided that it is in a JSON format as shown in the README.</p>
                 <p><b>Questions? Contact</b></p>
                 <ul id="singlecol">
                     <li><p>Vikram Ramavarapu (<a href="mailto:vikramr2@illinois.edu">vikramr2@illinois.edu</a>)</p></li>
