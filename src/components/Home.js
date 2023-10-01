@@ -99,6 +99,7 @@ function Home() {
         var link = URLs[current_patient];
 
         div_elements.push(
+          // eslint-disable-next-line no-loop-func
           <Link className="patient-link" onClick={() => {
             // Create overlay div
             const overlay = document.createElement('div');
