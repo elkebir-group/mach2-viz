@@ -197,7 +197,7 @@ function Home() {
 
     return (
         <div className='home'>
-            <div className='home-panel'>
+            <div className='panel home-panel'>
                 <div className='home-column-1'>
                   <h1><b>Welcome to MACH2!</b></h1>
                   {/* <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div> */}
