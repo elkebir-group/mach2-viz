@@ -538,9 +538,11 @@ function Viz(props) {
 
     usedData['original'].forEach((elem) => {
       if (elem['name'] === event.target.value) {
+        let targetLabel = elem['solution_names'].filter((e) => labelNames.includes(e))[0]
+
         setInputData(elem);
-        setLabeling(elem['solution_names'][0]);
-        setData(usedData['solutions'].filter((item) => {return item["name"] === elem['solution_names'][0]})[0]);
+        setLabeling(targetLabel);
+        setData(usedData['solutions'].filter((item) => {return item["name"] === targetLabel})[0]);
       }
     })
   }
@@ -551,9 +553,11 @@ function Viz(props) {
 
     usedData['original'].forEach((elem) => {
       if (elem['name'] === event.target.value) {
+        let targetLabel = elem['solution_names'].filter((e) => labelNames.includes(e))[0]
+
         setInputData2(elem);
-        setLabeling2(elem['solution_names'][0]);
-        setData2(usedData['solutions'].filter((item) => {return item["name"] === elem['solution_names'][0]})[0]);
+        setLabeling2(targetLabel);
+        setData2(usedData['solutions'].filter((item) => {return item["name"] === targetLabel})[0]);
       }
     })
   }
