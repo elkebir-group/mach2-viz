@@ -21,6 +21,7 @@
     "cytoscape-elk": "^2.1.0",
     "cytoscape-fcose": "^2.2.0",
     "cytoscape-klay": "^3.1.4",
+    "cytoscape-panzoom": "^2.5.3",
     "dagre": "^0.8.5",
     "file-exists": "^5.0.1",
     "fs": "^0.0.1-security",

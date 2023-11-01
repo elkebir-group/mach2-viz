@@ -6,7 +6,6 @@ import COSEBilkent from 'cytoscape-cose-bilkent';
 import dagre from 'cytoscape-dagre';
 
 // Load Cytoscape submodules
-Cytoscape.use(COSEBilkent);
 Cytoscape.use(dagre);
 
 function findCorresponding(clonalMap, currNode, clonal) {
@@ -27,6 +26,39 @@ function findCorresponding(clonalMap, currNode, clonal) {
   }
 }
 
+function findCorrespondingAll(clonalMap, currNode) {
+  let corrNodes = [];
+
+  clonalMap.forEach((row) => {
+    if (row[0] === currNode) {
+      corrNodes.push(row[1])
+      corrNodes.push(row[0])
+    }
+    if (row[1] === currNode) {
+      corrNodes.push(row[0])
+      corrNodes.push(row[1])
+    }
+  })
+
+  if (corrNodes.length === 0) {
+    corrNodes.push(currNode)
+  }
+
+  return corrNodes;
+}
+
+function getNodesFromIds(nodes, ids) {
+  let ret = []
+
+  nodes.forEach((node) => {
+    if (ids.includes(node.id())) {
+      ret.push(node.id())
+    }
+  })
+
+  return ret;
+}
+
 function getSubtree(tree, nodes) {
   let edges = [];
 
@@ -37,6 +69,11 @@ function getSubtree(tree, nodes) {
   })
 
   return edges;
+}
+
+function getNodesInTree(tree, ids) {
+  let nodes = [...new Set([].concat.apply([], tree))];
+  return ids.filter((id) => nodes.includes(id));
 }
 
 /** This component contains the clonal tree showing the tumor phylogeny
@@ -363,6 +400,18 @@ function ClonalTree(props) {
             })
           }
         }
+
+        if (eventName === 'zoomClonal') {
+          let node = eventData.node
+          let corr = getNodesInTree(props.tree, eventData.corr)[0];
+          let fetched = myCyRef.$(`node[id='${corr}']`);
+
+          try {
+            myCyRef.fit(fetched)
+          } catch {
+            myCyRef.fit(node)
+          }
+        }
       };
       props.evtbus.addListener(listener);
     }
@@ -431,7 +480,7 @@ function ClonalTree(props) {
         // Enlarge the node on hover
         props.evtbus.fireEvent('hoverNodeSC', { nodeId });
 
-        if (props.clonalMap !== []) {
+        if (props.clonalMap.length > 0) {
           let eventParams = findCorresponding(props.clonalMap, nodeId, props.clonal);
           props.evtbus.fireEvent('clonalHover', { eventParams })
         }
@@ -459,7 +508,7 @@ function ClonalTree(props) {
         // Shrink the node back to size
         props.evtbus.fireEvent('dehoverNodeSC', { nodeId });
 
-        if (props.clonalMap !== []) {
+        if (props.clonalMap.length > 0) {
           let eventParams = findCorresponding(props.clonalMap, nodeId, props.clonal);
           props.evtbus.fireEvent('clonalDehover', { eventParams })
         }
@@ -497,6 +546,15 @@ function ClonalTree(props) {
         // Shrink migration edge back
         props.evtbus.fireEvent('deselectNode', { nodeId, source, sink, target});
         props.evtbus.fireEvent('deselectNodeSC', { nodeId, source, sink, target, label});
+      });
+
+      cy.on('tap', 'node', (event) => {
+        const node = event.target;
+        let corr = [...new Set(findCorrespondingAll(props.clonalMap, node.id()))]
+
+        props.evtbus.fireEvent('zoomClonal', { node, corr })
+
+        cy.fit(node)
       });
     }}
     />), [graphData] )
