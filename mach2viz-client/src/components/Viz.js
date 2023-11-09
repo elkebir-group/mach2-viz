@@ -138,53 +138,8 @@ function Viz(props) {
   const [gamma2, setGamma2] = useState(0);
   const [muSum, setMuSum] = useState(0);
   const [gammaSum, setGammaSum] = useState(0);
-  const [jsonDict, setJsonDict] = useState({
-    "name": "dummy",
-    "original": [{
-      "name": "dummy1",
-      "tree": [
-        ["1", "2"]
-      ],
-      "labeling": [
-        ["1", "brain"],
-        ["2", "kidney"]
-      ],
-      "solution_names": [
-        "T-0"
-      ]
-    }],
-    "solutions": [{
-      "name": "T-0",
-      "tree": [
-        ["1", "2"]
-      ],
-      "labeling": [
-        ["1", "brain"],
-        ["2", "kidney"]
-      ],
-      "migration": [
-        ["brain", "kidney", 1]
-      ],
-      "origin_node": [
-        ["1", "1"],
-        ["2", "2"]
-      ]
-    }],
-    "summary": [
-      ["brain", "kidney", 1]
-    ]
-  });
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:5000/json')
-      .then(response => response.json())
-      .then(outdata => {
-        setJsonDict(JSON.parse(outdata.data));
-      })
-      .catch(error => console.error('Error:', error));
-  }, []);
-
-  console.log(jsonDict)
+  const [jsonDict, setJsonDict] = useState({});
+  const [usedData, setUsedData] = useState({});
 
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
@@ -206,20 +161,118 @@ function Viz(props) {
   // Summary filter operations stack
   const [filterStack, setFilterStack] = useState([]);
 
-  // Use the clonalL field to set fontweight to bold according to the state
-  // Styles ending in L are for the left panel
-  // The leftText is for the original clonal tree
-  /*
-  const leftTextStyleL = {
-    fontWeight: !clonalL ? 'bold' : 'normal',
-  }
-  const rightTextStyleL = {
-    fontWeight: clonalL ? 'bold' : 'normal',
-  }*/
+  const [multiSoln, setMultiSoln] = useState(false);
+
+  const [labelNames, setLabelNames] = useState([]);
+  const [inputNames, setInputNames] = useState([]);
+
+  const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
+
+  let labelName = queryParameters.get("labeling");
+  let labelName2 = queryParameters.get("labeling2");
+
+  const [labeling, setLabeling] = useState(labelName)
+  const [labeling2, setLabeling2] = useState(labelName2)
+
+  const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
+  const [rotate2, setRotate2] = useState(queryParameters.get("rotated2") === "true");
+
+  const [type, setType] = useState(queryParameters.get("type"))
+
+  const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [tree, setTree] = useState([])
+  const [tree_labeling, setTreeLabeling] = useState([])
+  const [migration, setMigration] = useState([])
+  const [tree2, setTree2] = useState([])
+  const [tree_labeling2, setTreeLabeling2] = useState([])
+  const [migration2, setMigration2] = useState([])
+  const [clonalMap, setClonalMap] = useState([])
+  const [clonalMap2, setClonalMap2] = useState([])
+  const [inputTree, setInputTree] = useState("")
+  const [inputTree2, setInputTree2] = useState("")
+  const [inputData, setInputData] = useState("")
+  const [inputData2, setInputData2] = useState("")
+
+  // let coloring = usedData["coloring"];
+  const [coloring, setColoring] = useState([]);
+
+  let coord_map = undefined;
+
+  const colorPalette = [
+    "#a6cee3",
+    "#1f78b4",
+    "#b2df8a",
+    "#33a02c",
+    "#fb9a99",
+    "#e31a1c",
+    "#fdbf6f",
+    "#ff7f00",
+    "#cab2d6",
+    "#6a3d9a",
+    "#ffff99",
+    "#b15928"
+  ]
 
   useEffect(() => {
-    updateUsedData();
-  }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots, jsonDict]);
+    fetch('http://127.0.0.1:5000/json')
+      .then(response => response.json())
+      .then(outdata => {
+        const fetchedData = JSON.parse(outdata.data)
+        setMultiSoln(Array.isArray(fetchedData['original']))
+        setJsonDict(fetchedData);
+        setUsedData(fetchedData);
+      })
+      .catch(error => console.error('Error:', error));
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(jsonDict).length !== 0) {
+
+      let tmpMultiSoln = Array.isArray(jsonDict['original'])
+
+      setMultiSoln(Array.isArray(jsonDict['original']))
+
+      console.log(tmpMultiSoln, jsonDict["original"][0])
+
+      setData(usedData["solutions"].filter((item) => { return item["name"] === labeling })[0]);
+      setData2(usedData["solutions"].filter((item) => { return item["name"] === labeling2 })[0]);
+      setInputTree(tmpMultiSoln ? jsonDict["original"][0]["name"] : "");
+      setInputTree2(tmpMultiSoln ? jsonDict["original"][0]["name"] : "")
+      setInputData(tmpMultiSoln ? jsonDict["original"][0] : "")
+      setInputData2(tmpMultiSoln ? jsonDict["original"][0] : "")
+
+      setLabelNames(usedData["solutions"].map((value, index) => { return value["name"] }))
+      setInputNames(tmpMultiSoln ? usedData["original"].map((value, index) => { return value["name"] }) : [])
+
+      if (labelName === "undefined") {
+        insertParam("labeling", usedData["solutions"][0]["name"]);
+        setLabeling(usedData["solutions"][0]["name"])
+      }
+      if (labelName2 === "undefined") {
+        insertParam("labeling2", usedData["solutions"][0]["name"]);
+        setLabeling2(usedData["solutions"][0]["name"])
+      }
+
+      setColoring(usedData["coloring"])
+
+      coord_map = usedData["map"]
+    }
+  }, [jsonDict])
+
+  useEffect(() => {
+    setTree(data["tree"])
+    setTreeLabeling(data["labeling"])
+    setMigration(data["migration"])
+  }, [data])
+
+  console.log(jsonDict)
+
+  useEffect(() => {
+    if (Object.keys(jsonDict).length !== 0) {
+      updateUsedData();
+    }
+  }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots, jsonDict, inputData]);
 
   function onDeleteSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->');
@@ -287,8 +340,6 @@ function Viz(props) {
   function onToggleOutputClonalR() {
     if (clonalR) setClonalR(!clonalR)
   }
-
-  const [usedData, setUsedData] = useState(jsonDict);
 
   function updateUsedData() {
     const wholeData = jsonDict;
@@ -397,7 +448,7 @@ function Viz(props) {
 
     let tempNames = tempUsedData["solutions"].map((value, index) => { return value["name"] })
 
-    if (multiSoln) {
+    if (multiSoln && inputData !== "") {
       let tempNames1 = tempNames.filter((value, index) => { return inputData['solution_names'].includes(value) });
       let tempNames2 = tempNames.filter((value, index) => { return inputData2['solution_names'].includes(value) });
 
@@ -420,50 +471,8 @@ function Viz(props) {
     return 0;
   }
 
-  const multiSoln = Array.isArray(usedData['original'])
-
-  const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => { return value["name"] }));
-  const [inputNames, setInputNames] = useState(multiSoln ? usedData["original"].map((value, index) => { return value["name"] }) : []);
-
-  const queryParameters = new URLSearchParams(window.location.hash.split("?")[1]);
-
-  let labelName = queryParameters.get("labeling");
-  let labelName2 = queryParameters.get("labeling2");
-
-  const [labeling, setLabeling] = useState(labelName)
-  const [labeling2, setLabeling2] = useState(labelName2)
-
-  const [rotate, setRotate] = useState(queryParameters.get("rotated") === "true");
-  const [rotate2, setRotate2] = useState(queryParameters.get("rotated2") === "true");
-
-  const [type, setType] = useState(queryParameters.get("type"))
-
-  if (labelName === "undefined") {
-    insertParam("labeling", usedData["solutions"][0]["name"]);
-    setLabeling(usedData["solutions"][0]["name"])
-  }
-  if (labelName2 === "undefined") {
-    insertParam("labeling2", usedData["solutions"][0]["name"]);
-    setLabeling2(usedData["solutions"][0]["name"])
-  }
-
   sessionStorage.setItem("selected", JSON.stringify(new DefaultDict(0)));
   sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
-
-  const [data, setData] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling })[0]);
-  const [data2, setData2] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling2 })[0]);
-  const [tree, setTree] = useState(data["tree"])
-  const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
-  const [migration, setMigration] = useState(data["migration"])
-  const [tree2, setTree2] = useState([])
-  const [tree_labeling2, setTreeLabeling2] = useState([])
-  const [migration2, setMigration2] = useState([])
-  const [clonalMap, setClonalMap] = useState([])
-  const [clonalMap2, setClonalMap2] = useState([])
-  const [inputTree, setInputTree] = useState(multiSoln ? jsonDict["original"][0]["name"] : "")
-  const [inputTree2, setInputTree2] = useState(multiSoln ? jsonDict["original"][0]["name"] : "")
-  const [inputData, setInputData] = useState(multiSoln ? jsonDict["original"][0] : "")
-  const [inputData2, setInputData2] = useState(multiSoln ? jsonDict["original"][0] : "")
 
   // Flag if the original tree exists in the data, 
   // and fetch the data if it exists
@@ -477,76 +486,44 @@ function Viz(props) {
     origExists = false;
   }
 
-  // let coloring = usedData["coloring"];
-  const [coloring, setColoring] = useState(usedData["coloring"]);
-
-  const colorPalette = [
-    "#a6cee3",
-    "#1f78b4",
-    "#b2df8a",
-    "#33a02c",
-    "#fb9a99",
-    "#e31a1c",
-    "#fdbf6f",
-    "#ff7f00",
-    "#cab2d6",
-    "#6a3d9a",
-    "#ffff99",
-    "#b15928"
-  ]
-
-  if (coloring === undefined || coloring.length === 0) {
-
-    // Extract labels from the data
-    const labels = data["labeling"].map((item) => item[1]);
-
-    // Get unique labels
-    const uniqueLabels = labels.filter((value, index, self) => {
-      return self.indexOf(value) === index;
-    });
-
-    // Map each unique label to a new format: [label, indexAsString]
-    const formattedLabels = uniqueLabels.map((label, index) => [label, `${colorPalette[index % colorPalette.length]}`]);
-
-    //console.log(formattedLabels);
-
-    // Result
-    setColoring(formattedLabels);
-    // coloring = formattedLabels;
-  }
-
   let coloringDict = {};
 
   useEffect(() => {
-    for (var i = 0; i < coloring.length; i++) {
-      coloringDict[coloring[i][0]] = coloring[i][1];
+    if (coloring !== undefined) {
+      for (var i = 0; i < coloring.length; i++) {
+        coloringDict[coloring[i][0]] = coloring[i][1];
+      }
     }
   }, [coloring])
 
   useEffect(() => {
-    updateUsedData();
-    setTree(data["tree"]);
-    setTreeLabeling(data["labeling"]);
-    setMigration(data["migration"]);
-    setMu(sessionStorage.getItem("mu"));
-    setGamma(sessionStorage.getItem("gamma"));
+    if (Object.keys(jsonDict).length !== 0) {
+      updateUsedData();
+      setTree(data["tree"]);
+      setTreeLabeling(data["labeling"]);
+      setMigration(data["migration"]);
+      setMu(sessionStorage.getItem("mu"));
+      setGamma(sessionStorage.getItem("gamma"));
 
-    if (data["origin_node"] !== undefined) {
-      setClonalMap(data["origin_node"])
+      if (data["origin_node"] !== undefined) {
+        setClonalMap(data["origin_node"])
+      }
     }
   }, [labeling])
 
   useEffect(() => {
-    setLabelNames(usedData["solutions"].map((value, index) => { return value["name"] }))
+    if (Object.keys(usedData).length !== 0) {
+      setLabelNames(usedData["solutions"].map((value, index) => { return value["name"] }))
 
-    if (multiSoln) {
-      let solutionNames = usedData["solutions"].map((value, index) => { return value["name"] });
+      if (multiSoln) {
+        let solutionNames = usedData["solutions"].map((value, index) => { return value["name"] });
 
-      let temps = usedData["original"].filter((value, index) => {
-        return value['solution_names'].some(item => solutionNames.includes(item))
-      }).map((value, index) => { return value["name"] })
+        let temps = usedData["original"].filter((value, index) => {
+          return value['solution_names'].some(item => solutionNames.includes(item))
+        }).map((value, index) => { return value["name"] })
 
-      setInputNames(temps);
+        setInputNames(temps);
+      }
     }
   }, [usedData])
 
@@ -561,8 +538,6 @@ function Viz(props) {
       setLabeling2(labelNames[0])
     }
   }, [labelNames])
-
-  let coord_map = usedData["map"];
 
   let handleLabelChange = (event) => {
     insertParam("labeling", event.target.value);
@@ -703,7 +678,9 @@ function Viz(props) {
     setGamma2(sessionStorage.getItem("gamma2"));
     setMuSum(sessionStorage.getItem("musum"));
     setGammaSum(sessionStorage.getItem("gammasum"));
-    updateUsedData()
+    if (Object.keys(jsonDict).length !== 0) {
+      updateUsedData();
+    }
 
     document.addEventListener("keydown", handleKeyPress);
 
@@ -756,139 +733,74 @@ function Viz(props) {
     }
   }
 
+  useEffect(() => {
+    if (Object.keys(data).length > 0) {
+      console.log(coloring)
+      if (coloring === undefined || coloring.length === 0) {
+
+        // Extract labels from the data
+        const labels = data["labeling"].map((item) => item[1]);
+
+        // Get unique labels
+        const uniqueLabels = labels.filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        });
+
+        // Map each unique label to a new format: [label, indexAsString]
+        const formattedLabels = uniqueLabels.map((label, index) => [label, `${colorPalette[index % colorPalette.length]}`]);
+        console.log(formattedLabels)
+        //console.log(formattedLabels);
+
+        // Result
+        setColoring(formattedLabels);
+        // coloring = formattedLabels;
+      }
+    }
+  }, [data, coloring ])
+
   // console.log(filterStack)
   // keeping track of edges that are not used
   // update unusedEdges whenever
-
-  return (
-    <div className="viz">
-      <HelpPopup isPopupOpen={isHelpPopupOpen} togglePopup={toggleHelpPopup}></HelpPopup>
-      <NoSolutionsPopup isPopupOpen={isNoSolutionsPopupOpen} togglePopup={toggleNoSolutionsPopup}></NoSolutionsPopup>
-      {type !== 'sumviz' && type !== 'triviz' ?
-        <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
-        : <></>}
-      {(type === 'sumviz' || type === 'triviz') ?
-        <SummaryPanel
-          key={refreshCounter}
-          type={type}
-          setType={setType}
-          insertParam={insertParam}
-          usedData={usedData}
-          coloring={coloring}
-          muSum={muSum}
-          gammaSum={gammaSum}
-          evtBus={evtBus}
-          onDeleteSummaryEdge={onDeleteSummaryEdge}
-          onRequireSummaryEdge={onRequireSummaryEdge}
-          clearData={clearData}
-          roots={roots}
-          deletedEdges={deletedEdges}
-          requiredEdges={requiredEdges}
-          deletedRoots={deletedRoots}
-          requiredRoots={requiredRoots}
-          setDeletedEdges={setDeletedEdges}
-          setRequiredEdges={setRequiredEdges}
-          setDeletedRoots={setDeletedRoots}
-          setRequiredRoots={setRequiredRoots}
-          filterStack={filterStack}
-          setFilterStack={setFilterStack}
-        /> : <></>}
-      <div className={`panel info ${type === 'dualviz' ? 'one' :
-        type === 'sumviz' ? 'one two' :
-          type === 'triviz' ? 'tri two' :
-            ''
-        }`}>
-        <div className="titlewrapper">
-          { multiSoln ?
-            <label className="titleelem left" htmlFor="inputs">
-              <p><b>{multiSoln && type === 'triviz' ? '' : 'Input Tree: '}
-                <select
-                  name="inputs"
-                  id="inputs"
-                  onChange={handleInputChange}
-                  value={inputTree}
-                >
-                  {inputNames.map(l => <option key={l} value={l}>{l}</option>)}
-                </select>
-              </b></p>
-            </label> : <></>
-          }
-          <label className="titleelem end" htmlFor="labelings">
-            <p><b>{multiSoln && type === 'triviz' ? '' : 'Full Labeling: '}
-              <select 
-                name="labelings" 
-                id="labelings" 
-                onChange={handleLabelChange} 
-                value={labeling}  // Set the value prop here
-              >
-                {labelNames.filter(l => multiSoln ? inputData['solution_names'].includes(l) : true).map(l => <option key={l} value={l}>{l}</option>)}
-              </select>
-            </b></p>
-          </label>
-          {/* <h3 className="viztitle"><b>{data["name"]}</b></h3> */}
-          {(type !== 'dualviz' && type !== 'triviz' && type !== 'sumviz') ?
-            <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
-            <></>}
-          {type !== 'sumviz' ?
-            <span onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='panelclosebutton'><b>[X]</b></p></span>
-            : <></>}
-        </div>
-        <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
-          <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
-            <p className="paneltitle"><b>Migration Graph</b></p>
-            <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
-            <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
-            <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
-            <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
-            <Migration 
-              key={refreshCounter} 
-              tree={tree} 
-              labeling={tree_labeling} 
-              coloring={coloring} 
-              migration={migration} 
-              evtbus={evtBus} 
-              rotated={rotate}/>
-          </div>
-          <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
-          <p className="paneltitle">
-              {origExists ? (
-                // If origExists is true, render both Clonal Tree and View Input Tree links
-                <>
-                  <button
-                    style={{ fontWeight: !clonalL ? 'bold' : 'normal' }}
-                    onClick={onToggleOutputClonalL}
-                  >
-                    Clonal Tree
-                  </button>{" "}
-                  |{" "}
-                  <button
-                    style={{ fontWeight: clonalL ? 'bold' : 'normal' }}
-                    onClick={onToggleInputClonalL}
-                  >
-                    Input Tree
-                  </button>
-                </>
-              ) : (
-                // If origExists is false, render only Clonal Tree (fallback to <b> element)
-                <b>Clonal Tree</b>
-              )}
-            </p>
-            <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(1)}>Reset</button>
-            <ClonalTree 
-              key={refreshCounter} 
-              tree={!clonalL ? tree : multiSoln ? inputData['tree'] : originalTree} 
-              labeling={!clonalL ? tree_labeling : multiSoln ? inputData['labeling'] : originalLabeling} 
-              coloring={coloring} 
-              evtbus={evtBus} 
-              rightcol={type === 'sumviz' || type === 'triviz'} 
-              index={1}
-              clonalMap={clonalMap}
-              clonal={clonalL}/>
-          </div>
-        </div>
-      </div>
-      {(type === 'dualviz' || type === 'triviz') ?
-        <div className={`panel info ${type === 'dualviz' ? 'one two' : 'tri three'}`}>
+  console.log(multiSoln, inputData['tree'])
+  if (tree !== undefined && tree.length > 0) {
+    return (
+      <div className="viz">
+        <HelpPopup isPopupOpen={isHelpPopupOpen} togglePopup={toggleHelpPopup}></HelpPopup>
+        <NoSolutionsPopup isPopupOpen={isNoSolutionsPopupOpen} togglePopup={toggleNoSolutionsPopup}></NoSolutionsPopup>
+        {type !== 'sumviz' && type !== 'triviz' ?
+          <div className="panel tab_add2" onClick={gotoSummary}><p className='addpanelp'><b>+</b></p></div>
+          : <></>}
+        {(type === 'sumviz' || type === 'triviz') ?
+          <SummaryPanel
+            key={refreshCounter}
+            type={type}
+            setType={setType}
+            insertParam={insertParam}
+            usedData={usedData}
+            coloring={coloring}
+            muSum={muSum}
+            gammaSum={gammaSum}
+            evtBus={evtBus}
+            onDeleteSummaryEdge={onDeleteSummaryEdge}
+            onRequireSummaryEdge={onRequireSummaryEdge}
+            clearData={clearData}
+            roots={roots}
+            deletedEdges={deletedEdges}
+            requiredEdges={requiredEdges}
+            deletedRoots={deletedRoots}
+            requiredRoots={requiredRoots}
+            setDeletedEdges={setDeletedEdges}
+            setRequiredEdges={setRequiredEdges}
+            setDeletedRoots={setDeletedRoots}
+            setRequiredRoots={setRequiredRoots}
+            filterStack={filterStack}
+            setFilterStack={setFilterStack}
+          /> : <></>}
+        <div className={`panel info ${type === 'dualviz' ? 'one' :
+          type === 'sumviz' ? 'one two' :
+            type === 'triviz' ? 'tri two' :
+              ''
+          }`}>
           <div className="titlewrapper">
             { multiSoln ?
               <label className="titleelem left" htmlFor="inputs">
@@ -896,89 +808,183 @@ function Viz(props) {
                   <select
                     name="inputs"
                     id="inputs"
-                    onChange={handleInputChange2}
-                    value={inputTree2}
+                    onChange={handleInputChange}
+                    value={inputTree}
                   >
                     {inputNames.map(l => <option key={l} value={l}>{l}</option>)}
                   </select>
                 </b></p>
               </label> : <></>
             }
-            <label className="titleelem left" htmlFor="labelings">
+            <label className="titleelem end" htmlFor="labelings">
               <p><b>{multiSoln && type === 'triviz' ? '' : 'Full Labeling: '}
                 <select 
                   name="labelings" 
                   id="labelings" 
-                  onChange={handleLabelChange2}
-                  value={labeling2}  // Set the value prop here
+                  onChange={handleLabelChange} 
+                  value={labeling}  // Set the value prop here
                 >
-                  {labelNames.filter(l => multiSoln ? inputData2['solution_names'].includes(l) : true).map(l => <option key={l} value={l}>{l}</option>)}
+                  {labelNames.filter(l => multiSoln ? inputData['solution_names'].includes(l) : true).map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
               </b></p>
             </label>
-            {/* <h3 className="viztitle"><b>{data2["name"]}</b></h3> */}
-            <span onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
+            {/* <h3 className="viztitle"><b>{data["name"]}</b></h3> */}
+            {(type !== 'dualviz' && type !== 'triviz' && type !== 'sumviz') ?
+              <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
+              <></>}
+            {type !== 'sumviz' ?
+              <span onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='panelclosebutton'><b>[X]</b></p></span>
+              : <></>}
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
             <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
               <p className="paneltitle"><b>Migration Graph</b></p>
-              <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
-              <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
-              <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
-              <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
+              <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
+              <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+              <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
+              <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
               <Migration 
                 key={refreshCounter} 
-                tree={tree2} 
-                labeling={tree_labeling2} 
+                tree={tree} 
+                labeling={tree_labeling} 
                 coloring={coloring} 
-                migration={migration2} 
+                migration={migration} 
                 evtbus={evtBus} 
-                rightcol={true} 
-                rotated={rotate2}/>
+                rotated={rotate}/>
             </div>
             <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
-              <p className="paneltitle">{origExists ? (
-                // If origExists is true, render both Clonal Tree and View Input Tree links
-                <>
-                  <button
-                    style={{ fontWeight: !clonalR ? 'bold' : 'normal' }}
-                    onClick={onToggleOutputClonalR}
-                  >
-                    Clonal Tree
-                  </button>{" "}
-                  |{" "}
-                  <button
-                    style={{ fontWeight: clonalR ? 'bold' : 'normal' }}
-                    onClick={onToggleInputClonalR}
-                  >
-                    Input Tree
-                  </button>
-                </>
-              ) : (
-                // If origExists is false, render only Clonal Tree (fallback to <b> element)
-                <b>Clonal Tree</b>
-              )}</p>
-              <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(2)}>Reset</button>
+            <p className="paneltitle">
+                {origExists ? (
+                  // If origExists is true, render both Clonal Tree and View Input Tree links
+                  <>
+                    <button
+                      style={{ fontWeight: !clonalL ? 'bold' : 'normal' }}
+                      onClick={onToggleOutputClonalL}
+                    >
+                      Clonal Tree
+                    </button>{" "}
+                    |{" "}
+                    <button
+                      style={{ fontWeight: clonalL ? 'bold' : 'normal' }}
+                      onClick={onToggleInputClonalL}
+                    >
+                      Input Tree
+                    </button>
+                  </>
+                ) : (
+                  // If origExists is false, render only Clonal Tree (fallback to <b> element)
+                  <b>Clonal Tree</b>
+                )}
+              </p>
+              <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(1)}>Reset</button>
               <ClonalTree 
                 key={refreshCounter} 
-                tree={!clonalR ? tree2 : multiSoln ? inputData2['tree'] : originalTree} 
-                labeling={!clonalR ? tree_labeling2 : multiSoln ? inputData2['labeling'] : originalLabeling} 
+                tree={!clonalL ? tree : multiSoln ? inputData['tree'] : originalTree} 
+                labeling={!clonalL ? tree_labeling : multiSoln ? inputData['labeling'] : originalLabeling} 
                 coloring={coloring} 
                 evtbus={evtBus} 
-                rightcol={true} 
-                index={2}
-                clonalMap={clonalMap2}
-                clonal={clonalR}/>
+                rightcol={type === 'sumviz' || type === 'triviz'} 
+                index={1}
+                clonalMap={clonalMap}
+                clonal={clonalL}/>
             </div>
           </div>
-        </div> :
-        <></>}
-      {type !== 'dualviz' && type !== 'triviz' ?
-        <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
-        : <></>
-      }
-    </div>
-  )
+        </div>
+        {(type === 'dualviz' || type === 'triviz') ?
+          <div className={`panel info ${type === 'dualviz' ? 'one two' : 'tri three'}`}>
+            <div className="titlewrapper">
+              { multiSoln ?
+                <label className="titleelem left" htmlFor="inputs">
+                  <p><b>{multiSoln && type === 'triviz' ? '' : 'Input Tree: '}
+                    <select
+                      name="inputs"
+                      id="inputs"
+                      onChange={handleInputChange2}
+                      value={inputTree2}
+                    >
+                      {inputNames.map(l => <option key={l} value={l}>{l}</option>)}
+                    </select>
+                  </b></p>
+                </label> : <></>
+              }
+              <label className="titleelem left" htmlFor="labelings">
+                <p><b>{multiSoln && type === 'triviz' ? '' : 'Full Labeling: '}
+                  <select 
+                    name="labelings" 
+                    id="labelings" 
+                    onChange={handleLabelChange2}
+                    value={labeling2}  // Set the value prop here
+                  >
+                    {labelNames.filter(l => multiSoln ? inputData2['solution_names'].includes(l) : true).map(l => <option key={l} value={l}>{l}</option>)}
+                  </select>
+                </b></p>
+              </label>
+              {/* <h3 className="viztitle"><b>{data2["name"]}</b></h3> */}
+              <span onClick={closeTab.bind(null, 2)} style={{ textDecoration: 'none', color: 'black' }}><p className='panelclosebutton'><b>[X]</b></p></span>
+            </div>
+            <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
+              <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
+                <p className="paneltitle"><b>Migration Graph</b></p>
+                <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
+                <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
+                <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
+                <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
+                <Migration 
+                  key={refreshCounter} 
+                  tree={tree2} 
+                  labeling={tree_labeling2} 
+                  coloring={coloring} 
+                  migration={migration2} 
+                  evtbus={evtBus} 
+                  rightcol={true} 
+                  rotated={rotate2}/>
+              </div>
+              <div className={`panel migration ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
+                <p className="paneltitle">{origExists ? (
+                  // If origExists is true, render both Clonal Tree and View Input Tree links
+                  <>
+                    <button
+                      style={{ fontWeight: !clonalR ? 'bold' : 'normal' }}
+                      onClick={onToggleOutputClonalR}
+                    >
+                      Clonal Tree
+                    </button>{" "}
+                    |{" "}
+                    <button
+                      style={{ fontWeight: clonalR ? 'bold' : 'normal' }}
+                      onClick={onToggleInputClonalR}
+                    >
+                      Input Tree
+                    </button>
+                  </>
+                ) : (
+                  // If origExists is false, render only Clonal Tree (fallback to <b> element)
+                  <b>Clonal Tree</b>
+                )}</p>
+                <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(2)}>Reset</button>
+                <ClonalTree 
+                  key={refreshCounter} 
+                  tree={!clonalR ? tree2 : multiSoln ? inputData2['tree'] : originalTree} 
+                  labeling={!clonalR ? tree_labeling2 : multiSoln ? inputData2['labeling'] : originalLabeling} 
+                  coloring={coloring} 
+                  evtbus={evtBus} 
+                  rightcol={true} 
+                  index={2}
+                  clonalMap={clonalMap2}
+                  clonal={clonalR}/>
+              </div>
+            </div>
+          </div> :
+          <></>}
+        {type !== 'dualviz' && type !== 'triviz' ?
+          <div className="panel tab_add" onClick={addTab}><p className='addpanelp'><b>+</b></p></div>
+          : <></>
+        }
+      </div>
+    )
+  } else {
+    return (<></>)
+  }
 }
 
 export default Viz;
