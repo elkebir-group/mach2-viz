@@ -138,9 +138,53 @@ function Viz(props) {
   const [gamma2, setGamma2] = useState(0);
   const [muSum, setMuSum] = useState(0);
   const [gammaSum, setGammaSum] = useState(0);
-  const jsonContents = decompressUrlSafe(sessionStorage.getItem("json_data"));
+  const [jsonDict, setJsonDict] = useState({
+    "name": "dummy",
+    "original": [{
+      "name": "dummy1",
+      "tree": [
+        ["1", "2"]
+      ],
+      "labeling": [
+        ["1", "brain"],
+        ["2", "kidney"]
+      ],
+      "solution_names": [
+        "T-0"
+      ]
+    }],
+    "solutions": [{
+      "name": "T-0",
+      "tree": [
+        ["1", "2"]
+      ],
+      "labeling": [
+        ["1", "brain"],
+        ["2", "kidney"]
+      ],
+      "migration": [
+        ["brain", "kidney", 1]
+      ],
+      "origin_node": [
+        ["1", "1"],
+        ["2", "2"]
+      ]
+    }],
+    "summary": [
+      ["brain", "kidney", 1]
+    ]
+  });
 
-  const jsonDict = JSON.parse(jsonContents);
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/json')
+      .then(response => response.json())
+      .then(outdata => {
+        setJsonDict(JSON.parse(outdata.data));
+      })
+      .catch(error => console.error('Error:', error));
+  }, []);
+
+  console.log(jsonDict)
 
   // for filtering when selecting/unselecting edges on summary graph
   const [deletedEdges, setDeletedEdges] = useState([]);
@@ -175,7 +219,7 @@ function Viz(props) {
 
   useEffect(() => {
     updateUsedData();
-  }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots]);
+  }, [deletedEdges, requiredEdges, deletedRoots, requiredRoots, jsonDict]);
 
   function onDeleteSummaryEdge(edge_id) {
     let [source, target] = edge_id.split('->');

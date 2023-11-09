@@ -1,5 +1,5 @@
 '''
-@author Vikram Ramavarapu, Nishant Sheikh
+@author Vikram Ramavarapu
 
 Server side for starting viz via commandline argument
 '''
