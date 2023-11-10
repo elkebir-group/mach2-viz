@@ -830,7 +830,7 @@ function Viz(props) {
             {(type !== 'dualviz' && type !== 'triviz' && type !== 'sumviz') ?
               <p className="titleelem end"><b>Press [/] for help &nbsp;&nbsp;</b></p> :
               <></>}
-            {type !== 'sumviz' ?
+            {type !== 'sumviz' && (type === 'dualviz' || type === 'triviz') ?
               <span onClick={closeTab.bind(null, 1)} style={{ textDecoration: 'none', color: 'black'}}><p className='panelclosebutton'><b>[X]</b></p></span>
               : <></>}
           </div>
