@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[63],{418:function(i,n,p){i.exports=p.p+"static/media/T-right_iliac_lymph_node-7.8b4c8394.labeling"}}]);
+//# sourceMappingURL=63.95ac15bc.chunk.js.map

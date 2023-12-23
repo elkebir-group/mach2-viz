@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1601],{1956:function(a,n,e){a.exports=e.p+"static/media/T-right_adrenal_gland-14.1dba0540.tree"}}]);
+//# sourceMappingURL=1601.78715110.chunk.js.map

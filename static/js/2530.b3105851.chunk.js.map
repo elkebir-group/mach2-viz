@@ -1,0 +1,1 @@
+{"version":3,"sources":["samples/patient7_LOv/patient7.tree"],"names":["module","exports","__webpack_require__","p"],"mappings":"iFAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/2530.b3105851.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/patient7.f24dae70.tree\";"],"sourceRoot":""}

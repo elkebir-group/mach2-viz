@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1010],{1365:function(e,p,n){e.exports=n.p+"static/media/T-left_pelvic_lymph_node_5-335.e349d427.labeling"}}]);
+//# sourceMappingURL=1010.9869bf97.chunk.js.map

@@ -1,0 +1,1 @@
+{"version":3,"sources":["samples/A10/T-prostate-1.labeling"],"names":["module","exports","__webpack_require__","p"],"mappings":"8EAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/39.e55f5ab5.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/T-prostate-1.f97fc713.labeling\";"],"sourceRoot":""}

@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1663],{2018:function(p,a,e){p.exports=e.p+"static/media/prostate-T-prostate-S.cba3be41.labeling"}}]);
+//# sourceMappingURL=1663.dba631c0.chunk.js.map
