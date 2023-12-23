@@ -1,0 +1,102 @@
+[
+    {
+        "name": "A1",
+        "dataset": "hoadley_2016",
+        "path": "A1/A1.json"
+    },
+    {
+        "name": "A7",
+        "dataset": "hoadley_2016",
+        "path": "A7/A7.json"
+    },
+    {
+        "name": "A10",
+        "dataset": "gundem_2015",
+        "path": "A10/A10.json"
+    },
+    {
+        "name": "A22",
+        "dataset": "gundem_2015",
+        "path": "A22/A22.json"
+    },
+    {
+        "name": "A29",
+        "dataset": "gundem_2015",
+        "path": "A29/A29.json"
+    },
+    {
+        "name": "A31",
+        "dataset": "gundem_2015",
+        "path": "A31/A31.json"
+    },
+    {
+        "name": "A32",
+        "dataset": "gundem_2015",
+        "path": "A32/A32.json"
+    },
+    {
+        "name": "patient1_LOv",
+        "dataset": "mcpherson_2016",
+        "path": "patient1_LOv/patient1_LOv.json"
+    },
+    {
+        "name": "patient1_ROv",
+        "dataset": "mcpherson_2016",
+        "path": "patient1_ROv/patient1_ROv.json"
+    },
+    {
+        "name": "patient2",
+        "dataset": "mcpherson_2016",
+        "path": "patient2/patient2.json"
+    },
+    {
+        "name": "patient3_LOv",
+        "dataset": "mcpherson_2016",
+        "path": "patient3_LOv/patient3_LOv.json"
+    },
+    {
+        "name": "patient3_ROv",
+        "dataset": "mcpherson_2016",
+        "path": "patient3_ROv/patient3_ROv.json"
+    },
+    {
+        "name": "patient4_LOv",
+        "dataset": "mcpherson_2016",
+        "path": "patient4_LOv/patient4_LOv.json"
+    },
+    {
+        "name": "patient4_ROv",
+        "dataset": "mcpherson_2016",
+        "path": "patient4_ROv/patient4_ROv.json"
+    },
+    {
+        "name": "patient7_LOv",
+        "dataset": "mcpherson_2016",
+        "path": "patient7_LOv/patient7_LOv.json"
+    },
+    {
+        "name": "patient7_ROv",
+        "dataset": "mcpherson_2016",
+        "path": "patient7_ROv/patient7_ROv.json"
+    },
+    {
+        "name": "patient9_LOv",
+        "dataset": "mcpherson_2016",
+        "path": "patient9_LOv/patient9_LOv.json"
+    },
+    {
+        "name": "patient9_ROv",
+        "dataset": "mcpherson_2016",
+        "path": "patient9_ROv/patient9_ROv.json"
+    },
+    {
+        "name": "patient10",
+        "dataset": "mcpherson_2016",
+        "path": "patient10/patient10.json"
+    },
+    {
+        "name": "tracerx",
+        "dataset": "mcpherson_2016",
+        "path": "tracerx/tracerx.json"
+    }
+]

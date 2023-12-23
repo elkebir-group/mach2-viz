@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Link
   } from "react-router-dom";
@@ -14,32 +14,66 @@ import DefaultDict from "../utils/DefaultDict.js";
 import { compressUrlSafe } from '../utils/lzma-url.js';
 
 // Import the patient sample datasets
-import A1 from "../samples/A1/A1.json";
-import A7 from "../samples/A7/A7.json";
-import A10 from "../samples/A10/A10.json";
-import A22 from "../samples/A22/A22.json";
-import A29 from "../samples/A29/A29.json";
-import A31 from "../samples/A31/A31.json";
-import A32 from "../samples/A32/A32.json";
-import patient1_LOv from "../samples/patient1_LOv/patient1_LOv.json";
-import patient1_ROv from "../samples/patient1_ROv/patient1_ROv.json";
-import patient2 from "../samples/patient2/patient2.json";
-import patient3_LOv from "../samples/patient3_LOv/patient3_LOv.json";
-import patient3_ROv from "../samples/patient3_ROv/patient3_ROv.json";
-import patient4_LOv from "../samples/patient4_LOv/patient4_LOv.json";
-import patient4_ROv from "../samples/patient4_ROv/patient4_ROv.json";
-import patient7_LOv from "../samples/patient7_LOv/patient7_LOv.json";
-import patient7_ROv from "../samples/patient7_ROv/patient7_ROv.json";
-import patient9_LOv from "../samples/patient9_LOv/patient9_LOv.json";
-import patient9_ROv from "../samples/patient9_ROv/patient9_ROv.json";
-import patient10 from "../samples/patient10/patient10.json";
-import tracerx from "../samples/tracerx/tracerx.json";
+import mapping from '../samples/mapping.json';
 
 /** The home page for the visualizer
  * 
  * @returns JSX/HTML
  */
 function Home() {
+    const [modulesLoaded, setModulesLoaded] = useState(false);
+    const [jsonDict, setJsonDict] = useState({});
+    const [defaultPatients, setDefaultPatients] = useState([]);
+    const [defaultDirs, setDefaultDirs] = useState([]);
+
+    const importComponent = async (file) => {
+      try {
+        const module = await import(`../samples/${file}`);
+        return module;
+      } catch (error) {
+        console.error("An error occurred while importing:", error);
+        throw error;
+      }
+    };
+
+    const findDataset = (name) => {
+      const item = mapping.find(obj => obj.name === name);
+      return item ? item.dataset : null;
+  };
+
+    useEffect(() => {
+      const loadComponents = async () => {
+        const promises = mapping.map(async (item) => {
+          const module = await importComponent(item['path']);
+          return { name: item['name'], module: module.default }; // Assuming a default export
+        });
+  
+        const results = await Promise.all(promises);
+        const newJsonDict = {};
+        const newDefaultPatients = [];
+        const newDefaultDirs = [];
+  
+        results.forEach(({ name, module }) => {
+          newJsonDict[name] = module;
+          newDefaultPatients.push(name);
+          newDefaultDirs.push(findDataset(name));
+        });
+  
+        setJsonDict(newJsonDict);
+        setDefaultPatients(newDefaultPatients);
+        setDefaultDirs(newDefaultDirs);
+        setModulesLoaded(true);
+      };
+  
+      loadComponents().catch((error) => {
+        console.error("Error loading components:", error);
+      });
+    }, []);
+
+    if (!modulesLoaded) {
+      return <div>Loading...</div>; // or any other loading indicator
+    }
+
     /** Download the json dataset when the icon is clicked
      * 
      * @param {*} url (string) The url to download from 
@@ -54,33 +88,6 @@ function Home() {
       })
     }
 
-    // Dictionary mapping dataset name to json object
-    var json_dict = {
-      "A1": A1,
-      "A7": A7,
-      "A10": A10,
-      "A22": A22,
-      "A29": A29,
-      "A31": A31,
-      "A32": A32,
-      "patient1_LOv": patient1_LOv,
-      "patient1_ROv": patient1_ROv,
-      "patient2": patient2,
-      "patient3_LOv": patient3_LOv,
-      "patient3_ROv": patient3_ROv,
-      "patient4_LOv": patient4_LOv,
-      "patient4_ROv": patient4_ROv,
-      "patient7_LOv": patient7_LOv,
-      "patient7_ROv": patient7_ROv,
-      "patient9_LOv": patient9_LOv,
-      "patient9_ROv": patient9_ROv,
-      "patient10": patient10,
-      "tracerx": tracerx,
-    }
-
-    // Table values
-    var default_patients = ["A1", "A7", "A10", "A22", "A29", "A31", "A32", "patient1_LOv", "patient1_ROv", "patient2", "patient3_LOv", "patient3_ROv", "patient4_LOv", "patient4_ROv", "patient7_LOv", "patient7_ROv", "patient9_LOv", "patient9_ROv", "patient10", "tracerx"]
-    var default_dirs = ["hoadley_2016", "hoadley_2016", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "gundem_2015", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "mcpherson_2016", "tracerx"]
     var div_elements = []
     var which_color = true;
     const color1 = "#EBEBEB";
@@ -91,9 +98,9 @@ function Home() {
     sessionStorage.setItem("violations", JSON.stringify(new DefaultDict(0)));
     
     // Construct div elements representing the table entries
-    for (let i = 0; i < default_patients.length; i++) {
-        var current_patient = default_patients[i];
-        var current_directory = default_dirs[i];
+    for (let i = 0; i < defaultPatients.length; i++) {
+        var current_patient = defaultPatients[i];
+        var current_directory = defaultDirs[i];
         var current_color = (which_color ? color1 : color2)
 
         var link = URLs[current_patient];
@@ -120,7 +127,7 @@ function Home() {
 
             // Add a small delay (e.g., 100ms) before the sessionStorage operation
             setTimeout(() => {
-              sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(json_dict[default_patients[i]])));
+              sessionStorage.setItem("json_data", compressUrlSafe(JSON.stringify(jsonDict[defaultPatients[i]])));
               window.location.href = `#/${link}`
             }, 100);
           }}>
@@ -134,7 +141,7 @@ function Home() {
                   className='rightli' 
                   src={download}
                   alt="download"
-                  onClick={() => handleDownload(`https://raw.githubusercontent.com/vikramr2/machina-viz/main/src/samples/${default_patients[i]}/${default_patients[i]}.json`, `${default_patients[i]}.json`)}
+                  onClick={() => handleDownload(`https://raw.githubusercontent.com/vikramr2/machina-viz/main/src/samples/${defaultPatients[i]}/${defaultPatients[i]}.json`, `${defaultPatients[i]}.json`)}
                 >
                 </img>
               </div>

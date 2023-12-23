@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from 'react'
 import { useState } from "react";
 import CytoscapeComponent from 'react-cytoscapejs';
 import Cytoscape from 'cytoscape';
-import COSEBilkent from 'cytoscape-cose-bilkent';
 import dagre from 'cytoscape-dagre';
 
 // Load Cytoscape submodules
@@ -45,18 +44,6 @@ function findCorrespondingAll(clonalMap, currNode) {
   }
 
   return corrNodes;
-}
-
-function getNodesFromIds(nodes, ids) {
-  let ret = []
-
-  nodes.forEach((node) => {
-    if (ids.includes(node.id())) {
-      ret.push(node.id())
-    }
-  })
-
-  return ret;
 }
 
 function getSubtree(tree, nodes) {
