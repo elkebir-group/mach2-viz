@@ -29,7 +29,7 @@ To view documentation for using MACH2-Viz, refer to [this link](docs/documentati
 
 If you have a dataset that you would like to add to our gallery, follow these steps:
 
-1. Create a [fork](https://github.com/elkebir-group/MACH2/fork) of this repository. If you already have a fork, make sure to pull request.
+1. Create a [fork](https://github.com/elkebir-group/MACH2/fork) of this repository. If you already have a fork, make sure to git pull.
 2. Run [MACH2](https://github.com/elkebir-group/MACH2) and get a JSON
 3. Put your JSON in `src/samples` within your fork
 4. Add an entry to `src/samples/mapping.json` like below.
