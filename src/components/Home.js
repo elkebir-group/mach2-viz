@@ -71,7 +71,7 @@ function Home() {
     }, []);
 
     if (!modulesLoaded) {
-      return <div>Loading...</div>; // or any other loading indicator
+      return <div className='panel'><h1>Loading...</h1></div>; // or any other loading indicator
     }
 
     /** Download the json dataset when the icon is clicked
