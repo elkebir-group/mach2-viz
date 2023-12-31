@@ -23,7 +23,7 @@ To run MACH2-Viz on localhost, simply do the following:
 
 ## Documentation
 
-To view documentation for using MACH2-Viz, refer to [this link](docs/documentation.md)
+To view documentation for using MACH2-Viz, refer to [this link](https://elkebir-group.github.io/mach2-docs/)
 
 ## Contributing
 
@@ -44,3 +44,5 @@ If you have a dataset that you would like to add to our gallery, follow these st
   "path": "path"
 }
 ```
+
+For more information on contributing to this repository, see the [following](https://elkebir-group.github.io/mach2-docs/contributions/).

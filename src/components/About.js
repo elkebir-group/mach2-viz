@@ -18,7 +18,7 @@ function About() {
                     <p className='backarrow'><b><Link to="" style={{ textDecoration: 'none', color: 'black'}}>&#8592; home</Link></b></p>
                     <h1 className='abouttitle'>Instructions</h1>
                 </div>
-                <p><b>NOTE: If you want to see more detailed documentation, refer to the following <a href='https://github.com/elkebir-group/mach2-viz/blob/main/docs/documentation.md'>link</a></b></p>
+                <p><b>For full documentation on both MACH2 and MACH2-Viz, please see the following <a href="https://elkebir-group.github.io/mach2-docs/">link</a></b></p>
                 <p id='mach2'><b>MACH2</b> is a personalized tool to visualize cancer metastasis. It is a sequel to MACHINA, an algorithm designed to solve the Parsimonious Migration History Problem (PMH problem).</p>
                 <p id='ii'><b>The Parsimonious Migration History Problem:</b> Given current oncological mutations at their respective anatomical sites, how can we infer their mutation tree as well as a network of anatomical sites inferring metastases?</p>
                 <p id='iii'><b>Visualization Format:</b></p>
