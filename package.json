@@ -45,7 +45,7 @@
     "web-worker": "^1.2.0"
   },
   "scripts": {
-    "start": "react-scripts start --openssl-legacy-provider build",
+    "start": "PORT=3001 react-scripts --max_old_space_size=8128 --openssl-legacy-provider start build",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

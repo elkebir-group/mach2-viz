@@ -291,10 +291,21 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
       /** Parameter definitions
        * 
        * Migration Number (Mu):       Sum of the edge weights
-       * Comigration Number (Gamma):  Number of unique migrations
+       * Comigration Number (Gamma):  Number of unique clustered migration events
        */
+      function countUniqueTimestamps(array) {
+        const timestamps = new Set();
+    
+        for (const item of array) {
+            // Assuming the timestamp is the third element
+            timestamps.add(item[2]);
+        }
+    
+        return timestamps.size;
+      }
+
       let mu = 0;
-      let gamma = edges.length;
+      let gamma = countUniqueTimestamps(tree);
       edges.forEach((edge) => {
         // eslint-disable-next-line eqeqeq
         if (edge.data.label == '') {
