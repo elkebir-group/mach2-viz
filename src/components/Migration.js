@@ -298,7 +298,9 @@ function Migration({ tree, labeling, coloring, migration, evtbus, rightcol, rota
     
         for (const item of array) {
             // Assuming the timestamp is the third element
-            timestamps.add(item[2]);
+            if (item[2] !== -1) { // exclude non-migrations (-1)
+              timestamps.add(item[2]);
+            }
         }
     
         return timestamps.size;
