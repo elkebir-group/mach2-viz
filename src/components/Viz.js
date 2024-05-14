@@ -792,8 +792,8 @@ function Viz(props) {
         <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
           <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
             <p className="paneltitle"><b>Migration Graph</b></p>
-            <p className="paneltitle mu">{`\u03BC: ${mu}`}</p>
-            <p className="paneltitle gamma">{`\u03B3: ${gamma}`}</p>
+            <p className="paneltitle mu">{`migrations: ${mu}`}</p>
+            <p className="paneltitle gamma">{`co-migrations: ${gamma}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
             <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
             <Migration 
@@ -878,8 +878,8 @@ function Viz(props) {
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
             <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
               <p className="paneltitle"><b>Migration Graph</b></p>
-              <p className="paneltitle mu">{`\u03BC: ${mu2}`}</p>
-              <p className="paneltitle gamma">{`\u03B3: ${gamma2}`}</p>
+              <p className="paneltitle mu">{`migrations: ${mu2}`}</p>
+              <p className="paneltitle gamma">{`co-migrations: ${gamma2}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
               <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
               <Migration 
