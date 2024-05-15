@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[35],{390:function(p,n,o){p.exports=o.p+"static/media/T-periportal_lymph_node-1.79fb95dd.labeling"}}]);
-//# sourceMappingURL=35.746cdf3c.chunk.js.map

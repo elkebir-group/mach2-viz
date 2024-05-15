@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1846],{2201:function(e,p,c){e.exports=c.p+"static/media/T-left_cervical_lymph_node-2.1b8cdab7.tree"}}]);
-//# sourceMappingURL=1846.d595c25d.chunk.js.map

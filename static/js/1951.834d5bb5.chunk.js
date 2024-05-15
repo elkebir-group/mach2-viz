@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1951],{2306:function(a,e,n){a.exports=n.p+"static/media/T-left_subclavicular_lymph_node-52.9e5da7d2.labeling"}}]);
-//# sourceMappingURL=1951.834d5bb5.chunk.js.map

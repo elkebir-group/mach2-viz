@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[428],{783:function(n,a,e){n.exports=e.p+"static/media/T-left_adrenal_gland-12.c09d962b.labeling"}}]);
-//# sourceMappingURL=428.2c2a1ff9.chunk.js.map

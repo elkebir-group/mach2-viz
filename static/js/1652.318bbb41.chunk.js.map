@@ -1,1 +1,0 @@
-{"version":3,"sources":["samples/A22/coloring.txt"],"names":["module","exports","__webpack_require__","p"],"mappings":"iFAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/1652.318bbb41.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/coloring.cea4296f.txt\";"],"sourceRoot":""}

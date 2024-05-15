@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1797],{2152:function(n,i,p){n.exports=p.p+"static/media/T-right_inguinal_lymph_node-0.c1f880f1.labeling"}}]);
-//# sourceMappingURL=1797.9a61e597.chunk.js.map

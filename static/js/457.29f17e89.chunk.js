@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[457],{812:function(e,o,n){e.exports=n.p+"static/media/T-left_humerus_bone_marrow-10.1dba0540.tree"}}]);
-//# sourceMappingURL=457.29f17e89.chunk.js.map

@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[29],{384:function(p,i,n){p.exports=n.p+"static/media/T-perigastric_lymph_node-0.257228d5.labeling"}}]);
-//# sourceMappingURL=29.f24b4c56.chunk.js.map

@@ -1,1 +1,0 @@
-{"version":3,"sources":["samples/patient2/patient2.labeling"],"names":["module","exports","__webpack_require__","p"],"mappings":"iFAAAA,EAAAC,QAAiBC,EAAAC,EAAuB","file":"static/js/2523.c891d109.chunk.js","sourcesContent":["module.exports = __webpack_public_path__ + \"static/media/patient2.29b11283.labeling\";"],"sourceRoot":""}

@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[21],{177:function(O){O.exports={name:"patient9",solutions:[{name:"patient9",tree:[["A","A1"],["A","A2"],["A","A3"],["A","B"],["A","C"],["C","C1"],["C","C2"],["C","C3"]],labeling:[["A","LOv"],["C","LOv"],["A1","ROv"],["A2","LOv"],["A3","Om"],["B","LOv"],["C1","ROv"],["C2","LOv"],["C3","Om"]],migration:[["LOv","ROv",2],["LOv","Om",2]]}],summary:{migration:[["LOv","Om",1],["LOv","ROv",1]]}}}}]);
-//# sourceMappingURL=21.0f19eb5d.chunk.js.map
