@@ -409,9 +409,11 @@ function Viz(props) {
   const [data, setData] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling })[0]);
   const [data2, setData2] = useState(usedData["solutions"].filter((item) => { return item["name"] === labeling2 })[0]);
   const [tree, setTree] = useState(data["tree"])
+  const [unobserved, setUnobserved] = useState(data["unobserved_clones"]);
   const [tree_labeling, setTreeLabeling] = useState(data["labeling"])
   const [migration, setMigration] = useState(data["migration"])
-  const [tree2, setTree2] = useState([])
+  const [tree2, setTree2] = useState([]);
+  const [unobserved2, setUnobserved2] = useState([])
   const [tree_labeling2, setTreeLabeling2] = useState([])
   const [migration2, setMigration2] = useState([])
   const [clonalMap, setClonalMap] = useState([])
@@ -483,6 +485,7 @@ function Viz(props) {
     updateUsedData();
     setTree(data["tree"]);
     setTreeLabeling(data["labeling"]);
+    setUnobserved(data["unobserved_clones"]);
     setMigration(data["migration"]);
     setMu(sessionStorage.getItem("mu"));
     setGamma(sessionStorage.getItem("gamma"));
@@ -586,6 +589,7 @@ function Viz(props) {
         setRotate(rotate2)
         setTree(data2["tree"])
         setTreeLabeling(data2["labeling"])
+        setUnobserved(data2["unoberved_clones"])
         setMigration(data2["migration"])
         setInputData(inputData2)
         setInputTree(inputTree2)
@@ -604,6 +608,7 @@ function Viz(props) {
     if (data2) {
       setTree2(data2["tree"])
       setTreeLabeling2(data2["labeling"])
+      setUnobserved2(data2["unobserved_clones"])
       setMigration2(data2["migration"])
 
       if (data2["origin_node"] !== undefined) {
@@ -839,7 +844,8 @@ function Viz(props) {
               rightcol={type === 'sumviz' || type === 'triviz'} 
               index={1}
               clonalMap={clonalMap}
-              clonal={clonalL}/>
+              clonal={clonalL}
+              unobserved={unobserved}/>
           </div>
         </div>
       </div>
@@ -924,7 +930,8 @@ function Viz(props) {
                 rightcol={true} 
                 index={2}
                 clonalMap={clonalMap2}
-                clonal={clonalR}/>
+                clonal={clonalR}
+                unobserved={unobserved2}/>
             </div>
           </div>
         </div> :

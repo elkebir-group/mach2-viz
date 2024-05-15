@@ -1160,3 +1160,7 @@ input {
   border-radius: 8px;
   text-align: center;
 }
+
+.red-text {
+  color: red;
+}
