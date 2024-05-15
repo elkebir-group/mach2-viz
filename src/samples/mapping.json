@@ -1,13 +1,33 @@
 [
     {
-        "name": "A1",
+        "name": "Breast_A1-1",
         "dataset": "hoadley_2016",
-        "path": "A1/A1.json"
+        "path": "A1/Breast_A1-1.json"
     },
     {
-        "name": "A7",
+        "name": "Breast_A1-2",
         "dataset": "hoadley_2016",
-        "path": "A7/A7.json"
+        "path": "A1/Breast_A1-2.json"
+    },
+    {
+        "name": "Breast_A1-3",
+        "dataset": "hoadley_2016",
+        "path": "A1/Breast_A1-3.json"
+    },
+    {
+        "name": "Breast_A1-4",
+        "dataset": "hoadley_2016",
+        "path": "A1/Breast_A1-4.json"
+    },
+    {
+        "name": "Breast_A7-1",
+        "dataset": "hoadley_2016",
+        "path": "A7/Breast_A7-1.json"
+    },
+    {
+        "name": "Breast_A7-2",
+        "dataset": "hoadley_2016",
+        "path": "A7/Breast_A7-2.json"
     },
     {
         "name": "A10",
