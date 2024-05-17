@@ -342,6 +342,12 @@ input[type="checkbox"] {
   z-index: 999;
 }
 
+.paneltitle.unobserved {
+  position: absolute;
+  margin-top: 60px;
+  z-index: 999;
+}
+
 .paneltitle.mu {
   margin-top: 25px;
 }
