@@ -344,7 +344,7 @@ input[type="checkbox"] {
 
 .paneltitle.unobserved {
   position: absolute;
-  margin-top: 60px;
+  margin-top: 65px;
   z-index: 999;
 }
 
@@ -357,12 +357,12 @@ input[type="checkbox"] {
 }
 
 .paneltitle.button {
-  margin-top: 75px;
+  margin-top: 90px;
   margin-left: 10px;
 }
 
 .paneltitle.button.under {
-  margin-top: 100px;
+  margin-top: 115px;
 }
 
 .paneltitle.button.clonal {

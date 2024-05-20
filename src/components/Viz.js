@@ -798,7 +798,8 @@ function Viz(props) {
           <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
             <p className="paneltitle"><b>Migration Graph</b></p>
             <p className="paneltitle mu">{`migrations: ${mu}`}</p>
-            <p className="paneltitle gamma">{`co-migrations: ${gamma}`}</p>
+            <p className="paneltitle gamma">{`comigrations: ${gamma}`}</p>
+            <p className="paneltitle unobserved">{`unobserved clones: ${unobserved2.length}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
             <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
             <Migration 
@@ -835,7 +836,6 @@ function Viz(props) {
               )}
             </p>
             <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(1)}>Reset</button>
-            <p className="paneltitle unobserved">{`unobserved clones: ${unobserved2.length}`}</p>
             <ClonalTree 
               key={refreshCounter} 
               tree={!clonalL ? tree : multiSoln ? inputData['tree'] : originalTree} 
@@ -886,7 +886,8 @@ function Viz(props) {
             <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
               <p className="paneltitle"><b>Migration Graph</b></p>
               <p className="paneltitle mu">{`migrations: ${mu2}`}</p>
-              <p className="paneltitle gamma">{`co-migrations: ${gamma2}`}</p>
+              <p className="paneltitle gamma">{`comigrations: ${gamma2}`}</p>
+              <p className="paneltitle unobserved">{`unobserved clones: ${unobserved2.length}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
               <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
               <Migration 
@@ -922,7 +923,6 @@ function Viz(props) {
                 <b>Clonal Tree</b>
               )}</p>
               <button type="button" className="paneltitle button clonal" onClick={() => resetClonal(2)}>Reset</button>
-              <p className="paneltitle unobserved">{`unobserved clones: ${unobserved2.length}`}</p>
               <ClonalTree 
                 key={refreshCounter} 
                 tree={!clonalR ? tree2 : multiSoln ? inputData2['tree'] : originalTree} 
