@@ -1,162 +1,132 @@
 [
     {
-        "name": "Breast_A1-1",
-        "dataset": "hoadley_2016",
-        "path": "A1/Breast_A1-1.json"
+        "name": "osteosarcoma_9",
+        "dataset": "Kinnaman_et_al_2018",
+        "path": "osteosarcoma_9.json"
     },
     {
-        "name": "Breast_A1-2",
-        "dataset": "hoadley_2016",
-        "path": "A1/Breast_A1-2.json"
+        "name": "ovarian_7_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_7_ROv.json"
     },
     {
-        "name": "Breast_A1-3",
-        "dataset": "hoadley_2016",
-        "path": "A1/Breast_A1-3.json"
+        "name": "ovarian_1_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_1_LOv.json"
     },
     {
-        "name": "Breast_A1-4",
-        "dataset": "hoadley_2016",
-        "path": "A1/Breast_A1-4.json"
+        "name": "prostate_34",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_34.json"
     },
     {
-        "name": "Breast_A7-1",
-        "dataset": "hoadley_2016",
-        "path": "A7/Breast_A7-1.json"
+        "name": "prostate_22",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_22.json"
     },
     {
-        "name": "Breast_A7-2",
-        "dataset": "hoadley_2016",
-        "path": "A7/Breast_A7-2.json"
+        "name": "prostate_29",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_29.json"
     },
     {
-        "name": "Prostate_A10",
-        "dataset": "gundem_2015",
-        "path": "A10/Prostate_A10.json"
+        "name": "osteosarcoma_3",
+        "dataset": "Kinnaman_et_al_2018",
+        "path": "osteosarcoma_3.json"
     },
     {
-        "name": "Prostate_A12",
-        "dataset": "gundem_2015",
-        "path": "A12/Prostate_A12.json"
+        "name": "ovarian_7_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_7_LOv.json"
     },
     {
-        "name": "Prostate_A17",
-        "dataset": "gundem_2015",
-        "path": "A17/Prostate_A17.json"
+        "name": "ovarian_1_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_1_ROv.json"
     },
     {
-        "name": "Prostate_A21",
-        "dataset": "gundem_2015",
-        "path": "A21/Prostate_A21.json"
+        "name": "prostate_32",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_32.json"
     },
     {
-        "name": "Prostate_A22",
-        "dataset": "gundem_2015",
-        "path": "A22/Prostate_A22.json"
+        "name": "lung_CRUK0063",
+        "dataset": "TracerX",
+        "path": "lung_CRUK0063.json"
     },
     {
-        "name": "Prostate_A24",
-        "dataset": "gundem_2015",
-        "path": "A24/Prostate_A24.json"
+        "name": "prostate_24",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_24.json"
     },
     {
-        "name": "Prostate_A29",
-        "dataset": "gundem_2015",
-        "path": "A29/Prostate_A29.json"
+        "name": "prostate_12",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_12.json"
     },
     {
-        "name": "Prostate_A31",
-        "dataset": "gundem_2015",
-        "path": "A31/Prostate_A31.json"
+        "name": "osteosarcoma_2",
+        "dataset": "Kinnaman_et_al_2018",
+        "path": "osteosarcoma_2.json"
     },
     {
-        "name": "Prostate_A32",
-        "dataset": "gundem_2015",
-        "path": "A32/Prostate_A32.json"
+        "name": "ovarian_3_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_3_LOv.json"
     },
     {
-        "name": "Prostate_A34",
-        "dataset": "gundem_2015",
-        "path": "A34/Prostate_A34.json"
+        "name": "ovarian_9_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_9_LOv.json"
     },
     {
-        "name": "OSCE2",
-        "dataset": "kinnaman_2023",
-        "path": "OSCE/OSCE2.json"
+        "name": "prostate_31",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_31.json"
     },
     {
-        "name": "OSCE3",
-        "dataset": "kinnaman_2023",
-        "path": "OSCE/OSCE3.json"
+        "name": "ovarian_10_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_10_ROv.json"
     },
     {
-        "name": "OSCE9",
-        "dataset": "kinnaman_2023",
-        "path": "OSCE/OSCE9.json"
+        "name": "ovarian_4_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_4_ROv.json"
     },
     {
-        "name": "LOv_patient1",
-        "dataset": "mcpherson_2016",
-        "path": "patient1_LOv/Ovarian_LOv_patient1.json"
+        "name": "prostate_10",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_10.json"
     },
     {
-        "name": "ROv_patient1",
-        "dataset": "mcpherson_2016",
-        "path": "patient1_ROv/Ovarian_ROv_patient1.json"
+        "name": "ovarian_9_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_9_ROv.json"
     },
     {
-        "name": "ROv_patient2",
-        "dataset": "mcpherson_2016",
-        "path": "patient2/Ovarian_ROv_patient2.json"
+        "name": "prostate_21",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_21.json"
     },
     {
-        "name": "LOv_patient3",
-        "dataset": "mcpherson_2016",
-        "path": "patient3_LOv/Ovarian_LOv_patient3.json"
+        "name": "ovarian_2_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_2_ROv.json"
     },
     {
-        "name": "ROv_patient3",
-        "dataset": "mcpherson_2016",
-        "path": "patient3_ROv/Ovarian_ROv_patient3.json"
+        "name": "ovarian_3_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_3_ROv.json"
     },
     {
-        "name": "LOv_patient4",
-        "dataset": "mcpherson_2016",
-        "path": "patient4_LOv/Ovarian_LOv_patient4.json"
+        "name": "prostate_17",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_17.json"
     },
     {
-        "name": "ROv_patient4",
-        "dataset": "mcpherson_2016",
-        "path": "patient4_ROv/Ovarian_ROv_patient4.json"
-    },
-    {
-        "name": "LOv_patient7",
-        "dataset": "mcpherson_2016",
-        "path": "patient7_LOv/Ovarian_LOv_patient7.json"
-    },
-    {
-        "name": "ROv_patient7",
-        "dataset": "mcpherson_2016",
-        "path": "patient7_ROv/Ovarian_ROv_patient7.json"
-    },
-    {
-        "name": "LOv_patient9",
-        "dataset": "mcpherson_2016",
-        "path": "patient9_LOv/Ovarian_LOv_patient9.json"
-    },
-    {
-        "name": "ROv_patient9",
-        "dataset": "mcpherson_2016",
-        "path": "patient9_ROv/Ovarian_ROv_patient9.json"
-    },
-    {
-        "name": "ROv_patient10",
-        "dataset": "mcpherson_2016",
-        "path": "patient10/Ovarian_ROv_patient10.json"
-    },
-    {
-        "name": "CRUK0063",
-        "dataset": "tracerx",
-        "path": "tracerx/TRACERx_CRUK0063.json"
+        "name": "ovarian_4_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_4_LOv.json"
     }
 ]

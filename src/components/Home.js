@@ -103,7 +103,11 @@ function Home() {
         var current_directory = defaultDirs[i];
         var current_color = (which_color ? color1 : color2)
 
+        console.log(current_patient);
+
         var link = URLs[current_patient];
+
+        console.log(link);
 
         div_elements.push(
           // eslint-disable-next-line no-loop-func
