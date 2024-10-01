@@ -1,68 +1,8 @@
 [
     {
-        "name": "osteosarcoma_9",
-        "dataset": "Kinnaman_et_al_2018",
-        "path": "osteosarcoma_9.json"
-    },
-    {
-        "name": "ovarian_7_ROv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_7_ROv.json"
-    },
-    {
-        "name": "ovarian_1_LOv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_1_LOv.json"
-    },
-    {
-        "name": "prostate_34",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_34.json"
-    },
-    {
-        "name": "prostate_22",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_22.json"
-    },
-    {
-        "name": "prostate_29",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_29.json"
-    },
-    {
-        "name": "osteosarcoma_3",
-        "dataset": "Kinnaman_et_al_2018",
-        "path": "osteosarcoma_3.json"
-    },
-    {
-        "name": "ovarian_7_LOv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_7_LOv.json"
-    },
-    {
-        "name": "ovarian_1_ROv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_1_ROv.json"
-    },
-    {
-        "name": "prostate_32",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_32.json"
-    },
-    {
         "name": "lung_CRUK0063",
         "dataset": "TracerX",
         "path": "lung_CRUK0063.json"
-    },
-    {
-        "name": "prostate_24",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_24.json"
-    },
-    {
-        "name": "prostate_12",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_12.json"
     },
     {
         "name": "osteosarcoma_2",
@@ -70,19 +10,14 @@
         "path": "osteosarcoma_2.json"
     },
     {
-        "name": "ovarian_3_LOv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_3_LOv.json"
+        "name": "osteosarcoma_3",
+        "dataset": "Kinnaman_et_al_2018",
+        "path": "osteosarcoma_3.json"
     },
     {
-        "name": "ovarian_9_LOv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_9_LOv.json"
-    },
-    {
-        "name": "prostate_31",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_31.json"
+        "name": "osteosarcoma_9",
+        "dataset": "Kinnaman_et_al_2018",
+        "path": "osteosarcoma_9.json"
     },
     {
         "name": "ovarian_10_ROv",
@@ -90,24 +25,14 @@
         "path": "ovarian_10_ROv.json"
     },
     {
-        "name": "ovarian_4_ROv",
+        "name": "ovarian_1_LOv",
         "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_4_ROv.json"
+        "path": "ovarian_1_LOv.json"
     },
     {
-        "name": "prostate_10",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_10.json"
-    },
-    {
-        "name": "ovarian_9_ROv",
+        "name": "ovarian_1_ROv",
         "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_9_ROv.json"
-    },
-    {
-        "name": "prostate_21",
-        "dataset": "Gundem_et_al_2015",
-        "path": "prostate_21.json"
+        "path": "ovarian_1_ROv.json"
     },
     {
         "name": "ovarian_2_ROv",
@@ -115,9 +40,54 @@
         "path": "ovarian_2_ROv.json"
     },
     {
+        "name": "ovarian_3_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_3_LOv.json"
+    },
+    {
         "name": "ovarian_3_ROv",
         "dataset": "McPherson_et_al_2016",
         "path": "ovarian_3_ROv.json"
+    },
+    {
+        "name": "ovarian_4_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_4_LOv.json"
+    },
+    {
+        "name": "ovarian_4_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_4_ROv.json"
+    },
+    {
+        "name": "ovarian_7_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_7_LOv.json"
+    },
+    {
+        "name": "ovarian_7_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_7_ROv.json"
+    },
+    {
+        "name": "ovarian_9_LOv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_9_LOv.json"
+    },
+    {
+        "name": "ovarian_9_ROv",
+        "dataset": "McPherson_et_al_2016",
+        "path": "ovarian_9_ROv.json"
+    },
+    {
+        "name": "prostate_10",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_10.json"
+    },
+    {
+        "name": "prostate_12",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_12.json"
     },
     {
         "name": "prostate_17",
@@ -125,8 +95,38 @@
         "path": "prostate_17.json"
     },
     {
-        "name": "ovarian_4_LOv",
-        "dataset": "McPherson_et_al_2016",
-        "path": "ovarian_4_LOv.json"
+        "name": "prostate_21",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_21.json"
+    },
+    {
+        "name": "prostate_22",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_22.json"
+    },
+    {
+        "name": "prostate_24",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_24.json"
+    },
+    {
+        "name": "prostate_29",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_29.json"
+    },
+    {
+        "name": "prostate_31",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_31.json"
+    },
+    {
+        "name": "prostate_32",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_32.json"
+    },
+    {
+        "name": "prostate_34",
+        "dataset": "Gundem_et_al_2015",
+        "path": "prostate_34.json"
     }
 ]
