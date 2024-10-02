@@ -425,14 +425,11 @@ function ClonalTree(props) {
         var label = node.data('label');
 
         var id = node.data('id');
-        var unobservedTag = (props.unobserved && props.unobserved.includes(id)) ? '(unobserved)' : ''
         
         if (label !== undefined) {
           // Create the div element
           var div = document.createElement("div");
           div.setAttribute("class", "panel popup");
-
-          div.innerHTML = `<p>${label}&nbsp;<span class="red-text">${unobservedTag}</span>&nbsp;</p>`;
         
           // Position the div element near the node
           const nodePos = node.position();
