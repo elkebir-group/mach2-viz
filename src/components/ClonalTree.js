@@ -96,6 +96,8 @@ function labelDict(labeling) {
  * @returns The JSX/HTML structure of the component
  */
 function ClonalTree(props) {
+  console.log(props.labeling)
+
   const width = "100%";
   const height = "100%";
 
@@ -137,6 +139,15 @@ function ClonalTree(props) {
     // return hexColorRegex.test(color) ? color : colorPalette[parseInt(color) % ncolors]
 
     if (!label) return '#000';
+
+    // Check if the label is an array
+    if (Array.isArray(label)) {
+      // If label is an array of length 0 or > 1, return black
+      if (label.length === 0 || label.length > 1) return '#000';
+
+      // If label is a single element, find the corresponding color
+      if (label.length === 1) { label = label[0]; }
+    }
   
     let colorValue = props.coloring.find(value => value[0] === label);
     
@@ -160,7 +171,6 @@ function ClonalTree(props) {
   function findLabel(node) {
     // return props.labeling.map((value, index) => {
     //   if (value[0] === node) return value[1]}).filter((item) => {return item != undefined})[0];
-
     let labelPair = props.labeling.find(value => value[0] === node);
   
     return labelPair ? labelPair[1] : undefined;
@@ -250,11 +260,22 @@ function ClonalTree(props) {
   ];
 
   // Set the coloring dynamically in the stylesheet using the coloring props
+  console.log(nodes)
   props.coloring.forEach((value, index) => {
+    console.log(value)
     styleSheet.push({
       selector: `node[label='${value[0]}']`,
       style: {
-        backgroundColor: hexColorRegex.test(value[1]) ? value[1] : colorPalette[parseInt(value[1]) % ncolors]
+        backgroundColor: `${getColor(value[0])}`
+      }
+    })
+  })
+
+  nodes.forEach((value, index) => {
+    styleSheet.push({
+      selector: `node[id='${value.data.id}']`,
+      style: {
+        backgroundColor: `${getColor(findLabel(value.data.id))}`
       }
     })
   })
@@ -364,8 +385,7 @@ function ClonalTree(props) {
           }
         }
         if (eventName === 'clonalHover') {
-          let corrNodes = eventData.eventParams
-          //console.log(props.index)
+          let corrNodes = eventData.eventParams;
 
           if (corrNodes !== undefined) {
             corrNodes.forEach((source) => {
@@ -388,7 +408,6 @@ function ClonalTree(props) {
 
         if (eventName === 'clonalDehover') {
           let corrNodes = eventData.eventParams
-          //console.log(props.index)
 
           if (corrNodes !== undefined) {
             corrNodes.forEach((source) => {
@@ -440,8 +459,6 @@ function ClonalTree(props) {
 
   // Next, we count the number of noncorresponding labels in the clone labeling
   props.labeling.forEach((value, index) => {
-    console.log(cloneLabelDict[value[0]])
-
     let origNode = origDict[value[0]];
     
     if (origNode !== undefined) {
@@ -477,43 +494,46 @@ function ClonalTree(props) {
         var node = event.target;
         var label = node.data('label');
 
-        var id = node.data('id');
+        // Create the div element
+        var div = document.createElement("div");
+        div.setAttribute("class", "panel popup");
+      
+        // Position the div element near the node
+        const nodePos = node.position();
         
-        if (label !== undefined) {
-          // Create the div element
-          var div = document.createElement("div");
-          div.setAttribute("class", "panel popup");
-        
-          // Position the div element near the node
-          const nodePos = node.position();
-          
-          // Get the container element
-          const container = cy.container();
-          const zoomLevel = cy.zoom();
+        // Get the container element
+        const container = cy.container();
+        const zoomLevel = cy.zoom();
 
+        // Get the container's absolute position on the webpage
+        const containerRect = container.getBoundingClientRect();
 
-          // Get the container's absolute position on the webpage
-          const containerRect = container.getBoundingClientRect();
+        div.style.position = "absolute";
+        const absoluteX = containerRect.left + nodePos.x * zoomLevel + cy.pan().x + 15;
+        const absoluteY = containerRect.top + nodePos.y * zoomLevel + cy.pan().y - 15;
 
+        div.style.top = absoluteY + 'px';
+        div.style.left = absoluteX + 'px';
 
-          div.style.position = "absolute";
-          const absoluteX = containerRect.left + nodePos.x * zoomLevel + cy.pan().x + 15;
-          const absoluteY = containerRect.top + nodePos.y * zoomLevel + cy.pan().y - 15;
+        if (typeof label === 'string') {
+          div.innerHTML = `<p>${label}&nbsp;</p>`;
+        } else {
+          if (label.length === 0) {
+            div.innerHTML = `<p>unobserved&nbsp;</p>`;
 
-          div.style.top = absoluteY + 'px';
-          div.style.left = absoluteX + 'px';
-        
-          // Add the div element to the page
-          document.body.appendChild(div);
-
-          // Style the anatomical location tag on hover
-          var labeltag = document.querySelector(`#${label}`);
-          if (labeltag !== null) {
-            labeltag.style.opacity = 1;
-            labeltag.style.zIndex = 100;
-            labeltag.style.fontWeight = 'bold';
+            // Make text red if unobserved
+            div.style.color = "red";
+          } else {
+            // Say "This node was observed in:" and list the anatomical locations, with the bullets colored by the label color
+div.innerHTML = `<p>This node was observed in:&nbsp;</p>`;
+label.forEach((value, index) => {
+  div.innerHTML += `<p><span style="color: ${getColor(value)}; font-size: 2em; vertical-align: middle;">&bull;</span> <span style="color: black;">${value}</span></p>`;
+});
           }
         }
+      
+        // Add the div element to the page
+        document.body.appendChild(div);
 
         const nodeId = event.target.id();
 
@@ -534,16 +554,6 @@ function ClonalTree(props) {
         }
 
         const nodeId = event.target.id();
-
-        var node = event.target;
-        var label = node.data('label');
-
-        var labeltag = document.querySelector(`#${label}`);
-        if (labeltag !== null) {
-          labeltag.style.opacity = 0.7;
-          labeltag.style.zIndex = 1;
-          labeltag.style.fontWeight = 'normal';
-        }
 
         // Shrink the node back to size
         props.evtbus.fireEvent('dehoverNodeSC', { nodeId });
