@@ -525,7 +525,7 @@ function ClonalTree(props) {
             div.style.color = "red";
           } else {
             // Say "This node was observed in:" and list the anatomical locations, with the bullets colored by the label color
-div.innerHTML = `<p>This node was observed in:&nbsp;</p>`;
+div.innerHTML = `<p>This clone was observed in:&nbsp;</p>`;
 label.forEach((value, index) => {
   div.innerHTML += `<p><span style="color: ${getColor(value)}; font-size: 2em; vertical-align: middle;">&bull;</span> <span style="color: black;">${value}</span></p>`;
 });
