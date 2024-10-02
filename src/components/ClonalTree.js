@@ -63,6 +63,26 @@ function getNodesInTree(tree, ids) {
   return ids.filter((id) => nodes.includes(id));
 }
 
+function dictFromMap(clonalMap) {
+  let dict = {};
+
+  clonalMap.forEach((row) => {
+    dict[row[0]] = row[1]
+  })
+
+  return dict;
+}
+
+function labelDict(labeling) {
+  let dict = {};
+
+  labeling.forEach((row) => {
+    dict[row[0]] = row[1]
+  })
+
+  return dict;
+}
+
 /** This component contains the clonal tree showing the tumor phylogeny
  * 
  * @param {*} props The JSX props used on this tag
@@ -76,7 +96,6 @@ function getNodesInTree(tree, ids) {
  * @returns The JSX/HTML structure of the component
  */
 function ClonalTree(props) {
-  //console.log(props.clonalMap)
   const width = "100%";
   const height = "100%";
 
@@ -407,10 +426,28 @@ function ClonalTree(props) {
   };
 
   let unobserved = 0;
+  let origLabelDict = labelDict(props.originalLabeling);
+  let cloneLabelDict = labelDict(props.labeling);
+  let origDict = dictFromMap(props.clonalMap);
 
+  // Compute the number of unobserved clones
+  // First, we count the number of empty labels in the original labeling
   props.originalLabeling.forEach((value, index) => {
     if (value[1].length === 0) {
       unobserved += 1;
+    }
+  })
+
+  // Next, we count the number of noncorresponding labels in the clone labeling
+  props.labeling.forEach((value, index) => {
+    console.log(cloneLabelDict[value[0]])
+
+    let origNode = origDict[value[0]];
+    
+    if (origNode !== undefined) {
+      if (!origLabelDict[origNode].includes(cloneLabelDict[value[0]])) {
+        unobserved += 1;
+      }
     }
   })
 
