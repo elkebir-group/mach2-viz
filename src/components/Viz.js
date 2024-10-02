@@ -134,8 +134,10 @@ function insertParam(key, value) {
 function Viz(props) {
   const [mu, setMu] = useState(0);
   const [gamma, setGamma] = useState(0);
+  const [unobserved, setUnobserved] = useState(0);
   const [mu2, setMu2] = useState(0);
   const [gamma2, setGamma2] = useState(0);
+  const [unobserved2, setUnobserved2] = useState(0);
   const [muSum, setMuSum] = useState(0);
   const [gammaSum, setGammaSum] = useState(0);
   const jsonContents = decompressUrlSafe(sessionStorage.getItem("json_data"));
@@ -373,9 +375,11 @@ function Viz(props) {
         setData2(tempUsedData["solutions"].filter((item) => { return item["name"] === tempNames[0] })[0])
       }
     }
+
     return 0;
   }
 
+  // Vestigial code
   const multiSoln = Array.isArray(usedData['original'])
 
   const [labelNames, setLabelNames] = useState(usedData["solutions"].map((value, index) => { return value["name"] }));
@@ -486,6 +490,7 @@ function Viz(props) {
     setMigration(data["migration"]);
     setMu(sessionStorage.getItem("mu"));
     setGamma(sessionStorage.getItem("gamma"));
+    setUnobserved(sessionStorage.getItem("unobserved"));
 
     if (data["origin_node"] !== undefined) {
       setClonalMap(data["origin_node"])
@@ -575,6 +580,7 @@ function Viz(props) {
     setData2(usedData["solutions"].filter((item) => { return item["name"] === labeling })[0]);
     setMu2(sessionStorage.getItem("mu2"));
     setGamma2(sessionStorage.getItem("gamma2"));
+    setUnobserved2(sessionStorage.getItem("unobserved2"));
   }
 
   let closeTab = (tabIndex) => {
@@ -615,6 +621,7 @@ function Viz(props) {
   useEffect(() => {
     setMu2(sessionStorage.getItem("mu2"));
     setGamma2(sessionStorage.getItem("gamma2"));
+    setUnobserved2(sessionStorage.getItem("unobserved2"));
   }, [tree2])
 
   // refresh when type is changed
@@ -655,8 +662,10 @@ function Viz(props) {
   useEffect(() => {
     setMu(sessionStorage.getItem("mu"));
     setGamma(sessionStorage.getItem("gamma"));
+    setUnobserved(sessionStorage.getItem("unobserved"));
     setMu2(sessionStorage.getItem("mu2"));
     setGamma2(sessionStorage.getItem("gamma2"));
+    setUnobserved2(sessionStorage.getItem("unobserved2"));
     setMuSum(sessionStorage.getItem("musum"));
     setGammaSum(sessionStorage.getItem("gammasum"));
     updateUsedData()
@@ -794,6 +803,7 @@ function Viz(props) {
             <p className="paneltitle"><b>Migration Graph</b></p>
             <p className="paneltitle mu">{`migrations: ${mu}`}</p>
             <p className="paneltitle gamma">{`comigrations: ${gamma}`}</p>
+            <p className="paneltitle unobserved">{`unobserved: ${unobserved}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
             <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
             <Migration 
@@ -839,7 +849,9 @@ function Viz(props) {
               rightcol={type === 'sumviz' || type === 'triviz'} 
               index={1}
               clonalMap={clonalMap}
-              clonal={clonalL}/>
+              clonal={clonalL}
+              originalTree={originalTree}
+              originalLabeling={originalLabeling}/>
           </div>
         </div>
       </div>
@@ -880,6 +892,7 @@ function Viz(props) {
               <p className="paneltitle"><b>Migration Graph</b></p>
               <p className="paneltitle mu">{`migrations: ${mu2}`}</p>
               <p className="paneltitle gamma">{`comigrations: ${gamma2}`}</p>
+              <p className="paneltitle unobserved">{`unobserved: ${unobserved2}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
               <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
               <Migration 
@@ -924,7 +937,9 @@ function Viz(props) {
                 rightcol={true} 
                 index={2}
                 clonalMap={clonalMap2}
-                clonal={clonalR}/>
+                clonal={clonalR}
+                originalTree={originalTree}
+                originalLabeling={originalLabeling}/>
             </div>
           </div>
         </div> :

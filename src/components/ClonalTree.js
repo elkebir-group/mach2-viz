@@ -66,11 +66,13 @@ function getNodesInTree(tree, ids) {
 /** This component contains the clonal tree showing the tumor phylogeny
  * 
  * @param {*} props The JSX props used on this tag
- *  - coloring: (array) The coloring scheme of the tree
- *  - labeling: (array) The anatomical labels of each clone
- *  - tree:     (array) The tree topology as an edgelist
- *  - evtbus:   (obj) The event handler that is shared between graph structures
- *  - rightcol: (boolean) is this tree in the right column (for dual visualizations)
+ *  - coloring:         (array) The coloring scheme of the tree
+ *  - labeling:         (array) The anatomical labels of each clone
+ *  - tree:             (array) The tree topology as an edgelist
+ *  - evtbus:           (obj) The event handler that is shared between graph structures
+ *  - rightcol:         (boolean) is this tree in the right column (for dual visualizations)
+ *  - originalTree:     (array) The original tree topology
+ *  - originalLabeling: (array) The original anatomical labeling
  * @returns The JSX/HTML structure of the component
  */
 function ClonalTree(props) {
@@ -403,6 +405,20 @@ function ClonalTree(props) {
       props.evtbus.addListener(listener);
     }
   };
+
+  let unobserved = 0;
+
+  props.originalLabeling.forEach((value, index) => {
+    if (value[1].length === 0) {
+      unobserved += 1;
+    }
+  })
+
+  if (!props.rightcol) {
+    sessionStorage.setItem('unobserved', unobserved);
+  } else {
+    sessionStorage.setItem('unobserved2', unobserved);
+  }
 
   // Memoization: Log the graph layout so that when states change, we dont have to recompute everything
   const memoizedGraphComponent = useMemo(() => ( <CytoscapeComponent
