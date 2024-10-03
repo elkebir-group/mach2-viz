@@ -194,6 +194,8 @@ function ClonalTree(props) {
     edges: edges
   });
 
+  const [origDict, setOrigDict] = useState(dictFromMap(props.clonalMap));
+
   // Handle graph changes (this is for when we switch the solution)
   useEffect(() => {
     // Reset nodes and labeling
@@ -212,7 +214,8 @@ function ClonalTree(props) {
       nodes: nodes,
       edges: edges
     })
-  
+
+    setOrigDict(dictFromMap(props.clonalMap));
   // Set this change dependent on the tree or labeling change
   }, [props.tree, props.labeling])
 
@@ -260,7 +263,6 @@ function ClonalTree(props) {
   ];
 
   // Set the coloring dynamically in the stylesheet using the coloring props
-  console.log(nodes)
   props.coloring.forEach((value, index) => {
     console.log(value)
     styleSheet.push({
@@ -447,22 +449,16 @@ function ClonalTree(props) {
   let unobserved = 0;
   let origLabelDict = labelDict(props.originalLabeling);
   let cloneLabelDict = labelDict(props.labeling);
-  let origDict = dictFromMap(props.clonalMap);
 
   // Compute the number of unobserved clones
   // First, we count the number of empty labels in the original labeling
-  props.originalLabeling.forEach((value, index) => {
-    if (value[1].length === 0) {
-      unobserved += 1;
-    }
-  })
 
-  // Next, we count the number of noncorresponding labels in the clone labeling
-  props.labeling.forEach((value, index) => {
-    let origNode = origDict[value[0]];
+  nodes.forEach((value) => {
+    let node = value.data.id;
+    let origNode = origDict[node];
     
     if (origNode !== undefined) {
-      if (!origLabelDict[origNode].includes(cloneLabelDict[value[0]])) {
+      if (!origLabelDict[origNode].includes(cloneLabelDict[node])) {
         unobserved += 1;
       }
     }
@@ -525,10 +521,10 @@ function ClonalTree(props) {
             div.style.color = "red";
           } else {
             // Say "This node was observed in:" and list the anatomical locations, with the bullets colored by the label color
-div.innerHTML = `<p>This clone was observed in:&nbsp;</p>`;
-label.forEach((value, index) => {
-  div.innerHTML += `<p><span style="color: ${getColor(value)}; font-size: 2em; vertical-align: middle;">&bull;</span> <span style="color: black;">${value}</span></p>`;
-});
+            div.innerHTML = `<p>This clone was observed in:&nbsp;</p>`;
+            label.forEach((value, index) => {
+              div.innerHTML += `<p><span style="color: ${getColor(value)}; font-size: 2em; vertical-align: middle;">&bull;</span> <span style="color: black;">${value}</span></p>`;
+            });
           }
         }
       

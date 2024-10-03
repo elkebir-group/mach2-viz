@@ -499,6 +499,7 @@ function Viz(props) {
 
   useEffect(() => {
     setLabelNames(usedData["solutions"].map((value, index) => { return value["name"] }))
+    setUnobserved(sessionStorage.getItem("unobserved"));
 
     if (multiSoln) {
       let solutionNames = usedData["solutions"].map((value, index) => { return value["name"] });
