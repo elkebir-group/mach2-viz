@@ -460,6 +460,9 @@ function ClonalTree(props) {
     if (origNode !== undefined) {
       if (!origLabelDict[origNode].includes(cloneLabelDict[node])) {
         unobserved += 1;
+        value.data.unobserved = true;
+      } else {
+        value.data.unobserved = false;
       }
     }
   })
@@ -513,6 +516,10 @@ function ClonalTree(props) {
 
         if (typeof label === 'string') {
           div.innerHTML = `<p>${label}&nbsp;</p>`;
+
+          if (node.data('unobserved')) {
+            div.innerHTML += `<p><span style="color: red;">unobserved</span>&nbsp;</p>`;
+          }
         } else {
           if (label.length === 0) {
             div.innerHTML = `<p>unobserved&nbsp;</p>`;
