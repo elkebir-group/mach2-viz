@@ -825,14 +825,14 @@ function Viz(props) {
                     style={{ fontWeight: !clonalL ? 'bold' : 'normal' }}
                     onClick={onToggleOutputClonalL}
                   >
-                    Clonal Tree
+                    Refined Tree
                   </button>{" "}
                   |{" "}
                   <button
                     style={{ fontWeight: clonalL ? 'bold' : 'normal' }}
                     onClick={onToggleInputClonalL}
                   >
-                    Input Tree
+                    Clonal Tree
                   </button>
                 </>
               ) : (
@@ -914,14 +914,14 @@ function Viz(props) {
                     style={{ fontWeight: !clonalR ? 'bold' : 'normal' }}
                     onClick={onToggleOutputClonalR}
                   >
-                    Clonal Tree
+                    Refined Tree
                   </button>{" "}
                   |{" "}
                   <button
                     style={{ fontWeight: clonalR ? 'bold' : 'normal' }}
                     onClick={onToggleInputClonalR}
                   >
-                    Input Tree
+                    Clonal Tree
                   </button>
                 </>
               ) : (
