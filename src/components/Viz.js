@@ -802,9 +802,9 @@ function Viz(props) {
         <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
           <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
             <p className="paneltitle"><b>Migration Graph</b></p>
+            <p className="paneltitle unobserved">{`unobserved clones: ${unobserved}`}</p>
             <p className="paneltitle mu">{`migrations: ${mu}`}</p>
             <p className="paneltitle gamma">{`comigrations: ${gamma}`}</p>
-            <p className="paneltitle unobserved">{`unobserved: ${unobserved}`}</p>
             <button type="button" className="paneltitle button" onClick={rotateFn}>Rotate</button>
             <button type="button" className="paneltitle button under" onClick={() => resetFn(1)}>Reset</button>
             <Migration 
@@ -890,10 +890,10 @@ function Viz(props) {
           </div>
           <div className={coord_map === undefined ? "leftcolumn nolegend" : "leftcolumn"}>
             <div className={`panel migration top ${(type === 'dualviz' || type === 'triviz') ? 'left' : ''}`}>
+            <p className="paneltitle unobserved">{`unobserved clones: ${unobserved2}`}</p>
               <p className="paneltitle"><b>Migration Graph</b></p>
               <p className="paneltitle mu">{`migrations: ${mu2}`}</p>
               <p className="paneltitle gamma">{`comigrations: ${gamma2}`}</p>
-              <p className="paneltitle unobserved">{`unobserved: ${unobserved2}`}</p>
               <button type="button" className="paneltitle button" onClick={rotateFn2}>Rotate</button>
               <button type="button" className="paneltitle button under" onClick={() => resetFn(2)}>Reset</button>
               <Migration 

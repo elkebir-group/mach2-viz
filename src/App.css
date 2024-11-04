@@ -344,16 +344,16 @@ input[type="checkbox"] {
 
 .paneltitle.unobserved {
   position: absolute;
-  margin-top: 65px;
+  margin-top: 25px;
   z-index: 999;
 }
 
 .paneltitle.mu {
-  margin-top: 25px;
+  margin-top: 45px;
 }
 
 .paneltitle.gamma {
-  margin-top: 45px;
+  margin-top: 65px;
 }
 
 .paneltitle.button {
