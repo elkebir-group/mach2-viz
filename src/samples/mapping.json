@@ -1,7 +1,7 @@
 [
     {
         "name": "lung_CRUK0063",
-        "dataset": "TracerX",
+        "dataset": "TRACERx",
         "path": "lung_CRUK0063.json"
     },
     {
