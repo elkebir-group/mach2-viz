@@ -113,5 +113,15 @@
         "name": "prostate_34",
         "dataset": "Gundem_et_al_2015",
         "path": "prostate_34.json"
+    },
+    {
+        "name": "breast_1",
+        "dataset": "Gundem_et_al_2015",
+        "path": "breast_1.json"
+    },
+    {
+        "name": "breast_7",
+        "dataset": "Gundem_et_al_2015",
+        "path": "breast_7.json"
     }
 ]
