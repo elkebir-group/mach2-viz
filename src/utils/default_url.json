@@ -1,8 +1,5 @@
 {
     "lung_CRUK0063": "viz?labeling=\\#0",
-    "osteosarcoma_2": "viz?labeling=\\#0",
-    "osteosarcoma_3": "viz?labeling=\\#0",
-    "osteosarcoma_9": "viz?labeling=\\#0",
     "ovarian_10_ROv": "viz?labeling=\\#0",
     "ovarian_1_LOv": "viz?labeling=\\#0",
     "ovarian_1_ROv": "viz?labeling=\\#0",
@@ -24,5 +21,7 @@
     "prostate_29": "viz?labeling=\\#0",
     "prostate_31": "viz?labeling=\\#0",
     "prostate_32": "viz?labeling=\\#0",
-    "prostate_34": "viz?labeling=\\#0"
+    "prostate_34": "viz?labeling=\\#0",
+    "breast_1": "viz?labeling=\\#0",
+    "breast_7": "viz?labeling=\\#0"
 }
