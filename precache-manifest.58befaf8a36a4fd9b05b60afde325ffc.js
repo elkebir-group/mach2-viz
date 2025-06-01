@@ -100,12 +100,12 @@ self.__precacheManifest = [
     "url": "/mach2-viz/static/js/24.6c4447fd.chunk.js"
   },
   {
-    "revision": "60ee04bdfc83805b91df",
-    "url": "/mach2-viz/static/css/main.cb95529b.chunk.css"
+    "revision": "646678a79c813d622438",
+    "url": "/mach2-viz/static/css/main.b65ca917.chunk.css"
   },
   {
-    "revision": "60ee04bdfc83805b91df",
-    "url": "/mach2-viz/static/js/main.60ee04bd.chunk.js"
+    "revision": "646678a79c813d622438",
+    "url": "/mach2-viz/static/js/main.646678a7.chunk.js"
   },
   {
     "revision": "ab1817afefc1c87ee003",
@@ -132,7 +132,7 @@ self.__precacheManifest = [
     "url": "/mach2-viz/static/media/lucon.97a55c95.ttf"
   },
   {
-    "revision": "99b48ed54fac7febcbca0adb45acf4bf",
+    "revision": "9f2885800b9491c87e72ea234a8d1444",
     "url": "/mach2-viz/index.html"
   }
 ];
