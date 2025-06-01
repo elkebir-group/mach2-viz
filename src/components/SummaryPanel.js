@@ -177,7 +177,7 @@ function SummaryPanel({
             </div>
             <div className="panel migration top left sum">
                 <p className="paneltitle"><b>Migration Graph</b></p>
-                <p className="paneltitle mu">{`solutions: ${usedData['solutions'].length}`}</p>
+                <p className="paneltitle unobserved">{`solutions: ${usedData['solutions'].length}`}</p>
                 {filterStack.length > 0 ? <p 
                     className="rightAlign"
                     onClick={undoFunction}
