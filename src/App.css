@@ -445,7 +445,6 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  flec-wrap: wrap;
 
   border: 2px solid darkgray;
   border-radius: 10px;
@@ -456,7 +455,7 @@ input[type="checkbox"] {
   margin: 20px;
 
   padding-top: 0px;  /* Changed from 20px to 0px */
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 
   position: relative; /* Add this for overlay positioning */
   overflow-y: auto; /* Add vertical scrolling when content overflows */
@@ -552,6 +551,7 @@ input[type="checkbox"] {
 
   padding: 20px;
   padding-top: 0px;  /* Changed from 20px to 0px */
+  padding-bottom: 5px;
   
   transition: border-color 0.2s ease, background-color 0.2s ease;
   min-height: 100px;
