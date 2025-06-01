@@ -25,6 +25,8 @@ function Home() {
     const [jsonDict, setJsonDict] = useState({});
     const [defaultPatients, setDefaultPatients] = useState([]);
     const [defaultDirs, setDefaultDirs] = useState([]);
+    const [isDragOver, setIsDragOver] = useState(false);
+    const [dragCounter, setDragCounter] = useState(0); // eslint-disable-line no-unused-vars
 
     const importComponent = async (file) => {
       try {
@@ -206,6 +208,59 @@ function Home() {
       
     }
 
+    const handleDragEnter = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragCounter(prev => prev + 1);
+        setIsDragOver(true);
+    };
+
+    const handleDragLeave = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragCounter(prev => {
+            const newCounter = prev - 1;
+            if (newCounter === 0) {
+                setIsDragOver(false);
+            }
+            return newCounter;
+        });
+    };
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragOver(false);
+        setDragCounter(0);
+        
+        console.log('Drop event triggered');
+        
+        const files = e.dataTransfer.files;
+        console.log('Files dropped:', files);
+        
+        if (files && files.length > 0) {
+            const file = files[0];
+            console.log('File type:', file.type, 'File name:', file.name);
+            
+            if (file.type === "application/json" || file.name.toLowerCase().endsWith('.json')) {
+                const syntheticEvent = {
+                    target: {
+                        files: files
+                    }
+                };
+                console.log('Calling handleChange');
+                handleChange(syntheticEvent);
+            } else {
+                alert("Please drop a JSON file.");
+            }
+        }
+    };
+
     return (
         <div className='home'>
             <div className='panel home-panel'>
@@ -221,28 +276,34 @@ function Home() {
                     <button className="about-button">Instructions</button>
                   </Link>
                 </div>
-                <div className='home-column-1-1'>
-                  <h3>Upload a JSON file</h3>
-                  <div className="upload-container">
-                  <div>
-                    <input 
-                      type="file"
-                        id="json_upload" 
-                      name="json_upload"
-                      accept="application/JSON"
-                      onChange={handleChange}/>
-                    <label htmlFor="json_upload">
-                      <div id="addnew" className="dot">
-                        <h1 className="plus">+</h1>
-                        <span className="tooltiptext"><b>Upload Patient JSON</b></span>
-                      </div>
-                      {/* <div id="addnew">
-                        <img  src={upload_icon}></img>
-                        <span class="tooltiptext"><b>Upload Patient JSON</b></span>
-                      </div> */}
-                    </label>
-                  </div>
-                  </div>
+                <div className={`home-column-1-1 ${isDragOver ? 'drag-over' : ''}`}
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                    onDragEnter={handleDragEnter}
+                    onDragLeave={handleDragLeave}>
+                    {isDragOver && (
+                        <div className="drag-overlay">
+                            <div className="drag-overlay-text"><p>Drop file here</p></div>
+                        </div>
+                    )}
+                    <h3>Upload a JSON file</h3>
+                    <p className='center-text'>To upload your own MACH2-generated JSON file, click the (+) button, or drag and drop a JSON file here</p>
+                    <div className="upload-container">
+                        <div>
+                            <input 
+                                type="file"
+                                id="json_upload" 
+                                name="json_upload"
+                                accept="application/JSON"
+                                onChange={handleChange}/>
+                            <label htmlFor="json_upload" className="upload-label">
+                                <div id="addnew" className="dot">
+                                    <h1 className="plus">+</h1>
+                                    <span className="tooltiptext"><b>Upload Patient JSON</b></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
                 </div>
               </div>
                 {/* <div className="line"></div> */}

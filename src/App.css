@@ -124,11 +124,8 @@ h1, h2, h3, h4, h5, h6, p, header, span, label {
 }
 
 .about-text {
-  padding-top: 20px;
   padding-left: 30px;
   padding-right: 30px;
-
-  margin-bottom: 20px;
 }
 
 .line {
@@ -171,6 +168,7 @@ h1, h2, h3, h4, h5, h6, p, header, span, label {
   background-color: #B3B3B3;
   border-radius: 50%;
   box-shadow: 10px 10px #D7E3E3;
+  margin-top: 0px;
 }
 
 .dot:hover {
@@ -254,8 +252,8 @@ input[type="checkbox"] {
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
-  left: -120px;
+  padding: 0px;
+  left: 0px;
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -272,8 +270,8 @@ input[type="checkbox"] {
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
-  left: -120px;
+  padding: 0px;
+  left: 0px;
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -447,6 +445,7 @@ input[type="checkbox"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  flec-wrap: wrap;
 
   border: 2px solid darkgray;
   border-radius: 10px;
@@ -457,7 +456,10 @@ input[type="checkbox"] {
   margin: 20px;
 
   padding-top: 0px;  /* Changed from 20px to 0px */
-  padding-bottom: 40px;
+  padding-bottom: 60px;
+
+  position: relative; /* Add this for overlay positioning */
+  overflow-y: auto; /* Add vertical scrolling when content overflows */
 }
 
 .home-column-2 {
@@ -542,12 +544,20 @@ input[type="checkbox"] {
 
   width: 80%;
   height: auto;
+  max-height: 70vh; /* Add maximum height */
 
-  margin-top: 20px; /* Space between the two panels */
+  margin-top: 0px;
   margin-left: 20px;
   margin-right: 20px;
 
   padding: 20px;
+  padding-top: 0px;  /* Changed from 20px to 0px */
+  
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  min-height: 100px;
+  
+  position: relative; /* Add this for overlay positioning */
+  overflow-y: auto; /* Add vertical scrolling when content overflows */
 }
 
 .patientlist {
@@ -1189,4 +1199,35 @@ input {
 
 .red-text {
   color: red;
+}
+
+.center-text {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.drag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #b3b3b3; /* Semi-transparent gray */
+  border-radius: 8px; /* Match the parent's border radius */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* Ensure it appears above other content */
+  pointer-events: none; /* Allow drag events to pass through */
+}
+
+.drag-overlay-text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  background-color: #b3b3b3;
+  border-radius: 8px;
+  border: 2px dashed white;
 }
