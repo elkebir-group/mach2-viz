@@ -163,11 +163,6 @@ h1, h2, h3, h4, h5, h6, p, header, span, label {
   cursor: pointer;
 }
 
-#addnew {
-  position: absolute;
-  top: calc(100% - 120px);
-  left: calc(100% - 120px);
-}
 
 .dot {
   display: table;
@@ -456,12 +451,12 @@ input[type="checkbox"] {
   border: 2px solid darkgray;
   border-radius: 10px;
 
-  width: 70%;
-  height: auto;
+  width: 90%;
+  height: 50%;
 
   margin: 20px;
 
-  padding-top: 20px;
+  padding-top: 0px;  /* Changed from 20px to 0px */
   padding-bottom: 40px;
 }
 
@@ -483,7 +478,6 @@ input[type="checkbox"] {
 
 .home-panel {
   display: flex;
-  align-items: center;
   flex-direction: row;
   overflow: hidden;
 
@@ -528,6 +522,32 @@ input[type="checkbox"] {
 
 .panel.home.intro {
   height: 50%;
+}
+
+.left-column-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%; /* Same as home-column-1 was */
+  height: 100%;
+}
+
+.home-column-1-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  border: 2px solid darkgray;
+  border-radius: 10px;
+
+  width: 80%;
+  height: auto;
+
+  margin-top: 20px; /* Space between the two panels */
+  margin-left: 20px;
+  margin-right: 20px;
+
+  padding: 20px;
 }
 
 .patientlist {

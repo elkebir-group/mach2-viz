@@ -209,6 +209,7 @@ function Home() {
     return (
         <div className='home'>
             <div className='panel home-panel'>
+              <div className='left-column-container'>
                 <div className='home-column-1'>
                   <h1><b>Welcome to MACH2!</b></h1>
                   {/* <div className="aboutdir"><Link to="about" style={{ textDecoration: 'none', color: 'black'}}><h4 className='abouttext'>About</h4></Link></div> */}
@@ -216,12 +217,34 @@ function Home() {
                     <p><b>A lightweight visualizer for MACH2, <a href="https://www.nature.com/articles/s41588-018-0106-z">MACHINA's</a> sequel.</b> Use this visualizer to examine a solution space for the parsimonious migration history problem and its respective summary for a given patient. Examples are provided below. You can also upload a JSON file to view a custom input. See the Instructions page for how to use this website:</p> 
                   </div>
                   
-                    <Link to="about" style={{ textDecoration: 'none', color: 'black'}}>
-                      <button className="about-button">Instructions</button>
-                    </Link>
-
+                  <Link to="about" style={{ textDecoration: 'none', color: 'black'}}>
+                    <button className="about-button">Instructions</button>
+                  </Link>
                 </div>
-
+                <div className='home-column-1-1'>
+                  <h3>Upload a JSON file</h3>
+                  <div className="upload-container">
+                  <div>
+                    <input 
+                      type="file"
+                        id="json_upload" 
+                      name="json_upload"
+                      accept="application/JSON"
+                      onChange={handleChange}/>
+                    <label htmlFor="json_upload">
+                      <div id="addnew" className="dot">
+                        <h1 className="plus">+</h1>
+                        <span className="tooltiptext"><b>Upload Patient JSON</b></span>
+                      </div>
+                      {/* <div id="addnew">
+                        <img  src={upload_icon}></img>
+                        <span class="tooltiptext"><b>Upload Patient JSON</b></span>
+                      </div> */}
+                    </label>
+                  </div>
+                  </div>
+                </div>
+              </div>
                 {/* <div className="line"></div> */}
 
                 <div className="home-column-2">
@@ -256,24 +279,6 @@ function Home() {
                   </div>
                 </div>
 
-            </div>
-            <div>
-              <input 
-                type="file"
-                id="json_upload" 
-                name="json_upload"
-                accept="application/JSON"
-                onChange={handleChange}/>
-              <label htmlFor="json_upload">
-                <div id="addnew" className="dot">
-                  <h1 className="plus">+</h1>
-                  <span className="tooltiptext"><b>Upload Patient JSON</b></span>
-                </div>
-                {/* <div id="addnew">
-                  <img  src={upload_icon}></img>
-                  <span class="tooltiptext"><b>Upload Patient JSON</b></span>
-                </div> */}
-              </label>
             </div>
         </div>
     );
